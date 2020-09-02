@@ -1,0 +1,123 @@
+# OVERVIEW
+# This YAML script will attempt to install a Python virtual environment able to
+# support the requirements of all three of King's College London's 'Geocomputation' 
+# pathway in the BA/BSc Geography programme.
+#
+# INSTALLATION
+# Note that, in the example commands below, you will need to replace {name} by the name 
+# value specified as a configuration parameter below (the first line that does *not* 
+# start with a hash (#). All the commands below should be run from the Terminal.
+#
+#######################
+# NOTE: in the below, wherever you see '{name}'
+# you should replace that with the name of the 
+# environment you are installing (e.g. `gsa2019`).
+#######################
+#
+# If you've already installed this environment before:
+#   conda remove --name {name} --all
+#
+# To install/reinstall the environment:
+#   conda-env create -f gsa.yml
+#
+# To install/update individual libraries you usually want to force the conda-forge channel:
+#   conda install -c conda-forge osmnx
+#
+# A nice way to set the display name for the environment after activating the env:
+#   conda activate {name}
+#   python -m ipykernel install --name {name} --display-name "Geocomp 2019"
+# To tidy up environments: 
+#   jupyter kernelspec list
+#   jupyter kernelspec uninstall unwanted-kernel 
+#
+# LAUNCH
+# You can launch the 'old' notebook server by simply running:
+#   jupyter notebook
+# The more modern jupyter lab only seems to be launchable from within an environment:
+#   conda activate {name}
+#   jupyter lab
+#
+# CONFIGURATION PARAMETERS
+name: sds2020
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+#  - python>=3.7
+  - pip 
+  - git 
+  - cmake
+  - basemap 
+  - bokeh 
+  - contextily
+  - cython
+  - dill 
+  - feather-format 
+  - folium 
+  - gdal 
+  - geojson 
+  - geopandas 
+  - pandas 
+  - legendgram
+  - geopy 
+  - georasters 
+  - gitdb2 
+  - hdbscan
+  - hvplot
+  - ipyleaflet 
+  - ipyparallel 
+  - ipywidgets 
+  - joblib 
+  - jupyterlab
+  - libspatialite
+  - lxml 
+  - mapclassify 
+  - mkl-service 
+  - mplleaflet 
+  - ipympl 
+  - mysql-connector-python 
+  - nbdime 
+  - networkx
+  - nodejs 
+  - osmnx
+  - palettable 
+  - pillow 
+  - pointpats 
+  - polyline 
+  - pykrige 
+#  - pymc3 # Not well-supported on Windows 
+  - pysal
+  - pandana # For pysal segregation module
+  - urbanaccess  # For pysal segregation module
+  - pyshp 
+  - qgrid 
+  - rasterio
+  - rasterstats
+  - requests 
+  - scikit-learn
+  - scikit-image
+  - seaborn 
+  - simplejson 
+  - smmap2 
+  - sqlite 
+  - sqlalchemy 
+  - psycopg2 
+  - sqlalchemy
+  - statsmodels 
+  - tzlocal 
+  - xlrd 
+  - xlsxwriter 
+  - pypdf2 
+  - spacy  
+  - nltk 
+  - pip:
+    #- git+http://github.com/sevamoo/SOMPY#egg=sompy # Doesn't run in Python3
+    - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
+    - smopy # NOT a typo! Not the same thing as sompy!
+    - MulticoreTSNE
+    - scikit-posthocs
+    - wordcloud
+    - pdfkit
+    - pypdf2 
+    - pyocr
+    - wand 
