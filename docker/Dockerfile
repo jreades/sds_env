@@ -25,8 +25,6 @@ ENV env_nm sds2020
 ENV kernel_nm 'CASA2020'
 
 #--- Python ---#
-RUN echo "Building $kernel_nm"
-
 # Get conda updated and set up before installing
 # any packages
 RUN conda update -n base conda --yes \
@@ -37,17 +35,15 @@ RUN conda update -n base conda --yes \
 
 SHELL ["/bin/bash", "-c"]
 #RUN sudo fallocate -l 1G /swapfile
-ADD ./${yaml_nm} ./
-RUN conda-env create -n ${env_nm} -f ./${yaml_nm}  
-RUN conda clean --all --yes --force-pkgs-dirs \
+ADD ./conda/${yaml_nm} ./
+RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
+    && conda clean --all --yes --force-pkgs-dirs \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && pip cache purge \ 
     && rm -rf /home/$NB_USER/.cache/pip \ 
-    && rm ./${yaml_nm} \
-    && conda list -e > requirements.txt \ 
-    && conda-env export -n ${env_nm} > ${env_nm}-full.yml
+    && rm ./${yaml_nm}
 
 # Set paths for conda and PROJ
 # Change depending on whether using base environment
@@ -147,7 +143,7 @@ USER root
 SHELL ["/bin/bash", "-c"]
 RUN . /opt/conda/etc/profile.d/conda.sh \
     && conda activate ${env_nm} \
-    && python -m ipykernel install --user --name ${env_nm} --display-name ${kernel_nm} \
+    && python -m ipykernel install --name ${env_nm} --display-name ${kernel_nm} \
     && ln -s /opt/conda/bin/jupyter /usr/local/bin
 
 # Switch back to user to avoid accidental container runs as root
