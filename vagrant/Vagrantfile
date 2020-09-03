@@ -34,9 +34,9 @@ Vagrant.configure("2") do |config|
   # and easier on reboot. 
   #
   #config.vm.provision "docker" do |d|
-  #  d.pull_images "jreades/gsa:2020alpha"
+  #  d.pull_images "jreades/sds:0.5"
   #  d.run "jupyter",
-  #   image: "jreades/gsa:2020alpha",
+  #   image: "jreades/sds:0.5",
   #   args: "-v '/home/vagrant/notebooks:/home/jovyan/' \
   #          -p 8888:8888 \
   #          -p 8787:8787 \
