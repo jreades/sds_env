@@ -110,6 +110,8 @@ dependencies:
   - pypdf2 
   - spacy  
   - nltk 
+  - python-language-server 
+  - r-languageserver
   - pip:
     #- git+http://github.com/sevamoo/SOMPY#egg=sompy # Doesn't run in Python3
     - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
