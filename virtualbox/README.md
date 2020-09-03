@@ -1,4 +1,132 @@
-# RancherOS and Docker Machine
+# VirtualBox
+
+## Using VirtualBox with SDS
+
+In order to use VirtualBox to run Jupyter Lab you will need to have:
+
+- [VirtualBox](https://www.virtualbox.org/) installed
+- A copy of the `.ova` file containing the SDS virtual machine (this is a large file, in excess of 6GB) *Link to follow...*
+
+From here on we will refer to the OVA file as your VM (short for: Virtual Machine) since it is a fully-functioning operating system in a single file!
+
+### Known Issues
+
+#### Windows Issues
+
+Windows 10 Home presents particular challenges for *all* kinds of 'virtualisation' (running an operating system on 'top' of Windows). There are two *potential* issues:
+
+1. The 'subsystem' has not been installed to enable you to run Virtual Machines.
+2. The BIOS of the computer itself has not been configured to allow you to run Virtual Machines.
+
+Both of these are resolveable, but both present risks to your computer and you should be aware of these before proceeding. Alternatively, you may wish to [install Anaconda Python directly](../conda/README.md) though this presents other challenges... 
+
+#### Mac Issues
+
+If you are going over this process on a modern Mac, you will need to allow
+VirtualBox access rights when it requests them.
+
+Additionally, you might encounter the following error when importing the
+appliance:
+
+```
+Nonexistent host networking interface, name '' (VERR_INTERNAL_ERROR).
+
+Result Code:
+NS_ERROR_FAILURE (0x80004005)
+
+Component:
+ConsoleWrap
+
+Interface:
+IConsole {872da645-4a9b-1727-bee2-5585105b9eed}
+```
+
+This has to do with security settings of macOS. To work around the issue,
+follow these steps:
+
+1. From the main menu, select "File > Host Network Manager". You should see
+   an empty white box with "Host-only Networks".
+2. Click the "Create" button. A new Host-only network will be created and
+   added to the list automatically.
+
+### Installation
+
+There are three main steps to follow:
+
+1. [Import the appliance (`.ova` file)](#Appliance-import)
+2. [Forward the required port to the host](#Port-forwarding)
+3. [Set up a shared folder so the VM can see files in your host
+   machine](#Folder-sharing)
+
+Mac users, please check the section on [known issues](#Mac-known-issues).
+
+It's important to note that you only need to run these three steps *once* when
+setting the VM up in a machine for the *first time*. After this, [launching and running the
+VM](#Running-the-VM) is a one-click job.
+
+### Appliance import
+
+1. Go to "File --> Import Appliance..."
+1. Select the `.ova` file that you have downloaded. The import process might take a
+   couple of minutes, but you do not have to do anything
+
+### Port forwarding
+
+The VM will be accessed through your browser. To be able to connect from the
+host, the port 8888 needs to be able to reach the VM. Here is how you can do
+it:
+
+1. Right click on the `{name}` image and then left-click on "Settings"
+2. Go to the "Network" tab and click on "Advanced"
+3. Click on "Port Forwarding", this will open up a new dialog window
+4. On the right side, click on "Add new port" button, the one with a + sign.
+   If you hover your mouse over, it will read "Adds new port fordwarding rule". This will add a new row in the table
+5. In the new row, type  "jupyter" under "Name", leave "Protocol", "Host IP"
+   and "Guest IP" as they are, and enter 8888 under both "Host Port" and "Guest
+   Port".
+6. You may see two network cards listed, in which case the one that is *not* set to NAT should be deactivated. 
+7. Then click OK on the bottom right part of the dialog window
+
+### Folder sharing
+
+The following steps allow you to select a folder on the host that will be
+accessible from the VM.
+
+1. Right click on the `gdsbox` image and left-click on "Settings"
+2. Go to the "Shared Folders" tab
+3. Click on the button that has a folder with a + sign icon. If you hover your
+   mouse it will read "Add new shared folder" in the top right
+4. Click on "Folder Path" and select "Other" from the folder path dropdown
+5. Point to the folder you want to share with the VM
+6. Use "notebooks" (or similar) under the "Folder Name" box
+7. Leave "Mount point" blank and make sure "Read-only" is *not* checked
+
+## Running the VM
+
+Once the steps above are followed, you are good to go. To start a session,
+follow these steps:
+
+1. Select `{name}` on the VirtualBox window
+2. On the top row, click on "Start"
+3. A new window will launch with a black console that will start printing
+   output out. This should continue for about 30 seconds, depending on your
+   laptop
+4. When the startup is complete, you should see a [Texas
+   longhorn](https://en.wikipedia.org/wiki/Texas_Longhorn) drawn on the console.
+   Everything is ready.
+5. Open a browser (Firefox or Chrome preferably) and point it at
+   `localhost:8888`
+6. A page will load, asking you to enter a password. Use `geods`.
+7. The main JupyterLab interface should load, happy hacking!
+
+### Shared files
+
+The file menu on the left side of JupyterLab should display a single folder
+named `work`. This is the bridge to the host. If you double click on it, it
+will display the files in the folder you have decided to share with
+VirtualBox.
+
+## RancherOS and Docker Machine
 
 There are two stages:
 
@@ -89,116 +217,3 @@ This virtual machine is still only readily accessible on the host machine, so we
 docker-machine stop {stop}
 VBoxManage export {name} --iso -o <file-name>.ova
 ```
-
-## Deployment
-
-At this point you should have:
-
-- [VirtualBox](https://www.virtualbox.org/) installed
-- A copy of the `.ova` file containing the VM created above (this is a large file, in excess of 6GB)
-
-### Installation
-
-There are three main steps to follow:
-
-1. [Import the appliance (`.ova` file)](#Appliance-import)
-2. [Forward the required port to the host](#Port-forwarding)
-3. [Set up a shared folder so the VM can see files in your host
-   machine](#Folder-sharing)
-
-Mac users, please check the section on [known issues](#Mac-known-issues).
-
-It's important to note these three steps are required to run only once, when
-setting the VM up in a machine for the first time. Once ready, [launching and running the
-VM](#Running-the-VM) is a one-click job.
-
-### Appliance import
-
-1. Go to "File --> Import Appliance..."
-1. Select the `.ova` file you have downloaded. The import process might take a
-couple of minutes, but you do not have to do anything
-
-### Port forwarding
-
-The VM will be accessed through your browser. To be able to connect from the
-host, the port 8888 needs to be able to reach the VM. Here is how you can do
-it:
-
-1. Right click on the `{name}` image and then left-click on "Settings"
-2. Go to the "Network" tab and click on "Advanced"
-3. Click on "Port Forwarding", this will open up a new dialog window
-4. On the right side, click on "Add new port" button, the one with a + sign.
-If you hover your mouse over, it will read "Adds new port fordwarding rule". This will add a new row in the table
-5. In the new row, type  "jupyter" under "Name", leave "Protocol", "Host IP"
-and "Guest IP" as they are, and enter 8888 under both "Host Port" and "Guest
-Port".
-6. You may see two network cards listed, in which case the one that is *not* set to NAT should be deactivated. 
-7. Then click OK on the bottom right part of the dialog window
-
-### Folder sharing
-
-The following steps allow you to select a folder on the host that will be
-accessible from the VM.
-
-1. Right click on the `gdsbox` image and left-click on "Settings"
-2. Go to the "Shared Folders" tab
-3. Click on the button that has a folder with a + sign icon. If you hover your
-mouse it will read "Add new shared folder" in the top right
-4. Click on "Folder Path" and select "Other" from the folder path dropdown
-5. Point to the folder you want to share with the VM
-5. Use "notebooks" (or similar) under the "Folder Name" box
-6. Leave "Mount point" blank and make sure "Read-only" is *not* checked
-
-### Potential Mac issues
-
-If you are going over this process on a modern Mac, you will need to allow
-VirtualBox access rights when it requests them.
-
-Additionally, you might encounter the following error when importing the
-appliance:
-
-```
-Nonexistent host networking interface, name '' (VERR_INTERNAL_ERROR).
-
-Result Code:
-NS_ERROR_FAILURE (0x80004005)
-
-Component:
-ConsoleWrap
-
-Interface:
-IConsole {872da645-4a9b-1727-bee2-5585105b9eed}
-```
-
-This has to do with security settings of macOS. To work around the issue,
-follow these steps:
-
-1. From the main menu, select "File > Host Network Manager". You should see
-an empty white box with "Host-only Networks".
-2. Click the "Create" button. A new Host-only network will be created and
-added to the list automatically.
-
-## Running the VM
-
-Once the steps above are followed, you are good to go. To start a session,
-follow these steps:
-
-1. Select `{name}` on the VirtualBox window
-2. On the top row, click on "Start"
-3. A new window will launch with a black console that will start printing
-output out. This should continue for about 30 seconds, depending on your
-laptop
-4. When the startup is complete, you should see a [Texas
-longhorn](https://en.wikipedia.org/wiki/Texas_Longhorn) drawn on the console.
-Everything is ready.
-5. Open a browser (Firefox or Chrome preferably) and point it at
-`localhost:8888`
-6. A page will load, asking you to enter a password. Use `geods`.
-7. The main JupyterLab interface should load, happy hacking!
-
-### Shared files
-
-The file menu on the left side of JupyterLab should display a single folder
-named `work`. This is the bridge to the host. If you double click on it, it
-will display the files in the folder you have decided to share with
-VirtualBox.
