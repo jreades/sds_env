@@ -1,5 +1,13 @@
+### Configuration Params ###
+BOX_BASE = "ailispaw/barge"
+BOX_RAM  = "2096"
+BOX_CPU_COUNT = "2"
+BOX_NAME = "SDS2020"
+DOCKER_IMAGE = "jreades/sds:0.6"
+JUPYTER_PWD = "sha1:3b9653503d8e:552e78e8443a239b355c0f121ab905517f8492fe"
+
 Vagrant.configure("2") do |config|
-  config.vm.box = "ailispaw/barge"
+  config.vm.box = BOX_BASE
   # May want to add `, host_ip: "127.0.0.1"` to below lines for security
   config.vm.network "forwarded_port", guest: 8888, host: 8888, auto_correct: true
   #config.vm.network "forwarded_port", guest: 8787, host: 8787
@@ -8,20 +16,20 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
     # Set name
-    vb.name = "sds2020"
+    vb.name = BOX_NAME
 
     # Display the VirtualBox GUI when booting the machine
     vb.gui = false
 
     # Customize the amount of memory on the VM:
-    vb.memory = 2096
-    vb.cpus = 2
+    vb.memory = BOX_RAM
+    vb.cpus = BOX_CPU_COUNT
   end
 
   # Docker pull image (only run once or 
   # on reprovisioning)
   config.vm.provision "docker" do |d|
-    d.pull_images "jreades/sds:0.5"
+    d.pull_images DOCKER_IMAGE
   end
 
   # RESTARTING DOCKER
@@ -34,13 +42,11 @@ Vagrant.configure("2") do |config|
   # and easier on reboot. 
   #
   #config.vm.provision "docker" do |d|
-  #  d.pull_images "jreades/sds:0.5"
+  #  d.pull_images DOCKER_IMAGE
   #  d.run "jupyter",
-  #   image: "jreades/sds:0.5",
+  #   image: DOCKER_IMAGE,
   #   args: "-v '/home/vagrant/notebooks:/home/jovyan/' \
   #          -p 8888:8888 \
-  #          -p 8787:8787 \
-  #          -p 4000:4000 \
   #          ",
   #   daemonize: true,
   #   restart: "no",
@@ -107,11 +113,9 @@ SCRIPT
 	docker run -d --name jupyter \
           -v '/home/vagrant/notebooks:/home/jovyan/' \
           -p 8888:8888 \
-          -p 8787:8787 \
-          -p 4000:4000 \
-          jreades/sds:0.5 \
+          DOCKER_IMAGE \
 	  start.sh jupyter lab \
-	  --LabApp.password='sha1:3b9653503d8e:552e78e8443a239b355c0f121ab905517f8492fe'
+	  --LabApp.password=JUPYTER_PWD
 	printf "Done.\n"
 SCRIPT
 
