@@ -41,20 +41,22 @@ Vagrant.configure("2") do |config|
   # your docker-provided app) then Option 1 is faster 
   # and easier on reboot. 
   #
-  #config.vm.provision "docker" do |d|
-  #  d.pull_images DOCKER_IMAGE
-  #  d.run "jupyter",
-  #   image: DOCKER_IMAGE,
-  #   args: "-v '/home/vagrant/notebooks:/home/jovyan/' \
-  #          -p 8888:8888 \
-  #          ",
-  #   daemonize: true,
-  #   restart: "no",
-  #end
-  #
-  #config.vm.provision "shell", inline: "docker restart $(docker ps -a -q)",
-  #  run: "always"
-  #
+ =begin
+  config.vm.provision "docker" do |d|
+    d.pull_images DOCKER_IMAGE
+    d.run "jupyter",
+     image: DOCKER_IMAGE,
+     args: "-v '/home/vagrant/notebooks:/home/jovyan/' \
+            -p 8888:8888 \
+            ",
+     daemonize: true,
+     restart: "no",
+  end
+  
+  config.vm.provision "shell", inline: "docker restart $(docker ps -a -q)",
+    run: "always"
+=end
+  
   # **************************************************
   # Option 2: We want to remove any existing containers 
   # *every single time* so that no changes to the conatainer
