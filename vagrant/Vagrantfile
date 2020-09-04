@@ -2,8 +2,8 @@
 BOX_BASE = "ailispaw/barge"
 BOX_RAM  = "2096"
 BOX_CPU_COUNT = "2"
-BOX_NAME = "SDS2020"
-DOCKER_IMAGE = "jreades/sds:0.6"
+BOX_NAME = "sds2020"
+DOCKER_IMAGE = "jreades/sds:0.5"
 JUPYTER_PWD = "sha1:3b9653503d8e:552e78e8443a239b355c0f121ab905517f8492fe"
 
 Vagrant.configure("2") do |config|
@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
   # your docker-provided app) then Option 1 is faster 
   # and easier on reboot. 
   #
- =begin
+=begin
   config.vm.provision "docker" do |d|
     d.pull_images DOCKER_IMAGE
     d.run "jupyter",
