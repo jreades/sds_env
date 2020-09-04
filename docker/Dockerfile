@@ -27,6 +27,10 @@ ENV kernel_nm 'CASA2020'
 #--- Python ---#
 # Get conda updated and set up before installing
 # any packages
+#
+# This can be useful for constraining the solution
+# down below as we can specify the python version.
+RUN echo $(python --version)
 RUN conda update -n base conda --yes \
     && conda config --add channels conda-forge \
 #    && conda config --add channels pyviz \
@@ -36,7 +40,7 @@ RUN conda update -n base conda --yes \
 SHELL ["/bin/bash", "-c"]
 #RUN sudo fallocate -l 1G /swapfile
 ADD https://raw.githubusercontent.com/jreades/sds_env/master/conda/${yaml_nm} ./
-RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
+RUN conda-env create -f ./${yaml_nm} \
     && conda clean --all --yes --force-pkgs-dirs \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
@@ -81,7 +85,6 @@ RUN jupyter lab clean \
     && jupyter labextension install --no-build jupyterlab-plotly \ 
     && jupyter labextension install --no-build @jupyterlab/geojson-extension \ 
     && jupyter labextension install --no-build @krassowski/jupyterlab_go_to_definition \
-    && jupyter labextension install --no-build @ryantam626/jupyterlab_code_formatter \ 
     && jupyter labextension install --no-build @bokeh/jupyter_bokeh \ 
     && jupyter labextension install --no-build @pyviz/jupyterlab_pyviz \ 
     && jupyter labextension install --no-build jupyter-leaflet \
@@ -89,14 +92,15 @@ RUN jupyter lab clean \
     && jupyter labextension install --no-build ipysheet \ 
     && jupyter labextension install --no-build @lckr/jupyterlab_variableinspector \ 
     && jupyter labextension install --no-build jupyterlab-jupytext \ 
-    #&& jupyter labextension install --no-build @rmotr/jupyterlab-solutions \
     && jupyter labextension install --no-build qgrid \
-# Don't work currently
     && jupyter labextension install --no-build @krassowski/jupyterlab-lsp \
+    && jupyter labextension install --no-build @jupyterlab/toc \ 
+# Don't work currently
+#    && jupyter labextension install --no-build @rmotr/jupyterlab-solutions \
 #    && jupyter labextension install --no-build pylantern \ 
 #    && jupyter labextension install --no-build @oriolmirosa/jupyterlab_materialdarker \ 
 #    && jupyter labextension install --no-build @jpmorganchase/perspective-jupyterlab \ 
-    && jupyter labextension install --no-build @jupyterlab/toc
+    && jupyter labextension install --no-build @ryantam626/jupyterlab_code_formatter 
 
 # Build the jupyterlab extensions
 RUN jupyter lab build \
@@ -106,7 +110,6 @@ RUN jupyter lab build \
     && jupyter labextension enable jupyterlab-plotly \ 
     && jupyter labextension enable geojson-extension \ 
     && jupyter labextension enable jupyterlab_go_to_definition \
-    && jupyter labextension enable jupyterlab_code_formatter \
     && jupyter labextension enable jupyter_bokeh \
     && jupyter labextension enable jupyterlab_pyviz \
     && jupyter labextension enable jupyter-leaflet \ 
@@ -114,10 +117,10 @@ RUN jupyter lab build \
     && jupyter labextension enable ipysheet \ 
     && jupyter labextension enable jupyterlab_variableinspector \ 
     && jupyter labextension enable jupyterlab-jupytext \
-    #&& jupyter labextension enable jupyterlab_rmotr_solutions \
     && jupyter labextension enable qgrid \ 
     && jupyter labextension enable jupyterlab-lsp \
     && jupyter labextension enable toc \ 
+    && jupyter serverextension enable --py jupyterlab_code_formatter \
     && jupyter lab clean -y
 
 # Clean up
@@ -139,14 +142,13 @@ RUN python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords')
 #    && python -m spacy download en_core_web_sm 
 
 #--- Set up Kernelspec so name visible in chooser ---#
+# Seems to have stopped working???
 USER root
-SHELL ["/bin/bash", "-c"]
-RUN . /opt/conda/etc/profile.d/conda.sh \
-    && conda activate ${env_nm} \
-    && python -m ipykernel install --name ${env_nm} --display-name ${kernel_nm} \
+#SHELL ["/bin/bash", "-c"]
+RUN /opt/conda/etc/profile.d/conda.sh \
+#    && conda activate ${env_nm} \
+    && python -m ipykernel install --user --name ${env_nm} --display-name ${kernel_nm} \
     && ln -s /opt/conda/bin/jupyter /usr/local/bin
 
 # Switch back to user to avoid accidental container runs as root
 USER $NB_UID
-
-RUN echo "Build complete."
