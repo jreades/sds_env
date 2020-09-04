@@ -104,8 +104,8 @@ RUN jupyter lab clean \
     && jupyter labextension install --no-build @jupyterlab/toc 
 
 # Docs suggest this needs to be installed after, though I have my doubts.
-RUN conda install -n ${env_nm} --yes --quiet \
-    'jupyterlab_code_formatter' 
+#RUN conda install -n ${env_nm} --yes --quiet \
+#    'jupyterlab_code_formatter' 
 
 # Build the jupyterlab extensions
 RUN jupyter lab build -y --dev-build=False \
@@ -152,6 +152,8 @@ RUN . "${CONDA_DIR}/etc/profile.d/conda.sh" \
 USER $NB_UID
 #
 # To generate a new password: python3 -c "from notebook.auth import passwd; print(passwd('YOUR PASSWORD HERE'))"
+# 
+# Unable to get password set for JupyterLab this way, but not for want of trying...
 #
 # Need to add these if rmotr/solutions ever works:
 # c.JupyterLabRmotrSolutions.is_enabled = True # True, False
@@ -161,6 +163,8 @@ ENV JUPYTER_PWD 'sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'
 SHELL ["/bin/bash", "-c"]
 RUN echo "c.NotebookApp.default_url='/lab'" \ 
     >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \ 
+    echo "c.NotebookApp.passwordUnicode=${JUPYTER_PWD}" \
+    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \
     echo "c.NotebookApp.password=${JUPYTER_PWD}" \
     >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \
     echo "c.LabApp.password=${JUPYTER_PWD}" \
