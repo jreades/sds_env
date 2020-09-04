@@ -1,17 +1,18 @@
-# How to pull and run this image
-# > docker pull jreades/sds:1.0
-# > docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work jreades/sds:1.0
+# How to pull and run this image (where "${SDS_RELEASE}" should be replaced by, e.g., "0.6.1")
+# > export SDS_RELEASE 0.6.1 # 0.6.1 is an example
+# > docker pull jreades/sds:${SDS_RELEASE}
+# > docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work jreades/sds:${VERSION_NUM} jupyter lab
+# OR 
+# > docker run --rm -ti -p 8888:8888 --mount type=bind,source=$(pwd),target=/home/jovyan/ jreades/sds:${SDS_RELEASE} jupyter lab
 #
 # How to build
-# > docker build -t jreades/sds:2020 --compress .
+# > docker build -t jreades/sds:${SDS_RELEASE} --compress .
 # How to push an updated image
-# > docker tag jreades/sds:2020 jreades/sds:latest
 # > docker login docker.io
-# > docker push jreades/sds:2020 jreades/sds:latest
+# > docker push jreades/sds:${SDS_RELEASE}
 #
 #--- Build from Jupyter-provided Minimal Install ---#
 # https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
-
 # June 2020
 FROM jupyter/minimal-notebook:6d42503c684f
 
@@ -30,7 +31,7 @@ ENV kernel_nm 'CASA2020'
 #
 # This can be useful for constraining the solution
 # down below as we can specify the python version.
-RUN echo $(python --version)
+# RUN echo $(python --version)
 #RUN conda update -n base conda --yes \
 #    && conda config --add channels conda-forge \
 #    && conda config --add channels pyviz \
@@ -40,7 +41,7 @@ RUN conda config --add channels conda-forge \
 
 SHELL ["/bin/bash", "-c"]
 #ADD https://raw.githubusercontent.com/jreades/sds_env/master/conda/${yaml_nm} ./
-COPY ./${yaml_nm} ./
+COPY ./conda/${yaml_nm} ./
 RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
     && conda clean --all --yes --force-pkgs-dirs \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
@@ -58,23 +59,22 @@ ENV PATH /opt/conda/envs/${env_nm}/bin:$PATH
 ENV PROJ_LIB /opt/conda/envs/${env_nm}/share/proj/
 
 # And configure the bash shell params 
-COPY init.sh /tmp/
-RUN cat /tmp/init.sh > ~/.bashrc 
+#COPY ./tools/init.sh ./
+#RUN cat ./init.sh > ~/.bashrc \ 
+#    && rm ./init.sh
+
 # Change depending on whether using base environment
 #RUN echo "export PROJ_LIB=/opt/conda/share/proj/" >> ~/.bashrc
 RUN echo "export PROJ_LIB=/opt/conda/envs/${env_nm}/share/proj/" >> ~/.bashrc
 
+#--- Preload the NLTK/Spacy libs ---#
+RUN python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database')"
+# This may bloat the Docker image massively
+#RUN python -m spacy download en \ 
+#    && python -m spacy download en_core_web_sm 
+
 #--- JupyterLab config ---#
 USER root
-
-# Need to add these if rmotr/solutions ever works:
-# c.JupyterLabRmotrSolutions.is_enabled = True # True, False
-# c.JupyterLabRmotrSolutions.role = 'teacher' # 'teacher', 'student'
-SHELL ["/bin/bash", "-c"]
-RUN echo $'\n\
-    c.NotebookApp.default_url = \'/lab\' \n\
-    c.JupyterLabRmotrSolutions.is_enabled = True \n\
-    c.JupyterLabRmotrSolutions.role = \'student\'\n' >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py
 
 # Install jupyterlab extensions, but don't build
 # (saves some time over install and building each)
@@ -90,21 +90,25 @@ RUN jupyter lab clean \
     && jupyter labextension install --no-build @pyviz/jupyterlab_pyviz \ 
     && jupyter labextension install --no-build jupyter-leaflet \
     && jupyter labextension install --no-build nbdime-jupyterlab \
-    && jupyter labextension install --no-build ipysheet \ 
+#    && jupyter labextension install --no-build ipysheet \ 
     && jupyter labextension install --no-build @lckr/jupyterlab_variableinspector \ 
-    && jupyter labextension install --no-build jupyterlab-jupytext \ 
-    && jupyter labextension install --no-build qgrid \
-    && jupyter labextension install --no-build @krassowski/jupyterlab-lsp \
+#    && jupyter labextension install --no-build jupyterlab-jupytext \ 
+#    && jupyter labextension install --no-build qgrid2 \
     && jupyter labextension install --no-build @jupyterlab/toc \ 
 # Don't work currently
 #    && jupyter labextension install --no-build @rmotr/jupyterlab-solutions \
 #    && jupyter labextension install --no-build pylantern \ 
 #    && jupyter labextension install --no-build @oriolmirosa/jupyterlab_materialdarker \ 
 #    && jupyter labextension install --no-build @jpmorganchase/perspective-jupyterlab \ 
-    && jupyter labextension install --no-build @ryantam626/jupyterlab_code_formatter 
+    && jupyter labextension install @krassowski/jupyterlab-lsp@2.0.0 \
+    && jupyter labextension install @ryantam626/jupyterlab_code_formatter 
+
+# Docs suggest this needs to be installed after, though I have my doubts.
+RUN conda install -n ${env_nm} --yes --quiet \
+    'jupyterlab_code_formatter' 
 
 # Build the jupyterlab extensions
-RUN jupyter lab build \
+RUN jupyter lab build -y --dev-build=False \
     && jupyter labextension enable jupyterlab-manager \ 
     && jupyter labextension enable jupyter-matplotlib \
     && jupyter labextension enable mathjax3-extension \ 
@@ -115,10 +119,10 @@ RUN jupyter lab build \
     && jupyter labextension enable jupyterlab_pyviz \
     && jupyter labextension enable jupyter-leaflet \ 
     && jupyter labextension enable nbdime-jupyterlab \
-    && jupyter labextension enable ipysheet \ 
+#    && jupyter labextension enable ipysheet \ 
     && jupyter labextension enable jupyterlab_variableinspector \ 
-    && jupyter labextension enable jupyterlab-jupytext \
-    && jupyter labextension enable qgrid \ 
+#    && jupyter labextension enable jupyterlab-jupytext \
+#    && jupyter labextension enable qgrid2 \ 
     && jupyter labextension enable jupyterlab-lsp \
     && jupyter labextension enable toc \ 
     && jupyter serverextension enable --py jupyterlab_code_formatter \
@@ -136,20 +140,30 @@ RUN conda clean --all -f -y \
 # Build mpl font cache
     && python -c "import matplotlib.pyplot;"
 
-#--- Preload the NLTK/Spacy libs ---#
-RUN python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database')"
-# This may bloat the Docker image massively
-#RUN python -m spacy download en \ 
-#    && python -m spacy download en_core_web_sm 
-
 #--- Set up Kernelspec so name visible in chooser ---#
-# Seems to have stopped working???
-USER root
-#SHELL ["/bin/bash", "-c"]
-RUN /opt/conda/etc/profile.d/conda.sh \
-#    && conda activate ${env_nm} \
+# Make RUN commands use the new environment:
+RUN . "${CONDA_DIR}/etc/profile.d/conda.sh" \
+    && conda activate ${env_nm} \
     && python -m ipykernel install --user --name ${env_nm} --display-name ${kernel_nm} \
-    && ln -s /opt/conda/bin/jupyter /usr/local/bin
+    && ln -s "${CONDA_DIR}/bin/jupyter" /usr/local/bin
 
+#--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
 USER $NB_UID
+#
+# To generate a new password: python3 -c "from notebook.auth import passwd; print(passwd('YOUR PASSWORD HERE'))"
+#
+# Need to add these if rmotr/solutions ever works:
+# c.JupyterLabRmotrSolutions.is_enabled = True # True, False
+# c.JupyterLabRmotrSolutions.role = 'student' # 'teacher', 'student'
+#
+ENV JUPYTER_PWD 'sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'
+SHELL ["/bin/bash", "-c"]
+RUN echo "c.NotebookApp.default_url='/lab'" \ 
+    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \ 
+    echo "c.NotebookApp.password=${JUPYTER_PWD}" \
+    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \
+    echo "c.LabApp.password=${JUPYTER_PWD}" \
+    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \
+    echo "LabApp.password=${JUPYTER_PWD}" \
+    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py
