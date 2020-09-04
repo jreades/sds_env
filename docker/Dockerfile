@@ -94,14 +94,14 @@ RUN jupyter lab clean \
     && jupyter labextension install --no-build @lckr/jupyterlab_variableinspector \ 
 #    && jupyter labextension install --no-build jupyterlab-jupytext \ 
 #    && jupyter labextension install --no-build qgrid2 \
-    && jupyter labextension install --no-build @jupyterlab/toc \ 
 # Don't work currently
 #    && jupyter labextension install --no-build @rmotr/jupyterlab-solutions \
 #    && jupyter labextension install --no-build pylantern \ 
 #    && jupyter labextension install --no-build @oriolmirosa/jupyterlab_materialdarker \ 
 #    && jupyter labextension install --no-build @jpmorganchase/perspective-jupyterlab \ 
     && jupyter labextension install @krassowski/jupyterlab-lsp@2.0.0 \
-    && jupyter labextension install @ryantam626/jupyterlab_code_formatter 
+#    && jupyter labextension install @ryantam626/jupyterlab_code_formatter 
+    && jupyter labextension install --no-build @jupyterlab/toc 
 
 # Docs suggest this needs to be installed after, though I have my doubts.
 RUN conda install -n ${env_nm} --yes --quiet \
@@ -125,7 +125,7 @@ RUN jupyter lab build -y --dev-build=False \
 #    && jupyter labextension enable qgrid2 \ 
     && jupyter labextension enable jupyterlab-lsp \
     && jupyter labextension enable toc \ 
-    && jupyter serverextension enable --py jupyterlab_code_formatter \
+#    && jupyter serverextension enable --py jupyterlab_code_formatter \
     && jupyter lab clean -y
 
 # Clean up
