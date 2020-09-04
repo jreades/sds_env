@@ -40,7 +40,7 @@ RUN conda config --add channels conda-forge \
 
 SHELL ["/bin/bash", "-c"]
 #ADD https://raw.githubusercontent.com/jreades/sds_env/master/conda/${yaml_nm} ./
-COPY conda/${yaml_nm} ./
+COPY ./${yaml_nm} ./
 RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
     && conda clean --all --yes --force-pkgs-dirs \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
