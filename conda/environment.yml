@@ -67,6 +67,7 @@ dependencies:
   - ipyparallel 
   - ipywidgets 
   - joblib 
+  - jupyter-lsp=0.9.* # Supports labextension
   - jupyterlab=2.2.*
   - jupyterlab_code_formatter # Supports labextension
   - legendgram
