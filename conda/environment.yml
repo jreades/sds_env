@@ -107,6 +107,7 @@ dependencies:
   - sqlite 
   - sqlalchemy
   - statsmodels 
+  - tabulate  # For exporting from pandas to markdown
   - tzlocal 
   - urbanaccess  # For pysal segregation module
   - xlrd 
