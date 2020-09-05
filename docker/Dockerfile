@@ -88,6 +88,7 @@ RUN jupyter lab clean \
     && jupyter labextension install --no-build @krassowski/jupyterlab_go_to_definition \
     && jupyter labextension install --no-build @bokeh/jupyter_bokeh \ 
     && jupyter labextension install --no-build @pyviz/jupyterlab_pyviz \ 
+    && jupyter labextension install --no-build @reviewnb/jupyterlab_gitplus \
     && jupyter labextension install --no-build jupyter-leaflet \
     && jupyter labextension install --no-build nbdime-jupyterlab \
 #    && jupyter labextension install --no-build ipysheet \ 
@@ -126,6 +127,7 @@ RUN jupyter lab build -y --dev-build=False \
     && jupyter labextension enable jupyterlab-lsp \
     && jupyter labextension enable toc \ 
 #    && jupyter serverextension enable --py jupyterlab_code_formatter \
+    && jupyter serverextension enable --py jupyterlab_gitplus \ 
     && jupyter lab clean -y
 
 # Clean up

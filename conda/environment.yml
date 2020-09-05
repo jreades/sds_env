@@ -69,6 +69,7 @@ dependencies:
   - joblib 
   - jupyterlab=2.2.*
   - jupyterlab_code_formatter # Supports labextension
+  - jupyterlab_gitplus # Supports serverextension
   - legendgram
   - libspatialite
   - lxml 
