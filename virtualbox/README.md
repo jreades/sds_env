@@ -192,7 +192,7 @@ Here, `<release version>` refers to the version of the docker image that you wan
 ```shell
 docker-machine scp ./cloud-config-additions.yml {name}:
 docker-machine ssh {name} -t
-sudo sh -c 'cat "/home/docker/cloud-config-additions.yml" >> /var/lib/rancher/conf/cloud-config.yml
+sudo sh -c 'cat "/home/docker/cloud-config-additions.yml" >> /var/lib/rancher/conf/cloud-config.yml'
 docker pull jreades/{name}:<release version>
 sudo ros service enable virtualbox-tools
 sudo ros service up virtualbox-tools
