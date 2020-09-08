@@ -163,7 +163,8 @@ USER $NB_UID
 #
 ENV JUPYTER_PWD 'sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'
 SHELL ["/bin/bash", "-c"]
-RUN echo "c.NotebookApp.default_url='/lab'" \ 
+RUN mkdir -p -m 775 /home/$NB_USER/.jupyter \ 
+    echo "c.NotebookApp.default_url='/lab'" \ 
     >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \ 
     echo "c.NotebookApp.passwordUnicode=${JUPYTER_PWD}" \
     >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \
