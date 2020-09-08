@@ -69,7 +69,6 @@ dependencies:
   - joblib 
   - jupyterlab=2.2.*
   - jupyterlab_code_formatter # Supports labextension
-  - jupyterlab_gitplus # Supports serverextension
   - legendgram
   - libspatialite
   - lxml 
@@ -121,6 +120,7 @@ dependencies:
     - scikit-posthocs
     - wordcloud
     - jupyter-lsp==0.9.2 # Supports labextension
+    - jupyterlab_gitplus # Supports serverextension
 #    - pdfkit # Overkill
 #    - pypdf2 
 #    - pyocr
