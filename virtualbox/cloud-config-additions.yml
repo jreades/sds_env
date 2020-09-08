@@ -6,10 +6,7 @@ write_files:
           #!/bin/bash
           # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
           # Specify the image that we want to install
-              USER_NM='docker'
-              DOCKER_IMG='jreades/sds:0.6.6'
-              DOCKER_IMG='jreades/cc:v0.4'
-              JUPYTER_PWD='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'
+          IMAGE_NM='{IMAGE_NM}'
           # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
           wait-for-docker
           echo -e "\n ******* \n\n Removing existing containers..."
@@ -80,7 +77,7 @@ write_files:
                      -v /home/rancher/data:/home/jovyan/work \
                      "$DOCKER_IMG" \
                      start.sh jupyter lab \
-                     --LabApp.password="$JUPYTER_PWD"
+                     --LabApp.password='{JUPYTER_PWD}'
           echo -e "******* "
           echo -e "Container available at http://localhost:8888 "
           echo -e "******* "
