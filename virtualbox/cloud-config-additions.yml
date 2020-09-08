@@ -63,18 +63,24 @@ write_files:
           #----
           # Create mount points
           echo -e "Creating mount points..."
-          mkdir -p /home/rancher/data
-          mount.vboxsf rancheros /home/rancher/data -o uid=1100
-          #mount data /home/rancher/data -o uid=1100
+          mkdir -p /home/rancher/notebooks
+          mount.vboxsf notebooks /home/rancher/notebooks -o uid=1100
+          #mount notebooks /home/rancher/notebooks -o uid=1100
           #----
           # Start up the container
+          # It's possible that this command should now be something like:
+# docker run -p 8888:8888 \ 
+#            -d \ 
+#            --user root -e NB_USER=jovyan -e CHOWN_HOME=yes \ 
+#            --mount type=bind,source="/home/rancher/data",target=/home/jovyan/work '
+#            ...
           echo -e "******* \n\n Starting container..."
           docker run -p 8888:8888 \
                      -p 8787:8787 \
                      -p 4000:4000 \
                      -d \
                      --user root -e NB_UID=1100 -e NB_GID=1100 \
-                     -v /home/rancher/data:/home/jovyan/work \
+                     -v /home/rancher/notebooks:/home/jovyan/ \
                      "$IMAGE_NM" \
                      start.sh jupyter lab \
                      --LabApp.password='{JUPYTER_PWD}'
