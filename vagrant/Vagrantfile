@@ -3,7 +3,7 @@ BOX_BASE = "ailispaw/barge"
 BOX_RAM  = "2096"
 BOX_CPU_COUNT = "2"
 BOX_NAME = "sds2020"
-DOCKER_IMAGE = "jreades/sds:0.6.2"
+DOCKER_IMAGE = "jreades/sds:0.6.6"
 JUPYTER_PWD = "sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10"
 
 Vagrant.configure("2") do |config|
