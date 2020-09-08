@@ -77,13 +77,24 @@ The VM will be accessed through your browser. To be able to connect from the hos
 
 The following steps allow you to select a folder on the host that will be accessible from the VM.
 
-1. Right click on the `gdsbox` image and left-click on "Settings"
+1. Right click on the Virtual Machine in VirtualBox and left-click on "Settings"
 2. Go to the "Shared Folders" tab
 3. Click on the button that has a folder with a + sign icon. If you hover your mouse it will read "Add new shared folder" in the top right
 4. Click on "Folder Path" and select "Other" from the folder path dropdown
 5. Point to the folder you want to share with the VM
 6. Use "notebooks" (or similar) under the "Folder Name" box
 7. Leave "Mount point" blank and make sure "Read-only" is *not* checked
+8. Click OK.
+
+### Display
+
+Finally, it's useful to enable the Display Adapter fully for contemporary machines:
+
+1. Right click on the Virtual Machine in VirtualBox and left-click on "Displays"
+2. Select the "Screen" tab.
+3. Increase the Video Memory to, say, 16MB
+4. Change the Graphics Controller to "VMSVGA"
+5. Click OK.
 
 ## Running the VM
 
@@ -160,9 +171,24 @@ Now you need to make a choice about how to 'pull' the docker image that you want
 1. Pre-install the docker image so that the VM is 'ready to run' once it has been downloaded and imported into VirtualBox (this entails a larger download but fewer opportunities for things to go _wrong_); 
 2. Use a start-up script in the VM to pull the docker image if it is not found on the VM when it starts up (this shifts more of the bandwidth burden on to the end-user via a smaller initial download with the rest downloaded at user's convenience).
 
-Either approach should work, however, it's hard to get output to the user when starting up RancherOS so it's **probably best to go with Option #1** so that the user isn't left wondering what's going one while we pull 6.5GB of data down and try to launch the OS.
+Either approach should work, however, it's hard to get output to the user when starting up RancherOS so it's **probably best to go with Option #1** so that the user isn't left wondering what's going one while you pull 6.5GB of data down and launch the OS. With that in mind, the only line that you would need to skip from the below configuration process is:
 
-Here, `<release version>` refers to the version of the docker image that you want (e.g. `jreades/sds:1.0`).
+```bash
+docker pull $IMAGE_NM
+```
+
+In principle, the way that `cloud-config-additions.yml` is written means that if it can't find the named Docker image it will pull in anyway. So you're really just skipping a step that is user-unfriendly when you pre-load the image.
+
+To provision the VM you need to run the commands below to populate an `rc.local` script. Note that `rc.local` cannot be run from the Terminal successfully. It can *only* run during start-up. Below I have tried to parameterise the setup process such that `IMAGE_NM` refers to the version of the docker image that you want (e.g. `jreades/sds:1.0`) while `BOX_NM` refers to the name of the VM as it will appear in the VirtualBox app and `JUPYTER_PWD` is the SHA1-encrypted password to use with JupyterLab on launch.
+
+You can generate a JupyterLab-compatible password as follows (**Note** that you will need to do this on a computer with the notebook library installed!):
+
+```bash
+export PWD='casa2021'
+python3 -c "from notebook.auth import passwd; print(passwd('$PWD'))"
+```
+
+Anyway, here's how to provision:
 
 ```shell
 # ----------------------
@@ -176,7 +202,7 @@ docker-machine ssh $BOX_NM -t
 # This part runs on the Virtual Machine (a.k.a. the guest)
 # The ssh command above logged you on to the running VM.
 # ----------------------
-export IMAGE_NM='jreades/sds:v0.6.6'
+export IMAGE_NM='jreades/sds:0.6.6'
 export JUPYTER_PWD='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'
 
 # Install and configure virtualbox-tools
@@ -207,3 +233,4 @@ This virtual machine is still only accessible on the host machine, so we need to
 ```shell
 VBoxManage export $BOX_NM --iso -o $BOX_NM.ova
 ```
+
