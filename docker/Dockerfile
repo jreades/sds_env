@@ -136,41 +136,25 @@ RUN conda clean --all -f -y \
     && rm -rf $CONDA_DIR/share/jupyter/lab/staging \
     && rm -rf "/home/${NB_USER}/.node-gyp" \ 
     && rm -rf /home/$NB_USER/.cache/yarn \ 
-# Fix permissions
-    && fix-permissions "${CONDA_DIR}" \
-    && fix-permissions "/home/${NB_USER}" \
 # Build mpl font cache
     && python -c "import matplotlib.pyplot;"
 
 #--- Set up Kernelspec so name visible in chooser ---#
 # Make RUN commands use the new environment:
-RUN . "${CONDA_DIR}/etc/profile.d/conda.sh" \
-    && conda activate ${env_nm} \
-    && python -m ipykernel install --user --name ${env_nm} --display-name ${kernel_nm} \
-    && ln -s "${CONDA_DIR}/bin/jupyter" /usr/local/bin
+#RUN . "${CONDA_DIR}/etc/profile.d/conda.sh" \
+#    && conda activate ${env_nm} \
+RUN conda activate ${env_nm} \
+    && python -m ipykernel install --user --name ${env_nm} --display-name ${kernel_nm}
+
+# Fix permissions
+RUN fix-permissions $CONDA_DIR \
+    && fix-permissions $HOME
+
+#
+# To generate a new password on a machine with jupyter notebook libs installed: 
+# > python3 -c "from notebook.auth import passwd; print(passwd('YOUR PASSWORD HERE'))"
+# 
 
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
 USER $NB_UID
-#
-# To generate a new password: python3 -c "from notebook.auth import passwd; print(passwd('YOUR PASSWORD HERE'))"
-# 
-# Unable to get password set for JupyterLab this way, but not for want of trying...
-#
-# Need to add these if rmotr/solutions ever works:
-# c.JupyterLabRmotrSolutions.is_enabled = True # True, False
-# c.JupyterLabRmotrSolutions.role = 'student' # 'teacher', 'student'
-#
-ENV JUPYTER_PWD 'sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'
-SHELL ["/bin/bash", "-c"]
-RUN mkdir -p -m 775 /home/$NB_USER/.jupyter \ 
-    echo "c.NotebookApp.default_url='/lab'" \ 
-    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \ 
-    echo "c.NotebookApp.passwordUnicode=${JUPYTER_PWD}" \
-    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \
-    echo "c.NotebookApp.password=${JUPYTER_PWD}" \
-    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \
-    echo "c.LabApp.password=${JUPYTER_PWD}" \
-    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py \
-    echo "LabApp.password=${JUPYTER_PWD}" \
-    >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py
