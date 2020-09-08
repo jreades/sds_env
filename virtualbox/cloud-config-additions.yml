@@ -27,7 +27,7 @@ write_files:
           #----
           # Check if we have even pulled the images!
           # and pull it if we haven't.
-          IMGS=$(docker images "$DOCKER_IMG")
+          IMGS=$(docker images "$IMAGE_NM")
 
           # Split return from `docker images` by newline
           # and discard the header output
@@ -40,17 +40,17 @@ write_files:
           if [ -z "$IIDS" ]
           then
             echo -e "======================================="
-            echo -e "No docker image matching $DOCKER_IMG found..."
+            echo -e "No docker image matching $IMAGE_NM found..."
             echo -e "......................................."
-            echo -e "   Pulling $DOCKER_IMG..."
-            docker pull -q "$DOCKER_IMG"
-            echo -e "   Done pulling $DOCKER_IMG..."
+            echo -e "   Pulling $IMAGE_NM..."
+            docker pull -q "$IMAGE_NM"
+            echo -e "   Done pulling $IMAGE_NM..."
             echo -e "======================================="
           else
             for i in "${IIDS[@]}"
             do
               echo -e "======================================="
-              echo -e "Found $DOCKER_IMG image..."
+              echo -e "Found $IMAGE_NM image..."
               echo -e "......................................."
               read VAL <<< $(echo $i | awk -F '[[:space:]][[:space:]]+' '{ printf ("%s\t%s\t%s", $3, $4, $5) }')
               IFS=$'\t' VALS=($VAL)
@@ -75,7 +75,7 @@ write_files:
                      -d \
                      --user root -e NB_UID=1100 -e NB_GID=1100 \
                      -v /home/rancher/data:/home/jovyan/work \
-                     "$DOCKER_IMG" \
+                     "$IMAGE_NM" \
                      start.sh jupyter lab \
                      --LabApp.password='{JUPYTER_PWD}'
           echo -e "******* "
