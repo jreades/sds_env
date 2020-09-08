@@ -6,7 +6,9 @@ write_files:
           #!/bin/bash
           # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
           # Specify the image that we want to install
+              USER_NM='docker'
               DOCKER_IMG='jreades/sds:0.6.6'
+              DOCKER_IMG='jreades/cc:v0.4'
               JUPYTER_PWD='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'
           # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
           wait-for-docker
@@ -66,16 +68,19 @@ write_files:
           echo -e "Creating mount points..."
           mkdir -p /home/rancher/data
           mount.vboxsf rancheros /home/rancher/data -o uid=1100
+          #mount data /home/rancher/data -o uid=1100
           #----
           # Start up the container
           echo -e "******* \n\n Starting container..."
           docker run -p 8888:8888 \
+                     -p 8787:8787 \
+                     -p 4000:4000 \
                      -d \
                      --user root -e NB_UID=1100 -e NB_GID=1100 \
                      -v /home/rancher/data:/home/jovyan/work \
                      "$DOCKER_IMG" \
                      start.sh jupyter lab \
-                     --LabApp.password="'$JUPYTER_PWD'"
+                     --LabApp.password="$JUPYTER_PWD"
           echo -e "******* "
           echo -e "Container available at http://localhost:8888 "
           echo -e "******* "
