@@ -6,17 +6,18 @@ write_files:
           #!/bin/bash
           # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
           # Specify the image that we want to install
-              TARGET="jreades/sds:0.6.2"
+              DOCKER_IMG='jreades/sds:0.6.6'
+              JUPYTER_PWD='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'
           # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
           wait-for-docker
-          echo -e "\n ******* \n\n Removing existing containers...\n"
+          echo -e "\n ******* \n\n Removing existing containers..."
           #----
           # Delete any processes from previous startup
-          echo -e "Running cleanup script...\n"
+          echo -e "Running cleanup script..."
           CID=$(docker ps -aq)
           if [ -z "$CID" ]
           then
-            echo -e "No docker containers found\n"
+            echo -e "No docker containers found"
           else
             IFS=$'\n' CIDS=($CID)
             for i in "${CIDS[@]}"
@@ -27,7 +28,7 @@ write_files:
           #----
           # Check if we have even pulled the images!
           # and pull it if we haven't.
-          IMGS=$(docker images "$TARGET")
+          IMGS=$(docker images "$DOCKER_IMG")
 
           # Split return from `docker images` by newline
           # and discard the header output
@@ -39,45 +40,43 @@ write_files:
           # information about it (useful for debugging)
           if [ -z "$IIDS" ]
           then
-            echo -e "=======================================\n"
-            echo -e "No docker image matching $TARGET found...\n"
-            echo -e ".......................................\n"
-            echo -e "   Pulling $TARGET...\n"
-            docker pull -q "$TARGET"
-            echo -e "   Done pulling $TARGET...\n"
-            echo -e "=======================================\n"
+            echo -e "======================================="
+            echo -e "No docker image matching $DOCKER_IMG found..."
+            echo -e "......................................."
+            echo -e "   Pulling $DOCKER_IMG..."
+            docker pull -q "$DOCKER_IMG"
+            echo -e "   Done pulling $DOCKER_IMG..."
+            echo -e "======================================="
           else
             for i in "${IIDS[@]}"
             do
-              echo -e "=======================================\n"
-              echo -e "Found $TARGET image...\n"
-              echo -e ".......................................\n"
+              echo -e "======================================="
+              echo -e "Found $DOCKER_IMG image..."
+              echo -e "......................................."
               read VAL <<< $(echo $i | awk -F '[[:space:]][[:space:]]+' '{ printf ("%s\t%s\t%s", $3, $4, $5) }')
               IFS=$'\t' VALS=($VAL)
-              echo -e "   Image ID: ${VALS[0]}\n"
-              echo -e "    Created: ${VALS[1]}\n"
-              echo -e "       Size: ${VALS[2]}\n"
-              echo -e "=======================================\n"
+              echo -e "   Image ID: ${VALS[0]}"
+              echo -e "    Created: ${VALS[1]}"
+              echo -e "       Size: ${VALS[2]}"
+              echo -e "======================================="
             done
           fi
           #----
           # Create mount points
+          echo -e "Creating mount points..."
           mkdir -p /home/rancher/data
           mount.vboxsf rancheros /home/rancher/data -o uid=1100
           #----
           # Start up the container
-          echo -e "\n ******* \n\n Starting container...\n"
+          echo -e "******* \n\n Starting container..."
           docker run -p 8888:8888 \
-                     -p 8787:8787 \
-                     -p 4000:4000 \
                      -d \
                      --user root -e NB_UID=1100 -e NB_GID=1100 \
                      -v /home/rancher/data:/home/jovyan/work \
-                     "$TARGET" \
+                     "$DOCKER_IMG" \
                      start.sh jupyter lab \
-                     --LabApp.password='sha1:7e77920661c8:d477dc309a041ded0b6822f538fc2ba8a1fb7f88'
-          echo -e "\n ******* \n"
-          echo -e "\n Container available at http://localhost:8888 \n"
-          echo -e "\n Please use the password 'geods' \n"
-          echo -e "\n ******* \n"
+                     --LabApp.password="'$JUPYTER_PWD'"
+          echo -e "******* "
+          echo -e "Container available at http://localhost:8888 "
+          echo -e "******* "
 
