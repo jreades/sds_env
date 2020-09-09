@@ -139,13 +139,6 @@ RUN conda clean --all -f -y \
 # Build mpl font cache
     && python -c "import matplotlib.pyplot;"
 
-#--- Set up Kernelspec so name visible in chooser ---#
-# Make RUN commands use the new environment:
-#RUN . "${CONDA_DIR}/etc/profile.d/conda.sh" \
-#    && conda activate ${env_nm} \
-RUN conda activate ${env_nm} \
-    && python -m ipykernel install --user --name ${env_nm} --display-name ${kernel_nm}
-
 # Fix permissions
 RUN fix-permissions $CONDA_DIR \
     && fix-permissions $HOME
