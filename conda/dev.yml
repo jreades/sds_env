@@ -44,72 +44,50 @@ channels:
 dependencies:
 #  - python=3.7  
   - pip 
-  - cmake
-  - basemap 
   - black # Supports code formatter labextension
   - bokeh 
+  - cmake
   - contextily
   - cython
-  - dill 
   - feather-format 
-  - folium 
-  - gdal 
-  - geojson 
-  - geopandas=0.6.*
+  - geopandas
   - geopy 
-  - georasters 
-  - git 
-  - gitdb2 
   - hdbscan
-  - hvplot
   - ipyleaflet 
   - ipympl 
   - ipyparallel 
   - ipywidgets 
-  - joblib 
-  - jupyterlab=2.2.*
   - jupyterlab_code_formatter # Supports labextension
   - legendgram
-  - libspatialite
-  - lxml 
-  - mapclassify 
   - mkl-service 
-  - mplleaflet 
   - mysql-connector-python 
   - nbdime 
   - networkx
-  - nltk=3.4.*
-  - nodejs 
   - osmnx
+  - nltk=3.4.*
   - palettable 
-  - pandana=0.5.* # For pysal segregation module
-  - pandas=1.1.*
-  - pillow 
+  - pandana # For pysal segregation module
   - pointpats 
   - polyline 
   - psycopg2 
+  - pygeos
   - pykrige 
 #  - pypdf2 # Overkill
 #  - pymc3 # Not well-supported on Windows 
-  - pysal=2.3.*
+  - pysal
   - python-language-server # Supports labextension
-  - pyshp 
   - qgrid 
   - rasterio
   - rasterstats
-  - requests 
-  - scikit-learn=0.23.*
-  - scikit-image=0.17.*
+  - scikit-learn
+  - scikit-image
   - seaborn 
-  - simplejson 
-  - smmap2=3.0.*
   - spacy=2.3.*
-  - sqlite 
   - sqlalchemy
   - statsmodels 
   - tabulate  # For exporting from pandas to markdown
   - tzlocal 
-  - urbanaccess  # For pysal segregation module
+#- urbanaccess  # For pysal segregation module
   - xlrd 
   - xlsxwriter  
   - pip:

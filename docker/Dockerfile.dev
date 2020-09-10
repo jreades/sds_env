@@ -21,7 +21,7 @@ LABEL maintainer="j.reades@ucl.ac.uk"
 # https://github.com/ContinuumIO/docker-images/blob/master/miniconda3/Dockerfile
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
-ENV yaml_nm 'environment.yml'
+ENV yaml_nm 'dev.yml'
 ENV env_nm sds2020
 ENV kernel_nm 'CASA2020'
 
@@ -37,10 +37,11 @@ ENV kernel_nm 'CASA2020'
 #    && conda config --add channels pyviz \
 #    && conda config --add channels makepath \
 RUN conda config --add channels conda-forge \
+    && conda config --add channels pyviz \
+    && conda config --add channels makepath \
     && conda config --set channel_priority strict
 
 SHELL ["/bin/bash", "-c"]
-#ADD https://raw.githubusercontent.com/jreades/sds_env/master/conda/${yaml_nm} ./
 COPY ./conda/${yaml_nm} ./
 RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
     && conda clean --all --yes --force-pkgs-dirs \
@@ -51,10 +52,9 @@ RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
     && rm -rf /home/$NB_USER/.cache/pip \ 
     && rm ./${yaml_nm}
 
-# Set paths for conda and PROJ
-# Change depending on whether using base environment
-#ENV PATH /opt/conda/bin:$PATH
-#ENV PROJ_LIB /opt/conda/share/proj/
+# Set paths for conda and PROJ -- not needed if 
+# installing directly into the base environment
+# like Dani does.
 ENV PATH /opt/conda/envs/${env_nm}/bin:$PATH
 ENV PROJ_LIB /opt/conda/envs/${env_nm}/share/proj/
 
