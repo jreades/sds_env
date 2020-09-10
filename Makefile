@@ -1,30 +1,30 @@
 export DOCKER_NM='jreades/sds:0.7.1'
 export ENV_NM='sds2020'
 test: test_py # test_rs
+stacks: py_stack # r_stack
 test_py:
 	docker run -v `pwd`:/home/jovyan/work ${DOCKER_NM} start.sh jupyter nbconvert --execute /home/jovyan/test/gds_py/check_py_stack.ipynb
 test_r:
 	docker run -v `pwd`:/home/jovyan/work ${DOCKER_NM} start.sh jupyter nbconvert --execute /home/jovyan/test/gds/check_r_stack.ipynb
-write_stacks: yml
+py_stack: yml
 	# Python
 	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh conda list -n ${ENV_NM} > conda/environment_py.txt
 	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh sed -i "1 i SDS version: ${DOCKER_NM}" conda/environment_py.txt
 	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh python -c "import subprocess, pandas; fo=open('conda/environment_py.md', 'w'); fo.write(pandas.read_json(subprocess.check_output(['conda', 'list', '-n', '${ENV_NM}', '--json']))[['name', 'version', 'build_string', 'channel']].to_markdown());fo.close()"
 	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh sed -i "1s/^/\n/" conda/environment_py.md
+r_stack: 
 	# R
 	#docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh Rscript -e "ip <- as.data.frame(installed.packages()[,c(1,3:4)]); print(ip)" > gds/stack_r.txt
 	#docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh sed -i '1iSDS version: ${DOCKER_NM}' gds/stack_r.txt
 	#docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh Rscript -e "library(knitr); ip <- as.data.frame(installed.packages()[,c(1,3:4)]); fc <- file('gds/stack_r.md'); writeLines(kable(ip, format = 'markdown'), fc); close(fc);"
 	#docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh sed -i "1s/^/\n/" gds/stack_r.md
 yml:
-	docker run -v ${PWD}:/home/jovyan/work --rm ${DOCKER_NM} start.sh \
-	conda env export -n ${ENV_NM} --from-history | sed '1d;$d' | sed '$d' > conda/environment_py.yml
-	docker run -v ${PWD}:/home/jovyan/work --rm ${DOCKER_NM} start.sh \
-        conda env export -n ${ENV_NM} | sed '1d;$d' | sed '$d' \
-	| perl -p -e 's/^([^=]+=)([^=]+)=.+$/$1$2/m' \ 
-	| grep -Ev "\- _|cpp|backports|\- lib|\- tk|\- xorg" \
-	| perl -p -e 's|sompy==[\.0-9]+|git+http://github.com/kingsgeocomp/SOMPY#egg=sompy|' \
-	> conda/environment_py_full.yml
+	# Do a full export of the conda environment in Docker 
+	# and then try to remove the platform-specific content
+	# except for one 'gotcha' in the Pip install of Sompy 
+	# from GitHub and not the original repo (which doesn't
+	# support Python3).
+	DOCKER_NM=${DOCKER_NM} ENV_NM=${ENV_NM} ./conda/export.sh
 website_build:
 	cd website && \
 	rm -rf _includes && \
