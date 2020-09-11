@@ -1,7 +1,5 @@
 name: sds2020
 channels:
-  - makepath
-  - pyviz
   - conda-forge
   - defaults
 dependencies:
