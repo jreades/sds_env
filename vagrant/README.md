@@ -8,5 +8,5 @@ The steps for this are fairly straightforward. You will need:
 - Run `vagrant up` and then wait while Vagrant builds you new a virtual machine running the SDS image.
 
 To shut down:
-- Run `vagrant down`
+- Run `vagrant halt`
 
