@@ -49,6 +49,8 @@ Now click the 'Save' icon before picking `File` > `Close and Shutdown Notebook` 
 
 You can hide this browser window and go back to your computer's Finder (Mac) or Explorer (PC). In the folder where you saved your `Vagrantfile` you should now see a _new_ folder called `notebooks` and, inside that, a file called... `Hello World.ipynb`.
 
+![Finder Window](https://github.com/jreades/sds_env/raw/master/vagrant/img/Finder.png)
+
 This is how you get data _into_ the Virtual Machine and code, figures, and results _out_ of the Virtual Machine. If you don't put your data in a folder underneath `notebooks` on _your_ computer then the Virtual Machine _cannot_ see it. If you don't save your figures, code, and results into `work` on _the Virtual Machine_ then you won't be able to find it on your computer.
 
 ## Shutting Down 
