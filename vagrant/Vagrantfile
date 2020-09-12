@@ -120,7 +120,7 @@ SCRIPT
           $1 \
 	  start.sh jupyter lab \
 	  --LabApp.password=$2
-	printf "Done.\n"
+	printf "Ready on localhost:8888\n"
 SCRIPT
 
 end
