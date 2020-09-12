@@ -51,6 +51,14 @@ You can hide this browser window and go back to your computer's Finder (Mac) or 
 
 This is how you get data _into_ the Virtual Machine and code, figures, and results _out_ of the Virtual Machine. If you don't put your data in a folder underneath `notebooks` on _your_ computer then the Virtual Machine _cannot_ see it. If you don't save your figures, code, and results into `work` on _the Virtual Machine_ then you won't be able to find it on your computer.
 
-To shut down the Virtual Machine:
-- Run `vagrant halt`
+## Shutting Down 
+
+The _safest_ way to shut down is:
+
+1. In the JupyterLab window select `File` and then `Shut Down` (see screenshot below). 
+2. In a Terminal/Powershell window type `vagrant halt` and then hit 'Return' to execute the code.
+
+![JupyterLab Shutdown](https://github.com/jreades/sds_env/raw/master/vagrant/img/Shutdown.png)
+
+Happy coding!
 
