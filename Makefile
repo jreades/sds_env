@@ -6,11 +6,12 @@ test_py:
 	docker run -v `pwd`:/home/jovyan/work ${DOCKER_NM} start.sh jupyter nbconvert --execute /home/jovyan/test/gds_py/check_py_stack.ipynb
 test_r:
 	docker run -v `pwd`:/home/jovyan/work ${DOCKER_NM} start.sh jupyter nbconvert --execute /home/jovyan/test/gds/check_r_stack.ipynb
-py_stack: yml
+py_stack: 
 	# Python
 	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh conda list -n ${ENV_NM} > conda/environment_py.txt
 	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh sed -i "1 i SDS version: ${DOCKER_NM}" conda/environment_py.txt
-	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh python -c "import subprocess, pandas; fo=open('conda/environment_py.md', 'w'); fo.write(pandas.read_json(subprocess.check_output(['conda', 'list', '-n', '${ENV_NM}', '--json']))[['name', 'version', 'build_string', 'channel']].to_markdown());fo.close()"
+	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh \
+		python -c "import subprocess, pandas; fo=open('conda/environment_py.md', 'w'); fo.write(pandas.read_json(subprocess.check_output(['conda', 'list', '-n', ${ENV_NM}, '--json']))[['name', 'version', 'build_string', 'channel']].to_markdown()); fo.close()"
 	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh sed -i "1s/^/\n/" conda/environment_py.md
 r_stack: 
 	# R
