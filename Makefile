@@ -1,4 +1,4 @@
-export DOCKER_NM='jreades/sds:0.7.1'
+export DOCKER_NM='jreades/sds:1.0.0'
 export ENV_NM='sds2020'
 test: test_py # test_rs
 stacks: py_stack # r_stack
