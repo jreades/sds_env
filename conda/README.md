@@ -1,30 +1,39 @@
 # Installing Anaconda Python
 
-You will need [Anaconda Python](https://www.anaconda.com/distribution/#download-section) (Python 3) to be able to install the GSA environment.
+You will need [Anaconda Python](https://www.anaconda.com/distribution/#download-section) (Python 3) to be able to install the programming environment.
 
 #### Installing
 
-After downloading and installing Anaconda Python you will need to work out how to use the AnacondaPrompt (Windows) or Terminal (Mac) in order to navigate to the folder holding the [YAML file](https://raw.githubusercontent.com/jreades/sds_env/master/conda/environment.yml)
+After downloading and installing Anaconda Python you will also need to download the environment's [configuration file](https://raw.githubusercontent.com/jreades/sds_env/master/conda/environment_py.yml). This file (known as a 'YAML file') tells Anaconda Python what versions of what libraries to install on your computer. The idea is that all users (whether using our Vagrant approach or this one) end up with the same versions of the key programming libraries.
 
-> `conda-env create -f environment.yml`
+You will then need to work out how to use the AnacondaPrompt (Windows) or Terminal (Mac) in order to navigate to the folder holding the downloaded configuration file. It will be _something_ like `cd ~/Downloads/` to reach your downloads folder.
+
+At this point you may start the installation by typing: 
+```bash
+conda-env create -f environment_py.yml
+```
+And then hit the return key to run the command.
 
 #### Configuring
 
-To make this new 'kernel' visible in JupyterLab you then need to run the following two commands...
+To make this new 'configuration' visible in JupyterLab you then need to run the following two commands...
 
 ```bash
 conda activate sds2020
 python -m ipykernel install --name sds2020 --display-name "CASA2020" 
 ```
 
+**Note**: a key difference from users of the Vagrant approach is that _you_ will see a second tile called `CASA2020` when you start up Jupyter. Users of Vagrant see _only_ Python3. You should always use the CASA2020 tile (which represents a separate computing environment) in Anaconda.
+
 #### Running
 
+Still using the Terminal/AnacondaPrompt type:
 ```bash
 conda activate sds2020
 jupyter lab
 ```
 
-Do not run Jupyter Lab from the Anaconda Navigator since it does not configure the libraries correctly.
+Do **not** run Jupyter Lab from the Anaconda Navigator since it does not configure the spatial analysis libraries correctly.
 
 ## Citing
 
