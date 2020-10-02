@@ -9,7 +9,7 @@ The steps for this are fairly straightforward. You will need to:
 ## Creating the Virtual Machine
 Now that you've got all of the pieces saved to your computer, you need to:
 - Launch the Terminal or PowerShell
-- Navigate to the directory where you saved the Vagrantfile (_e.g._ `cd ~/Docouments/` or `cd ~/Documents/CASA/`).
+- Navigate to the directory where you saved the Vagrantfile (_e.g._ `cd ~/Documents/` or `cd ~/Documents/CASA/`).
 - Run `vagrant up` and then wait while Vagrant builds you new a virtual machine (this will take about 30 minutes, download about 6GB of data, and use up about 8GB of space on your computer's hard drive).
 
 ## When the Virtual Machine is Running
@@ -33,7 +33,7 @@ If you have successfully logged in you will see this:
 
 ## Creating Notebooks
 
-Notice that on the left-hand side is a diretory (folder) called `work`. This is where you should save your work! Double-click on the `work` folder to open it.
+Notice that on the left-hand side is a diretory (folder) called `work`. **This is where you should save your work!** Double-click on the `work` folder to open it.
 
 Click on the 'Notebook' icon with the label `Python 3` or `SDS 2020` (if you see _both_ of these then pick `SDS 2020`). This will create a new Notebook called `Untitled.ipynb`.
 
@@ -47,11 +47,9 @@ Now click the 'Save' icon before picking `File` > `Close and Shutdown Notebook` 
 
 ### But here's the trick!
 
-You can hide this browser window and go back to your computer's Finder (Mac) or Explorer (PC). In the folder where you saved your `Vagrantfile` you should now see a _new_ folder called `notebooks` and, inside that, a file called... `Hello World.ipynb`.
+You can hide this browser window and go back to your computer's Finder (Mac) or Explorer (PC). In the folder where you saved your `Vagrantfile` you should now see a file called... `Hello World.ipynb`.
 
-<img src="https://github.com/jreades/sds_env/raw/master/vagrant/img/Finder.png" width="600" />
-
-This is how you get data _into_ the Virtual Machine and code, figures, and results _out_ of the Virtual Machine. If you don't put your data in a folder underneath `notebooks` on _your_ computer then the Virtual Machine _cannot_ see it. If you don't save your figures, code, and results into `work` on _the Virtual Machine_ then you won't be able to find it on your computer.
+This is how you get data _into_ the Virtual Machine and code, figures, and results _out_ of the Virtual Machine. So of you don't put your data into a folder underneath the one on _your_ computer where the Vagrantfile can be found then the Virtual Machine _cannot_ see it. If you don't save your figures, code, and results into `work` on _the Virtual Machine_ then you won't be able to find it on your computer.
 
 ## Shutting Down 
 
