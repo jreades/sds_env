@@ -6,6 +6,8 @@ The steps for this are fairly straightforward. You will need to:
 - Download and install [Vagrant](https://www.vagrantup.com/downloads).
 - Download a copy of the [Vagrantfile](https://github.com/jreades/sds_env/raw/master/vagrant/Vagrantfile) in an easy-to-find place on your computer (I would suggest your 'Documents' folder or a 'CASA' folder below that).
 
+If your windows machine complains about virtualisation not having been turned on in the BIOS then [these instructions](Enabling_Virtualisation.md) may help.
+
 ## Creating the Virtual Machine
 Now that you've got all of the pieces saved to your computer, you need to:
 - Launch the Terminal or PowerShell
