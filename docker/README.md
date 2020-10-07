@@ -12,7 +12,7 @@ You can then install this container by opening up a Shell/Terminal and simply ru
 
 The container can be run in the Shell or Terminal as:
 
-> `docker run --name sds --rm -ti -p 8888:8888 --v "$(pwd):/home/jovyan/work" jreades/sds:2020 jupter lab --LabApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'`
+> `docker run --name sds --rm -ti -p 8888:8888 -v "$(pwd):/home/jovyan/work" jreades/sds:2020 jupyter lab --LabApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'`
 
 When you run this command you will then be able to point your browser to [localhost:8888](http://127.0.0.1:8888/lab?). You are likely to be prompted to enter a **Token**. The token should have been shown in the Shell/Terminal output shortly after you ran the above command: you can copy+paste this into the web page and should then see something like the below in your browser window:
 
