@@ -21,8 +21,8 @@ Anyway, assuming that you have run the command above exactly as explained, then 
 A couple of notes on the command above:
 
 * This opens the `8888` port of the container, so to access the Lab instance,
-  you will have to point your browser to `[localhost:8888](localhost:8888/lab/)`.
-* The command also mounts the current folder (`pwd`) for the container, but you can replace that with the path to any folder on your local machine (in fact, that will only work on host machines with the `pwd` command installed)
+  you will have to point your browser to [`localhost:8888`](localhost:8888/lab/) Note that there is no space between `localhost` and `8888`, just a colon (`:`).
+* As we explained above, the command also mounts the current folder (`pwd`) for the container, but you can replace that with the path to any folder on your local machine; for instance, on a Mac you could use something like `-v "/Users/<your username>/Documents/git/i2p:/home/jovyan/work"` instead and then this would _always_ link the `i2p` folder to `work` in the programming environment; however, I'd suggest that you wait until you understand how paths work before attempting to change this).
 * The `name` ensures that you don't accidentally run three versions of the same Docker image!
 
 #### Deleting
