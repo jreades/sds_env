@@ -14,14 +14,14 @@ The container can be run in the Shell or Terminal as:
 
 > `docker run --name sds --rm -ti -p 8888:8888 -v "$(pwd):/home/jovyan/work" jreades/sds:2020 jupyter lab --LabApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'`
 
-When you run this command you will then be able to point your browser to [localhost:8888](http://127.0.0.1:8888/lab?). You are likely to be prompted to enter a **Token**. The token should have been shown in the Shell/Terminal output shortly after you ran the above command: you can copy+paste this into the web page and should then see something like the below in your browser window:
+**Note**: the `pwd` in the command above means use the _current_ directory. So if you simply open a Terminal, Git Bash, or Command Prompt then Docker will 'mount' (_i.e._ make visible to the programming environment) the current directory as `work` in the programming environment. This is most likely to be your home directory and means that _everything_ in your home directory is potentially delete-able or write-able and that is a major security risk. I would _strongly_ suggest that you `cd` (Change Directory) to a sub-folder along the lines of `./Documents/CASA/` so that you have the link `work <-> CASA` between the virtual machine that Docker is running and your computer (which is the 'host'). Obviously, this assumes that you've created a CASA directory in your Documents folder and you can revise according to what you have done instead!
 
-<img src="../vagrant/img/JupyterLab.png" width="500">
+Anyway, assuming that you have run the command above exactly as explained, then you will then be able to point your browser to [localhost:8888](localhost:8888/lab?). You are likely to be prompted to enter a **Password**. This password is currently `casa2021`.
 
 A couple of notes on the command above:
 
 * This opens the `8888` port of the container, so to access the Lab instance,
-  you will have to point your browser to `[localhost:8888](http://localhost:8888/lab/)`.
+  you will have to point your browser to `[localhost:8888](localhost:8888/lab/)`.
 * The command also mounts the current folder (`pwd`) for the container, but you can replace that with the path to any folder on your local machine (in fact, that will only work on host machines with the `pwd` command installed)
 * The `name` ensures that you don't accidentally run three versions of the same Docker image!
 
