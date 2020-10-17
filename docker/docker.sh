@@ -7,10 +7,10 @@
 
 # If you want to launch the container with
 # work mounting in different places
-#WORK_DIR="$(pwd)"
+WORK_DIR="$(pwd)"
 # If you want to always bind work to a 
 # particular location
-WORK_DIR="$HOME/Documents/git"
+#WORK_DIR="$HOME/Documents/git"
 DOCKER_NM="sds"
 DOCKER_IMG="jreades/sds:1.0.0"
 JUPYTER_PWD="sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10"
