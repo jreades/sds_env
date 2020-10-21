@@ -7,17 +7,17 @@
 
 # If you want to launch the container with
 # work mounting in different places
-WORK_DIR="$(pwd)"
+#WORK_DIR="${PWD}"
 # If you want to always bind work to a 
 # particular location
-#WORK_DIR="$HOME/Documents/git"
+WORK_DIR="$HOME/Documents/git"
 DOCKER_NM="sds"
 DOCKER_IMG="jreades/sds:1.0.0"
 JUPYTER_PWD="sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10"
 
 if [ $1 = "start" ]; then
 	echo "Starting up..."
-	docker run --rm -d --name $DOCKER_NM -p 8888:8888 -v "$WORK_DIR:/home/jovyan/work" $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD
+	docker run --rm -d --name $DOCKER_NM -p 8888:8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD
 	echo "Should have started on localhost:8888"
 else
 	echo "Shutting down..."
