@@ -50,6 +50,7 @@ dependencies:
   - contextily
   - cython
   - feather-format 
+  - geofeather 
   - geopandas
   - geopy 
   - hdbscan
