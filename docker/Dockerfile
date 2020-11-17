@@ -68,7 +68,7 @@ ENV PROJ_LIB /opt/conda/envs/${env_nm}/share/proj/
 RUN echo "export PROJ_LIB=/opt/conda/envs/${env_nm}/share/proj/" >> ~/.bashrc
 
 #--- Preload the NLTK/Spacy libs ---#
-RUN python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database')"
+RUN python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger')"
 # This may bloat the Docker image massively
 #RUN python -m spacy download en \ 
 #    && python -m spacy download en_core_web_sm 

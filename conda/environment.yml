@@ -48,6 +48,7 @@ dependencies:
   - bokeh 
   - cmake
   - contextily
+  - contractions
   - cython
   - feather-format 
   - geofeather 
@@ -65,7 +66,7 @@ dependencies:
   - nbdime 
   - networkx
   - osmnx
-  - nltk=3.4.*
+  - nltk>=3.4
   - palettable 
   - pandana # For pysal segregation module
   - pointpats 
@@ -87,6 +88,7 @@ dependencies:
   - sqlalchemy
   - statsmodels 
   - tabulate  # For exporting from pandas to markdown
+  - textblob # For NLTK/NLP
   - tzlocal 
 #- urbanaccess  # For pysal segregation module
   - xlrd 
@@ -102,6 +104,7 @@ dependencies:
     - jupyterlab_gitplus # Supports serverextension
     - mgwr 
     - matplotlib-scalebar
+    - pymagnitude
 #    - pdfkit # Overkill
 #    - pypdf2 
 #    - pyocr
