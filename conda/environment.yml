@@ -48,11 +48,9 @@ dependencies:
   - bokeh 
   - cmake
   - contextily
-  - contractions
   - cython
   - feather-format 
   - gensim
-  - geofeather 
   - geopandas
   - geopy 
   - hdbscan
@@ -73,6 +71,7 @@ dependencies:
   - pointpats 
   - polyline 
   - psycopg2 
+  - pyarrow # Supports parquet and other advanced formats
   - pygeos
   - pykrige 
 #  - pypdf2 # Overkill
@@ -85,26 +84,29 @@ dependencies:
   - scikit-learn
   - scikit-image
   - seaborn 
-  - spacy=2.3.*
+  - spacy #>=2.3.*
   - sqlalchemy
   - statsmodels 
   - tabulate  # For exporting from pandas to markdown
   - textblob # For NLTK/NLP
   - tzlocal 
 #- urbanaccess  # For pysal segregation module
+  - umap-learn
   - xlrd 
   - xlsxwriter  
   - pip:
     #- git+http://github.com/sevamoo/SOMPY#egg=sompy # Doesn't run in Python3
+    - contractions
+    - geofeather 
     - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
-    - smopy # NOT a typo! Not the same thing as sompy!
-    - MulticoreTSNE
-    - scikit-posthocs
-    - wordcloud
     - jupyter-lsp==0.9.2 # Supports labextension
     - jupyterlab_gitplus # Supports serverextension
-    - mgwr 
     - matplotlib-scalebar
+    - mgwr 
+    - MulticoreTSNE
+    - scikit-posthocs
+    - smopy # NOT a typo! Not the same thing as sompy!
+    - wordcloud
     - pymagnitude
 #    - pdfkit # Overkill
 #    - pypdf2 
