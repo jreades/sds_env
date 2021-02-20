@@ -1,0 +1,19 @@
+
+ENV yaml_nm 'dev.2.yml'
+
+RUN conda config --add channels conda-forge \
+#    && conda config --add channels pyviz \
+#    && conda config --add channels makepath \
+    && conda config --set channel_priority strict
+
+SHELL ["/bin/bash", "-c"]
+COPY ./conda/${yaml_nm} ./
+RUN conda-env update -n ${env_nm} -f ./${yaml_nm} \
+    && conda clean --all --yes --force-pkgs-dirs \
+    && find /opt/conda/ -follow -type f -name '*.a' -delete \
+    && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
+    && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
+    && pip cache purge \ 
+    && rm -rf /home/$NB_USER/.cache/pip \ 
+    && rm ./${yaml_nm}
+

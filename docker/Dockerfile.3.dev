@@ -1,0 +1,61 @@
+
+# Install jupyterlab extensions, but don't build
+# (saves some time over install and building each)
+RUN jupyter lab clean \
+    # These should work, but can be commented out for speed during dev
+    && jupyter labextension install --no-build @jupyter-widgets/jupyterlab-manager \
+    && jupyter labextension install --no-build jupyter-matplotlib \
+    && jupyter labextension install --no-build @jupyterlab/mathjax3-extension \
+    && jupyter labextension install --no-build jupyterlab-plotly \
+    && jupyter labextension install --no-build @jupyterlab/geojson-extension \
+    && jupyter labextension install --no-build @krassowski/jupyterlab_go_to_definition \
+#    && jupyter labextension install --no-build @bokeh/jupyter_bokeh \
+#    && jupyter labextension install --no-build @pyviz/jupyterlab_pyviz \
+#    && jupyter labextension install --no-build @reviewnb/jupyterlab_gitplus \
+    && jupyter labextension install --no-build jupyter-leaflet \
+    && jupyter labextension install --no-build nbdime-jupyterlab \
+#    && jupyter labextension install --no-build ipysheet \
+    && jupyter labextension install --no-build @lckr/jupyterlab_variableinspector \
+    && jupyter labextension install --no-build jupyterlab-jupytext \
+#    && jupyter labextension install --no-build qgrid2 \
+    # Don't work currently
+#    && jupyter labextension install --no-build @rmotr/jupyterlab-solutions \
+#    && jupyter labextension install --no-build pylantern \
+#    && jupyter labextension install --no-build @oriolmirosa/jupyterlab_materialdarker \
+#    && jupyter labextension install --no-build @jpmorganchase/perspective-jupyterlab \
+    && jupyter labextension install @krassowski/jupyterlab-lsp \
+    && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
+    && jupyter labextension install --no-build @jupyterlab/toc
+
+# Docs suggest this needs to be installed after, though I have my doubts.
+#RUN conda install -n ${env_nm} --yes --quiet \
+#    'jupyterlab_code_formatter'
+
+# Build the jupyterlab extensions
+RUN jupyter lab build -y --dev-build=False \
+    && jupyter labextension enable jupyterlab-manager \
+    && jupyter labextension enable jupyter-matplotlib \
+    && jupyter labextension enable mathjax3-extension \
+    && jupyter labextension enable jupyterlab-plotly \
+    && jupyter labextension enable geojson-extension \
+    && jupyter labextension enable jupyterlab_go_to_definition \
+#    && jupyter labextension enable jupyter_bokeh \
+#    && jupyter labextension enable jupyterlab_pyviz \
+    && jupyter labextension enable jupyter-leaflet \
+    && jupyter labextension enable nbdime-jupyterlab \
+#    && jupyter labextension enable ipysheet \
+    && jupyter labextension enable jupyterlab_variableinspector \
+    && jupyter labextension enable jupyterlab-jupytext \
+#    && jupyter labextension enable qgrid2 \
+    && jupyter labextension enable jupyterlab-lsp \
+    && jupyter labextension enable toc \
+    && jupyter serverextension enable --py jupyterlab_code_formatter \
+#    && jupyter serverextension enable --py jupyterlab_gitplus \
+    && jupyter lab clean -y
+
+# Clean up
+RUN conda clean --all -f -y \
+    && npm cache clean --force \
+    && rm -rf $CONDA_DIR/share/jupyter/lab/staging \
+    && rm -rf "/home/${NB_USER}/.node-gyp" \
+    && rm -rf /home/$NB_USER/.cache/yarn

@@ -25,6 +25,9 @@ ENV yaml_nm 'environment.yml'
 ENV env_nm sds2020
 ENV kernel_nm 'CASA2020'
 
+#--- Future work ---#
+# Install sed/awk
+
 #--- Python ---#
 # Get conda updated and set up before installing
 # any packages
