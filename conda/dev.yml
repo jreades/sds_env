@@ -42,14 +42,15 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-#  - python=3.7  
   - pip 
   - black # Supports code formatter labextension
+  - altair
   - bokeh 
   - cmake
   - contextily
   - cython
   - feather-format 
+  - gensim
   - geopandas
   - geopy 
   - hdbscan
@@ -57,48 +58,59 @@ dependencies:
   - ipympl 
   - ipyparallel 
   - ipywidgets 
+  - jupyterlab<4.0.0a0
   - jupyterlab_code_formatter # Supports labextension
+  - jupyter-lsp-python # Provides LSP Extension + Server
   - legendgram
   - mkl-service 
   - mysql-connector-python 
   - nbdime 
   - networkx
   - osmnx
-  - nltk=3.4.*
-  - palettable 
+  - nltk>=3.5
+  - palettable
   - pandana # For pysal segregation module
-  - pointpats 
-  - polyline 
-  - psycopg2 
+  - pointpats
+  - polyline
+  - psycopg2
+  - pyarrow # Supports parquet and other advanced formats
   - pygeos
-  - pykrige 
+  - pykrige
 #  - pypdf2 # Overkill
 #  - pymc3 # Not well-supported on Windows 
   - pysal
-  - python-language-server # Supports labextension
-  - qgrid 
+  - qgrid
   - rasterio
   - rasterstats
   - scikit-learn
   - scikit-image
-  - seaborn 
-  - spacy=2.3.*
+  - seaborn
+  - spacy
   - sqlalchemy
-  - statsmodels 
+  - statsmodels
   - tabulate  # For exporting from pandas to markdown
+  - textblob # For NLTK/NLP
   - tzlocal 
-#- urbanaccess  # For pysal segregation module
-  - xlrd 
-  - xlsxwriter  
+#  - urbanaccess  # For pysal segregation module
+  - umap-learn
+  - xlrd
+  - xlsxwriter
   - pip:
-    #- git+http://github.com/sevamoo/SOMPY#egg=sompy # Doesn't run in Python3
+    - contractions
+    - geofeather 
     - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
-    - smopy # NOT a typo! Not the same thing as sompy!
-    - MulticoreTSNE
-    - scikit-posthocs
-    - wordcloud
-    - jupyter-lsp==0.9.2 # Supports labextension
+    - git+https://github.com/pewresearch/pewanalytics#egg=pewanalytics
+    - dtreeviz
     - jupyterlab_gitplus # Supports serverextension
+    - langdetect
+    - matplotlib-scalebar
+    - mgwr 
+    - MulticoreTSNE
+    - pymagnitude
+    - scikit-posthocs
+    - smopy # NOT a typo! Not the same thing as sompy!
+    - wordcloud
+#    - git+http://github.com/sevamoo/SOMPY#egg=sompy # Doesn't run in Python3
 #    - pdfkit # Overkill
 #    - pypdf2 
 #    - pyocr
