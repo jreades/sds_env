@@ -26,8 +26,8 @@ ENV kernel_nm 'CASA2021'
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 #--- Python ---#
-INCLUDE+ ./docker/Dockerfile.1.dev
-INCLUDE+ ./docker/Dockerfile.2.dev
+INCLUDE+ ./docker/Dockerfile.python.install
+INCLUDE+ ./docker/Dockerfile.python.update
 
 ENV PATH /opt/conda/envs/${env_nm}/bin:$PATH
 ENV PROJ_LIB /opt/conda/envs/${env_nm}/share/proj/
@@ -35,7 +35,7 @@ ENV PROJ_LIB /opt/conda/envs/${env_nm}/share/proj/
 #--- JupyterLab config ---#
 USER root
 
-INCLUDE+ ./docker/Dockerfile.3.dev
+INCLUDE+ ./docker/Dockerfile.jupyterlab.extensions
 
 # Pre-cache fonts
 RUN python -c "import matplotlib.pyplot;"
