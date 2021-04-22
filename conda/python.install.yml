@@ -44,6 +44,7 @@ channels:
 dependencies:
   - pip 
   - black # Supports code formatter labextension
+  - boruta # Supports feature selection
   - cmake
   - cython
   - geopandas
@@ -52,10 +53,11 @@ dependencies:
   - ipympl 
   - ipyparallel 
   - ipywidgets 
-  - jupyterlab<4.0.0a0
+  - jupyterlab=3
   - jupyterlab_code_formatter # Supports labextension
   - jupyter-lsp-python # Provides LSP Extension + Server
   - mkl-service 
+  - mrmr # Supports feature selection
   - nbdime 
   - pointpats
   - polyline
