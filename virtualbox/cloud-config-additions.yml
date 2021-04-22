@@ -83,7 +83,7 @@ write_files:
                      -v /home/rancher/notebooks:/home/jovyan/ \
                      "$IMAGE_NM" \
                      start.sh jupyter lab \
-                     --LabApp.password='{JUPYTER_PWD}'
+                     --ServerApp.password='{JUPYTER_PWD}'
           echo -e "******* "
           echo -e "Container available at http://localhost:8888 "
           echo -e "******* "
