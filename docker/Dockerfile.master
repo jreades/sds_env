@@ -16,8 +16,8 @@
 
 #--- Build from Jupyter-provided Minimal Install ---#
 # https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
-# Feb 2021
-FROM jupyter/minimal-notebook:016833b15ceb
+# Late-April 2021
+FROM jupyter/minimal-notebook:584f43f06586
 
 LABEL maintainer="j.reades@ucl.ac.uk"
 
@@ -27,7 +27,6 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 #--- Python ---#
 INCLUDE+ ./docker/Dockerfile.python.install
-INCLUDE+ ./docker/Dockerfile.python.update
 
 ENV PATH /opt/conda/envs/${env_nm}/bin:$PATH
 ENV PROJ_LIB /opt/conda/envs/${env_nm}/share/proj/
@@ -36,9 +35,6 @@ ENV PROJ_LIB /opt/conda/envs/${env_nm}/share/proj/
 USER root
 
 INCLUDE+ ./docker/Dockerfile.jupyterlab.extensions
-
-# Pre-cache fonts
-RUN python -c "import matplotlib.pyplot;"
 
 # Fix permissions
 RUN fix-permissions $CONDA_DIR \
@@ -52,21 +48,7 @@ USER $NB_UID
 #RUN echo "export PROJ_LIB=/opt/conda/share/proj/" >> ~/.bashrc
 RUN echo "export PROJ_LIB=/opt/conda/envs/${env_nm}/share/proj/" >> ~/.bashrc
 
-#--- Preload the NLTK/Spacy libs ---#
-ENV GENSIM_DATA_DIR=/home/${NB_USER}/work/gensim-data
-ENV SPACY_DATA_DIR=/home/${NB_USER}/work/spacy-data
-
-RUN echo "export GENSIM_DATA_DIR=${GENSIM_DATA_DIR} # python -m gensim.downloader --download <dataname>" >> ~/.bashrc
-RUN echo "export SPACY_DATA_DIR=${SPACY_DATA_SIR} # spacy.load("/path/to/en_core_web_sm")" >> ~/.bashrc
-
-# This bloats the Docker image but not massively
-RUN python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger')"
-
-# This bloats the Docker image massively
-# RUN python -m spacy download en_core_web_sm 
-
 #
 # To generate a new password on a machine with jupyter notebook libs installed: 
-# > python3 -c "from notebook.auth import passwd; print(passwd('YOUR PASSWORD HERE'))"
+# > python3 -c "from notebook.auth import passwd; print(passwd('YOUR PASSWORD HERE','sha1'))"
 # 
-

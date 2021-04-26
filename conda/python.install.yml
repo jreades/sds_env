@@ -37,17 +37,23 @@
 #   jupyter lab
 #
 # CONFIGURATION PARAMETERS
-name: sds2020
+name: sds2021
 channels:
   - conda-forge
   - defaults
 dependencies:
   - pip 
+  - beautifulsoup4
   - black # Supports code formatter labextension
-  - boruta # Supports feature selection
-  - cmake
+  - bokeh 
+  - catboost
+  - contextily 
+  - cmake<3.20
   - cython
+  - feather-format 
+  - gensim 
   - geopandas
+  - geopy 
   - hdbscan
   - ipyleaflet 
   - ipympl 
@@ -56,23 +62,49 @@ dependencies:
   - jupyterlab=3
   - jupyterlab_code_formatter # Supports labextension
   - jupyter-lsp-python # Provides LSP Extension + Server
+  - legendgram 
   - mkl-service 
-  - mrmr # Supports feature selection
   - nbdime 
+  - networkx 
+  - nltk 
+  - pandas 
+  - palettable 
   - pointpats
   - polyline
   - pygeos
+  - pymc3
   - pykrige
   - pysal
+  - qgrid 
+  - rasterio 
+  - rasterstats 
+  - scipy
   - scikit-learn
   - scikit-image
   - seaborn
+  - spacy 
+  - sqlalchemy 
   - statsmodels
   - tabulate  # For exporting from pandas to markdown
+  - textblob 
   - tzlocal 
   - umap-learn
   - xlrd
   - xlsxwriter
   - pip:
+    - boruta # Supports feature selection
+    - contractions 
+    - dtreeviz
+    - dtreeviz[xgboost]
+    - geofeather 
+    - git+https://github.com/smazzanti/mrmr # Supports feature selection
+    - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - jupyterlab_gitplus # Supports serverextension
+    - langdetect
+    - lightgbm 
+    - matplotlib-scalebar 
+    - mgwr
+    - scikit-posthocs
     - smopy # NOT a typo! Not the same thing as sompy!
+    - xgboost
+    - wordcloud

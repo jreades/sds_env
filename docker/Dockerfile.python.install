@@ -17,3 +17,22 @@ RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
     && rm -rf /home/$NB_USER/.cache/pip \ 
     && rm ./${yaml_nm}
 
+#--- Preload the NLTK/Spacy libs ---#
+ENV GENSIM_DATA_DIR=/home/${NB_USER}/work/gensim-data
+ENV SPACY_DATA_DIR=/home/${NB_USER}/work/spacy-data
+
+RUN echo "export GENSIM_DATA_DIR=${GENSIM_DATA_DIR} # python -m gensim.downloader --download <dataname>" >> ~/.bashrc
+RUN echo "export SPACY_DATA_DIR=${SPACY_DATA_SIR} # spacy.load("/path/to/en_core_web_sm")" >> ~/.bashrc
+
+# This bloats the Docker image but not massively
+RUN /opt/conda/envs/${env_nm}/bin/python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger')"
+
+# Pre-cache fonts
+RUN /opt/conda/envs/${env_nm}/bin/python -c "import matplotlib.pyplot;"
+
+#USER $NB_UID
+#RUN mkdir -p "/home/$NB_USER/.cache/black/20.8b1"
+RUN /opt/conda/envs/${env_nm}/bin/python -c "import black;print(black.__version__);"
+
+# This bloats the Docker image massively
+# RUN python -m spacy download en_core_web_sm
