@@ -47,9 +47,11 @@ dependencies:
   - black # Supports code formatter labextension
   - bokeh 
   - catboost
+  - clustergram
   - contextily 
   - cmake<3.20
   - cython
+  - descartes
   - feather-format 
   - gensim 
   - geopandas
@@ -64,9 +66,11 @@ dependencies:
   - jupyter-lsp-python # Provides LSP Extension + Server
   - legendgram 
   - mkl-service 
+  - momepy
   - nbdime 
   - networkx 
   - nltk 
+  - osmnx
   - pandas 
   - palettable 
   - pointpats
@@ -106,5 +110,6 @@ dependencies:
     - mgwr
     - scikit-posthocs
     - smopy # NOT a typo! Not the same thing as sompy!
+    - top2vec
     - xgboost
     - wordcloud
