@@ -1,4 +1,7 @@
 # syntax = edrevo/dockerfile-plus
+# To make the above work, you need to add 
+# `export DOCKER_BUILDKIT=1` (without the back-tics)
+# to your .rc (.zshrc/.bashrc) file
 
 # How to pull and run this image (where "${SDS_RELEASE}" should be replaced by, e.g., "0.6.1")
 # > export SDS_RELEASE 0.6.1 # 0.6.1 is an example
