@@ -1,14 +1,12 @@
 
-ENV yaml_nm 'python.install.yml'
-
-RUN conda config --add channels conda-forge \
-#    && conda config --add channels pyviz \
-#    && conda config --add channels makepath \
+RUN conda install --freeze-installed --yes mamba \
+    && conda config --add channels conda-forge \
+    && conda config --add channels pyviz \
     && conda config --set channel_priority strict
 
 SHELL ["/bin/bash", "-c"]
 COPY ./conda/${yaml_nm} ./
-RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
+RUN mamba env create -n ${env_nm} --quiet --file ./${yaml_nm} \
     && conda clean --all --yes --force-pkgs-dirs \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
@@ -16,6 +14,15 @@ RUN conda-env create -n ${env_nm} -f ./${yaml_nm} \
     && pip cache purge \ 
     && rm -rf /home/$NB_USER/.cache/pip \ 
     && rm ./${yaml_nm}
+
+# Pre-cache fonts
+RUN /opt/conda/envs/${env_nm}/bin/python -c "import matplotlib.pyplot;"
+
+# Set up code formatting cache
+USER $NB_UID
+RUN mkdir -p "/home/$NB_USER/.cache/black/$(black --version | cut -d ' ' -f 3)" \
+#    && black $(find /opt/conda/envs/${env_nm}/lib -name "black.py") \
+    && /opt/conda/envs/${env_nm}/bin/python -c "import logging; logging.basicConfig(level='INFO'); import black"
 
 #--- Preload the NLTK/Spacy libs ---#
 ENV GENSIM_DATA_DIR=/home/${NB_USER}/work/gensim-data
@@ -26,13 +33,6 @@ RUN echo "export SPACY_DATA_DIR=${SPACY_DATA_SIR} # spacy.load("/path/to/en_core
 
 # This bloats the Docker image but not massively
 RUN /opt/conda/envs/${env_nm}/bin/python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger')"
-
-# Pre-cache fonts
-RUN /opt/conda/envs/${env_nm}/bin/python -c "import matplotlib.pyplot;"
-
-#USER $NB_UID
-#RUN mkdir -p "/home/$NB_USER/.cache/black/20.8b1"
-RUN /opt/conda/envs/${env_nm}/bin/python -c "import black;print(black.__version__);"
 
 # This bloats the Docker image massively
 # RUN python -m spacy download en_core_web_sm

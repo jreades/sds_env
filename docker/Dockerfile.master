@@ -3,19 +3,15 @@
 # `export DOCKER_BUILDKIT=1` (without the back-tics)
 # to your .rc (.zshrc/.bashrc) file
 
-# How to pull and run this image (where "${SDS_RELEASE}" should be replaced by, e.g., "0.6.1")
-# > export SDS_RELEASE 0.6.1 # 0.6.1 is an example
-# > docker pull jreades/sds:${SDS_RELEASE}
-# > docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work jreades/sds:${VERSION_NUM} jupyter lab
-# OR 
-# > docker run --rm -ti -p 8888:8888 --mount type=bind,source=$(pwd),target=/home/jovyan/ jreades/sds:${SDS_RELEASE} jupyter lab
+# How to pull and run this image (where the full image name is jreades/sds:2021a)
+# > export IMG_NM=sds:2021a
+# > docker pull jreades/${IMG_NM}
+# > docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work jreades/${IMG_NM} start.sh jupyter lab
 #
-# How to build
-# > docker image build --tag jreades/sds:${SDS_RELEASE} --compress --file ./docker/Dockerfile .
-# How to push an updated image
+# How to build and push
+# > export IMG_NM=sds:2021a && docker image build --tag jreades/${IMG_NM} --compress --file ./docker/Dockerfile.master .
 # > docker login docker.io
-# > docker push jreades/sds:${SDS_RELEASE}
-#
+# > docker push jreades/${IMG_NM}
 
 #--- Build from Jupyter-provided Minimal Install ---#
 # https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
@@ -24,8 +20,10 @@ FROM jupyter/minimal-notebook:584f43f06586
 
 LABEL maintainer="j.reades@ucl.ac.uk"
 
-ENV env_nm sds2021
-ENV kernel_nm 'CASA2021'
+ENV env_nm 'sds2021'
+ENV kernel_nm 'SDS2021'
+ENV yaml_nm 'conda.install.yml'
+ENV pip_nm 'pip.install.txt'
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 #--- Python ---#

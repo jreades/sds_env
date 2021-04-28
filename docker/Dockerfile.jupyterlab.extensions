@@ -6,13 +6,13 @@ RUN jupyter lab clean \
     && jupyter labextension install --no-build @jupyter-widgets/jupyterlab-manager \
     && jupyter labextension install --no-build jupyter-matplotlib \
     && jupyter labextension install --no-build @jupyterlab/mathjax3-extension \
+    && jupyter labextension install --no-build nbdime-jupyterlab \
 #    && jupyter labextension install --no-build jupyterlab-plotly \
     && jupyter labextension install --no-build @jupyterlab/geojson-extension \
 #    && jupyter labextension install --no-build @bokeh/jupyter_bokeh \
 #    && jupyter labextension install --no-build @pyviz/jupyterlab_pyviz \
 #    && jupyter labextension install --no-build @reviewnb/jupyterlab_gitplus \
     && jupyter labextension install --no-build jupyter-leaflet \
-    && jupyter labextension install --no-build nbdime-jupyterlab \
     && jupyter labextension install --no-build ipysheet \
     && jupyter labextension install --no-build jupyterlab-jupytext \
 ##  Don't work currently
@@ -30,16 +30,16 @@ RUN jupyter lab clean \
 
 # Build the jupyterlab extensions
 RUN jupyter lab build -y --dev-build=False \
-#    && jupyter labextension enable jupyterlab-manager \
+    && jupyter labextension enable jupyterlab-manager \
     && jupyter labextension enable jupyter-matplotlib \
     && jupyter labextension enable mathjax3-extension \
+    && jupyter labextension enable nbdime-jupyterlab \
 #    && jupyter labextension enable jupyterlab-plotly \
     && jupyter labextension enable geojson-extension \
 #    && jupyter labextension enable jupyter_bokeh \
 #    && jupyter labextension enable jupyterlab_pyviz \
 #    && jupyter serverextension enable --py jupyterlab_gitplus \
     && jupyter labextension enable jupyter-leaflet \
-    && jupyter labextension enable nbdime-jupyterlab \
     && jupyter labextension enable ipysheet \
     && jupyter labextension enable jupyterlab-jupytext \
 ##    && jupyter labextension enable jupyterlab_go_to_definition \
