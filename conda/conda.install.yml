@@ -71,10 +71,12 @@ dependencies:
   - networkx 
   - nltk 
   - osmnx
+  - opencv-contrib-python
   - pandas 
   - palettable 
   - pointpats
   - polyline
+  - plotly
   - pygeos
   - pymc3
   - pykrige
@@ -94,6 +96,7 @@ dependencies:
   - tzlocal 
   - umap-learn
   - xlrd
+  - openpyxl
   - xlsxwriter
   - pip:
     - boruta # Supports feature selection
@@ -113,3 +116,6 @@ dependencies:
     - top2vec
     - xgboost
     - wordcloud
+    - joypy
+    - unidecode
+    - num2words
