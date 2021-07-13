@@ -71,7 +71,6 @@ dependencies:
   - networkx 
   - nltk 
   - osmnx
-  - opencv-contrib-python
   - pandas 
   - palettable 
   - pointpats
@@ -119,3 +118,4 @@ dependencies:
     - joypy
     - unidecode
     - num2words
+    - opencv-contrib-python-headless # Open Computer Vision tools
