@@ -1,106 +1,401 @@
-# OVERVIEW
-# This YAML script will attempt to install a Python virtual environment able to
-# support the requirements of a Spatial Data Science or Geocomputation programme.
-#
-# INSTALLATION
-# Note that, in the example commands below, you will need to replace {name} by the name 
-# value specified as a configuration parameter below (the first line that does *not* 
-# start with a hash (#). All the commands below should be run from the Terminal.
-#
-#######################
-# NOTE: in the below, wherever you see '{name}'
-# you should replace that with the name of the 
-# environment you are installing (e.g. `sds2020`).
-#######################
-#
-# If you've already installed this environment before:
-#   conda remove --name {name} --all
-#
-# To install/reinstall the environment:
-#   conda-env create -f environment.yml
-#
-# To install/update individual libraries you usually want to force the conda-forge channel:
-#   conda install -c conda-forge osmnx
-#
-# A nice way to set the display name for the environment after activating the env:
-#   conda activate {name}
-#   python -m ipykernel install --name {name} --display-name "Friendly Name"
-# To tidy up environments: 
-#   jupyter kernelspec list
-#   jupyter kernelspec uninstall unwanted-kernel 
-#
-# LAUNCH
-# You can launch the 'old' notebook server by simply running:
-#   jupyter notebook
-# The more modern jupyter lab only seems to be launchable from within an environment:
-#   conda activate {name}
-#   jupyter lab
-#
-# CONFIGURATION PARAMETERS
-name: sds2020
+name: sds2021
 channels:
-  - conda-forge
   - defaults
+  - pyviz
+  - conda-forge
 dependencies:
-#  - python=3.7  
-  - pip 
-  - black=20.8b1 # Supports code formatter labextension
-  - bokeh=2.2.1 
-  - cmake
-  - contextily=1.0.0
-  - cython
-  - feather-format 
-  - geopandas=0.8.1
-  - geopy=2.0.0
-  - hdbscan
-  - ipyleaflet 
-  - ipympl 
-  - ipyparallel 
-  - ipywidgets 
-  - jupyterlab_code_formatter # Supports labextension
+  - absl-py=0.13.0
+  - access=1.1.3
+  - affine=2.3.0
+  - amply=0.1.4
+  - anyio=3.3.0
+  - appdirs=1.4.4
+  - argon2-cffi=20.1.0
+  - arviz=0.11.2
+  - astroid=2.6.5
+  - async_generator=1.10
+  - attrs=21.2.0
+  - autopep8=1.5.7
+  - aws-c-cal=0.5.11
+  - aws-c-common=0.6.2
+  - aws-c-event-stream=0.2.7
+  - aws-c-io=0.10.5
+  - aws-checksums=0.1.11
+  - babel=2.9.1
+  - backcall=0.2.0
+  - beautifulsoup4=4.9.3
+  - binutils=2.36.1
+  - binutils_impl_linux-64=2.36.1
+  - binutils_linux-64=2.36
+  - black=21.7b0
+  - bleach=3.3.1
+  - blosc=1.21.0
+  - bokeh=2.3.3
+  - branca=0.4.2
+  - brotli=1.0.9
+  - brotli-bin=1.0.9
+  - brotlipy=0.7.0
+  - brunsli=0.1
+  - bs4=4.9.3
+  - bzip2=1.0.8
+  - c-ares=1.17.1
+  - c-compiler=1.2.0
+  - ca-certificates=2021.5.30
+  - cachetools=4.2.2
+  - cairo=1.16.0
+  - catalogue=2.0.4
+  - catboost=0.26
+  - certifi=2021.5.30
+  - cffi=1.14.6
+  - cfitsio=3.470
+  - cftime=1.5.0
+  - chardet=4.0.0
+  - charls=2.2.0
+  - charset-normalizer=2.0.0
+  - click=7.1.2
+  - click-plugins=1.1.1
+  - cligj=0.7.2
+  - cloudpickle=1.6.0
+  - clustergram=0.5.1
+  - cmake=3.19.7
+  - coincbc=2.10.5
+  - colorama=0.4.4
+  - contextily=1.1.0
+  - coverage=5.5
+  - cryptography=3.4.7
+  - curl=7.77.0
+  - cxx-compiler=1.2.0
+  - cycler=0.10.0
+  - cymem=2.0.5
+  - cython=0.29.24
+  - cython-blis=0.7.4
+  - cytoolz=0.11.0
+  - dask-core=2021.7.0
+  - dataclasses=0.8
+  - debugpy=1.4.0
+  - decorator=4.4.2
+  - defusedxml=0.7.1
+  - deprecation=2.1.0
+  - descartes=1.1.0
+  - dill=0.3.4
+  - docutils=0.17.1
+  - entrypoints=0.3
+  - esda=2.3.6
+  - et_xmlfile=1.0.1
+  - expat=2.4.1
+  - fastprogress=1.0.0
+  - feather-format=0.4.1
+  - filelock=3.0.12
+  - fiona=1.8.18
+  - flake8=3.9.2
+  - folium=0.12.0
+  - fontconfig=2.13.1
+  - freetype=2.10.4
+  - freexl=1.0.6
+  - fsspec=2021.7.0
+  - gcc_impl_linux-64=9.3.0
+  - gcc_linux-64=9.3.0
+  - gdal=3.2.1
+  - geographiclib=1.52
+  - geopandas=0.9.0
+  - geopandas-base=0.9.0
+  - geopy=2.2.0
+  - geos=3.9.1
+  - geotiff=1.6.0
+  - gettext=0.19.8.1
+  - gflags=2.2.2
+  - giddy=2.3.3
+  - giflib=5.2.1
+  - gitdb=4.0.7
+  - gitpython=3.1.19
+  - glog=0.5.0
+  - gmp=6.2.1
+  - gmpy2=2.1.0b5
+  - greenlet=1.1.0
+  - gxx_impl_linux-64=9.3.0
+  - gxx_linux-64=9.3.0
+  - hdbscan=0.8.27
+  - hdf4=4.2.15
+  - hdf5=1.10.6
+  - icu=68.1
+  - idna=3.1
+  - imagecodecs=2021.3.31
+  - imageio=2.9.0
+  - importlib-metadata=4.6.1
+  - inequality=1.0.0
+  - iniconfig=1.1.1
+  - intel-openmp=2021.3.0
+  - ipykernel=6.0.3
+  - ipyleaflet=0.14.0
+  - ipympl=0.7.0
+  - ipyparallel=6.3.0
+  - ipython=7.25.0
+  - ipython_genutils=0.2.0
+  - ipywidgets=7.6.3
+  - isort=5.9.2
+  - jax=0.2.17
+  - jaxlib=0.1.67
+  - jdcal=1.4.1
+  - jedi=0.18.0
+  - jinja2=3.0.1
+  - joblib=1.0.1
+  - jpeg=9d
+  - json-c=0.15
+  - json5=0.9.5
+  - jsonschema=3.2.0
+  - jupyter-lsp=1.4.0
+  - jupyter-lsp-python=1.4.0
+  - jupyter-server-mathjax=0.2.3
+  - jupyter_client=6.1.12
+  - jupyter_core=4.7.1
+  - jupyter_server=1.10.1
+  - jupyterlab=3.0.16
+  - jupyterlab_code_formatter=1.4.10
+  - jupyterlab_pygments=0.1.2
+  - jupyterlab_server=2.6.1
+  - jupyterlab_widgets=1.0.0
+  - jxrlib=1.1
+  - kealib=1.4.14
+  - kernel-headers_linux-64=2.6.32
+  - kiwisolver=1.3.1
+  - krb5=1.19.1
+  - lazy-object-proxy=1.6.0
+  - lcms2=2.12
+  - ld_impl_linux-64=2.36.1
   - legendgram=0.0.3
-  - mkl-service 
-  - mysql-connector-python 
-  - nbdime 
-  - networkx
-  - osmnx
-  - nltk=3.4.*
+  - lerc=2.2.1
+  - llvmlite=0.36.0
+  - locket=0.2.0
+  - lz4-c=1.9.3
+  - lzo=2.10
+  - mako=1.1.4
+  - mapclassify=2.4.2
+  - markupsafe=2.0.1
+  - matplotlib-base=3.4.2
+  - matplotlib-inline=0.1.2
+  - mccabe=0.6.1
+  - mercantile=1.2.1
+  - mgwr=2.1.2
+  - mistune=0.8.4
+  - mkl=2021.3.0
+  - mkl-service=2.4.0
+  - mock=4.0.3
+  - momepy=0.4.4
+  - more-itertools=8.8.0
+  - mpc=1.1.0
+  - mpfr=4.0.2
+  - mpmath=1.2.1
+  - munch=2.5.0
+  - murmurhash=1.0.5
+  - mypy_extensions=0.4.3
+  - nbclassic=0.3.1
+  - nbclient=0.5.3
+  - nbconvert=6.1.0
+  - nbdime=3.1.0
+  - nbformat=5.1.3
+  - ncurses=6.2
+  - nest-asyncio=1.5.1
+  - netcdf4=1.5.6
+  - networkx=2.6.1
+  - nltk=3.6.2
+  - nose=1.3.7
+  - notebook=6.4.0
+  - numba=0.53.1
+  - numexpr=2.7.3
+  - numpy=1.21.1
+  - olefile=0.46
+  - openjpeg=2.4.0
+  - openpyxl=3.0.7
+  - openssl=1.1.1k
+  - opt_einsum=3.3.0
+  - orc=1.6.7
+  - osmnx=1.1.1
+  - packaging=21.0
   - palettable=3.3.0
-  - pandana=0.5.1 # For pysal segregation module
+  - pandas=1.3.0
+  - pandoc=2.14.1
+  - pandocfilters=1.4.2
+  - parso=0.8.2
+  - partd=1.2.0
+  - pathspec=0.9.0
+  - pathy=0.6.0
+  - patsy=0.5.1
+  - pcre=8.45
+  - pexpect=4.8.0
+  - pickleshare=0.7.5
+  - pillow=8.2.0
+  - pip=21.1.3
+  - pixman=0.40.0
+  - plotly=5.1.0
+  - pluggy=0.13.1
   - pointpats=2.2.0
   - polyline=1.4.0
-  - psycopg2 
-  - pygeos=0.8
-  - pykrige=1.5.1 
-#  - pypdf2 # Overkill
-#  - pymc3 # Not well-supported on Windows 
-  - pysal=2.3.0
-  - python-language-server # Supports labextension
-  - qgrid 
-  - rasterio
-  - rasterstats
-  - scikit-learn
-  - scikit-image
-  - scipy
-  - seaborn 
-  - spacy=2.3.*
-  - sqlalchemy
-  - statsmodels 
-  - tabulate  # For exporting from pandas to markdown
-  - tzlocal 
-#- urbanaccess  # For pysal segregation module
-  - xlrd 
-  - xlsxwriter  
+  - pooch=1.4.0
+  - poppler=0.89.0
+  - poppler-data=0.4.10
+  - postgresql=13.3
+  - preshed=3.0.5
+  - proj=7.2.0
+  - prometheus_client=0.11.0
+  - prompt-toolkit=3.0.19
+  - pthread-stubs=0.4
+  - ptyprocess=0.7.0
+  - pulp=2.4
+  - py=1.10.0
+  - pyarrow=4.0.0
+  - pycodestyle=2.7.0
+  - pycparser=2.20
+  - pydantic=1.8.2
+  - pydocstyle=6.1.1
+  - pyflakes=2.3.1
+  - pygeos=0.10.1
+  - pygments=2.9.0
+  - pygpu=0.7.6
+  - pykrige=1.6.0
+  - pylint=2.9.5
+  - pymc3=3.11.2
+  - pynndescent=0.5.4
+  - pyopenssl=20.0.1
+  - pyparsing=2.4.7
+  - pyproj=3.1.0
+  - pyrsistent=0.17.3
+  - pysal=2.4.0
+  - pysocks=1.7.1
+  - pytables=3.6.1
+  - pytest=6.2.4
+  - pytest-cov=2.12.1
+  - python=3.9.6
+  - python-dateutil=2.8.0
+  - python-flatbuffers=2.0
+  - python-lsp-jsonrpc=1.0.0
+  - python-lsp-server=1.1.0
+  - python_abi=3.9
+  - pytz=2021.1
+  - pywavelets=1.1.1
+  - pyyaml=5.4.1
+  - pyzmq=22.1.0
+  - qgrid=1.3.1
+  - quantecon=0.5.1
+  - rasterio=1.2.6
+  - rasterstats=0.15.0
+  - re2=2021.04.01
+  - readline=8.1
+  - regex=2021.7.6
+  - requests=2.26.0
+  - requests-unixsocket=0.2.0
+  - rhash=1.4.1
+  - rope=0.19.0
+  - rtree=0.9.7
+  - s2n=1.0.10
+  - scikit-image=0.18.2
+  - scikit-learn=0.24.2
+  - scipy=1.7.0
+  - seaborn=0.11.1
+  - seaborn-base=0.11.1
+  - segregation=2.0.0
+  - semver=2.13.0
+  - send2trash=1.7.1
+  - setuptools=49.6.0
+  - shapely=1.7.1
+  - shellingham=1.4.0
+  - simplejson=3.17.3
+  - six=1.16.0
+  - smart_open=5.1.0
+  - smmap=3.0.5
+  - snappy=1.1.8
+  - sniffio=1.2.0
+  - snowballstemmer=2.1.0
+  - snuggs=1.4.7
+  - soupsieve=2.0.1
+  - spacy=3.1.1
+  - spacy-legacy=3.0.8
+  - spaghetti=1.6.2
+  - spglm=1.0.8
+  - spint=1.0.7
+  - splot=1.1.3
+  - spopt=0.1.2
+  - spreg=1.2.4
+  - spvcm=0.3.0
+  - sqlalchemy=1.4.22
+  - sqlite=3.36.0
+  - srsly=2.4.1
+  - statsmodels=0.12.2
+  - sympy=1.8
+  - sysroot_linux-64=2.12
+  - tabulate=0.8.9
+  - tbb=2020.2
+  - tenacity=8.0.1
+  - terminado=0.10.1
+  - testpath=0.5.0
+  - textblob=0.15.3
+  - theano-pymc=1.1.2
+  - thinc=8.0.8
+  - threadpoolctl=2.2.0
+  - tifffile=2021.4.8
+  - tiledb=2.2.9
+  - tobler=0.8.2
+  - toml=0.10.2
+  - tomli=1.0.4
+  - tomlkit=0.7.2
+  - toolz=0.11.1
+  - tornado=6.1
+  - tqdm=4.61.2
+  - traitlets=5.0.5
+  - traittypes=0.2.1
+  - typed-ast=1.4.3
+  - typer=0.3.2
+  - typing-extensions=3.10.0.0
+  - typing_extensions=3.10.0.0
+  - tzcode=2021a
+  - tzdata=2021a
+  - tzlocal=2.1
+  - ujson=4.0.2
+  - umap-learn=0.5.1
+  - urllib3=1.25.11
+  - wasabi=0.8.2
+  - wcwidth=0.2.5
+  - webencodings=0.5.1
+  - websocket-client=0.57.0
+  - wheel=0.36.2
+  - widgetsnbextension=3.5.1
+  - wrapt=1.12.1
+  - xarray=0.18.2
+  - xerces-c=3.2.3
+  - xlrd=2.0.1
+  - xlsxwriter=1.4.4
+  - xz=5.2.5
+  - yaml=0.2.5
+  - yapf=0.31.0
+  - zeromq=4.3.4
+  - zfp=0.5.5
+  - zipp=3.5.0
+  - zlib=1.2.11
+  - zstd=1.4.9
   - pip:
-    #- git+http://github.com/sevamoo/SOMPY#egg=sompy # Doesn't run in Python3
+    - anyascii==0.2.0
+    - boruta==0.3
+    - category-encoders==2.2.2
+    - colour==0.1.5
+    - contractions==0.0.52
+    - docopt==0.6.2
+    - dtreeviz==1.3
+    - gensim==3.8.3
+    - geofeather==0.3.0
+    - joypy==0.2.5
+    - jupyterlab-gitplus==0.3.2
+    - langdetect==1.0.9
+    - lightgbm==3.2.1
+    - matplotlib-scalebar==0.7.2
+    - mrmr==0.1
+    - num2words==0.5.10
+    - opencv-contrib-python-headless==4.5.3.56
+    - pyahocorasick==1.4.2
+    - python-graphviz==0.17
+    - scikit-posthocs==0.6.7
+    - sklearn==0.0
+    - smopy==0.0.7
     - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
-    - smopy # NOT a typo! Not the same thing as sompy!
-    - MulticoreTSNE
-    - scikit-posthocs
-    - wordcloud
-    - jupyter-lsp==0.9.2 # Supports labextension
-    - jupyterlab_gitplus # Supports serverextension
-#    - pdfkit # Overkill
-#    - pypdf2 
-#    - pyocr
-#    - wand 
+    - textsearch==0.0.21
+    - top2vec==1.0.26
+    - unidecode==1.2.0
+    - wordcloud==1.8.1
