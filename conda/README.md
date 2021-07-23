@@ -1,6 +1,8 @@
 # Installing Anaconda Python
 
-You will need [Anaconda Python](https://www.anaconda.com/distribution/#download-section) (Python 3) to be able to install the programming environment.
+**You are strongly encouraged to use the Docker image instead of installing Anaconda Python directly.** The basic reason for this is that you may encounter installation errors or version differences that mean your experience of runing the Spatial Data Science environment is seriously impaired.
+
+If you persist in wanting to install natively, then you will need [Anaconda Python](https://www.anaconda.com/distribution/#download-section) (Python 3) to be able to install the programming environment.
 
 #### Installing
 
@@ -20,20 +22,20 @@ To make this new 'configuration' visible in JupyterLab you then need to run the 
 
 ```bash
 conda activate sds2020
-python -m ipykernel install --name sds2020 --display-name "CASA2020" 
+python -m ipykernel install --name sds2021 --display-name "CASA2021" 
 ```
 
-**Note**: a key difference from users of the Vagrant approach is that _you_ will see a second tile called `CASA2020` when you start up Jupyter. Users of Vagrant see _only_ Python3. You should always use the CASA2020 tile (which represents a separate computing environment) in Anaconda.
+**Note**: when you connect to Jupyter, you should see a second tile called `CASA202`1. Users of Docker will see _only_ `Python3`. You should always use the `CASA2021` tile (which represents a separate computing environment) in Anaconda instead of the default `Python3` tile.
 
 #### Running
 
 Still using the Terminal/AnacondaPrompt type:
 ```bash
-conda activate sds2020
+conda activate sds2021
 jupyter lab
 ```
 
-Do **not** run Jupyter Lab from the Anaconda Navigator since it does not configure the spatial analysis libraries correctly.
+Do **not** run Jupyter Lab from the *Anaconda Navigator* since it does not configure the spatial analysis libraries correctly.
 
 ## Citing
 
