@@ -23,6 +23,4 @@ This draws heavily on Dani Arribas-Bel's work for Liverpool. If you use this, yo
 ```
 
 ## Planning
-- Investigate using [conda metachannel](https://github.com/regro/conda-metachannel) to speed up package resolution when building new image. Might work with a requirements.txt file that can be read by both conda and docker, as well as the [following approach](https://stackoverflow.com/questions/34911622/dockerfile-set-env-to-result-of-command) to writing/reading data dynamically in the Docker environment.
-- Investigate [mamba](https://github.com/TheSnakePit/mamba) as alternative to Metachannel.
 - Adapt Dani's Makefile for use with SDS and enabling install of matching env to Docker
