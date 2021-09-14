@@ -377,7 +377,7 @@ dependencies:
     - langdetect==1.0.9
     - lightgbm==3.2.1
     - matplotlib-scalebar==0.7.2
-    - mrmr==0.1
+#    - mrmr==0.1
     - num2words==0.5.10
     - opencv-contrib-python-headless==4.5.3.56
     - pyahocorasick==1.4.2
@@ -385,7 +385,7 @@ dependencies:
     - scikit-posthocs==0.6.7
     - sklearn==0.0
     - smopy==0.0.7
-    - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
+#    - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - textsearch==0.0.21
     - top2vec==1.0.26
     - unidecode==1.2.0
