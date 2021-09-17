@@ -12,7 +12,7 @@ You will then need to work out how to use the AnacondaPrompt (Windows) or Termin
 
 At this point you may start the installation by typing: 
 ```bash
-conda-env create -f environment_py.yml
+conda-env create -n sds2021 -f environment_py.yml
 ```
 And then hit the return key to run the command.
 
@@ -21,7 +21,7 @@ And then hit the return key to run the command.
 To make this new 'configuration' visible in JupyterLab you then need to run the following two commands...
 
 ```bash
-conda activate sds2020
+conda activate sds2021
 python -m ipykernel install --name sds2021 --display-name "CASA2021" 
 ```
 
