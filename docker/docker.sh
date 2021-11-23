@@ -11,7 +11,7 @@ WORK_DIR="${PWD}"
 # If you want to always bind work to a 
 # particular location
 #WORK_DIR="$HOME/Documents/git"
-
+PORT_NO=8888
 DOCKER_NM="sds"
 DOCKER_IMG="jreades/sds:2021"
 JUPYTER_PWD="sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10"
@@ -19,11 +19,11 @@ JUPYTER_PWD="sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10"
 if [ $1 = "start" ]; then
 	echo "Starting ${DOCKER_IMG}..."
 	if [[ "$OSTYPE" == "msys" ]]; then
-		winpty docker run --rm -d --name $DOCKER_NM -p 8888:8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --ServerApp.password=$JUPYTER_PWD --LabApp.password=$JUPYTER_PWD
+		winpty docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --ServerApp.password=$JUPYTER_PWD --LabApp.password=$JUPYTER_PWD
 	else
-		docker run --rm -d --name $DOCKER_NM -p 8888:8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --ServerApp.password=$JUPYTER_PWD --LabApp.password=$JUPYTER_PWD
+		docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --ServerApp.password=$JUPYTER_PWD --LabApp.password=$JUPYTER_PWD
 	fi
-	echo "*Should* have started on localhost:8888"
+	echo "*Should* have started on localhost:$PORT_NO"
 else
 	echo "Shutting down..."
 	CONTAINER=$(docker ps -aq -f name=$DOCKER_NM)
