@@ -1,32 +1,23 @@
 #!/bin/bash
-# Run using either docker.sh start or docker.sh stop
-# Also notice that you have two options for the WORK_DIR
-# which is the mount point for writeable files: it allows
-# the docker container to write to the host machine's 
-# file system.
+# Run using either `docker.sh start` or `docker.sh stop`
 
-# If you want to launch the container with
-# work mounting in different places
-WORK_DIR="${PWD}"
-# If you want to always bind work to a 
-# particular location
-#WORK_DIR="$HOME/Documents/git"
-PORT_NO=8888
-DOCKER_NM="sds"
-DOCKER_IMG="jreades/sds:2021"
-JUPYTER_PWD="sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10"
+# Key configuration parameters are set in config.sh -- this
+# makes it easy for us to set up new projects with minimal
+# effort: change the config file instead of the startup/shutdown
+# script!
+source config.sh
 
 if [ $1 = "start" ]; then
-	echo "Starting ${DOCKER_IMG}..."
+	echo "Starting up ${DOCKER_IMG}..."
 	if [[ "$OSTYPE" == "msys" ]]; then
-		winpty docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --ServerApp.password=$JUPYTER_PWD --LabApp.password=$JUPYTER_PWD
+		winpty docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=''
 	else
-		docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --ServerApp.password=$JUPYTER_PWD --LabApp.password=$JUPYTER_PWD
+		docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 	fi
-	echo "*Should* have started on localhost:$PORT_NO"
+	echo "Docker *should* have started on localhost:$PORT_NO"
 else
 	echo "Shutting down..."
 	CONTAINER=$(docker ps -aq -f name=$DOCKER_NM)
 	docker rm -f $CONTAINER
-	echo "*Should* have now shut down ${DOCKER_IMG}"
+	echo "Docker *should* have now shut down ${DOCKER_IMG}"
 fi
