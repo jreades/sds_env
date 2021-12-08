@@ -2,6 +2,8 @@
 
 You will need [Docker](https://www.docker.com) (Desktop) to be able to install the Spatial Data Science (SDS) environment. If you do not wish to create an account with Docker then you may want to follow advice [provided here](https://github.com/docker/docker.github.io/issues/6910#issuecomment-532393783) though we cannot condone it.
 
+One new interesting option is to include a VS-Code server with the Docker image (as an alternative to Jupyter) as outlined [here](https://github.com/ruanbekker/dockerfiles/tree/master/vscode).
+
 #### Installing
 
 You can then install this container by opening up a Shell/Terminal and simply running:
