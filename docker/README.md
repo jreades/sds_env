@@ -14,6 +14,8 @@ You can then install this container by opening up a Shell/Terminal and simply ru
 
 #### Running
 
+**Note**: if you are using a M1 Mac then you may need to add `--platform linux/amd64` option to the run commands below. I don't know if this will work as I don't have a M1 Mac to test.
+
 The container can be run in the Shell or Terminal as:
 
 > `docker run --name sds --rm -ti -p 8888:8888 -v "$(pwd):/home/jovyan/work" jreades/sds:2020b jupyter lab --LabApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10' --ServerApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'`
