@@ -147,6 +147,10 @@ conda config --append envs_dirs /shared/groups/.../casa/envs
 jupyter contrib nbextension install --user
 ```
 
+## To Dos
+
+- Add [mgwr](https://mgwr.readthedocs.io/en/latest/) to image? 
+
 ## Citing
 
 This draws heavily on Dani Arribas-Bel's work for Liverpool. If you use this, you should cite him.
