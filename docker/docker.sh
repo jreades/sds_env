@@ -7,17 +7,27 @@
 # script!
 source config.sh
 
-if [ $1 = "start" ]; then
-	echo "Starting up ${DOCKER_IMG}..."
+# For information about styling outputs, see this nice overview:
+#  https://askubuntu.com/a/985386
+if [[ $1 = "start" ]]; then
+	printf "Using image \e[1m%s\e[0m...\n" "$DOCKER_IMG"
 	if [[ "$OSTYPE" == "msys" ]]; then
-		winpty docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=''
+		winpty docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -p 8787:8787 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
 	else
-		docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+		PLATFORM=""
+		if [[ $(uname -p) == 'arm' ]]; then
+			PLATFORM="--platform linux/amd64"
+		fi
+		docker run --rm -d --name $DOCKER_NM $PLATFORM -p "$PORT_NO":8888 -p 8787:8787 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
 	fi
-	echo "Docker *should* have started on localhost:$PORT_NO"
-else
+	URL="localhost:$PORT_NO/lab/tree/work"
+	printf "Docker \e[3mshould\e[0m soon be available on: "
+	printf "\e[1;4;48:2::71:160:71m \e]8;;http://$URL\e\\$URL\e]8;;\e\\ \e[0m\n"
+elif [[ $1 = "stop" ]]; then
 	echo "Shutting down..."
 	CONTAINER=$(docker ps -aq -f name=$DOCKER_NM)
 	docker rm -f $CONTAINER
-	echo "Docker *should* have now shut down ${DOCKER_IMG}"
+	printf "Docker \e[3mshould\e[0m have now shut down the '%s' container...\n" "$DOCKER_NM"
+else
+	printf "You need to pass either \e[1;4mstart\e[0m or \e[1;4mstop\e[0m to this script.\n"
 fi
