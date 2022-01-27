@@ -16,12 +16,12 @@
 #--- Build from Jupyter-provided Minimal Install ---#
 # https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
 # Late-April 2021
-FROM jupyter/minimal-notebook:584f43f06586
+FROM jupyter/scipy-notebook:lab-3.2.3
 
 LABEL maintainer="j.reades@ucl.ac.uk"
 
-ENV env_nm 'sds2021'
-ENV kernel_nm 'SDS2021'
+ENV env_nm 'sds2022'
+ENV kernel_nm 'SDS2022'
 ENV yaml_nm 'conda.install.yml'
 ENV pip_nm 'pip.install.txt'
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -29,8 +29,8 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 #--- Python ---#
 INCLUDE+ ./docker/Dockerfile.python.install
 
-ENV PATH /opt/conda/envs/${env_nm}/bin:$PATH
-ENV PROJ_LIB /opt/conda/envs/${env_nm}/share/proj/
+ENV PATH /opt/conda/bin:$PATH
+ENV PROJ_LIB /opt/conda/share/proj/
 
 #--- JupyterLab config ---#
 USER root
@@ -46,10 +46,5 @@ RUN fix-permissions $CONDA_DIR \
 USER $NB_UID
 
 # Change depending on whether using base environment
-#RUN echo "export PROJ_LIB=/opt/conda/share/proj/" >> ~/.bashrc
-RUN echo "export PROJ_LIB=/opt/conda/envs/${env_nm}/share/proj/" >> ~/.bashrc
-
-#
-# To generate a new password on a machine with jupyter notebook libs installed: 
-# > python3 -c "from notebook.auth import passwd; print(passwd('YOUR PASSWORD HERE','sha1'))"
-# 
+RUN echo "export PROJ_LIB=/opt/conda/share/proj/" >> ~/.bashrc
+#RUN echo "export PROJ_LIB=/opt/conda/envs/${env_nm}/share/proj/" >> ~/.bashrc

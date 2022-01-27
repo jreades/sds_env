@@ -77,8 +77,6 @@ Do **not** run Jupyter Lab from the *Anaconda Navigator* since it does not confi
 
 ### **Creating an Environment (Staff)**
 
-
-
 1. Start up the UCL VPN.
 2. Connect to [JupyterHub](https://jupyter.data-science.rc.ucl.ac.uk/)
 3. Authenticate using UCL credentials.

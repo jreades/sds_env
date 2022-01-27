@@ -51,12 +51,14 @@ dependencies:
   - contextily 
   - cmake<3.20
   - cython
+  - dask
   - descartes
   - feather-format 
   - gensim 
   - geopandas
   - geopy 
   - hdbscan
+  - icecream
   - ipyleaflet 
   - ipympl 
   - ipyparallel 
