@@ -18,7 +18,13 @@ if [[ $1 = "start" ]]; then
 		if [[ $(uname -p) == 'arm' ]]; then
 			PLATFORM="--platform linux/amd64"
 		fi
-		docker run --rm -d --name $DOCKER_NM $PLATFORM -p "$PORT_NO":8888 -p 8787:8787 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
+		#docker run --rm -d --name $DOCKER_NM $PLATFORM -p "$PORT_NO":8888 -p 8787:8787 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
+		DASK_CMD=""
+		if [[ $DASK = true ]]; then
+			 DASK_CMD="-p ${DASK_NO}:8787"
+		fi
+		echo "'$DASK_CMD'"
+		docker run --rm -d --name $DOCKER_NM $PLATFORM -p "$PORT_NO":8888 $(echo "${DASK_CMD}") -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
 	fi
 	URL="localhost:$PORT_NO/lab/tree/work"
 	printf "Docker \e[3mshould\e[0m soon be available on: "

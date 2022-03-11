@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # What port should Docker listen on?
 PORT_NO=8888
+DASK_NO=8787
+
+# Are we using Dask?
+DASK=false
 
 # If you want to launch the container with
 # work mounting in different places then use this...
@@ -12,7 +16,7 @@ WORK_DIR="$HOME/Documents/git/"
 # copies at the same time.
 DOCKER_NM="sds"
 # The name of the Docker image to run
-DOCKER_IMG="jreades/sds:latest"
+DOCKER_IMG="jreades/sds:2022a"
 
 # If you want an actual password then you set this using something
 # like the following (see end of file for how to generate a new one):
