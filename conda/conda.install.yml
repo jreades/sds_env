@@ -1,57 +1,18 @@
-# OVERVIEW
-# This YAML script will attempt to install a Python virtual environment able to
-# support the requirements of a Spatial Data Science or Geocomputation programme.
-#
-# INSTALLATION
-# Note that, in the example commands below, you will need to replace {name} by the name 
-# value specified as a configuration parameter below (the first line that does *not* 
-# start with a hash (#). All the commands below should be run from the Terminal.
-#
-#######################
-# NOTE: in the below, wherever you see '{name}'
-# you should replace that with the name of the 
-# environment you are installing (e.g. `sds2020`).
-#######################
-#
-# If you've already installed this environment before:
-#   conda remove --name {name} --all
-#
 # To install/reinstall the environment:
-#   conda-env create -f environment.yml
+#   conda-env create -f conda.install.yml
 #
-# To install/update individual libraries you usually want to force the conda-forge channel:
-#   conda install -c conda-forge osmnx
-#
-# A nice way to set the display name for the environment after activating the env:
-#   conda activate {name}
-#   python -m ipykernel install --name {name} --display-name "Friendly Name"
-# To tidy up environments: 
-#   jupyter kernelspec list
-#   jupyter kernelspec uninstall unwanted-kernel 
-#
-# LAUNCH
-# You can launch the 'old' notebook server by simply running:
-#   jupyter notebook
-# The more modern jupyter lab only seems to be launchable from within an environment:
-#   conda activate {name}
-#   jupyter lab
-#
-# CONFIGURATION PARAMETERS
-name: sds2021
+# name: sds2022
 channels:
   - conda-forge
   - defaults
 dependencies:
   - pip 
-  - beautifulsoup4
   - black # Supports code formatter labextension
-  - bokeh 
   - catboost
   - clustergram
   - contextily 
   - cmake<3.20
-  - cython
-  - dask
+  - dash
   - descartes
   - feather-format 
   - gensim 
@@ -63,8 +24,11 @@ dependencies:
   - ipympl 
   - ipyparallel 
   - ipywidgets 
-  - jupyterlab=3
+  - jupyter_bokeh
   - jupyterlab_code_formatter # Supports labextension
+  - jupyter-dash # Plotly support
+  - jupyterlab-geojson
+  - jupyterlab-variableinspector
   - jupyter-lsp-python # Provides LSP Extension + Server
   - legendgram 
   - mkl-service 
@@ -72,12 +36,13 @@ dependencies:
   - nbdime 
   - networkx 
   - nltk 
+  - numba
   - osmnx
-  - pandas 
   - palettable 
   - pointpats
   - polyline
   - plotly
+  - psycopg2
   - pygeos
   - pymc3
   - pykrige
@@ -86,17 +51,13 @@ dependencies:
   - rasterio 
   - rasterstats 
   - scipy
-  - scikit-learn
-  - scikit-image
   - seaborn
   - spacy 
-  - sqlalchemy 
-  - statsmodels
+  - spacy[transformer] 
   - tabulate  # For exporting from pandas to markdown
   - textblob 
   - tzlocal 
   - umap-learn
-  - xlrd
   - openpyxl
   - xlsxwriter
   - pip:
@@ -107,17 +68,17 @@ dependencies:
     - geofeather 
     - git+https://github.com/smazzanti/mrmr # Supports feature selection
     - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
-    - jupyterlab_gitplus # Supports serverextension
+    - joypy
+    - jupytext
+    - kneed
     - langdetect
     - lightgbm 
     - matplotlib-scalebar 
     - mgwr
+    - num2words
     - scikit-posthocs
     - smopy # NOT a typo! Not the same thing as sompy!
     - top2vec
-    - xgboost
-    - wordcloud
-    - joypy
     - unidecode
-    - num2words
-    - opencv-contrib-python-headless # Open Computer Vision tools
+    - wordcloud
+    - xgboost

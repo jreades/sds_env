@@ -1,22 +1,19 @@
 # syntax = edrevo/dockerfile-plus
 # To make the above work, you need to add 
 # `export DOCKER_BUILDKIT=1` (without the back-tics)
-# to your .rc (.zshrc/.bashrc) file
+# to your .rc (.zshrc/.bashrc) file. This is *only*
+# needed when building from source. Otherwise just pull
+# as below.
 
-# How to pull and run this image (where the full image name is jreades/sds:2021a)
-# > export IMG_NM=sds:2021a
+# How to pull and run this image:
+# > export IMG_NM=sds:XXXX (where XXXX is the version you wish to run)
 # > docker pull jreades/${IMG_NM}
-# > docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work jreades/${IMG_NM} start.sh jupyter lab
-#
-# How to build and push
-# > export IMG_NM=sds:2021a && docker image build --tag jreades/${IMG_NM} --compress --file ./docker/Dockerfile.master .
-# > docker login docker.io
-# > docker push jreades/${IMG_NM}
+# > docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work jreades/${IMG_NM} start.sh jupyter lab (see also the docker.sh script)
 
 #--- Build from Jupyter-provided Minimal Install ---#
 # https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
-# Late-April 2021
-FROM jupyter/scipy-notebook:lab-3.2.3
+# Early February 2022
+FROM jupyter/scipy-notebook:lab-3.2.9
 
 LABEL maintainer="j.reades@ucl.ac.uk"
 

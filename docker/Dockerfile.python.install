@@ -6,7 +6,8 @@ RUN conda install --freeze-installed --yes mamba \
 
 SHELL ["/bin/bash", "-c"]
 COPY ./conda/${yaml_nm} ./
-RUN mamba env create -n ${env_nm} --quiet --file ./${yaml_nm} \
+#RUN mamba env create -n ${env_nm} --quiet --file ./${yaml_nm} \
+RUN mamba env update -n base --quiet --file ./${yaml_nm} \
     && conda clean --all --yes --force-pkgs-dirs \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
@@ -16,13 +17,16 @@ RUN mamba env create -n ${env_nm} --quiet --file ./${yaml_nm} \
     && rm ./${yaml_nm}
 
 # Pre-cache fonts
-RUN /opt/conda/envs/${env_nm}/bin/python -c "import matplotlib.pyplot;"
+#RUN /opt/conda/envs/${env_nm}/bin/python -c "import matplotlib.pyplot;"
+RUN /opt/conda/bin/python -c "import matplotlib.pyplot;"
 
 # Set up code formatting cache
 USER $NB_UID
 RUN mkdir -p "/home/$NB_USER/.cache/black/$(black --version | cut -d ' ' -f 3)" \
-#    && black $(find /opt/conda/envs/${env_nm}/lib -name "black.py") \
-    && /opt/conda/envs/${env_nm}/bin/python -c "import logging; logging.basicConfig(level='INFO'); import black"
+    && black $(find /opt/conda/lib -name "black.py") --code "print ( 'hello, world' )" \
+    && /opt/conda/bin/python -c "import logging; logging.basicConfig(level='INFO'); import black"
+#    && black $(find /opt/conda/envs/${env_nm}/lib -name "black.py") --code "print ( 'hello, world' )" \
+#    && /opt/conda/envs/${env_nm}/bin/python -c "import logging; logging.basicConfig(level='INFO'); import black"
 
 #--- Preload the NLTK/Spacy libs ---#
 ENV GENSIM_DATA_DIR=/home/${NB_USER}/work/gensim-data
@@ -32,7 +36,8 @@ RUN echo "export GENSIM_DATA_DIR=${GENSIM_DATA_DIR} # python -m gensim.downloade
 RUN echo "export SPACY_DATA_DIR=${SPACY_DATA_SIR} # spacy.load("/path/to/en_core_web_sm")" >> ~/.bashrc
 
 # This bloats the Docker image but not massively
-RUN /opt/conda/envs/${env_nm}/bin/python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger')"
+#RUN /opt/conda/envs/${env_nm}/bin/python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger')"
+RUN /opt/conda/bin/python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger')"
 
 # This bloats the Docker image massively
 # RUN python -m spacy download en_core_web_sm
