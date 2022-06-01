@@ -38,6 +38,12 @@ INCLUDE+ ./docker/Dockerfile.jupyterlab.extensions
 RUN fix-permissions $CONDA_DIR \
     && fix-permissions $HOME
 
+#--- Quarto ---#
+ENV TEMP_DEB="quarto.deb"
+RUN wget -O "$TEMP_DEB" 'https://github.com/quarto-dev/quarto-cli/releases/download/v0.9.495/quarto-0.9.495-linux-amd64.deb' \
+    && dpkg -i "$TEMP_DEB" \
+    && rm -f "$TEMP_DEB"
+
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
 USER $NB_UID

@@ -66,8 +66,8 @@ dependencies:
     - dtreeviz
     - dtreeviz[xgboost]
     - geofeather 
-    - git+https://github.com/smazzanti/mrmr # Supports feature selection
-    - git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
+    #- git+https://github.com/smazzanti/mrmr # Supports feature selection
+    #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - joypy
     - jupytext
     - kneed
