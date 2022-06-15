@@ -12,8 +12,8 @@
 
 #--- Build from Jupyter-provided Minimal Install ---#
 # https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
-# Early February 2022
-FROM jupyter/scipy-notebook:lab-3.2.9
+# Mid-June 2022
+FROM jupyter/scipy-notebook:lab-3.4.3
 
 LABEL maintainer="j.reades@ucl.ac.uk"
 
