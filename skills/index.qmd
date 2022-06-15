@@ -1,0 +1,10 @@
+# Soft Skills
+
+We think that there are some fundamentally important soft-skills for successfully completing a MSc: we try to teach these in our modules as well, but we think it's useful to flag them here as well:
+
+1. Paying attention: learning how to [deal with distractions](./attention.qmd) is essential to maintaining focus and retaining the infromation you're taking in through reading and coding.
+2. Reading: too many students try to read either *everything* or *nothing* when they should be doing something in between, so we've tried to collect some ideas on [how to read](./reading.qmd) to help you get started.
+3. Thinking: the other big challenge for many students is learning how to approach literature and learning critically so that you learn how to integrate ideas and form your own. Learning [how to think](./thinking.qmd) for yourself is essential.
+4. Asking for help: just because we want you to become an organised, motivated self-learner *does not* mean we don't want to help you achieve this! Suffering in silence is not going to get you extra marks, so we've also offered tips on [how to ask for help](./help.qmd) in a way that is most likely to get you what you need.
+
+These pages are by no means complete, nor will the advice they offer work for everyone, but it is **absolutely essential** that you are as aware of *how you learn* as you are of *what you are learning*. The skill of 'meta-cognition' is one that will allow you to carry on learning effectively for the rest of your life!

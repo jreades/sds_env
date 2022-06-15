@@ -1,0 +1,10 @@
+version: 2022
+
+module:
+  code: "casa0013"
+  name: "Foundations of Spatial Data Science"
+  abbr: "fsds"
+
+env:
+  display: "SDS"
+  name: "sds2022"

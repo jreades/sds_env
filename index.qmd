@@ -1,0 +1,40 @@
+# CASA's Urban Spatial Science Platform
+
+In order to get you started on your spatial and data science 'journey' you will need to follow the guidance provided on the pages we've linked to below. These are divided into three sections: 
+
+## Requirements
+
+Before trying to do anything else you should review the 'requirements'. As part of that, you'll need to complete the basic [health check](./req/health.qmd), which also includes our *recommendations* if you are considering buying a new computer when you start your studies. Once you know that your machine and operating system are up-to-date, you should install the [basic utilities](./req/base.qmd) that will enable you to complete installation of the programming environment. We also provide information about [Code Camp](./req/code_camp.qmd) which is a self-paced introduction to the fundamentals of programming in Python.
+
+## Setup
+
+Installing the computing environment entails thinking not *just* about how you [run code](./setup/env.qmd), but also how you [manage it](./setup/git.qmd) and [document it](./setup/markdown.qmd). In fact, it's possible to run code [without installing anything at all](./setup/no_install.qmd), but by signing up for, installing, or configuring these services *now* you know that you are ready to roll!
+
+## Soft-Skills
+
+It might seem strange to hav ea section on soft-skills as part of our 'preparing to run the Urban Spatial Science platform web site, but knowing [how to ask for help](./skills/help.qmd) and [how to study effectively](./skills/attention.qmd) is *almost* as important as being able to run the code. Almost. Moreover, the skills we discuss here aren't specific to any one module so we've put them here as part of your orientation.
+
+## To Dos
+
+::: {.callout-important}
+- [ ] Add [mgwr](https://mgwr.readthedocs.io/en/latest/) to image? 
+- [ ] Add [VS Code Server]() to image so can use VSCode as well as jupyter lab
+:::
+
+## Citing
+
+This draws heavily on Dani Arribas-Bel's work for Liverpool. If you use this, you should cite him.
+
+[![DOI](https://zenodo.org/badge/65582539.svg)](https://zenodo.org/badge/latestdoi/65582539)
+
+```bibtex
+@software{hadoop,
+  author = {{Dani Arribas-Bel}},
+  title = {\texttt{gds_env}: A containerised platform for Geographic Data Science},
+  url = {https://github.com/darribas/gds_env},
+  version = {3.0},
+  date = {2019-08-06},
+}
+```
+
+- 

@@ -1,0 +1,92 @@
+project:
+  type: website
+  output-dir: docs
+  preview:
+    port: 4201
+  render:
+    - "*.qmd"
+  resources:
+    - "img"
+
+website:
+  title: "CASA Computing Environment"
+  author: "Jon Reades"
+  image: "img/CASA_Logo_no_text.png"
+  date: "6/1/2022"
+  repo-url: https://github.com/jreades/sds_env/
+  repo-actions: [issue]
+  number-depth: 2
+  favicon: "/img/favicon.ico"
+  page-navigation: true
+  reader-mode: true
+  page-footer: 
+    left: "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 2022, Jon Reades &amp; CASA Teaching Team"
+    center: "![](/img/favicon-16x16.png){.height:10px} CASA Computing Environment"
+    right: 
+      - icon: github
+        href: https://github.com/jreades/sds_env
+      - icon: twitter 
+        href: https://twitter.com/CASAUCL
+  navbar:
+    background: primary
+    search: true
+    logo: "/img/CASA_Logo_no_text.png"
+    collapse: true
+    collapse-below: md
+    left:
+      - text: "Welcome"
+        href: index.qmd
+      - sidebar:requirements
+      - sidebar:software
+      - sidebar:skills
+
+  sidebar:
+    - id: requirements
+      title: "Requirements"
+      style: "docked"
+      collapse-level: 2
+      background: light
+      contents:
+        - text: "Health Check"
+          href: req/health.qmd
+        - text: "Base Utilities"
+          href: req/base.qmd
+        - text: "Code Camp"
+          href: req/code_camp.qmd
+
+    - id: software
+      title: "Setup"
+      contents:
+        - setup/git.qmd
+        - setup/markdown.qmd
+        - setup/env.qmd
+        - text: "No Install Options"
+          href: setup/no_install.qmd
+
+    - id: skills
+      title: "Soft Skills"
+      contents:
+        - text: "Your Attention Please"
+          href: skills/attention.qmd
+        - text: "How to Read"
+          href: skills/reading.qmd
+        - text: "How to Think"
+          href: skills/thinking.qmd
+        - text: "Getting Help"
+          href: skills/help.qmd
+
+highlight-style: pygments
+format:
+  html:
+    theme: 
+      - minty
+      - css/web.scss
+    code-copy: true
+    code-link: true
+    #cover-image: cover.png
+    toc: true
+    toc-title: "On this page"
+    toc-depth: 2
+    toc_float: 
+      collapsed: false
+      smooth_scroll: true

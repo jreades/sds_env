@@ -2,3 +2,5 @@ cloud-config.yml
 .*
 *.ova
 notebooks
+
+/.quarto/

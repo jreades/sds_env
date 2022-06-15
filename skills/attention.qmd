@@ -1,0 +1,24 @@
+# Managing Your Attention
+
+## The Problem of Distraction
+
+Learning to code is *hard work* and I'm pretty sure that I'm a lot less exciting than your average YouTube star. So if I have to compete with YouTube (or with your friends on WhatsApp, Snapchat, WeChat, or whatever) for your attention then I'll probably lose. And your computer and phone are *designed* to distract you because they are interested in *engagement*---they don't care that you should be engaging with your studies, they want you to pick them up and use them. This is why you get so many notifications!
+
+There is plenty of evidence to back this up:
+
+- [Distractions make learning harder](https://www.cbsnews.com/news/distractions-make-learning-harder/)
+- [Nearly half of students distracted by technology](https://www.insidehighered.com/digital-learning/article/2019/07/10/survey-shows-nearly-half-students-distracted-technology)
+- [The effect of cellphones on attention and learning...](https://www.sciencedirect.com/science/article/abs/pii/S0747563218301912)
+- [Distractions make retaining info harder](https://www.uofmhealth.org/news/archive/201712/distractions-make-retaining-information-harder)
+- [The interrupted learner: how distractions during live and video lectures influence learning outcomes](https://anatomypubs.onlinelibrary.wiley.com/doi/abs/10.1002/ase.1754)
+
+So my recommendations for studying (online *or* offline) are:
+
+- **Turn off as many notifications as possible**. On the Mac there is a 'Do not disturb' setting that you can enable in the Notifications section of your `System Preferences`. You can set it to turn on by time, and also add a setting short-cut to your 'Notification Centre' (upper-right corner of your desktop). 
+- **Uninstall messaging apps that you cannot turn off**. If quitting the app disables notifications then that's fine. But if you can't disable notifications then I'd suggest uninstalling the messaging app entirely. Facebook Messenger, for instance, is a massive memory-hog and usually available on the desktop UI anyway.
+- **Block access to distracting web sites**. There are a number of tools that you can set up to block access to Facebook and other social media sites at set times of day. My Achilles heel is the news: if I'm struggling I tend to read news articles, so if I really need to make sure I don't have the browser open to the home page of my favourite news sites.
+- **Work out a schedule**. It's a lot easier to avoid distractions if you have a routine that enables you to say "OK, I will work from 9–11 and *then* have a look at my email." It is easier to be in control if you can give yourself rewards *later*. And if you get into a routine, as a parent probably suggested when you were an undergraduate (certainly mine did and I ignored them), then you'll find that your 'productivity' improves dramatically. My mother was right, dammit.
+
+## The Problem of No Breaks
+
+Frequent distraction is *one* problem, but (in a sense) getting *enough* distraction is another. As [this piece](https://forge.medium.com/the-2-minute-reset-to-take-before-every-meeting-a8da97857681) suggests, it's also important that you give yourself downtime between Zoom/Teams/whatever sessions. I will try to remember to bake these into our 'lectures', but you should also *suggest* breaks if you feel yourself flagging! This also applies, however, to your wider degree: Masters degrees are *intense* and you need to give yourself permission for a timeout... stepping away from the computer and going for a walk, doing some knitting, taking a weekend to visit another city or go on a camping trip, whatever floats your boat!

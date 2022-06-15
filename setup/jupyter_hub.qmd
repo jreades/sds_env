@@ -1,0 +1,51 @@
+# Using UCL JupyterHub
+
+## Creating an Environment (Staff)
+
+1. Start up the UCL VPN.
+2. Connect to [JupyterHub](https://jupyter.data-science.rc.ucl.ac.uk/)
+3. Authenticate using UCL credentials.
+4. Create a new terminal: File > New > Terminal
+
+## Instructions from ISD
+
+I now think that these instructions are not correct (see below for the alternative) in the sense the use of a symlink can cause problems and duplicated environments down the line. Anyway, type the following, but note that you need to replace `...` with the appropriate path (this will be obvious logged in):
+
+```shell
+course_name="{{< var module.code >}}"
+
+ln -s /shared/.../casa/${course_name} $HOME/${course_name}
+
+conda config --add envs_dirs /shared/groups/.../casa/${course_name}/envs
+
+curl -o /tmp/{{< var module.code >}}.yml https://raw.githubusercontent.com/jreades/sds_env/master/conda/environment_py.yml
+
+conda env create -n {{< var module.code >}} -f /tmp/{{< var module.code >}}.yml
+```
+
+## Revised Instructions
+
+I now think that the correct way to do this is:
+
+```shell
+course_name="{{< var module.code >}}"
+
+conda config --add envs_dirs /shared/groups/.../casa/envs
+
+curl -o /tmp/{{< var module.code >}}.yml https://raw.githubusercontent.com/jreades/sds_env/master/conda/environment_py.yml
+
+conda env create -p /shared/groups/.../casa/envs -f /tmp/{{< var module.code >}}.yml
+```
+
+However, note that this now means you have `.../casa/{{< var module.code >}}/envs/{{< var module.code >}}...` so it might be more sensible to set `envs_dirs` to just `...casa/envs` and then have per-module environments underneath that.
+
+## Tweaks to environyment_py.yml
+
+Two shortcomings in the existing approach of generating `environment_py.yml` were identified and need to be tweaked in the Makefile:
+
+1. Remove anything with ‘linux’ in it 
+2. Remove SOMPY and `mrmr`
+3. Remove version from gitpython.
+4. Remove python-graphviz entirely.
+
+Additional issues may exist with replication to non-Linux systems.
