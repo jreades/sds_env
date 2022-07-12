@@ -18,20 +18,23 @@ if [[ $1 = "start" ]]; then
 
 	# Try to deal with issues relating to the operating system
 	# in which Docker is running. 
+	WIN_CMD=""
 	if [[ "$OSTYPE" == "msys" ]]; then
-		winpty docker run --rm -d --name $DOCKER_NM -p "$PORT_NO":8888 -p 8787:8787 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
-	else
-		PLATFORM=""
-		if [[ $(uname -p) == 'arm' ]]; then
-			PLATFORM="--platform linux/amd64"
-		fi
-		#docker run --rm -d --name $DOCKER_NM $PLATFORM -p "$PORT_NO":8888 -p 8787:8787 -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
-		DASK_CMD=""
-		if [[ $DASK = true ]]; then
-			 DASK_CMD="-p ${DASK_NO}:8787"
-		fi
-		docker run --rm -d --name $DOCKER_NM $PLATFORM -p "$PORT_NO":8888 $(echo "${DASK_CMD}") -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
+		WIN_CMD="winpty"
 	fi
+	PLATFORM=""
+	if [[ $(uname -p) == 'arm' ]]; then
+		PLATFORM="--platform linux/amd64"
+	fi
+	DASK_CMD=""
+	if [[ $DASK = true ]]; then
+		 DASK_CMD="-p ${DASK_PORT}:8787"
+	fi
+	QUARTO_CMD=""
+	if [[ $QUARTO = true ]]; then
+		QUARTO_CMD="-p ${QUARTO_PORT}:4200"
+	fi
+	$(echo "${WIN_CMD}") docker run --rm -d --name $DOCKER_NM $(echo "${PLATFORM}") -p "$JUPYTER_PORT":8888 $(echo "${DASK_CMD}") $(echo "${QUARTO_CMD}") -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
 
 	# Work out the URL to show at the end -- by default 
 	# we'll show the JupyterLab starting point, *but* if
