@@ -37,7 +37,13 @@ If you are looking for a recommendation as to what to buy:
 2. Don't worry about getting the biggest hard drive, get the fastest one you can. You should get a SSD (Solid State Drive), but get a M2 type SSD if you can afford it and it's available for your system.
 3. Only after you've sorted this out should you look for the fastest chipset that's still within your budget.
 
-Should you buy a Windows, Linux, or Apple machine? You should probably stick with whatever you're familiar with since learning your way around a new Operating System while *also* learning to code is just raising the bar unnecessarily. Around CASA we use a mix of all three, and you can probably find as many opinions as there are staff members.
+#### Should you buy a Windows, Linux, or Apple machine? 
+
+You should probably stick with whatever you're familiar with since learning your way around a new Operating System while *also* learning to code is just raising the bar unnecessarily. Around CASA we use a mix of all three, and you can probably find as many opinions as there are staff members.
+
+#### Should you buy a M2 or M1 Mac?
+
+It depends. Here's a [good article from MacWorld](https://www.macworld.com/article/785824/m2-vs-m1-pro-max-ultra-performance-graphics.html) covering the pros and cons. Short answer: right *now* (June 2022) the M1 is probably faster for most data science applications, but expect that to have changed by June 2023. But either way: a fast chip with not enough RAM will be much slower than a slow chip with abundant RAM.
 
 ::: {.callout-tip}
 ## Saving Money
