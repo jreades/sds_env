@@ -49,7 +49,7 @@ if [[ $1 = "start" ]]; then
 	# the URL to .../lab/true/work/app. 
 	# A more secure alternative might be to add ~/git/libs 
 	# as a separate directory that's accessible to Docker.
-	URL="localhost:$PORT_NO/lab/tree/work"
+	URL="localhost:${JUPYTER_PORT}/lab/tree/work"
 	DIR="$(basename "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" && echo x)"
 	DIR="${DIR%x}"
 	if [[ $DIR==$DOCKER_NM ]]; then
