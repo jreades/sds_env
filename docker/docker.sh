@@ -5,7 +5,18 @@
 # makes it easy for us to set up new projects with minimal
 # effort: change the config file instead of the startup/shutdown
 # script!
-source config.sh
+if [[ $2 ]]; then
+	if [[ $2 == *.sh ]]; then
+		echo "Using configuration details from $2"
+		source $2
+	else
+		echo "Using configuration details from $2.sh"
+		source "$2.sh"
+	fi
+else
+	echo "Using default configuration as congif.sh."
+	source config.sh
+fi
 
 err_report() {
 	printf "Docker \e[3mhas\e[0m have now shut down the '%s' container...\n" "$DOCKER_NM"
