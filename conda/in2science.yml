@@ -1,0 +1,44 @@
+# To install/reinstall the environment:
+#   conda-env create -f conda.install.yml
+#
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - clustergram
+  - contextily 
+  - geopandas
+  - geopy 
+  - ipykernel
+  - ipywidgets 
+  - ipyleaflet 
+  - ipympl 
+  - ipyparallel 
+  - ipywidgets 
+  - jupyter_bokeh
+  - jupyter-dash # Plotly support
+  - jupyterlab-geojson
+  - jupyterlab
+  - legendgram 
+  - nb_conda_kernels
+  - nbclient 
+  - nodejs
+  - palettable 
+  - pandas 
+  - plotly
+  - pygeos
+  - pysal
+  - qgrid 
+  - scipy
+  - seaborn
+  - scikit-learn 
+  - tabulate  # For exporting from pandas to markdown
+  - umap-learn
+  - xlsxwriter
+  - pip:
+    - geofeather 
+    - joypy
+    - jupytext
+    - kneed
+    - matplotlib-scalebar 
