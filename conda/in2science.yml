@@ -1,5 +1,11 @@
-# To install/reinstall the environment:
-#   conda-env create -f conda.install.yml
+# To install/reinstall the environment in a RaspberryPi4:
+#  1. Download Miniforge: github.com/conda-forge/miniforge (probably aarch64)
+#  2. Follow install directions here: forums.raspberrypi.com/viewtopic.php?t=316338 (I'd suggest allowing base to remain the default)
+#  3. Check that the base environment is active.
+#  4. Install this YAML file: conda env update -f in2science.yml
+#  5. Optionally speciy the name using iPyKernel
+#  6. Run jupyter lab
+#  7. Optionally disable the kernelspace warning by editing /home/pi/miniforge3/etc/jupyter/jupyter_config.json
 #
 channels:
   - conda-forge
