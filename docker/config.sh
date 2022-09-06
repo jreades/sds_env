@@ -18,7 +18,7 @@ WORK_DIR="$HOME/Documents/git/"
 # copies at the same time.
 DOCKER_NM="sds"
 # The name of the Docker image to run
-DOCKER_IMG="jreades/sds:2022d"
+DOCKER_IMG="jreades/sds:2022"
 
 # If you want an actual password then you set this using something
 # like the following (see end of file for how to generate a new one):
