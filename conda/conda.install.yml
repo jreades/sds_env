@@ -31,6 +31,7 @@ dependencies:
   - jupyterlab-variableinspector
   - jupyter-lsp-python # Provides LSP Extension + Server
   - legendgram 
+  - lxml
   #- mkl-service 
   - momepy
   - nbdime 
@@ -47,7 +48,7 @@ dependencies:
   - pymc3
   - pykrige
   - pysal
-  - qgrid 
+  #- qgrid 
   - rasterio 
   - rasterstats 
   - scipy

@@ -1,4 +1,5 @@
 #!/bin/bash
+# set -xe # Enable debugging of each command
 # Run using either `docker.sh start` or `docker.sh stop`
 
 # Key configuration parameters are set in config.sh -- this
@@ -14,7 +15,7 @@ if [[ $2 ]]; then
 		source "$2.sh"
 	fi
 else
-	echo "Using default configuration as congif.sh."
+	echo "Using default configuration as config.sh."
 	source config.sh
 fi
 
@@ -43,9 +44,14 @@ if [[ $1 = "start" ]]; then
 	fi
 	QUARTO_CMD=""
 	if [[ $QUARTO = true ]]; then
-		QUARTO_CMD="-p ${QUARTO_PORT}:4200"
+		printf "Quarto enabled in config file, run \e[1;4mquarto preview --host 0.0.0.0 --port ${QUARTO_PORT}\e[0m to start this service.\nNote that the port in the _quarto.yml configuration file should also be set to ${QUARTO_PORT} (from config.sh).\n"
+		QUARTO_CMD="-p ${QUARTO_PORT}:${QUARTO_PORT}"
 	fi
-	$(echo "${WIN_CMD}") docker run --rm -d --name $DOCKER_NM $(echo "${PLATFORM}") -p "$JUPYTER_PORT":8888 $(echo "${DASK_CMD}") $(echo "${QUARTO_CMD}") -v "$WORK_DIR":/home/jovyan/work $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
+	NETWORK_CMD=""
+	if [ ${DOCKER_NET:+x} ]; then
+		NETWORK_CMD="--net ${DOCKER_NET}"
+	fi
+	$(echo "${WIN_CMD}") docker run --rm -d --name $DOCKER_NM $(echo "${NETWORK_CMD}") $(echo "${PLATFORM}") -p "$JUPYTER_PORT":8888 $(echo "${DASK_CMD}") $(echo "${QUARTO_CMD}") -v "$WORK_DIR":/home/jovyan/work -v "$HOME/.vscode/containers/$DOCKER_NM-extensions:/home/jovyan/.vscode-server/extensions" -v "$HOME/.vscode/containers/$DOCKER_NM-insiders:/home/jovyan/.vscode-server-insiders" $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
 
 	# Work out the URL to show at the end -- by default 
 	# we'll show the JupyterLab starting point, *but* if

@@ -40,14 +40,29 @@ RUN fix-permissions $CONDA_DIR \
 
 #--- Quarto ---#
 ENV TEMP_DEB="quarto.deb"
-RUN wget -O "$TEMP_DEB" 'https://github.com/quarto-dev/quarto-cli/releases/download/v0.9.629/quarto-0.9.495-linux-amd64.deb' \
-    && dpkg -i "$TEMP_DEB" \
-    && rm -f "$TEMP_DEB" \
-    && echo quarto --version
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    pandoc \
+    pandoc-citeproc \
+    curl \
+    gdebi-core \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
+RUN gdebi --non-interactive quarto-linux-amd64.deb
+RUN rm quarto-linux-amd64.deb
 
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
 USER $NB_UID
+
+# VSCode Extension Folder (optional usage)
+ARG USERNAME='jovyan'
+
+RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
+             /home/$USERNAME/.vscode-server-insiders/extensions \
+    && chown -R $USERNAME \ 
+             /home/$USERNAME/.vscode-server \
+             /home/$USERNAME/.vscode-server-insiders
 
 # Change depending on whether using base environment
 RUN echo "export PROJ_LIB=/opt/conda/share/proj/" >> ~/.bashrc

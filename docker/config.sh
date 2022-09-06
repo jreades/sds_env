@@ -2,7 +2,7 @@
 # What port should Docker listen on?
 JUPYTER_PORT=8888
 DASK_PORT=8787
-QUARTO_PORT=4200
+QUARTO_PORT=4201
 
 # Are we using Dask or Quarto?
 DASK=false
@@ -18,7 +18,7 @@ WORK_DIR="$HOME/Documents/git/"
 # copies at the same time.
 DOCKER_NM="sds"
 # The name of the Docker image to run
-DOCKER_IMG="jreades/sds:2022c"
+DOCKER_IMG="jreades/sds:2022d"
 
 # If you want an actual password then you set this using something
 # like the following (see end of file for how to generate a new one):

@@ -1,5 +1,7 @@
 project:
   type: website
+  #author: "Jon Reades"
+  #date: "6/1/2022"
   output-dir: docs
   preview:
     port: 4201
@@ -10,12 +12,9 @@ project:
 
 website:
   title: "CASA Computing Environment"
-  author: "Jon Reades"
   image: "img/CASA_Logo_no_text.png"
-  date: "6/1/2022"
   repo-url: https://github.com/jreades/sds_env/
   repo-actions: [issue]
-  number-depth: 2
   favicon: "/img/favicon.ico"
   page-navigation: true
   reader-mode: true
@@ -29,6 +28,7 @@ website:
         href: https://twitter.com/CASAUCL
   navbar:
     background: primary
+    number-depth: 2
     search: true
     logo: "/img/CASA_Logo_no_text.png"
     collapse: true
@@ -76,6 +76,7 @@ website:
           href: skills/help.qmd
 
 highlight-style: pygments
+
 format:
   html:
     theme: 
