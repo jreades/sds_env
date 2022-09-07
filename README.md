@@ -8,7 +8,7 @@ A more detailed set of instructions can also be found in [Dani's Repo](https://g
 
 ## Using Anaconda Python
 
- **You are strongly encouraged to use the [Docker](./docker/README.md) image instead of installing Anaconda Python directly.** The basic reason for this is that you may encounter installation errors or version differences that mean your experience of running the Spatial Data Science environment is seriously impaired. Furethermore, we are not in a position to provide support for the wide variety of platforms (hardware and software) that students may present.
+ **You are strongly encouraged to use the [Docker](./docker/README.md) image instead of installing Anaconda Python directly.** The basic reason for this is that you may encounter installation errors or version differences that mean your experience of running the Spatial Data Science environment is seriously impaired. Furethermore, we are not in a position to provide support for the wide variety of platforms (hardware and software) that students may present. You will also find that some instructions (*e.g.* for running Quarto, Dask, or VS Code) differ in significant ways and, again, we’re not in a position to support this on an individualised basis.
 
 #### Installating Python
 
@@ -147,43 +147,17 @@ jupyter contrib nbextension install --user
 
 ## To Dos
 
-- Add configuration to enable SDS to be used with VS Code (see [this info](https://code.visualstudio.com/remote/advancedcontainers/avoid-extension-reinstalls)):
+- And then change the container launch code as follows:
 
-    - So you need to install https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
-
-    - https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker
-
-    - https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins (Handy)
-
-    - https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter
-
-    - https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers
-
-    - https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
-
-    - https://marketplace.visualstudio.com/items?itemName=ms-python.python
-
-    - Make sure you do this as part of build process:
-
-        - https://code.visualstudio.com/remote/advancedcontainers/avoid-extension-reinstalls
-
-        - And then change the container launch code as follows:
-
-        - ```json
-            "mounts": [
-                "source=unique-vol-name-here,target=/root/.vscode-server/extensions,type=volume",
-                // And/or for VS Code Insiders
-                "source=unique-vol-name-here-insiders,target=/root/.vscode-server-insiders/extensions,type=volume",
-            ]
-            ```
-
-        - You would then need to add the mount points to the container launch command. These are read-only volumes not directly accessible on your local filesystem.
+    ```json
+    "mounts": [
+        "source=unique-vol-name-here,target=/root/.vscode-server/extensions,type=volume",
+        // And/or for VS Code Insiders
+        "source=unique-vol-name-here-insiders,target=/root/.vscode-server-insiders/extensions,type=volume",
+    ]
+    ```
 
 - Set up a [devcontainer.json file](https://code.visualstudio.com/docs/remote/containers#_create-a-devcontainerjson-file) properly.
-
-- Add [mgwr](https://mgwr.readthedocs.io/en/latest/) to image? 
-
-- Sort out Quarto
 
 ## Citing
 

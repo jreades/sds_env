@@ -18,18 +18,27 @@ To connect to JupyterHub:
 4. If you see a URL that ends in `tree?` please replace this with `lab?` to get the JupyterLab interface and not the original Jupyter Notebook interface (you can bookmark this page once it opens).
 5. Create a new terminal: File > New > Terminal
 
-Note that you need to replace `...` with the appropriate path (this will be obvious once you're logged in):
+Note that you need to replace `{group_name}` with the appropriate group role (this value will be obvious once you're logged in and can run `ls /shared/groups/` in the Terminal):
 
-```shell
-course_name="{{<var module.code>}}"
-
-conda config --append envs_dirs /shared/groups/.../casa/envs
-
+```bash
+conda config --append envs_dirs /shared/groups/{group_name}/casa
 jupyter contrib nbextension install --user
 ```
 
-## Google Collab
+## Google Colab
 
+Google's Colaboratory is an easy way to get started without needing to install anything, while still being able to save your work. This approach will work well for the first few weeks, up to the point where we start loading larger data sets that require more memory than Google's free tier provides. At that point you'll either need to start sampling from the full data set, or you're back to Docker!
 
+Here's how to get started with Colab:
+
+1. Go to Google's [Colab](https://colab.research.google.com/) site and sign in using *your* Google account details (or create an account if you don't already have one).
+2. If you are trying to clone a practical from _Foundations_ then: choose `File` then `Open` and select the `GitHub` tab from the open options (it's between `Google Drive` and `Upload`).
+3. Enter the following URL: [https://github.com/jreades/fsds](https://github.com/jreades/fsds).
+4. You should now see a list of notebooks to choose from -- select the appropriate one from the sequence and click `Open in Colab`.
+5. You will need to **trust** the notebook in order to run it.
+
+When you are done for the day you can save the notebook to your Google Drive -- to re-run that notebook you can just load it from Google Drive, rather than going back to GitHub, but remember that **you need to re-run all the cells up to the point where you saved the notebook**. Being able to save and re-run a notebook is the main difference from Binder.
 
 ## Binder
+
+While we support Binder for [Code Camp](../req/code_camp.qmd), this is not a platform that we are supporting as part of our masters programme since it is impossible to save your work without downloading the notebook each time. 

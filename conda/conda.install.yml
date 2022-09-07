@@ -32,7 +32,8 @@ dependencies:
   - jupyter-lsp-python # Provides LSP Extension + Server
   - legendgram 
   - lxml
-  #- mkl-service 
+  #- mkl-service
+  - mgwr 
   - momepy
   - nbdime 
   - networkx 
@@ -55,6 +56,7 @@ dependencies:
   - seaborn
   - spacy 
   - spacy[transformer] 
+  - spopt
   - tabulate  # For exporting from pandas to markdown
   - textblob 
   - tzlocal 

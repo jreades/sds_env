@@ -7,4 +7,5 @@ module:
 
 env:
   display: "SDS"
+  image: "jreades/sds:2022"
   name: "sds2022"

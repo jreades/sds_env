@@ -5,7 +5,7 @@
 #  4. Install this YAML file: conda env update -f in2science.yml
 #  5. Optionally speciy the name using iPyKernel
 #  6. Run jupyter lab
-#  7. Optionally disable the kernelspace warning by editing /home/pi/miniforge3/etc/jupyter/jupyter_config.json
+#  7. Optionally disable the kernelspace warning by editing /home/pi/miniforge3/etc/jupyter/jupyter_config.json by simply moving it to jupyter_config.json.bak
 #
 channels:
   - conda-forge

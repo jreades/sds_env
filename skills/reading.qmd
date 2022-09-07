@@ -1,18 +1,31 @@
 # How to *Read*
 
-Although the guidance below, from [Tim Squirrel's Guide](https://www.timsquirrell.com/blog/how-to-write-undergraduate-essays) is for undergraduate essays, and is about reading so that you can write an essay in history or philosophy, the advice works for *all* kinds of reading.
+Although the guidance below, from [Tim Squirrel's Guide](https://www.timsquirrell.com/blog/how-to-write-undergraduate-essays) is intended for undergraduate essays in history or philosophy, the advice works for *all* kinds of reading.
 
-Make sure that you cite the people who originally came up with the ideas you're presenting, and ideally think about how you would *differ from* or *improve upon* or *disagree with* them. The only way you can do this (and consequently, the only way to get a decent mark) is to do some reading.
+## Referencing
 
-1. **Look at the reading list**. If it’s incredibly long, you probably won’t want to (or be able) to read it all. However, that is *not* an excuse to not read any of it. Look through the list, identify if there are any readings marked as essential. Read them. If there aren’t any essential readings, pick a few which look interesting and relevant, then read them.
-2. Read some more. If the reading list is really short, you’ll need to go beyond it. If it’s long, this is still relevant. Look through the reference lists of the papers and books you’ve just read. See where their ideas came from. Mark out a few of the most promising-looking readings. Read them.
-3. There is a difference between **reading to understand** the topic, and **reading to reference**. It is *totally fine* to use Wikipedia, lecture notes, etc to familiarise yourself with the key arguments and concepts. It is considerably less fine to cite them as your only sources.
-4. Books. For undergraduate and masters study **do *not* read whole books**. It’s a waste of your time. You won’t remember any of it, it will drain all of your energy, and you only get one reference and viewpoint out of it. Read the intro and conclusion so that you get the gist of their argument. Pick a chapter from the contents page which looks like it’s relevant to your essay. Read that. As above, find relevant references and follow them up.
-5. Articles. **Read the abstract first**. Does it look like it’s relevant? If not, don’t waste your time. If it does, read it. Check the bibliography as above.
-6. Read critically. **For the sake of all that is holy, read critically**. This is absolutely essential. Don’t just stare at the pages and absorb them, bovine-like, for the purposes of regurgitation into your essay. **Think** about:
-  1. The central claim the author is making. Usually there is only one, perhaps two. Summarise it in one sentence if you can.
-  2. What is the frame of their argument? When in history is it set? Who are the key actors? Are they responding to another author? If so, what is the argument they’re responding to? Try to position their argument in context. This allows you to:
-  3. Critically assess the claims made. This obviously doesn’t just mean ‘say they’re wrong’. They might well be wrong, but you’ll need to find reasons for it. Generate a list of three reasons for each line of attack you want to take. Scrap the weakest two. If you think they’re right, *why* are they right? Are there other authors who corroborate their claims? Are there logical reasons to prefer their argument?
+You're be hearing a lot more about this at the start of term, but the first part of reading is making sure that you are able to trace where the ideas that you're presenting/discussing/refuting came from. So that means keeping track of what you've read and being able to reference it (correctly) right from the start. So a quick sense of how to reference reliably:
+
+- If you are using the _exact_ words of another writer then use double-quotes and supply a page number. For example: As Reades (2021, p.45) wrote: "We need to reference properly because otherwise we have no sense of where an idea came from..."
+- If you are paraphrasing another writer then use single-quotes and supply a page number where relevant. For example: Reades (2021, p.45) argues for the importance of good referencing since 'without it we have little sense of where ideas come from'...
+- If you are just making a general point then a simple Author and Year citation is sufficient. For example: Reades(2021) and others (Dennett 2015, Fry 2018) have noted the importance of good referencing practice...
+
+## Getting Started
+
+Ideally, whenever you are reading an academic article (or other publication) you should be thinking about how you would *differ from* or *improve upon* or *disagree with* the writer. The only way you can do this (and consequently, the only way to get a decent mark) is to do some *careful* reading:
+
+1. **Look at the reading list**. If it seems incredibly long, then your instructor is *not* expecting you to read it all. What they are expecting you to do is look through it and pick out the articles that speak to *you* (subject to guidance about what reading is essential) and to your take on the *assessments*. So a long reading list is *not* an excuse to not read any of it. Look through the list, identify if there are any readings marked as essential. Read them. If there aren't any essential readings, pick a few which look interesting and relevant, then read them.
+2. **Read some more**. Look through the reference lists of the papers and books you've just read. See where their ideas came from. Mark out a few of the most promising-looking readings. Read them.
+3. Note the difference between **reading to understand** the topic, and **reading to reference**. It is *totally fine* to use Wikipedia, lecture notes, etc to familiarise yourself with the key arguments and concepts. It is considerably less fine to cite them as your only sources.
+4. **Books**. In an ideal world you should read books. Great books. Like [mine](https://bristoluniversitypress.co.uk/why-face-to-face-still-matters-2) of course! :-) More realistically, unless your entire dissertation hinges on a particular argument made in great detail, then for undergraduate and masters' study **do *not* read whole books**. It's a waste of your time. You won't remember any of it, it will drain all of your energy, and you only get one reference and viewpoint out of it. Read the intro and conclusion so that you get the gist of their argument. Pick a chapter from the contents page which looks like it's relevant to your essay. Read that. As above, find relevant references and follow them up.
+5. **Articles**. Read the abstract first. Does it look like it's relevant? If not, don't waste your time. If it does, read it. Check the bibliography as above.
+6. Read critically. **For the sake of all that is holy, read critically**. This is absolutely essential. Don't just stare at the pages and absorb them, bovine-like, for the purposes of regurgitation into your essay. 
+
+So things to **think** about while reading articles:
+
+- The central claim the author is making. Usually there is only one, perhaps two. Summarise it in one sentence if you can.
+- What is the frame of their argument? When in history is it set? Who are the key actors? Are they responding to another author? If so, what is the argument they're responding to? Try to position their argument in context. This allows you to:
+- Critically assess the claims made. This obviously doesn't just mean ‘say they're wrong'. They might well be wrong, but you'll need to find reasons for it. Generate a list of three reasons for each line of attack you want to take. Scrap the weakest two. If you think they're right, *why* are they right? Are there other authors who corroborate their claims? Are there logical reasons to prefer their argument?
 
 Make sure you take notes on everything you read. Put page numbers in those notes. In fact, write down any potentially useful (and, ideally, flexible) quotes verbatim with the page numbers. Your goal is to read everything *once* even if you reference it *repeatedly*.
 
