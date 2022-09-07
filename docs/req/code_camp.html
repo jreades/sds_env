@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>CASA Computing Environment – code_camp</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../req/base.html" rel="prev">
+<link href="..//img/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/CASA_Logo_no_text.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CASA Computing Environment</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Welcome</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="button" data-bs-toggle="dropdown" aria-expanded="false">Requirements</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-requirements">    
+        <li>
+    <a class="dropdown-item" href="../req/health.html">
+ <span class="dropdown-text">Health Check</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../req/base.html">
+ <span class="dropdown-text">Base Utilities</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../req/code_camp.html">
+ <span class="dropdown-text">Code Camp</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="button" data-bs-toggle="dropdown" aria-expanded="false">Setup</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-setup">    
+        <li>
+    <a class="dropdown-item" href="../setup/git.html">
+ <span class="dropdown-text">Git &amp; GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/markdown.html">
+ <span class="dropdown-text">Markdown</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/env.html">
+ <span class="dropdown-text">Programming Environment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/no_install.html">
+ <span class="dropdown-text">No Install Options</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-soft-skills" role="button" data-bs-toggle="dropdown" aria-expanded="false">Soft Skills</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-soft-skills">    
+        <li>
+    <a class="dropdown-item" href="../skills/attention.html">
+ <span class="dropdown-text">Your Attention Please</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/reading.html">
+ <span class="dropdown-text">How to Read</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/thinking.html">
+ <span class="dropdown-text">How to Think</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/help.html">
+ <span class="dropdown-text">Getting Help</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../req/health.html" class="sidebar-item-text sidebar-link">Health Check</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../req/base.html" class="sidebar-item-text sidebar-link">Base Utilities</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../req/code_camp.html" class="sidebar-item-text sidebar-link active">Code Camp</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#code-camp" id="toc-code-camp" class="nav-link active" data-scroll-target="#code-camp">Code Camp</a>
+  <ul class="collapse">
+  <li><a href="#options" id="toc-options" class="nav-link" data-scroll-target="#options">Options</a></li>
+  <li><a href="#using-google-colab" id="toc-using-google-colab" class="nav-link" data-scroll-target="#using-google-colab">Using Google Colab</a></li>
+  <li><a href="#using-binder" id="toc-using-binder" class="nav-link" data-scroll-target="#using-binder">Using Binder</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="code-camp" class="level1">
+<h1>Code Camp</h1>
+<p>Prior to (re)joining CASA from the <a href="https://www.kcl.ac.uk/geography">Department of Geography</a> at <a href="htts://www.kcl.ac.uk/">King’s College London</a>, <a href="https://mobile.twitter.com/miccferr/">Dr.&nbsp;Mic Ferretti</a>, <a href="https://twitter.com/zarashabrina">Dr.&nbsp;Zara Shabrina</a>, <a href="https://twitter.com/jamesmillington">Dr.&nbsp;James Millington</a>, and I developed <a href="https://kingsgeocomputation.org/teaching/code-camp/code-camp-python/">Code Camp</a>.</p>
+<p><strong>Code Camp</strong> provides a gentle introduction to the basics of programming in Python. Across ten sessions you will learn about syntax, variables, ‘simple’ data structures such as lists and dictionaries, and about the fundamentals of writing functions for reusable code. The sessions are entirely self-led: you should follow along at your own pace and remember that ‘it’s a marathon, not a sprint’. <strong>Don’t cram it all into the last week of summer holidays!</strong></p>
+<p>Students from previous years have repeatedly said that completing <strong>Code Camp</strong> helped them to feel more ready for the <em>Foundations of Spatial Data Science</em> module, enabling them to do better on assessments and on the programme as a whole.</p>
+<p>So please, <strong>complete</strong> Code Camp by the start of term and, if possible, go through the materials more than once!</p>
+<p>You should have received instructions via email for running Code Camp, but here they are again…</p>
+<section id="options" class="level2">
+<h2 class="anchored" data-anchor-id="options">Options</h2>
+<p>Code Camp is publicly accessible through a code-sharing web site called <a href="https://github.com/kingsgeocomp/code-camp">GitHub</a> and can be run using <em>either</em>:</p>
+<ol type="1">
+<li>Google’s ‘<a href="https://colab.research.google.com/">Collaboratory</a>’, <em>or</em></li>
+<li>The Open Source <a href="https://mybinder.org/">Binder</a> tool.</li>
+</ol>
+<p>In both cases there is <strong>nothing to install on your computer</strong>. You could <em>even</em> use a tablet or phone, though we wouldn't really recommend it. There are two main differences: ‘Colab’ notebooks require an account but can be saved into Google Drive; Binder does not require any registration, but you won’t be able to save anything.</p>
+</section>
+<section id="using-google-colab" class="level2">
+<h2 class="anchored" data-anchor-id="using-google-colab">Using Google Colab</h2>
+<div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/EJ1BSF2YUtg" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>How to get started:</p>
+<ol type="1">
+<li>Go to Google’s <a href="https://colab.research.google.com/">Colab</a> site and sign in using <em>your</em> Google account details (or create an account if you don’t already have one).</li>
+<li>Choose <code>File</code> then <code>Open</code> and select the <code>GitHub</code> tab from the open options (it’s between <code>Google Drive</code> and <code>Upload</code>).</li>
+<li>Enter the following URL: <a href="https://github.com/kingsgeocomp/code-camp">https://github.com/kingsgeocomp/code-camp</a> (Jon was with King’s when he helped to create this resource)</li>
+<li>You should now see a list of notebooks to choose from – the first few are fairly quick to complete, but they get harder as you go along – select the first on in the sequence and click <code>Open in Colab</code>.</li>
+<li>You will need to <strong>trust</strong> the notebook in order to run it.</li>
+</ol>
+<p>Now you can run code in your web browser! When you are done for the day you can save the notebook to your Google Drive – to re-run that notebook you can just load it from Google Drive, rather than going back to GitHub, but remember that <strong>you need to re-run all the cells up to the point where you saved the notebook</strong>. Being able to save and re-run a notebook is the main difference from Binder.</p>
+</section>
+<section id="using-binder" class="level2">
+<h2 class="anchored" data-anchor-id="using-binder">Using Binder</h2>
+<p>All you need to do to get started is click the image below: <a href="https://bit.ly/33Rc5Q"><img src="../img/Binder.png" class="img-fluid" alt="Title: fig: - Description: Binder Logo"></a></p>
+<p>That’s it! But in case clicking that image doesn’t work, you can also go to: <a href="https://bit.ly/33Rc5QD">https://bit.ly/33Rc5QD</a>. When Binder starts, you will be able to run the notebooks! The main difference from Colab is that you have to download a notebook from Binder to your local computer in order to save it. To re-run the <em>same</em> notebook, you’d need to upload the notebook to Binder again. So Binder has no ‘memory’ of your work between interactions.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../req/base.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Base Utilities</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022, Jon Reades &amp; CASA Teaching Team</div>   
+      <div class="nav-footer-center"><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jreades/sds_env">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/CASAUCL">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
