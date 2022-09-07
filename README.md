@@ -46,7 +46,7 @@ You will then need to work out how to use the Terminal (Mac in order to navigate
 
 At this point you may start the installation by typing:
 ```bash
-conda-env create -n sds2021 -f environment_py.yml
+conda-env create -n sds2022 -f environment_py.yml
 ```
 And then hit the return key to run the command.
 
@@ -55,11 +55,11 @@ And then hit the return key to run the command.
 To make this new 'configuration' visible in JupyterLab you then need to run the following two commands...
 
 ```bash
-conda activate sds2021
-python -m ipykernel install --name sds2021 --display-name "CASA2021"
+conda activate sds2022
+python -m ipykernel install --name sds2022 --display-name "CASA2022"
 ```
 
-**Note**: when you connect to Jupyter, you should see a second tile called `CASA2021`. Users of Docker will see _only_ `Python3`. You should always use the `CASA2021` tile (which represents a separate computing environment) in Anaconda instead of the default `Python3` tile.
+**Note**: when you connect to Jupyter, you should see a second tile called `CASA2022`. Users of Docker will see _only_ `Python3`. You should always use the `CASA2022` tile (which represents a separate computing environment) in Anaconda instead of the default `Python3` tile.
 
 **Note**: if you get a warning of ‘No permission’ because of the above commands, please add `sudo` to that command and run it again. You would need to input the password for WSL or Mac.
 
@@ -67,7 +67,7 @@ python -m ipykernel install --name sds2021 --display-name "CASA2021"
 
 Still using the Terminal type (Windows users, please use Windows Terminal):
 ```bash
-conda activate sds2021
+conda activate sds2022
 jupyter lab
 ```
 
@@ -100,7 +100,7 @@ conda env create -n casa0013 -f /tmp/casa0013.yml
 
 ##### Revised Instructions
 
-I now think that the correct way to do this is:
+I *now* think that the correct way to do this is:
 
 ```shell
 course_name="casa0013"
@@ -147,7 +147,43 @@ jupyter contrib nbextension install --user
 
 ## To Dos
 
+- Add configuration to enable SDS to be used with VS Code (see [this info](https://code.visualstudio.com/remote/advancedcontainers/avoid-extension-reinstalls)):
+
+    - So you need to install https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
+
+    - https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker
+
+    - https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins (Handy)
+
+    - https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter
+
+    - https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers
+
+    - https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
+
+    - https://marketplace.visualstudio.com/items?itemName=ms-python.python
+
+    - Make sure you do this as part of build process:
+
+        - https://code.visualstudio.com/remote/advancedcontainers/avoid-extension-reinstalls
+
+        - And then change the container launch code as follows:
+
+        - ```json
+            "mounts": [
+                "source=unique-vol-name-here,target=/root/.vscode-server/extensions,type=volume",
+                // And/or for VS Code Insiders
+                "source=unique-vol-name-here-insiders,target=/root/.vscode-server-insiders/extensions,type=volume",
+            ]
+            ```
+
+        - You would then need to add the mount points to the container launch command. These are read-only volumes not directly accessible on your local filesystem.
+
+- Set up a [devcontainer.json file](https://code.visualstudio.com/docs/remote/containers#_create-a-devcontainerjson-file) properly.
+
 - Add [mgwr](https://mgwr.readthedocs.io/en/latest/) to image? 
+
+- Sort out Quarto
 
 ## Citing
 
