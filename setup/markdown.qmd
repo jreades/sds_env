@@ -1,12 +1,12 @@
 # Markdown
 
-## Why Markdown?
+Markdown is a 'markup language' for documents that is compatible with a lot of different tools (including GitHub and Jupyter) that we use day-in and day-out for doing our research and teaching. Many of us have now largely stopped using Word (and even LaTeX) except for the final polishing of a document. Why? Because Markdown is faster, simpler, and just gets out of the way when we're writing. So rather than fiddling about with Word's styles (or, worse, discovering that you *should* have been using styles all along) or with LaTeX's painful table layout, you can just get on with writing in Markdown and *then* export to Word or LaTeX for the final steps. Best of both worlds!
 
+In fact, Markdown is so handy that it's become the default for writing content for the web. This web site was actually written in Markdown and then 'rendered' (i.e. turned into a functional web page) using Quarto. We've included Quarto on the SDS2022 Docker image that we've recommended you use.
 
 ## Markdown Editors
 
 Over time you will undoubtedly learn how to write markdwon without need to think much (if at all) about how to type the formatting 'codes', but a simple markdown editor can make your life much, much easier. Even when you're highly experienced! 
-
 
 ### For MacOS
 
@@ -22,8 +22,11 @@ There's a [good overview](https://www.fossmint.com/best-markdown-editors-for-mac
 
 ### For Windows
 
+I don't have access to a Windows machine to test this out, but there are plenty of opinions to be found by Googling 'best Windows Markdown editors' or 'best *free* Windows Markdown editors'. There's one [for writers](https://becomeawritertoday.com/best-markdown-editor/) and [a more generic set of recommendations](https://www.makeuseof.com/best-markdown-editors-windows/). Have a look around and see what you like!
 
 ### For Linux
+
+If you use Linux already do you really need a recommendation? How about `vim` or `vi`?
 
 ## Markdown & GitHub
 
