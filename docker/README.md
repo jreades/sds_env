@@ -10,15 +10,16 @@ You can then install this container by opening up a Shell/Terminal and simply ru
 
 > `docker pull jreades/sds:XXXX` 
 
-**Note**: the `XXXX` should be replaced by the version of the SDS image that you want (*e.g.* `2021d`, giving you `jreades/sds:2021d`). You can see the list of available images here: [hub.docker.com/repository/docker/jreades/sds](https://hub.docker.com/repository/docker/jreades/sds)
+**Note**: the `XXXX` should be replaced by the version of the SDS image that you want (*e.g.* `2022`, giving you `jreades/sds:2022`). You can see the list of available images here: [hub.docker.com/repository/docker/jreades/sds](https://hub.docker.com/repository/docker/jreades/sds)
 
-#### Running
+
+#### Running Jupyter Only
 
 **Note**: if you are using a M1 Mac then you may need to add `--platform linux/amd64` option to the run commands below. I don't know if this will work as I don't have a M1 Mac to test.
 
 The container can be run in the Shell or Terminal as:
 
-> `docker run --name sds --rm -ti -p 8888:8888 -v "$(pwd):/home/jovyan/work" jreades/sds:2020b jupyter lab --LabApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10' --ServerApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'`
+> `docker run --name sds --rm -ti -p 8888:8888 -v "$(pwd):/home/jovyan/work" jreades/sds:2022 jupyter lab --LabApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10' --ServerApp.password='sha1:288f84f833b0:7645388b889d84efbb2716d646e5eadd78b67d10'`
 
 **Note**: the `pwd` in the command above means use the _current_ directory. So if you simply open a Terminal, Git Bash, or Command Prompt then Docker will 'mount' (_i.e._ make visible to the programming environment) the current directory as `work` in the programming environment. This is most likely to be your home directory and means that _everything_ in your home directory is potentially delete-able or write-able and that is a major security risk. I would _strongly_ suggest that you `cd` (Change Directory) to a sub-folder along the lines of `./Documents/code/` so that you have the link `work <-> code` between the virtual machine that Docker is running and your computer (which is the 'host'). Obviously, this assumes that you've created a `code` directory in your Documents folder and you can revise according to what you have done instead!
 
@@ -30,6 +31,14 @@ A couple of notes on the command above:
   you will have to point your browser to [`localhost:8888`](localhost:8888/lab/) Note that there is no space between `localhost` and `8888`, just a colon (`:`).
 * The command also mounts the current folder (`pwd`) for the container, but you can replace that with the path to any folder on your local machine; for instance, on a Mac you could use something like `-v "/Users/<your username>/Documents/git/i2p:/home/jovyan/work"` instead and then this would _always_ link the `i2p` folder to `work` in the programming environment; however, I'd suggest that you wait until you understand how paths work before attempting to change this).
 * The `name` ensures that you don't accidentally run three versions of the same Docker image!
+
+#### Running Everything
+
+In order to be able to access all of the services (persistent VS Code extensions, Quarto, Dask...) it's easier to make use of the [Bash script provided](https://github.com/jreades/sds_env/blob/master/docker/docker.sh) together with the default [configuration file](https://github.com/jreades/sds_env/blob/master/docker/config.sh). This allows you to turn Quarto and Dask on/off with a boolean parameter setting and to easily change port numbers. 
+
+This streamlines the Docker launch process to: `sh docker.sh start`.
+
+The shutdown process (which will shutdown the container and then delete it) is: `sh docker.sh stop`.
 
 #### Deleting
 
@@ -55,7 +64,7 @@ docker rmi -f <list of image IDs>
 
 ## Citing
 
-This draws heavily on Dani Arribas-Bel's work for Liverpool. If you use this, you should cite him.
+This draws on Dani Arribas-Bel's work for Liverpool. If you use this, you should also credit him.
 
 [![DOI](https://zenodo.org/badge/65582539.svg)](https://zenodo.org/badge/latestdoi/65582539)
 
