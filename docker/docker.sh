@@ -6,17 +6,17 @@
 # makes it easy for us to set up new projects with minimal
 # effort: change the config file instead of the startup/shutdown
 # script!
-if [[ $2 ]]; then
-	if [[ $2 == *.sh ]]; then
+if [ $2 ]; then
+	if [ $2 == *.sh ]; then
 		echo "Using configuration details from $2"
-		source $2
+		. $2
 	else
 		echo "Using configuration details from $2.sh"
-		source "$2.sh"
+		. "$2.sh"
 	fi
 else
 	echo "Using default configuration as config.sh."
-	source config.sh
+	. config.sh
 fi
 
 err_report() {
@@ -25,25 +25,25 @@ err_report() {
 
 # For information about styling outputs, see this nice overview:
 #  https://askubuntu.com/a/985386
-if [[ $1 = "start" ]]; then
+if [ $1 = "start" ]; then
 	printf "Using image \e[1m%s\e[0m...\n" "$DOCKER_IMG"
 
 	# Try to deal with issues relating to the operating system
 	# in which Docker is running. 
 	WIN_CMD=""
-	if [[ "$OSTYPE" == "msys" ]]; then
+	if [ "$OSTYPE" == "msys" ]; then
 		WIN_CMD="winpty"
 	fi
 	PLATFORM=""
-	if [[ $(uname -p) == 'arm' ]]; then
+	if [ $(uname -p) == 'arm' ]; then
 		PLATFORM="--platform linux/amd64"
 	fi
 	DASK_CMD=""
-	if [[ $DASK = true ]]; then
+	if [ $DASK = true ]; then
 		 DASK_CMD="-p ${DASK_PORT}:8787"
 	fi
 	QUARTO_CMD=""
-	if [[ $QUARTO = true ]]; then
+	if [ $QUARTO = true ]; then
 		printf "Quarto enabled in config file, run \e[1;4mquarto preview --host 0.0.0.0 --port ${QUARTO_PORT}\e[0m to start this service.\nNote that the port in the _quarto.yml configuration file should also be set to ${QUARTO_PORT} (from config.sh).\n"
 		QUARTO_CMD="-p ${QUARTO_PORT}:${QUARTO_PORT}"
 	fi
@@ -69,7 +69,8 @@ if [[ $1 = "start" ]]; then
 	URL="localhost:${JUPYTER_PORT}/lab/tree/work"
 	DIR="$(basename "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" && echo x)"
 	DIR="${DIR%x}"
-	if [[ $DIR==$DOCKER_NM ]]; then
+	
+	if [ $DIR == $DOCKER_NM ]; then
 		URL="$URL/$DOCKER_NM"
 	fi
 
@@ -78,7 +79,7 @@ if [[ $1 = "start" ]]; then
 	printf "Docker \e[3mshould\e[0m soon be available on: "
 	printf "\e[1;4;48:2::71:160:71m\e]8;;http://$URL\e\\$URL\e]8;;\e\\"
 	printf "\e[0m\n"
-elif [[ $1 = "stop" ]]; then
+elif [ $1 = "stop" ]; then
 	echo "Shutting down..."
 	CONTAINER=$(docker ps -aq -f name=$DOCKER_NM)
 	docker kill --signal=SIGINT $CONTAINER
