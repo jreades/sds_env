@@ -5,7 +5,7 @@
 # Key configuration parameters are set in config.sh -- this
 # makes it easy for us to set up new projects with minimal
 # effort: change the config file instead of the startup/shutdown
-# script!
+# script.
 if [ $2 ]; then
 	if [ $2 == *.sh ]; then
 		echo "Using configuration details from $2"
