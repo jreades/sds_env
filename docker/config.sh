@@ -1,12 +1,9 @@
-#!/usr/bin/env bash
-# What port should Docker listen on?
-JUPYTER_PORT=8888
-DASK_PORT=8787
-QUARTO_PORT=4201
+#!/bin/bash
 
-# Are we using Dask or Quarto?
-DASK=false
-QUARTO=true
+# What ports should Docker use?
+JUPYTER_PORT=8888
+#DASK_PORT=8787
+QUARTO_PORT=4201
 
 # If you want to launch the container with
 # work mounting in different places then use this...
@@ -26,6 +23,7 @@ DOCKER_IMG="jreades/sds:2022"
 # If you want no password at all (safety depends on context)
 # then leave it empty:
 JUPYTER_PWD=''
+NOTEBOOK_TOKEN=''
 
 # Generating a new password for JupyterLab:
 # To generate a new password on a machine with jupyter notebook libs installed:

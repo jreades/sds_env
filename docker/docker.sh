@@ -16,7 +16,7 @@ if [[ $2 ]]; then
 	fi
 else
 	echo "Using default configuration as config.sh."
-	bash config.sh
+	. ./config.sh
 fi
 
 err_report() {
@@ -39,11 +39,11 @@ if [[ $1 == "start" ]]; then
 		PLATFORM="--platform linux/amd64"
 	fi
 	DASK_CMD=""
-	if [[ $DASK == true ]]; then
+	if [[ ${DASK_PORT:+x} ]]; then
 		 DASK_CMD="-p ${DASK_PORT}:8787"
 	fi
 	QUARTO_CMD=""
-	if [[ $QUARTO == true ]]; then
+	if [[ ${QUARTO_PORT:+x} ]]; then
 		printf "Quarto enabled in config file, run \e[1;4mquarto preview --host 0.0.0.0 --port ${QUARTO_PORT}\e[0m to start this service.\nNote that the port in the _quarto.yml configuration file should also be set to ${QUARTO_PORT} (from config.sh).\n"
 		QUARTO_CMD="-p ${QUARTO_PORT}:${QUARTO_PORT}"
 	fi
