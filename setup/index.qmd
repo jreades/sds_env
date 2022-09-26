@@ -1,4 +1,8 @@
-# Setup
+---
+title: "Setup"
+author: "Jon Reades"
+date: "9/9/2022"
+---
 
 ## Installation
 

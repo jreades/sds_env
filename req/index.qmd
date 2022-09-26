@@ -1,3 +1,7 @@
-# Requirements
+---
+title: "Requirements"
+author: "Jon Reades"
+date: "9/9/2022"
+---
 
 Before trying to do anything else please complete the basic [health check](./health.qmd), which also includes our *recommendations* if you are considering buying a new computer when you start your studies. Once you know that your machine and operating system are up-to-date, you should install the [basic utilities](./base.qmd) that will enable you to complete installation of the programming environment. We also provide information about [Code Camp](./code_camp.qmd) which is a self-paced introduction to the fundamentals of programming in Python.

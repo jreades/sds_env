@@ -1,14 +1,14 @@
-# Installing Anaconda Python
+---
+title: "Installing Anaconda Python"
+author: "Jon Reades"
+date: "9/9/2022"
+---
 
-**You are strongly encouraged to use the Docker image instead of installing Anaconda Python directly.** The basic reason for this is that you may encounter installation errors or version differences that mean your experience of running the Spatial Data Science environment is seriously impaired.
+:::{.callout-warning}
+## Why Use Docker Instead?
 
-If you persist in wanting to install natively, then you will need [Anaconda Python](https://www.anaconda.com/distribution/#download-section) (Python 3) to be able to install the programming environment.
-
-## Using Anaconda Python
-
- **You are strongly encouraged to use the [Docker](./docker/README.md) image instead of installing Anaconda Python directly.** The basic reason for this is that you may encounter installation errors or version differences that mean your experience of running the Spatial Data Science environment is seriously impaired. Furethermore, we are not in a position to provide support for the wide variety of platforms (hardware and software) that students may present.
-
-#### Installating Python
+**You are strongly encouraged to use Docker instead of installing Anaconda Python directly.** The basic reason for this is that you may encounter installation errors or version differences that mean your experience of running the Spatial Data Science environment is seriously impaired.
+:::
 
 If you *really* want to install natively, despite everything we said above, then you will need [Anaconda Python](https://www.anaconda.com/distribution/#download-section) (Python 3 64-bit) to be able to install the programming environment.
 
@@ -44,7 +44,7 @@ You will then need to work out how to use the Terminal (Mac in order to navigate
 
 At this point you may start the installation by typing:
 ```bash
-conda-env create -n sds2021 -f environment_py.yml
+conda-env create -n {{< var env.name >}} -f environment_py.yml
 ```
 And then hit the return key to run the command.
 
@@ -53,11 +53,11 @@ And then hit the return key to run the command.
 To make this new 'configuration' visible in JupyterLab you then need to run the following two commands...
 
 ```bash
-conda activate sds2021
-python -m ipykernel install --name sds2021 --display-name "CASA2021"
+conda activate {{< var env.name >}}
+python -m ipykernel install --name {{< var env.name >}} --display-name "{{< var env.name >}}"
 ```
 
-**Note**: when you connect to Jupyter, you should see a second tile called `CASA2021`. Users of Docker will see _only_ `Python3`. You should always use the `CASA2021` tile (which represents a separate computing environment) in Anaconda instead of the default `Python3` tile.
+**Note**: when you connect to Jupyter, you should see a second tile called `{{< var env.name >}}`. Users of Docker will see _only_ `Python3`. You should always use the `{{< var env.name >}}` tile (which represents a separate computing environment) in Anaconda instead of the default `Python3` tile.
 
 **Note**: if you get a warning of ‘No permission’ because of the above commands, please add `sudo` to that command and run it again. You would need to input the password for WSL or Mac.
 
@@ -65,41 +65,7 @@ python -m ipykernel install --name sds2021 --display-name "CASA2021"
 
 Still using the Terminal type (Windows users, please use Windows Terminal):
 ```bash
-conda activate sds2021
-jupyter lab
-```
-
-Do **not** run Jupyter Lab from the *Anaconda Navigator* since it does not configure the spatial analysis libraries correctly.
-
-
-#### Installing
-
-After downloading and installing Anaconda Python you will also need to download the environment's [configuration file](https://raw.githubusercontent.com/jreades/sds_env/master/conda/environment_py.yml). This file (known as a 'YAML file') tells Anaconda Python what versions of what libraries to install on your computer. The idea is that all users (whether using our Docker approach or this one) end up with (roughly) the same versions of the key programming libraries.
-
-You will then need to work out how to use the AnacondaPrompt (Windows) or Terminal (Mac) in order to navigate to the folder holding the downloaded configuration file. It will be _something_ like `cd ~/Downloads/` to reach your downloads folder.
-
-At this point you may start the installation by typing: 
-```bash
-conda-env create -n {{<var env.name>}} -f environment_py.yml
-```
-And then hit the return key to run the command.
-
-#### Configuring
-
-To make this new 'configuration' visible in JupyterLab you then need to run the following two commands...
-
-```bash
-conda activate {{<var env.name>}}
-python -m ipykernel install --name {{<var env.name>}} --display-name "{{<var env.display>}}" 
-```
-
-**Note**: when you connect to Jupyter, you should see a second 'tile' with the display name set above (e.g. `{{<var env.display>}}`. Users of Docker will see _only_ `Python3`. You should always use the `{{<var env.display>}}` tile (which represents a separate computing environment) in Anaconda instead of the default `Python3` tile, which does *not* have the necessary libraries installed.
-
-#### Running
-
-Still using the Terminal/AnacondaPrompt type:
-```bash
-conda activate {{<var env.display>}}
+conda activate {{< var env.name >}}
 jupyter lab
 ```
 

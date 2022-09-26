@@ -41,6 +41,7 @@ RUN fix-permissions $CONDA_DIR \
 #--- Quarto ---#
 ENV TEMP_DEB="quarto.deb"
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    texlive-fonts-recommended \
     pandoc \
     pandoc-citeproc \
     curl \

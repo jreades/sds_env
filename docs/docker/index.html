@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jon Reades">
+<meta name="dcterms.date" content="2022-09-09">
+
+<title>CASA Computing Environment - Using Docker</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//img/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/CASA_Logo_no_text.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CASA Computing Environment</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Welcome</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="button" data-bs-toggle="dropdown" aria-expanded="false">Requirements</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-requirements">    
+        <li>
+    <a class="dropdown-item" href="../req/health.html">
+ <span class="dropdown-text">Health Check</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../req/base.html">
+ <span class="dropdown-text">Base Utilities</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../req/code_camp.html">
+ <span class="dropdown-text">Code Camp</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="button" data-bs-toggle="dropdown" aria-expanded="false">Setup</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-setup">    
+        <li>
+    <a class="dropdown-item" href="../setup/git.html">
+ <span class="dropdown-text">Git &amp; GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/markdown.html">
+ <span class="dropdown-text">Markdown</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/env.html">
+ <span class="dropdown-text">Programming Environment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/no_install.html">
+ <span class="dropdown-text">No Install Options</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-soft-skills" role="button" data-bs-toggle="dropdown" aria-expanded="false">Soft Skills</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-soft-skills">    
+        <li>
+    <a class="dropdown-item" href="../skills/attention.html">
+ <span class="dropdown-text">Your Attention Please</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/reading.html">
+ <span class="dropdown-text">How to Read</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/thinking.html">
+ <span class="dropdown-text">How to Think</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/help.html">
+ <span class="dropdown-text">Getting Help</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#installing" id="toc-installing" class="nav-link active" data-scroll-target="#installing">Installing</a></li>
+  <li><a href="#running-jupyter-only" id="toc-running-jupyter-only" class="nav-link" data-scroll-target="#running-jupyter-only">Running Jupyter Only</a></li>
+  <li><a href="#running-dask-andor-quarto" id="toc-running-dask-andor-quarto" class="nav-link" data-scroll-target="#running-dask-andor-quarto">Running Dask and/or Quarto</a></li>
+  <li><a href="#enabling-vscode-integration" id="toc-enabling-vscode-integration" class="nav-link" data-scroll-target="#enabling-vscode-integration">Enabling VSCode Integration</a></li>
+  <li><a href="#running-everything-script" id="toc-running-everything-script" class="nav-link" data-scroll-target="#running-everything-script">Running Everything (Script)</a></li>
+  <li><a href="#citing" id="toc-citing" class="nav-link" data-scroll-target="#citing">Citing</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Using Docker</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jon Reades </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 9, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<p>You will need <a href="https://www.docker.com">Docker</a> (Desktop) to be able to install the Spatial Data Science (SDS) environment. If you do not wish to create an account with Docker then you may want to follow advice <a href="https://github.com/docker/docker.github.io/issues/6910#issuecomment-532393783">provided here</a> though we cannot condone it.</p>
+<p>One new-ish option is to include a VS-Code server with the Docker image (as an alternative to Jupyter) as outlined <a href="https://github.com/ruanbekker/dockerfiles/tree/master/vscode">here</a>. However, VSCode can also support a more limited integration with Docker more directly provided that you configure the VSCode exceptions correctly (see below).</p>
+<section id="installing" class="level2">
+<h2 class="anchored" data-anchor-id="installing">Installing</h2>
+<p>You can then install this container by opening up a Shell/Terminal and simply running:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2022</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note</strong>: if you want to use something other than <code>jreades/sds:2022</code> you can see the list of available images here: <a href="https://hub.docker.com/repository/docker/jreades/sds">hub.docker.com/repository/docker/jreades/sds</a></p>
+</section>
+<section id="running-jupyter-only" class="level2">
+<h2 class="anchored" data-anchor-id="running-jupyter-only">Running Jupyter Only</h2>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+M1/M2 Macs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are using a M1 Mac then you may need to add <code>--platform linux/amd64</code> option to the run commands below. I don’t know if this will work as I don’t have a M1 Mac to test.</p>
+</div>
+</div>
+<p>The basic command to launch the programming environment is:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> sds2022 <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    jreades/sds:2022 jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note</strong>: the <code>pwd</code> in the command above means use the <em>current</em> directory. So if you simply open a Terminal, Git Bash, or Command Prompt then Docker will ‘mount’ (<em>i.e.</em> make visible to the programming environment) the current directory as <code>work</code> in the programming environment. This is most likely to be your home directory and means that <em>everything</em> in your home directory is potentially delete-able or write-able and <em>that</em> is a major security risk.</p>
+<p>I would <em>strongly</em> suggest that you <code>cd</code> (Change Directory) to a sub-folder along the lines of <code>./Documents/code/</code> so that you have the link <code>work &lt;-&gt; code</code> between the virtual machine that Docker is running and your computer (which is the ‘host’). Obviously, this assumes that you’ve created a <code>code</code> directory in your Documents folder and you can revise according to what you have done instead!</p>
+<p>Anyway, assuming that you have run the command above exactly as explained, then you will then be able to point your browser to <a href="localhost:8888/lab?">localhost:8888</a>. You are likely to be prompted to enter a <strong>Password</strong>. This password is currently <code>casa2021</code>.</p>
+<p>A couple of notes on the command above:</p>
+<ul>
+<li>This opens the <code>8888</code> port of the container, so to access the Lab instance, you will have to point your browser to <a href="localhost:8888/lab/"><code>localhost:8888</code></a> Note that there is no space between <code>localhost</code> and <code>8888</code>, just a colon (<code>:</code>).</li>
+<li>The command also mounts the current folder (<code>pwd</code>) for the container, but you can replace that with the path to any folder on your local machine; for instance, on a Mac you could use something like <code>-v "/Users/&lt;your username&gt;/Documents/git/i2p:/home/jovyan/work"</code> instead and then this would <em>always</em> link the <code>i2p</code> folder to <code>work</code> in the programming environment; however, I’d suggest that you wait until you understand how paths work before attempting to change this).</li>
+<li>The <code>name</code> ensures that you don’t accidentally run three versions of the same Docker image!</li>
+</ul>
+</section>
+<section id="running-dask-andor-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="running-dask-andor-quarto">Running Dask and/or Quarto</h2>
+<p>To run Dask and Quarto you need to ‘open up’ other ports on the Docker image:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> sds2022 <span class="at">--rm</span> <span class="at">-ti</span> <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2022 jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You will then need to ensure that Quarto runs on <em>the same port</em> when you start it in Docker:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview <span class="at">--host</span> 0.0.0.0 <span class="at">--port</span> 4201</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notice the everything to do with Quarto is on port <code>4201</code>, but note additionaly the <code>--host 0.0.0.0</code> that is required to allow you to view Quarto’s output (if you want to serve a web site, for instance, instead of static content) from <em>outside</em> the Docker container.</p>
+<p>The Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g.&nbsp;using four cores at once where you’ve enabled this is Docker preferences on your <a href="https://docs.docker.com/desktop/settings/mac/">Mac</a> or <a href="https://docs.docker.com/desktop/settings/windows/">Windows</a> machined).</p>
+</section>
+<section id="enabling-vscode-integration" class="level2">
+<h2 class="anchored" data-anchor-id="enabling-vscode-integration">Enabling VSCode Integration</h2>
+<p>To enable VSCode integration you’ll need to create additional ‘mount points’ (‘locations’ on <em>your computer’s</em> file system) that the Docker image can access. At this point the command becomes <em>very</em> long, which is why there is a script designed to make this a more straightforward process provided below.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2022 <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${HOME}</span><span class="st">/.vscode/containers/sds2022-extensions:/home/jovyan/.vscode-server/extensions"</span> <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${HOME}</span><span class="st">/.vscode/containers/sds2022-insiders:/home/jovyan/.vscode-server-insiders"</span> <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2022 jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This then enables you to install the required integration extensions as follows:</p>
+<ol type="1">
+<li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Remote - Containers</a> extension from Microsoft, which will allow you to use a Docker container as a virtual environment from VSCode.</li>
+<li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">Docker</a> extension from Microsoft, which allows you to interact with images/containers from within VSCode.</li>
+<li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter">Jupyter</a> exension, which will allow you to execute Jupyter Notebooks directly within VSCode.</li>
+<li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers">Jupyter Renderers</a> extension which adds support for media outputs, especially interactive ones.</li>
+<li>The “Jupyter Keymap” exension which provides the same keymaps in VSCode that exist in JupyterLab.</li>
+<li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a> extension which works as a language server (will do code highlighting, syntax checking, etc.) for Python.</li>
+<li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a> extension which provides rich support for Python &gt;= 3.7.</li>
+<li>The <a href="https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins">Gremlins Tracker</a> extension which highlights non-printing characters that can make code fail to execute properly.</li>
+</ol>
+<p>You can supplement these with the Markdown linting extension and a range of other tools.</p>
+<p>Once this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided.</p>
+<p>Once you’ve gone through this <em>once</em> it should be fairly straightforward on subsequent runs. At that point you can browse to the notebooks (which are usually being mounted from your own machine) and run them as if you were doing all of this within the Docker container. It’s kind of mind-melting but pretty cool.</p>
+</section>
+<section id="running-everything-script" class="level2">
+<h2 class="anchored" data-anchor-id="running-everything-script">Running Everything (Script)</h2>
+<p>In order to be able to access all of the services (persistent VS Code extensions, Quarto, Dask…) it’s easier to make use of the <a href="https://github.com/jreades/sds_env/blob/master/docker/docker.sh">Bash script provided</a> together with the default <a href="https://github.com/jreades/sds_env/blob/master/docker/config.sh">configuration file</a>. This allows you to turn Quarto and Dask on/off by commenting/uncommenting a port number in the <code>config.sh</code> file and streamlines the Docker launch process to: <code>sh docker.sh start</code>.</p>
+<p>The shutdown process (which will shutdown the container and then delete it) is: <code>sh docker.sh stop</code>.</p>
+<section id="deleting" class="level4">
+<h4 class="anchored" data-anchor-id="deleting">Deleting</h4>
+<p>Should you wish to remove the image and container from your system then the following approaches are available:</p>
+<section id="deleting-by-filter" class="level5">
+<h5 class="anchored" data-anchor-id="deleting-by-filter">Deleting by Filter</h5>
+<p>This should be used with some care since it will try to delete all matching images and this may not be what you want:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aqf</span> <span class="st">"name=sds"</span> <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Image}} {{.Names}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"2019"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rm <span class="at">-f</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Repository}} {{.Tag}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"sds"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deleting-by-image" class="level5">
+<h5 class="anchored" data-anchor-id="deleting-by-image">Deleting by Image</h5>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aq</span> <span class="co"># Get list of running processes and work out container IDs to remove</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> <span class="op">&lt;</span>list of container IDs<span class="op">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="co"># Get list of available images and work out image IDs to remove</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="op">&lt;</span>list of image IDs<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="citing" class="level2">
+<h2 class="anchored" data-anchor-id="citing">Citing</h2>
+<p>This draws on Dani Arribas-Bel’s work for Liverpool. If you use this, you should also credit him.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://zenodo.org/badge/latestdoi/65582539"><img src="https://zenodo.org/badge/65582539.svg" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">DOI</figcaption><p></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{hadoop,</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author = {{Dani Arribas-Bel}},</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title = {\texttt{gds_env}: A containerised platform for Geographic Data Science},</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">  url = {https://github.com/darribas/gds_env},</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">  version = {3.0},</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">  date = {2019-08-06},</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022, Jon Reades &amp; CASA Teaching Team</div>   
+      <div class="nav-footer-center"><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jreades/sds_env">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/CASAUCL">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

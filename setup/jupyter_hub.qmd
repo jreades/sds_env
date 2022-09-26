@@ -1,4 +1,8 @@
-# Using UCL JupyterHub
+---
+title: "Using UCL JupyterHub"
+author: "Jon Reades"
+date: "9/9/2022"
+---
 
 ## Creating an Environment (Staff)
 

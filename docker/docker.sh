@@ -1,9 +1,9 @@
 #!/bin/bash
-# set -xe # Enable debugging of each command
+# set -xe # Enable debugging of each command
 # Run using either `docker.sh start` or `docker.sh stop`
 
 # Key configuration parameters are set in config.sh -- this
-# makes it easy for us to set up new projects with minimal
+# makes it easy for us to set up new projects with minimal
 # effort: change the config file instead of the startup/shutdown
 # script.
 if [[ $2 ]]; then
@@ -51,7 +51,7 @@ if [[ $1 == "start" ]]; then
 	if [[ ${DOCKER_NET:+x} ]]; then
 		NETWORK_CMD="--net ${DOCKER_NET}"
 	fi
-	$(echo "${WIN_CMD}") docker run --rm -d --name $DOCKER_NM $(echo "${NETWORK_CMD}") $(echo "${PLATFORM}") -p "$JUPYTER_PORT":8888 $(echo "${DASK_CMD}") $(echo "${QUARTO_CMD}") -v "$WORK_DIR":/home/jovyan/work -v "$HOME/.vscode/containers/$DOCKER_NM-extensions:/home/jovyan/.vscode-server/extensions" -v "$HOME/.vscode/containers/$DOCKER_NM-insiders:/home/jovyan/.vscode-server-insiders" $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
+	echo $(echo "${WIN_CMD}") docker run --rm -d --name $DOCKER_NM $(echo "${NETWORK_CMD}") $(echo "${PLATFORM}") -p "$JUPYTER_PORT":8888 $(echo "${DASK_CMD}") $(echo "${QUARTO_CMD}") -v "$WORK_DIR":/home/jovyan/work -v "$HOME/.vscode/containers/$DOCKER_NM-extensions:/home/jovyan/.vscode-server/extensions" -v "$HOME/.vscode/containers/$DOCKER_NM-insiders:/home/jovyan/.vscode-server-insiders" $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
 
 	# Work out the URL to show at the end -- by default 
 	# we'll show the JupyterLab starting point, *but* if

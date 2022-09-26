@@ -2,19 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.492">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jon Reades">
+<meta name="dcterms.date" content="2022-09-09">
 
-<title>CASA Computing Environment – index</title>
+<title>CASA Computing Environment - Installing Anaconda Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +60,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +73,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -80,6 +87,24 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//img/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,23 +126,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="..//img/favicon.ico" rel="icon">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-fixed">
@@ -126,10 +134,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-md navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
-    <img src="../img/CASA_Logo_no_text.png" alt="">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/CASA_Logo_no_text.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CASA Computing Environment</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -138,6 +150,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li class="nav-item">
     <a class="nav-link" href="../index.html">Welcome</a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="button" data-bs-toggle="dropdown" aria-expanded="false">Requirements</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-requirements">    
+        <li>
+    <a class="dropdown-item" href="../req/health.html">
+ <span class="dropdown-text">Health Check</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../req/base.html">
+ <span class="dropdown-text">Base Utilities</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../req/code_camp.html">
+ <span class="dropdown-text">Code Camp</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="button" data-bs-toggle="dropdown" aria-expanded="false">Setup</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-setup">    
+        <li>
+    <a class="dropdown-item" href="../setup/git.html">
+ <span class="dropdown-text">Git &amp; GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/markdown.html">
+ <span class="dropdown-text">Markdown</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/env.html">
+ <span class="dropdown-text">Programming Environment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/no_install.html">
+ <span class="dropdown-text">No Install Options</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-soft-skills" role="button" data-bs-toggle="dropdown" aria-expanded="false">Soft Skills</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-soft-skills">    
+        <li>
+    <a class="dropdown-item" href="../skills/attention.html">
+ <span class="dropdown-text">Your Attention Please</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/reading.html">
+ <span class="dropdown-text">How to Read</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/thinking.html">
+ <span class="dropdown-text">How to Think</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../skills/help.html">
+ <span class="dropdown-text">Getting Help</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
               <div class="quarto-toggle-container">
                   <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -156,32 +227,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#installing-anaconda-python" id="toc-installing-anaconda-python" class="nav-link active" data-scroll-target="#installing-anaconda-python">Installing Anaconda Python</a>
   <ul class="collapse">
-  <li><a href="#using-anaconda-python" id="toc-using-anaconda-python" class="nav-link" data-scroll-target="#using-anaconda-python">Using Anaconda Python</a></li>
-  <li><a href="#citing" id="toc-citing" class="nav-link" data-scroll-target="#citing">Citing</a></li>
-  </ul></li>
+  <li><a href="#citing" id="toc-citing" class="nav-link active" data-scroll-target="#citing">Citing</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Installing Anaconda Python</h1>
+</div>
 
 
-<section id="installing-anaconda-python" class="level1">
-<h1>Installing Anaconda Python</h1>
-<p><strong>You are strongly encouraged to use the Docker image instead of installing Anaconda Python directly.</strong> The basic reason for this is that you may encounter installation errors or version differences that mean your experience of running the Spatial Data Science environment is seriously impaired.</p>
-<p>If you persist in wanting to install natively, then you will need <a href="https://www.anaconda.com/distribution/#download-section">Anaconda Python</a> (Python 3) to be able to install the programming environment.</p>
-<section id="using-anaconda-python" class="level2">
-<h2 class="anchored" data-anchor-id="using-anaconda-python">Using Anaconda Python</h2>
-<p><strong>You are strongly encouraged to use the <a href="./docker/README.md">Docker</a> image instead of installing Anaconda Python directly.</strong> The basic reason for this is that you may encounter installation errors or version differences that mean your experience of running the Spatial Data Science environment is seriously impaired. Furethermore, we are not in a position to provide support for the wide variety of platforms (hardware and software) that students may present.</p>
-<section id="installating-python" class="level4">
-<h4 class="anchored" data-anchor-id="installating-python">Installating Python</h4>
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jon Reades </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 9, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Why Use Docker Instead?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>You are strongly encouraged to use Docker instead of installing Anaconda Python directly.</strong> The basic reason for this is that you may encounter installation errors or version differences that mean your experience of running the Spatial Data Science environment is seriously impaired.</p>
+</div>
+</div>
 <p>If you <em>really</em> want to install natively, despite everything we said above, then you will need <a href="https://www.anaconda.com/distribution/#download-section">Anaconda Python</a> (Python 3 64-bit) to be able to install the programming environment.</p>
 <section id="mac-osx" class="level5">
 <h5 class="anchored" data-anchor-id="mac-osx">Mac OSX</h5>
@@ -204,52 +301,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Note</strong>: Miniconda is a free minimal installer for conda. It is a lighter version of Anaconda and makes configuring a new environment easy.</p>
 <p><strong>Note</strong>: if you have installed Anaconda for Windows, you don’t need to uninstall it before installing conda for WSL. These two pieces are separate.</p>
 </section>
-</section>
 <section id="installing-the-environment" class="level4">
 <h4 class="anchored" data-anchor-id="installing-the-environment">Installing the Environment</h4>
 <p>After downloading and installing Anaconda Python you will also need to download the environment’s <a href="https%20://raw.githubusercontent.com/jreades/sds_env/master/conda/environment_py.yml">configuration file</a>. This file (known as a ‘YAML file’) tells Anaconda Python what versions of what libraries to install on your computer. The idea is that all users end up with the same versions of the key programming libraries.</p>
 <p>You will then need to work out how to use the Terminal (Mac in order to navigate to the folder holding the downloaded configuration file. It will be <em>something</em> like <code>cd ~/Downloads/</code> to reach your downloads folder.</p>
 <p>At this point you may start the installation by typing:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda-env</span> create <span class="at">-n</span> sds2021 <span class="at">-f</span> environment_py.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda-env</span> create <span class="at">-n</span> sds2022 <span class="at">-f</span> environment_py.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And then hit the return key to run the command.</p>
 </section>
 <section id="configuring" class="level4">
 <h4 class="anchored" data-anchor-id="configuring">Configuring</h4>
 <p>To make this new ‘configuration’ visible in JupyterLab you then need to run the following two commands…</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate sds2021</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--name</span> sds2021 <span class="at">--display-name</span> <span class="st">"CASA2021"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Note</strong>: when you connect to Jupyter, you should see a second tile called <code>CASA2021</code>. Users of Docker will see <em>only</em> <code>Python3</code>. You should always use the <code>CASA2021</code> tile (which represents a separate computing environment) in Anaconda instead of the default <code>Python3</code> tile.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate sds2022</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--name</span> sds2022 <span class="at">--display-name</span> <span class="st">"sds2022"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note</strong>: when you connect to Jupyter, you should see a second tile called <code>sds2022</code>. Users of Docker will see <em>only</em> <code>Python3</code>. You should always use the <code>sds2022</code> tile (which represents a separate computing environment) in Anaconda instead of the default <code>Python3</code> tile.</p>
 <p><strong>Note</strong>: if you get a warning of ‘No permission’ because of the above commands, please add <code>sudo</code> to that command and run it again. You would need to input the password for WSL or Mac.</p>
 </section>
 <section id="running" class="level4">
 <h4 class="anchored" data-anchor-id="running">Running</h4>
 <p>Still using the Terminal type (Windows users, please use Windows Terminal):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate sds2021</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate sds2022</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Do <strong>not</strong> run Jupyter Lab from the <em>Anaconda Navigator</em> since it does not configure the spatial analysis libraries correctly.</p>
-</section>
-<section id="installing" class="level4">
-<h4 class="anchored" data-anchor-id="installing">Installing</h4>
-<p>After downloading and installing Anaconda Python you will also need to download the environment’s <a href="https://raw.githubusercontent.com/jreades/sds_env/master/conda/environment_py.yml">configuration file</a>. This file (known as a ‘YAML file’) tells Anaconda Python what versions of what libraries to install on your computer. The idea is that all users (whether using our Docker approach or this one) end up with (roughly) the same versions of the key programming libraries.</p>
-<p>You will then need to work out how to use the AnacondaPrompt (Windows) or Terminal (Mac) in order to navigate to the folder holding the downloaded configuration file. It will be <em>something</em> like <code>cd ~/Downloads/</code> to reach your downloads folder.</p>
-<p>At this point you may start the installation by typing:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda-env</span> create <span class="at">-n</span> {{<span class="op">&lt;</span>var env.name<span class="op">&gt;</span>}} <span class="at">-f</span> environment_py.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And then hit the return key to run the command.</p>
-</section>
-<section id="configuring-1" class="level4">
-<h4 class="anchored" data-anchor-id="configuring-1">Configuring</h4>
-<p>To make this new ‘configuration’ visible in JupyterLab you then need to run the following two commands…</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate {{<span class="op">&lt;</span>var env.name<span class="op">&gt;</span>}}</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--name</span> {{<span class="op">&lt;</span>var env.name<span class="op">&gt;</span>}} <span class="at">--display-name</span> <span class="st">"{{&lt;var env.display&gt;}}"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Note</strong>: when you connect to Jupyter, you should see a second ‘tile’ with the display name set above (e.g.&nbsp;<code>{{&lt;var env.display&gt;}}</code>. Users of Docker will see <em>only</em> <code>Python3</code>. You should always use the <code>{{&lt;var env.display&gt;}}</code> tile (which represents a separate computing environment) in Anaconda instead of the default <code>Python3</code> tile, which does <em>not</em> have the necessary libraries installed.</p>
-</section>
-<section id="running-1" class="level4">
-<h4 class="anchored" data-anchor-id="running-1">Running</h4>
-<p>Still using the Terminal/AnacondaPrompt type:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate {{<span class="op">&lt;</span>var env.display<span class="op">&gt;</span>}}</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Do <strong>not</strong> run Jupyter Lab from the <em>Anaconda Navigator</em> since it does not configure the spatial analysis libraries correctly.</p>
-</section>
 </section>
 <section id="citing" class="level2">
 <h2 class="anchored" data-anchor-id="citing">Citing</h2>
@@ -257,24 +330,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://zenodo.org/badge/latestdoi/65582539"><img src="https://zenodo.org/badge/65582539.svg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">DOI</figcaption><p></p>
+<p></p><figcaption class="figure-caption">DOI</figcaption><p></p>
 </figure>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{hadoop,</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author = {{Dani Arribas-Bel}},</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title = {\texttt{gds_env}: A containerised platform for Geographic Data Science},</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">  url = {https://github.com/darribas/gds_env},</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">  version = {3.0},</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">  date = {2019-08-06},</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{hadoop,</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author = {{Dani Arribas-Bel}},</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title = {\texttt{gds_env}: A containerised platform for Geographic Data Science},</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">  url = {https://github.com/darribas/gds_env},</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">  version = {3.0},</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">  date = {2019-08-06},</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -324,7 +414,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);

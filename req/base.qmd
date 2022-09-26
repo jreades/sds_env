@@ -1,4 +1,8 @@
-# Base Utilities
+---
+title: "Base Utilities"
+author: "Jon Reades"
+date: "9/9/2022"
+---
 
 In order to access the majority of the features that this module uses, you will need to install several 'base' utilities:
 
