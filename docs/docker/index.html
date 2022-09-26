@@ -236,6 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#running-dask-andor-quarto" id="toc-running-dask-andor-quarto" class="nav-link" data-scroll-target="#running-dask-andor-quarto">Running Dask and/or Quarto</a></li>
   <li><a href="#enabling-vscode-integration" id="toc-enabling-vscode-integration" class="nav-link" data-scroll-target="#enabling-vscode-integration">Enabling VSCode Integration</a></li>
   <li><a href="#running-everything-script" id="toc-running-everything-script" class="nav-link" data-scroll-target="#running-everything-script">Running Everything (Script)</a></li>
+  <li><a href="#deleting" id="toc-deleting" class="nav-link" data-scroll-target="#deleting">Deleting</a></li>
   <li><a href="#citing" id="toc-citing" class="nav-link" data-scroll-target="#citing">Citing</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -321,6 +322,19 @@ M1/M2 Macs
 </section>
 <section id="enabling-vscode-integration" class="level2">
 <h2 class="anchored" data-anchor-id="enabling-vscode-integration">Enabling VSCode Integration</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Beta Feature
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In principle the below will work. We have it working on Mac OSX and the same process <em>should</em> work on Windows. In practice, this should be considered ‘beta’ in the sense that the documentation is still in development and we’re working out a few kinks. We’ll keep you posted on our progress!</p>
+</div>
+</div>
 <p>To enable VSCode integration you’ll need to create additional ‘mount points’ (‘locations’ on <em>your computer’s</em> file system) that the Docker image can access. At this point the command becomes <em>very</em> long, which is why there is a script designed to make this a more straightforward process provided below.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2022 <span class="dt">\</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
@@ -345,24 +359,24 @@ M1/M2 Macs
 </section>
 <section id="running-everything-script" class="level2">
 <h2 class="anchored" data-anchor-id="running-everything-script">Running Everything (Script)</h2>
-<p>In order to be able to access all of the services (persistent VS Code extensions, Quarto, Dask…) it’s easier to make use of the <a href="https://github.com/jreades/sds_env/blob/master/docker/docker.sh">Bash script provided</a> together with the default <a href="https://github.com/jreades/sds_env/blob/master/docker/config.sh">configuration file</a>. This allows you to turn Quarto and Dask on/off by commenting/uncommenting a port number in the <code>config.sh</code> file and streamlines the Docker launch process to: <code>sh docker.sh start</code>.</p>
-<p>The shutdown process (which will shutdown the container and then delete it) is: <code>sh docker.sh stop</code>.</p>
-<section id="deleting" class="level4">
-<h4 class="anchored" data-anchor-id="deleting">Deleting</h4>
+<p>In order to be able to access all of the services (persistent VS Code extensions, Quarto, Dask…) it’s easier to make use of the <a href="https://github.com/jreades/sds_env/blob/master/docker/docker.sh">Bash script provided</a> together with the default <a href="https://github.com/jreades/sds_env/blob/master/docker/config.sh">configuration file</a>. This allows you to turn Quarto and Dask on/off by commenting/uncommenting a port number in the <code>config.sh</code> file and streamlines the Docker launch process to: <code>bash docker.sh start</code>.</p>
+<p>The shutdown process (which will shutdown the container and then delete it) is: <code>bash docker.sh stop</code>.</p>
+</section>
+<section id="deleting" class="level2">
+<h2 class="anchored" data-anchor-id="deleting">Deleting</h2>
 <p>Should you wish to remove the image and container from your system then the following approaches are available:</p>
-<section id="deleting-by-filter" class="level5">
-<h5 class="anchored" data-anchor-id="deleting-by-filter">Deleting by Filter</h5>
+<section id="deleting-by-filter" class="level3">
+<h3 class="anchored" data-anchor-id="deleting-by-filter">Deleting by Filter</h3>
 <p>This should be used with some care since it will try to delete all matching images and this may not be what you want:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aqf</span> <span class="st">"name=sds"</span> <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Image}} {{.Names}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"2019"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rm <span class="at">-f</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Repository}} {{.Tag}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"sds"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="deleting-by-image" class="level5">
-<h5 class="anchored" data-anchor-id="deleting-by-image">Deleting by Image</h5>
+<section id="deleting-by-image" class="level3">
+<h3 class="anchored" data-anchor-id="deleting-by-image">Deleting by Image</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aq</span> <span class="co"># Get list of running processes and work out container IDs to remove</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> <span class="op">&lt;</span>list of container IDs<span class="op">&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="co"># Get list of available images and work out image IDs to remove</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="op">&lt;</span>list of image IDs<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 </section>
 </section>
 <section id="citing" class="level2">

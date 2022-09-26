@@ -70,6 +70,12 @@ The Dask port is where the Dask task manager will be visible when you are making
 
 ## Enabling VSCode Integration
 
+:::{.callout-warning}
+## Beta Feature
+
+In principle the below will work. We have it working on Mac OSX and the same process *should* work on Windows. In practice, this should be considered 'beta' in the sense that the documentation is still in development and we're working out a few kinks. We'll keep you posted on our progress!
+:::
+
 To enable VSCode integration you'll need to create additional 'mount points' ('locations' on *your computer's* file system) that the Docker image can access. At this point the command becomes *very* long, which is why there is a script designed to make this a more straightforward process provided below.
 
 ```bash
@@ -104,11 +110,11 @@ In order to be able to access all of the services (persistent VS Code extensions
 
 The shutdown process (which will shutdown the container and then delete it) is: `bash docker.sh stop`.
 
-#### Deleting
+## Deleting
 
 Should you wish to remove the image and container from your system then the following approaches are available:
 
-##### Deleting by Filter
+### Deleting by Filter
 
 This should be used with some care since it will try to delete all matching images and this may not be what you want:
 
@@ -117,7 +123,7 @@ docker ps -aqf "name=sds" --format="{{.Image}} {{.Names}} {{.ID}}" | grep "2019"
 docker images --format="{{.Repository}} {{.Tag}} {{.ID}}" | grep "sds" | cut -d' ' -f3 | xargs docker rmi
 ```
 
-##### Deleting by Image
+### Deleting by Image
 
 ```bash
 docker ps -aq # Get list of running processes and work out container IDs to remove
