@@ -100,9 +100,9 @@ Once you've gone through this _once_ it should be fairly straightforward on subs
 
 ## Running Everything (Script)
 
-In order to be able to access all of the services (persistent VS Code extensions, Quarto, Dask...) it's easier to make use of the [Bash script provided](https://github.com/jreades/sds_env/blob/master/docker/docker.sh) together with the default [configuration file](https://github.com/jreades/sds_env/blob/master/docker/config.sh). This allows you to turn Quarto and Dask on/off by commenting/uncommenting a port number in the `config.sh` file and streamlines the Docker launch process to: `sh docker.sh start`.
+In order to be able to access all of the services (persistent VS Code extensions, Quarto, Dask...) it's easier to make use of the [Bash script provided](https://github.com/jreades/sds_env/blob/master/docker/docker.sh) together with the default [configuration file](https://github.com/jreades/sds_env/blob/master/docker/config.sh). This allows you to turn Quarto and Dask on/off by commenting/uncommenting a port number in the `config.sh` file and streamlines the Docker launch process to: `bash docker.sh start`.
 
-The shutdown process (which will shutdown the container and then delete it) is: `sh docker.sh stop`.
+The shutdown process (which will shutdown the container and then delete it) is: `bash docker.sh stop`.
 
 #### Deleting
 
