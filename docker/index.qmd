@@ -2,6 +2,13 @@
 title: "Using Docker"
 author: "Jon Reades"
 date: "9/9/2022"
+filters:
+  - lightbox
+lightbox:
+  match: auto
+  effect: fade
+  desc-position: right
+  loop: false
 ---
 
 You will need [Docker](https://www.docker.com) (Desktop) to be able to install the Spatial Data Science (SDS) environment. If you do not wish to create an account with Docker then you may want to follow advice [provided here](https://github.com/docker/docker.github.io/issues/6910#issuecomment-532393783) though we cannot condone it.
@@ -87,22 +94,87 @@ docker run --rm -d --name {{< var env.name >}} \
   {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password=''
 ```
 
+#### Required Extensions
+
 This then enables you to install the required integration extensions as follows:
 
-1. The [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension from Microsoft, which will allow you to use a Docker container as a virtual environment from VSCode.
+1. The [Dev - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension from Microsoft, which will allow you to use a Docker container as a virtual environment from VSCode.
 2. The [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) extension from Microsoft, which allows you to interact with images/containers from within VSCode.
 3. The [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) exension, which will allow you to execute Jupyter Notebooks directly within VSCode.
 4. The [Jupyter Renderers](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers) extension which adds support for media outputs, especially interactive ones.
-5. The "Jupyter Keymap" exension which provides the same keymaps in VSCode that exist in JupyterLab.
-6. The [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) extension which works as a language server (will do code highlighting, syntax checking, etc.) for Python.
-7. The [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension which provides rich support for Python >= 3.7.
-8. The [Gremlins Tracker](https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins) extension which highlights non-printing characters that can make code fail to execute properly.
+5. The [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) extension which works as a language server (will do code highlighting, syntax checking, etc.) for Python.
+6. The [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension which provides rich support for Python >= 3.7.
+7. The [Gremlins Tracker](https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins) extension which highlights non-printing characters that can make code fail to execute properly.
+
+:::{.callout-tip} 
+## Jupyter Keymap Extension
+
+The "Jupyter Keymap" exension which provides the same keymaps in VSCode that exist in JupyterLab is globally enabled and does not need to be installed..
+:::
 
 You can supplement these with the Markdown linting extension and a range of other tools. 
 
 Once this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided. 
 
 Once you've gone through this _once_ it should be fairly straightforward on subsequent runs. At that point you can browse to the notebooks (which are usually being mounted from your own machine) and run them as if you were doing all of this within the Docker container. It's kind of mind-melting but pretty cool.
+
+### Step-by-Step Instructions
+
+#### Connect
+
+Use the Remote Containers icon (![Dev Containers icon](./img/01-icon.png){height="14px" .nolightbox}) to bring up the 'open' menu.
+
+![The Remote Containers Dialogue](./img/01-Connect.png){width="75%" fig-alt="Click the green icon at the bottom-left corner of VSCode" group="vscode"}
+
+#### Attach
+
+Choose the `Attach to Running Container...` option to list active Docker containers.
+
+![Attach to a running container](./img/02-Attach.png){width="75%" fig-alt="Select a running container. Ideally the one you want to use VSCode with!" group="vscode"}
+
+In this case, we're only running one container named `fsds` and pulled from `jreades/sds:2022`:
+
+![The list of running containers](./img/02-container.png){.nolightbox}
+
+#### Attached!
+
+If all has gone well, then a new window should open and you'll notice one small, but significant change:
+
+![An attached workspace](./img/03-Attached.png){width="75%" fig-alt="Notice the Remote Container icon has changed at the bottom." group="vscode"}
+
+VSCode confirms that this window is now connected to the `fsds` container:
+
+![Running on a Container](./img/03-running.png){.nolightbox}
+
+#### Open Sesame
+
+Now, if we try to open a file/folder under the open menu (![Open menu](./img/04-menu.png){height="16px" .nolightbox}), you'll notice that we're not browsing 'our computer' any more! Instead, we're browsing files on the Docker container.
+
+![Opening files on the container](./img/04-Open_Folder.png){width="75%" fig-alt="You will almost always find what you need under /home/jovyan/work" group="vscode"}
+
+So how do we find the notebooks? Well, when we launched the container we had this line:
+
+```bash
+  -v "$(pwd):/home/jovyan/work" \
+``` 
+
+That told Docker to connect the _current working directory_ (where you ran the command) to `/home/jovyan/work` on the container. So anything under `/home/jovyan/work` is _actually_ a file that can be found on our computer. Below, you can see that I've browsed to the `fsds/practicals` directory on my computer and am now ready to start running (and editing) my notebooks using an IDE instead of JupyterLab's web interface:
+
+![Notice the path on the container](./img/04-path.png){.nolightbox}
+
+#### Extensions
+
+You need to install the _same_ VSCode extensions that you'd use when running Python locally on your computer into the 'remote' container. VSCode will do a pretty good job prompting you, but you've got the [list above](#required-extensions) and can also seem them (notice I've selected `CONTAINER`) on the left-hand `Extensions` (![Extensions menu](./img/05-menu.png){height="16px" .nolightbox}) menu in the screenshot below:
+
+![Extensions installed in Container](./img/05-Extensions.png){width="75%" fig-alt="All being well you should only need to install these once." group="vscode"}
+
+Once the extensions are installed, provided that you use the *same* startup command each time (and don't change the name of the container from `fsds`) those extensions should be ready-to-go and you won't need to reinstall again.
+
+#### Success!
+
+And here we go...
+
+![Running code in a container](./img/06-Success.png){width="75%" fig-alt="Success! Running code in a remote container via VSCode" group="vscode"}
 
 ## Running Everything (Script)
 

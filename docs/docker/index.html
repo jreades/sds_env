@@ -105,6 +105,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -342,20 +345,122 @@ Beta Feature
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${HOME}</span><span class="st">/.vscode/containers/sds2022-extensions:/home/jovyan/.vscode-server/extensions"</span> <span class="dt">\</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${HOME}</span><span class="st">/.vscode/containers/sds2022-insiders:/home/jovyan/.vscode-server-insiders"</span> <span class="dt">\</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2022 jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="required-extensions" class="level4">
+<h4 class="anchored" data-anchor-id="required-extensions">Required Extensions</h4>
 <p>This then enables you to install the required integration extensions as follows:</p>
 <ol type="1">
-<li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Remote - Containers</a> extension from Microsoft, which will allow you to use a Docker container as a virtual environment from VSCode.</li>
+<li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev - Containers</a> extension from Microsoft, which will allow you to use a Docker container as a virtual environment from VSCode.</li>
 <li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">Docker</a> extension from Microsoft, which allows you to interact with images/containers from within VSCode.</li>
 <li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter">Jupyter</a> exension, which will allow you to execute Jupyter Notebooks directly within VSCode.</li>
 <li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers">Jupyter Renderers</a> extension which adds support for media outputs, especially interactive ones.</li>
-<li>The “Jupyter Keymap” exension which provides the same keymaps in VSCode that exist in JupyterLab.</li>
 <li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a> extension which works as a language server (will do code highlighting, syntax checking, etc.) for Python.</li>
 <li>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a> extension which provides rich support for Python &gt;= 3.7.</li>
 <li>The <a href="https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins">Gremlins Tracker</a> extension which highlights non-printing characters that can make code fail to execute properly.</li>
 </ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Jupyter Keymap Extension
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The “Jupyter Keymap” exension which provides the same keymaps in VSCode that exist in JupyterLab is globally enabled and does not need to be installed..</p>
+</div>
+</div>
 <p>You can supplement these with the Markdown linting extension and a range of other tools.</p>
 <p>Once this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided.</p>
 <p>Once you’ve gone through this <em>once</em> it should be fairly straightforward on subsequent runs. At that point you can browse to the notebooks (which are usually being mounted from your own machine) and run them as if you were doing all of this within the Docker container. It’s kind of mind-melting but pretty cool.</p>
+</section>
+<section id="step-by-step-instructions" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-instructions">Step-by-Step Instructions</h3>
+<section id="connect" class="level4">
+<h4 class="anchored" data-anchor-id="connect">Connect</h4>
+<p>Use the Remote Containers icon (<img src="./img/01-icon.png" class="nolightbox" height="14" alt="Dev Containers icon">) to bring up the ‘open’ menu.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./img/01-Connect.png" class="lightbox" data-gallery="vscode" title="The Remote Containers Dialogue"><img src="./img/01-Connect.png" class="img-fluid figure-img" style="width:75.0%" alt="Click the green icon at the bottom-left corner of VSCode"></a></p>
+<p></p><figcaption class="figure-caption">The Remote Containers Dialogue</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="attach" class="level4">
+<h4 class="anchored" data-anchor-id="attach">Attach</h4>
+<p>Choose the <code>Attach to Running Container...</code> option to list active Docker containers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./img/02-Attach.png" class="lightbox" data-gallery="vscode" title="Attach to a running container"><img src="./img/02-Attach.png" class="img-fluid figure-img" style="width:75.0%" alt="Select a running container. Ideally the one you want to use VSCode with!"></a></p>
+<p></p><figcaption class="figure-caption">Attach to a running container</figcaption><p></p>
+</figure>
+</div>
+<p>In this case, we’re only running one container named <code>fsds</code> and pulled from <code>jreades/sds:2022</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./img/02-container.png" class="nolightbox img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The list of running containers</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="attached" class="level4">
+<h4 class="anchored" data-anchor-id="attached">Attached!</h4>
+<p>If all has gone well, then a new window should open and you’ll notice one small, but significant change:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./img/03-Attached.png" class="lightbox" data-gallery="vscode" title="An attached workspace"><img src="./img/03-Attached.png" class="img-fluid figure-img" style="width:75.0%" alt="Notice the Remote Container icon has changed at the bottom."></a></p>
+<p></p><figcaption class="figure-caption">An attached workspace</figcaption><p></p>
+</figure>
+</div>
+<p>VSCode confirms that this window is now connected to the <code>fsds</code> container:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./img/03-running.png" class="nolightbox img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Running on a Container</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="open-sesame" class="level4">
+<h4 class="anchored" data-anchor-id="open-sesame">Open Sesame</h4>
+<p>Now, if we try to open a file/folder under the open menu (<img src="./img/04-menu.png" class="nolightbox" height="16" alt="Open menu">), you’ll notice that we’re not browsing ‘our computer’ any more! Instead, we’re browsing files on the Docker container.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./img/04-Open_Folder.png" class="lightbox" data-gallery="vscode" title="Opening files on the container"><img src="./img/04-Open_Folder.png" class="img-fluid figure-img" style="width:75.0%" alt="You will almost always find what you need under /home/jovyan/work"></a></p>
+<p></p><figcaption class="figure-caption">Opening files on the container</figcaption><p></p>
+</figure>
+</div>
+<p>So how do we find the notebooks? Well, when we launched the container we had this line:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That told Docker to connect the <em>current working directory</em> (where you ran the command) to <code>/home/jovyan/work</code> on the container. So anything under <code>/home/jovyan/work</code> is <em>actually</em> a file that can be found on our computer. Below, you can see that I’ve browsed to the <code>fsds/practicals</code> directory on my computer and am now ready to start running (and editing) my notebooks using an IDE instead of JupyterLab’s web interface:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./img/04-path.png" class="nolightbox img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Notice the path on the container</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="extensions" class="level4">
+<h4 class="anchored" data-anchor-id="extensions">Extensions</h4>
+<p>You need to install the <em>same</em> VSCode extensions that you’d use when running Python locally on your computer into the ‘remote’ container. VSCode will do a pretty good job prompting you, but you’ve got the <a href="#required-extensions">list above</a> and can also seem them (notice I’ve selected <code>CONTAINER</code>) on the left-hand <code>Extensions</code> (<img src="./img/05-menu.png" class="nolightbox" height="16" alt="Extensions menu">) menu in the screenshot below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./img/05-Extensions.png" class="lightbox" data-gallery="vscode" title="Extensions installed in Container"><img src="./img/05-Extensions.png" class="img-fluid figure-img" style="width:75.0%" alt="All being well you should only need to install these once."></a></p>
+<p></p><figcaption class="figure-caption">Extensions installed in Container</figcaption><p></p>
+</figure>
+</div>
+<p>Once the extensions are installed, provided that you use the <em>same</em> startup command each time (and don’t change the name of the container from <code>fsds</code>) those extensions should be ready-to-go and you won’t need to reinstall again.</p>
+</section>
+<section id="success" class="level4">
+<h4 class="anchored" data-anchor-id="success">Success!</h4>
+<p>And here we go…</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./img/06-Success.png" class="lightbox" data-gallery="vscode" title="Running code in a container"><img src="./img/06-Success.png" class="img-fluid figure-img" style="width:75.0%" alt="Success! Running code in a remote container via VSCode"></a></p>
+<p></p><figcaption class="figure-caption">Running code in a container</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
 </section>
 <section id="running-everything-script" class="level2">
 <h2 class="anchored" data-anchor-id="running-everything-script">Running Everything (Script)</h2>
@@ -368,15 +473,15 @@ Beta Feature
 <section id="deleting-by-filter" class="level3">
 <h3 class="anchored" data-anchor-id="deleting-by-filter">Deleting by Filter</h3>
 <p>This should be used with some care since it will try to delete all matching images and this may not be what you want:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aqf</span> <span class="st">"name=sds"</span> <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Image}} {{.Names}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"2019"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rm <span class="at">-f</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Repository}} {{.Tag}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"sds"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aqf</span> <span class="st">"name=sds"</span> <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Image}} {{.Names}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"2019"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rm <span class="at">-f</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Repository}} {{.Tag}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"sds"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="deleting-by-image" class="level3">
 <h3 class="anchored" data-anchor-id="deleting-by-image">Deleting by Image</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aq</span> <span class="co"># Get list of running processes and work out container IDs to remove</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> <span class="op">&lt;</span>list of container IDs<span class="op">&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="co"># Get list of available images and work out image IDs to remove</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="op">&lt;</span>list of image IDs<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aq</span> <span class="co"># Get list of running processes and work out container IDs to remove</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> <span class="op">&lt;</span>list of container IDs<span class="op">&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="co"># Get list of available images and work out image IDs to remove</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="op">&lt;</span>list of image IDs<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="citing" class="level2">
@@ -388,13 +493,13 @@ Beta Feature
 <p></p><figcaption class="figure-caption">DOI</figcaption><p></p>
 </figure>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{hadoop,</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author = {{Dani Arribas-Bel}},</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title = {\texttt{gds_env}: A containerised platform for Geographic Data Science},</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">  url = {https://github.com/darribas/gds_env},</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">  version = {3.0},</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">  date = {2019-08-06},</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{hadoop,</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author = {{Dani Arribas-Bel}},</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title = {\texttt{gds_env}: A containerised platform for Geographic Data Science},</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">  url = {https://github.com/darribas/gds_env},</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">  version = {3.0},</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">  date = {2019-08-06},</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -502,7 +607,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022, Jon Reades &amp; CASA Teaching Team</div>   
-      <div class="nav-footer-center"><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</div>
+      <div class="nav-footer-center"><a href="../img/favicon-16x16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="../img/favicon-16x16.png" class="height:10px img-fluid"></a> CASA Computing Environment</div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -521,6 +626,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"openEffect":"fade","descPosition":"right","closeEffect":"fade","selector":".lightbox","loop":false});</script>
 
 
 
