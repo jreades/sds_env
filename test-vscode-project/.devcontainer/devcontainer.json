@@ -3,7 +3,7 @@
 // Version: 1.0 (28-09-2022)
 
 {
-	"name": "sds2022",
+    "name": "sds2022",
     "image" : "jreades/sds:2022",
 
     "containerEnv": {
@@ -15,19 +15,19 @@
 
     "postStartCommand": "jupyter lab",
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
         "ms-azuretools.vscode-docker",
         "ms-toolsai.jupyter",
         "ms-toolsai.jupyter-renderers",
         "ms-python.vscode-pylance",
         "ms-python.python",
         "nhoizey.gremlins"
-	],
+    ],
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": ["8888:8888", "4201:4201", "8787:8787"],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": ["8888:8888", "4201:4201", "8787:8787"],
 
-	"remoteUser": "jovyan",
+    "remoteUser": "jovyan",
     "shutdownAction": "stopContainer"
 } 
