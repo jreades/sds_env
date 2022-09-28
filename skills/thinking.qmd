@@ -1,4 +1,6 @@
-# How to Think
+---
+title: "How to *Think*"
+---
 
 ## Why am I Making This Hard for You?
 

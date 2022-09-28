@@ -1,4 +1,6 @@
-# Soft Skills
+---
+title: "Soft Skills"
+---
 
 We think that there are some fundamentally important soft-skills for successfully completing a MSc: we try to teach these in our modules as well, but we think it's useful to flag them here as well:
 

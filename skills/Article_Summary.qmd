@@ -1,0 +1,69 @@
+---
+title: "Summary of Article"
+author: "Jon Reades"
+date: "9/9/2022"
+tbl-colwidths: [75,25]
+toc: false
+number-sections: true
+colorlinks: true
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \addtokomafont{disposition}{\rmfamily}
+    #documentclass: report
+    mainfont: "Spectral" # https://fonts.google.com/specimen/Spectral
+    monofont: "Inconsolata" # https://fonts.google.com/specimen/Inconsolata
+    papersize: a4
+    geometry:
+      - top=25mm
+      - left=40mm
+      - right=30mm
+      - bottom=25mm
+      - heightrounded
+---
+
+I have adapted this document from a [Tweet](https://twitter.com/HeatherKEvans/status/1574710610390315008?s=20&t=etlHfUPtzBnUdetbbFvAhg) by \@HeatherKEvans and several of the follow-up responses.
+
+## Full Reference
+
+```bibtex
+
+```
+
+## Questions 
+
+### What is the article *about*?
+
+
+### What kind of contribution is the paper trying to make?^[Is it conceptual, theoretical, empirical, or something else?]
+
+
+### What gap(s) does it identify/tackle?^[If there is a clear 'gap' identified, great, but what other literature(s) mentioned? Meaning, do they lay out or contrast different 'groups' of related articles]
+
+
+### What is/are the main research questions(s)/argument(s)?^[What ideas are going to be tackled?]
+
+
+### How are they explored/presented?^[How do they say they will test and/or make use of these ideas as part of their research?]
+
+
+### How are data used to test them?^[Where does the data come from, and how well do they explain what it contains? Is it biased or limited in any way?]
+
+
+### What are the main findings?^[Just the highlights!]
+
+
+### What is the contribution?
+
+
+## Discuss!
+
+## What am I still confused about?
+
+
+## Based on the above, why was I encouraged to read this?
+
+
+
+

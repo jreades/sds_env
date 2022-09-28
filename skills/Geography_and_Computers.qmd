@@ -1,0 +1,94 @@
+---
+title: "Summary of Article"
+author: "Jon Reades"
+date: "9/9/2022"
+tbl-colwidths: [75,25]
+toc: false
+number-sections: true
+colorlinks: true
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \addtokomafont{disposition}{\rmfamily}
+    #documentclass: report
+    mainfont: "Spectral" # https://fonts.google.com/specimen/Spectral
+    monofont: "Inconsolata" # https://fonts.google.com/specimen/Inconsolata
+    papersize: a4
+    geometry:
+      - top=25mm
+      - left=40mm
+      - right=30mm
+      - bottom=25mm
+      - heightrounded
+---
+
+## Full Reference
+
+From [Google Scholar](https://scholar.google.co.uk/scholar?hl=en&as_sdt=0%2C5&q=author%3AReades+author%3AArribas-Bel&btnG=#d=gs_cit&t=1664394828897&u=%2Fscholar%3Fq%3Dinfo%3AytpZ4MtjAz0J%3Ascholar.google.com%2F%26output%3Dcite%26scirp%3D0%26hl%3Den) and then click on the `Cite` and the `BibTeX` link at the bottom of the popup.
+
+```bibtex
+@article{arribas2018geography,
+  title={Geography and computers: Past, present, and future},
+  author={Arribas-Bel, Dani and Reades, Jon},
+  journal={Geography Compass},
+  volume={12},
+  number={10},
+  pages={e12403},
+  year={2018},
+  publisher={Wiley Online Library}
+}
+```
+
+## Questions 
+
+### What is the article *about*?
+
+The long-running relationship between computers and geography, and the potential value of a 'Geographic Data Science' for cross-pollination between geography and other disciplines (i.e. Computer Science, Statistics).. 
+
+### What kind of contribution is the paper trying to make?^[Is it conceptual, theoretical, empirical, or something else?]
+
+It's a historical survey of the field in light of the rise of 'big data' and renewed interest in quantitative/computational methods..
+
+### What gap(s) does it identify/tackle?^[If there is a clear 'gap' identified, great, but what other literature(s) mentioned? Meaning, do they lay out or contrast different 'groups' of related articles]
+
+It builds on Barnes' histories of quantitative geography (2004, 2013, 2014) but wants:
+
+> "to draw attention to the seemingly overlooked connection between the subsequent evolution of geographical methods in connection to technical changes in computer hardware and software." (p.2)
+
+### What is/are the main research questions(s) or argument(s)?^[What ideas are going to be tackled?]
+
+No research questions *as such* since it's a survey, but the main claim is that "the declining size and cost of processors, storage, and geospatial technologies" (p.2) is allowing us to tackle questions for which data "simply was not available" before. In effect, the "embedding" of computers in everyday life is transforming social science as a whole (Lazer et al., 2009).
+
+### How are they explored/presented?^[How do they say they will test and/or make use of these ideas as part of their research?]
+
+The article presents three 'waves' of change:
+
+1. 'A computer in every institution' (having computers *at all*) (p.2)
+2. 'A computer in every office' (allowed researchers to 'play' with ABMs, GIS, etc.) (p.3)
+3. 'A computer in every thing' ('autonomous data generators' -- sensors everywhere! -- and allowing researchers access to behavioural data) (p.4)
+
+Transition fro 'data poor' to 'data deluge', but data is no longer purposefully generated. (p.5)
+
+### How are data used to test them?^[Where does the data come from, and how well do they explain what it contains? Is it biased or limited in any way?]
+
+Draws on evidence from *Progress in Human Geography*.
+
+### What are the main findings?^[Just the highlights!]
+
+See above. But claim that data science "provides a framework to not only better understand, but also to effectively leverage, the kind of broadly defined 'data' that is of interest to geographers" (p.5).
+
+### What is the contribution?
+
+Argues need for 'Geographic Data Science' as interface with other disciplines. Points to fact that data science is at risk of 'reinventing space' but that refusing to engage with this could lead to 'our disciplinary terrain' (p.6) being occupied by others.
+
+## Discuss!
+
+## What am I still confused about?
+
+Is *Geographic Data Science* a science? Not according to [these guys](https://compass.onlinelibrary.wiley.com/doi/full/10.1111/gec3.12537)!
+
+## Based on the above, why was I encouraged to read this?
+
+Useful to connect technological change to disciplinary change: as what we are able to do changes, so do the types of questions that we ask. It's not saying that technology *determines* research, but that the ability to ask questions of that tech is useful for understanding how disciplines (e.g. Geography) change. Useful background ref for positioning anything I do with ML/data science approaches. 
+
