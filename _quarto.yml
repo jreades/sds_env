@@ -47,12 +47,9 @@ website:
       collapse-level: 2
       background: light
       contents:
-        - text: "Health Check"
-          href: req/health.qmd
-        - text: "Base Utilities"
-          href: req/base.qmd
-        - text: "Code Camp"
-          href: req/code_camp.qmd
+        - req/health.qmd
+        - req/base.qmd
+        - req/code_camp.qmd
 
     - id: software
       title: "Setup"
@@ -60,20 +57,15 @@ website:
         - setup/git.qmd
         - setup/markdown.qmd
         - setup/env.qmd
-        - text: "No Install Options"
-          href: setup/no_install.qmd
+        - setup/no_install.qmd
 
     - id: skills
       title: "Soft Skills"
       contents:
-        - text: "Your Attention Please"
-          href: skills/attention.qmd
-        - text: "How to Read"
-          href: skills/reading.qmd
-        - text: "How to Think"
-          href: skills/thinking.qmd
-        - text: "Getting Help"
-          href: skills/help.qmd
+        - skills/attention.qmd
+        - skills/reading.qmd
+        - skills/thinking.qmd
+        - skills/help.qmd
 
 highlight-style: pygments
 

@@ -1,5 +1,5 @@
 ---
-title: "o Install Options"
+title: "No Install Options"
 author: "Jon Reades"
 date: "9/9/2022"
 ---

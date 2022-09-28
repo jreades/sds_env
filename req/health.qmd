@@ -1,5 +1,5 @@
 ---
-title: "Computer Health Check"
+title: "Health Check"
 author: "Jon Reades"
 date: "9/9/2022"
 ---

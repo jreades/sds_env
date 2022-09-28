@@ -41,6 +41,7 @@ dependencies:
   - numba
   - osmnx
   - palettable 
+  - pandas-profiling
   - pointpats
   - polyline
   - plotly
@@ -68,7 +69,9 @@ dependencies:
     - contractions 
     - dtreeviz
     - dtreeviz[xgboost]
+    - fastai==1.0.61
     - geofeather 
+    - gurobipy==9.5.1
     #- git+https://github.com/smazzanti/mrmr # Supports feature selection
     #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - joypy
@@ -79,6 +82,8 @@ dependencies:
     - matplotlib-scalebar 
     - mgwr
     - num2words
+    - pulp==2.6.0
+    - rfpimp
     - scikit-posthocs
     - sklearn-som
     - smopy # NOT a typo! Not the same thing as sompy!
