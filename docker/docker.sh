@@ -20,7 +20,7 @@ if [[ $2 ]]; then
 		. "$2.sh"
 	fi
 else
-	echo "Using default configuration as config.sh."
+	echo "Using default configuration from config.sh."
 	. ./config.sh
 fi
 
@@ -49,14 +49,21 @@ if [[ $1 == "start" ]]; then
 	fi
 	QUARTO_CMD=""
 	if [[ ${QUARTO_PORT:+x} ]]; then
-		printf "Quarto enabled in config file, run \e[1;4mquarto preview --host 0.0.0.0 --port ${QUARTO_PORT}\e[0m to start this service.\nNote that the port in the _quarto.yml configuration file should also be set to ${QUARTO_PORT} (from config.sh).\n"
+		printf "Run \e[1;4mquarto preview --host 0.0.0.0 --port ${QUARTO_PORT}\e[0m to use Quarto.\n"
 		QUARTO_CMD="-p ${QUARTO_PORT}:${QUARTO_PORT}"
 	fi
 	NETWORK_CMD=""
 	if [[ ${DOCKER_NET:+x} ]]; then
 		NETWORK_CMD="--net ${DOCKER_NET}"
 	fi
-	$(echo "${WIN_CMD}") docker run --rm -d --name $DOCKER_NM $(echo "${NETWORK_CMD}") $(echo "${PLATFORM}") -p "$JUPYTER_PORT":8888 $(echo "${DASK_CMD}") $(echo "${QUARTO_CMD}") -v "$WORK_DIR":/home/jovyan/work -v "$HOME/.vscode/containers/$DOCKER_NM-extensions:/home/jovyan/.vscode-server/extensions" -v "$HOME/.vscode/containers/$DOCKER_NM-insiders:/home/jovyan/.vscode-server-insiders" $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN
+        # Create local extension directories to ensure
+	# that Docker doesn't do it and give them root
+	# ownership.
+	mkdir -p "$HOME/.vscode/containers/$DOCKER_NM-extensions"
+	mkdir -p "$HOME/.vscode/containers/$DOCKER_NM-insiders"
+
+	# And all systems go!
+	CONTAINER_ID=$($(echo "${WIN_CMD}") docker run --rm -d --name $DOCKER_NM $(echo "${NETWORK_CMD}") $(echo "${PLATFORM}") -p "$JUPYTER_PORT":8888 $(echo "${DASK_CMD}") $(echo "${QUARTO_CMD}") -v "$WORK_DIR":/home/jovyan/work -v "$HOME/.vscode/containers/$DOCKER_NM-extensions:/home/jovyan/.vscode-server/extensions" -v "$HOME/.vscode/containers/$DOCKER_NM-insiders:/home/jovyan/.vscode-server-insiders" $DOCKER_IMG start.sh jupyter lab --LabApp.password=$JUPYTER_PWD --ServerApp.password=$JUPYTER_PWD --NotebookApp.token=$NOTEBOOK_TOKEN)
 
 	# Work out the URL to show at the end -- by default 
 	# we'll show the JupyterLab starting point, *but* if
@@ -84,6 +91,7 @@ if [[ $1 == "start" ]]; then
 	printf "Docker \e[3mshould\e[0m soon be available on: "
 	printf "\e[1;4;48:2::71:160:71m\e]8;;http://$URL\e\\$URL\e]8;;\e\\"
 	printf "\e[0m\n"
+	echo "Container id: $CONTAINER_ID"
 elif [[ $1 == "stop" ]]; then
 	echo "Shutting down..."
 	CONTAINER=$(docker ps -aq -f name=$DOCKER_NM)
