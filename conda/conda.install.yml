@@ -69,9 +69,9 @@ dependencies:
     - contractions 
     - dtreeviz
     - dtreeviz[xgboost]
-    - fastai==1.0.61
+    - fastai==1.0.61 # Huanfa's QM
     - geofeather 
-    - gurobipy==9.5.1
+    - gurobipy==9.5.1 # Huanfa's QM
     #- git+https://github.com/smazzanti/mrmr # Supports feature selection
     #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - joypy
@@ -82,7 +82,7 @@ dependencies:
     - matplotlib-scalebar 
     - mgwr
     - num2words
-    - pulp==2.6.0
+    - pulp==2.6.0 # Huanfa's QM
     - rfpimp
     - scikit-posthocs
     - sklearn-som
