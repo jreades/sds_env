@@ -7,9 +7,9 @@ QUARTO_PORT=4201
 
 # If you want to launch the container with
 # work mounting in different places then use this...
-#WORK_DIR="${PWD}"
+WORK_DIR="${PWD}"
 # Otherwise, specify the path here:
-WORK_DIR="$HOME/Documents/git/"
+#WORK_DIR="$HOME/Documents/git/"
 
 # A name for the container to avoid running multiple
 # copies at the same time.
