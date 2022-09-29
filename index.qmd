@@ -16,7 +16,7 @@ Installing the computing environment entails thinking not *just* about how you [
 
 ## Soft-Skills
 
-It might seem strange to have a section on soft-skills as part of our 'preparing to run the Urban Spatial Science platform web site, but knowing [how to ask for help](./skills/help.qmd) and [how to study effectively](./skills/attention.qmd) is *almost* as important as being able to run the code. Almost. Moreover, the skills we discuss here aren't specific to any one module so we've put them here as part of your orientation.
+It might seem strange to have a section on soft-skills as part of our 'preparing to run the Urban Spatial Science platform web site, but MSc programmes are a 'step up' in terms of independent study, and so knowing [how to read](./skills/reading.qmd), [how to think](./skills/thinking.qmd), [how to ask for help](./skills/help.qmd) and [how to study effectively](./skills/attention.qmd) is *almost* as important as being able to run the code. Almost. Moreover, the skills we discuss here aren't specific to any one module so we've put them here as part of your orientation.
 
 ## To Dos
 
