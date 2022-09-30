@@ -12,8 +12,6 @@ format:
       text: |
         \addtokomafont{disposition}{\rmfamily}
     #documentclass: report
-    mainfont: "Spectral" # https://fonts.google.com/specimen/Spectral
-    monofont: "Inconsolata" # https://fonts.google.com/specimen/Inconsolata
     papersize: a4
     geometry:
       - top=25mm
