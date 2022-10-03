@@ -38,7 +38,7 @@ The basic command to launch the programming environment is:
 
 ```bash
 docker run --name {{< var env.name >}} --rm -ti -p 8888:8888 -v "$(pwd):/home/jovyan/work" \
-    {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password=''
+    {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
 **Note**: the `pwd` in the command above means use the _current_ directory. So if you simply open a Terminal, Git Bash, or Command Prompt then Docker will 'mount' (_i.e._ make visible to the programming environment) the current directory as `work` in the programming environment. This is most likely to be your home directory and means that _everything_ in your home directory is potentially delete-able or write-able and *that* is a major security risk. 
@@ -62,7 +62,7 @@ To run Dask and Quarto you need to 'open up' other ports on the Docker image:
 docker run --name {{< var env.name >}} --rm -ti \
   -p 8888:8888 -p 4201:4201 -p 8787:8787 \
   -v "$(pwd):/home/jovyan/work" \
-  {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password=''
+  {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
 You will then need to ensure that Quarto runs on *the same port* when you start it in Docker:
@@ -91,7 +91,7 @@ docker run --rm -d --name {{< var env.name >}} \
   -v "$(pwd):/home/jovyan/work" \
   -v "${HOME}/.vscode/containers/{{< var env.name >}}-extensions:/home/jovyan/.vscode-server/extensions" \
   -v "${HOME}/.vscode/containers/{{< var env.name >}}-insiders:/home/jovyan/.vscode-server-insiders" \
-  {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password=''
+  {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
 #### Required Extensions
