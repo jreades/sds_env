@@ -15,6 +15,13 @@ You will need [Docker](https://www.docker.com) (Desktop) to be able to install t
 
 One new-ish option is to include a VS-Code server with the Docker image (as an alternative to Jupyter) as outlined [here](https://github.com/ruanbekker/dockerfiles/tree/master/vscode). However, VSCode can also support a more limited integration with Docker more directly provided that you configure the VSCode exceptions correctly (see below).
 
+::: {.callout-tip}
+## Copy Code to Clipboard
+
+Whenever you see a code block (like the one in the next section), you will _also_ see a 'clipboard' icon (![Copy to Clipboard Icon](../img/copy-to-clipboard.png){height="18px"}) to the right. If you click on that, the code will be copied to your computer's 'clipboard' so that you can then paste it into the Terminal. That will save you have to laboriously type the commands, which usually leads to errors.
+
+:::
+
 ## Installing
 
 You can then install this container by opening up a Shell/Terminal and simply running:
