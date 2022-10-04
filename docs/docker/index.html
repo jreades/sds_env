@@ -234,12 +234,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#installing" id="toc-installing" class="nav-link active" data-scroll-target="#installing">Installing</a></li>
+  <li><a href="#understanding-docker" id="toc-understanding-docker" class="nav-link active" data-scroll-target="#understanding-docker">Understanding Docker</a></li>
+  <li><a href="#installing" id="toc-installing" class="nav-link" data-scroll-target="#installing">Installing</a></li>
   <li><a href="#running-jupyter-only" id="toc-running-jupyter-only" class="nav-link" data-scroll-target="#running-jupyter-only">Running Jupyter Only</a></li>
   <li><a href="#running-dask-andor-quarto" id="toc-running-dask-andor-quarto" class="nav-link" data-scroll-target="#running-dask-andor-quarto">Running Dask and/or Quarto</a></li>
   <li><a href="#enabling-vscode-integration" id="toc-enabling-vscode-integration" class="nav-link" data-scroll-target="#enabling-vscode-integration">Enabling VSCode Integration</a></li>
   <li><a href="#running-everything-script" id="toc-running-everything-script" class="nav-link" data-scroll-target="#running-everything-script">Running Everything (Script)</a></li>
-  <li><a href="#deleting" id="toc-deleting" class="nav-link" data-scroll-target="#deleting">Deleting</a></li>
+  <li><a href="#deleting-the-docker-image" id="toc-deleting-the-docker-image" class="nav-link" data-scroll-target="#deleting-the-docker-image">Deleting the Docker Image</a></li>
   <li><a href="#citing" id="toc-citing" class="nav-link" data-scroll-target="#citing">Citing</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -276,7 +277,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>You will need <a href="https://www.docker.com">Docker</a> (Desktop) to be able to install the Spatial Data Science (SDS) environment. If you do not wish to create an account with Docker then you may want to follow advice <a href="https://github.com/docker/docker.github.io/issues/6910#issuecomment-532393783">provided here</a> though we cannot condone it.</p>
-<p>One new-ish option is to include a VS-Code server with the Docker image (as an alternative to Jupyter) as outlined <a href="https://github.com/ruanbekker/dockerfiles/tree/master/vscode">here</a>. However, VSCode can also support a more limited integration with Docker more directly provided that you configure the VSCode exceptions correctly (see below).</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -290,11 +290,35 @@ Copy Code to Clipboard
 <p>Whenever you see a code block (like the one in the next section), you will <em>also</em> see a ‘clipboard’ icon (<a href="../img/copy-to-clipboard.png" class="lightbox" title="Copy to Clipboard Icon" data-gallery="quarto-lightbox-gallery-2"><img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon"></a>) to the right. If you click on that, the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal. That will save you have to laboriously type the commands, which usually leads to errors.</p>
 </div>
 </div>
+<section id="understanding-docker" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-docker">Understanding Docker</h2>
+<p>In order to make use of Docker (and understand what’s happening when you get errors), it’s helpful to have <em>some</em> sense of what’s going on behind the scenes. You can click on the image below to make it larger, or you can download and print out <a href="../img/Docker.pdf">a PDF version</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../img/Docker.png" class="lightbox" title="Sketch of Docker Usage" data-gallery="quarto-lightbox-gallery-3"><img src="../img/Docker.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">Sketch of Docker Usage</figcaption><p></p>
+</figure>
+</div>
+<p>So here’s what’s happening:</p>
+<ol type="1">
+<li>You issue the <code>docker pull jreades/sds:2022</code> command to your computer, which turns around and asks Docker Hub for a copy of this image.</li>
+<li>Docker Hub responds by transferring a copy of the <code>jreades/sds:2022</code> <strong>image</strong> to your computer. You now have a file containing all the instructions to set up and run a <strong>virtual machine</strong> on your computer.</li>
+<li>You issue the <code>docker run ... jreades/sds:2022 ...</code> command to your computer, which uses the <code>jreades/sds:2022</code> image to create a <strong>container</strong> called <code>sds2022</code>. <code>sds2022</code> will do <em>whatever</em> it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But sds2022 is <em>read-only</em>, although you can make changes to the container while it’s running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image… we can cover this if you ever do it.</li>
+<li>As part of the <code>docker run</code> command, we also told Docker what resources the container could access. There are two main types of resources for our purposes:
+<ul>
+<li>A <strong>mount point</strong> which is a part of your hard drive that Docker can use to write things down (remember, it’s read-only). In this case, we use that <code>$(pwd)</code>, which is short-hand for <code>print working directory</code> where we ran the <code>docker run</code> command. And we tell the container to connect the current directory on your computer to a directory called <code>work</code> (which resides in <code>/home/jovyan/</code> on the container) on the <code>sds2022</code> container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down Docker.</li>
+<li>One or more <strong>ports</strong> which are kind of like channels on a radio where the container can talk to other computers. In this case, we connect port 8888 on <code>sds2022</code> to port 8888 on your computer. And <em>that</em> is why you have to tell your browser to go to <a href="http://localhost:8888"><code>http://localhost:8888</code></a> to access Jupyter Lab.</li>
+</ul></li>
+<li>Now when you type things into the browser and tell code to ‘run’, what’s actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.</li>
+<li>This shows the anatomy of the basic Docker command below to help you understand what all those numbers and letters mean.</li>
+</ol>
+</section>
 <section id="installing" class="level2">
 <h2 class="anchored" data-anchor-id="installing">Installing</h2>
-<p>You can then install this container by opening up a Shell/Terminal and simply running:</p>
+<p>You can install the jreades/sds:2022 image by opening up a Shell/Terminal and simply running:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2022</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Note</strong>: if you want to use something other than <code>jreades/sds:2022</code> you can see the list of available images here: <a href="https://hub.docker.com/repository/docker/jreades/sds">hub.docker.com/repository/docker/jreades/sds</a></p>
+<p>Technically, this can be done automatically as part of <code>docker run...</code> but it can be easier to separate downloading the image from starting up the virtual machine. One the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line… on a plane… on a train… on a boat… wherever you can safely use your laptop!</p>
 </section>
 <section id="running-jupyter-only" class="level2">
 <h2 class="anchored" data-anchor-id="running-jupyter-only">Running Jupyter Only</h2>
@@ -312,7 +336,7 @@ M1/M2 Macs
 </div>
 </div>
 <p>The basic command to launch the programming environment is:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> sds2022 <span class="at">--rm</span> <span class="at">-ti</span> <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> sds2022 <span class="at">--rm</span> <span class="at">-d</span> <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    jreades/sds:2022 jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Note</strong>: the <code>pwd</code> in the command above means use the <em>current</em> directory. So if you simply open a Terminal, Git Bash, or Command Prompt then Docker will ‘mount’ (<em>i.e.</em> make visible to the programming environment) the current directory as <code>work</code> in the programming environment. This is most likely to be your home directory and means that <em>everything</em> in your home directory is potentially delete-able or write-able and <em>that</em> is a major security risk.</p>
 <p>I would <em>strongly</em> suggest that you <code>cd</code> (Change Directory) to a sub-folder along the lines of <code>./Documents/code/</code> so that you have the link <code>work &lt;-&gt; code</code> between the virtual machine that Docker is running and your computer (which is the ‘host’). Obviously, this assumes that you’ve created a <code>code</code> directory in your Documents folder and you can revise according to what you have done instead!</p>
@@ -351,6 +375,13 @@ Beta Feature
 <p>In principle the below will work. We have it working on Mac OSX and the same process <em>should</em> work on Windows. In practice, this should be considered ‘beta’ in the sense that the documentation is still in development and we’re working out a few kinks. We’ll keep you posted on our progress!</p>
 </div>
 </div>
+<section id="using-devcontainer" class="level3">
+<h3 class="anchored" data-anchor-id="using-devcontainer">Using Devcontainer</h3>
+<p>The easier (but less tested) way to connect is to download the contents of <code>test-vscode-project</code> <a href="https://github.com/jreades/sds_env/tree/master/test-vscode-project">from GitHub</a>. You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g.&nbsp;<code>$HOME/Documents/CASA/fsds/</code>).</p>
+<p>You then tell VSCode to <code>Open Workspace from File</code> and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it <em>still</em> has to pull the image from Docker Hub. You can break this into steps by running <code>docker pull jreades/sds:2022</code> <em>before</em> dealing with downloading these files and moving them into position.</p>
+</section>
+<section id="using-attach-to-running-container" class="level3">
+<h3 class="anchored" data-anchor-id="using-attach-to-running-container">Using Attach to Running Container</h3>
 <p>To enable VSCode integration you’ll need to create additional ‘mount points’ (‘locations’ on <em>your computer’s</em> file system) that the Docker image can access. At this point the command becomes <em>very</em> long, which is why there is a script designed to make this a more straightforward process provided below.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2022 <span class="dt">\</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
@@ -387,8 +418,6 @@ Jupyter Keymap Extension
 <p>Once this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided.</p>
 <p>Once you’ve gone through this <em>once</em> it should be fairly straightforward on subsequent runs. At that point you can browse to the notebooks (which are usually being mounted from your own machine) and run them as if you were doing all of this within the Docker container. It’s kind of mind-melting but pretty cool.</p>
 </section>
-<section id="step-by-step-instructions" class="level3">
-<h3 class="anchored" data-anchor-id="step-by-step-instructions">Step-by-Step Instructions</h3>
 <section id="connect" class="level4">
 <h4 class="anchored" data-anchor-id="connect">Connect</h4>
 <p>Use the Remote Containers icon (<img src="./img/01-icon.png" class="nolightbox" height="14" alt="Dev Containers icon">) to bring up the ‘open’ menu.</p>
@@ -477,24 +506,27 @@ Jupyter Keymap Extension
 </section>
 <section id="running-everything-script" class="level2">
 <h2 class="anchored" data-anchor-id="running-everything-script">Running Everything (Script)</h2>
-<p>In order to be able to access all of the services (persistent VS Code extensions, Quarto, Dask…) it’s easier to make use of the <a href="https://github.com/jreades/sds_env/blob/master/docker/docker.sh">Bash script provided</a> together with the default <a href="https://github.com/jreades/sds_env/blob/master/docker/config.sh">configuration file</a>. This allows you to turn Quarto and Dask on/off by commenting/uncommenting a port number in the <code>config.sh</code> file and streamlines the Docker launch process to: <code>bash docker.sh start</code>.</p>
-<p>The shutdown process (which will shutdown the container and then delete it) is: <code>bash docker.sh stop</code>.</p>
+<p>There are so many options that we actually <a href="https://github.com/jreades/sds_env/raw/master/docker/docker.sh">created a Bash script</a> to do most of it for you; however, this needs to be paired with a <a href="https://github.com/jreades/sds_env/raw/master/docker/config.sh">configuration file</a> that is in the same folder as the <code>docker.sh</code> script so it’s an extra step to getting up and running. This allows you to turn Quarto and Dask on/off by commenting/editing/uncommenting a port number in the <code>config.sh</code> file and streamlines the Docker launch process.</p>
+<p>To start Docker using the script:</p>
+<pre class="shell"><code>bash docker.sh start</code></pre>
+<p>To cleanly shut down the container and then delete it (the image is still available for starting):</p>
+<pre class="shell"><code>bash docker.sh stop</code></pre>
 </section>
-<section id="deleting" class="level2">
-<h2 class="anchored" data-anchor-id="deleting">Deleting</h2>
+<section id="deleting-the-docker-image" class="level2">
+<h2 class="anchored" data-anchor-id="deleting-the-docker-image">Deleting the Docker Image</h2>
 <p>Should you wish to remove the image and container from your system then the following approaches are available:</p>
 <section id="deleting-by-filter" class="level3">
 <h3 class="anchored" data-anchor-id="deleting-by-filter">Deleting by Filter</h3>
 <p>This should be used with some care since it will try to delete all matching images and this may not be what you want:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aqf</span> <span class="st">"name=sds"</span> <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Image}} {{.Names}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"2019"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rm <span class="at">-f</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Repository}} {{.Tag}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"sds"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aqf</span> <span class="st">"name=sds"</span> <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Image}} {{.Names}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"2019"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rm <span class="at">-f</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Repository}} {{.Tag}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"sds"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="deleting-by-image" class="level3">
 <h3 class="anchored" data-anchor-id="deleting-by-image">Deleting by Image</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aq</span> <span class="co"># Get list of running processes and work out container IDs to remove</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> <span class="op">&lt;</span>list of container IDs<span class="op">&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="co"># Get list of available images and work out image IDs to remove</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="op">&lt;</span>list of image IDs<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aq</span> <span class="co"># Get list of running processes and work out container IDs to remove</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> <span class="op">&lt;</span>list of container IDs<span class="op">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="co"># Get list of available images and work out image IDs to remove</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="op">&lt;</span>list of image IDs<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="citing" class="level2">
@@ -506,13 +538,13 @@ Jupyter Keymap Extension
 <p></p><figcaption class="figure-caption">DOI</figcaption><p></p>
 </figure>
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{hadoop,</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author = {{Dani Arribas-Bel}},</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title = {\texttt{gds_env}: A containerised platform for Geographic Data Science},</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">  url = {https://github.com/darribas/gds_env},</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">  version = {3.0},</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">  date = {2019-08-06},</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{hadoop,</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author = {{Dani Arribas-Bel}},</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title = {\texttt{gds_env}: A containerised platform for Geographic Data Science},</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">  url = {https://github.com/darribas/gds_env},</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">  version = {3.0},</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">  date = {2019-08-06},</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -620,7 +652,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022, Jon Reades &amp; CASA Teaching Team</div>   
-      <div class="nav-footer-center"><a href="../img/favicon-16x16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="../img/favicon-16x16.png" class="height:10px img-fluid"></a> CASA Computing Environment</div>
+      <div class="nav-footer-center"><a href="../img/favicon-16x16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="../img/favicon-16x16.png" class="height:10px img-fluid"></a> CASA Computing Environment</div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -639,7 +671,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"fade","closeEffect":"fade","loop":false,"descPosition":"right"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"fade","descPosition":"right","closeEffect":"fade","loop":false,"selector":".lightbox"});</script>
 
 
 

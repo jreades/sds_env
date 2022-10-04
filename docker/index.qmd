@@ -13,8 +13,6 @@ lightbox:
 
 You will need [Docker](https://www.docker.com) (Desktop) to be able to install the Spatial Data Science (SDS) environment. If you do not wish to create an account with Docker then you may want to follow advice [provided here](https://github.com/docker/docker.github.io/issues/6910#issuecomment-532393783) though we cannot condone it.
 
-One new-ish option is to include a VS-Code server with the Docker image (as an alternative to Jupyter) as outlined [here](https://github.com/ruanbekker/dockerfiles/tree/master/vscode). However, VSCode can also support a more limited integration with Docker more directly provided that you configure the VSCode exceptions correctly (see below).
-
 ::: {.callout-tip}
 ## Copy Code to Clipboard
 
@@ -22,9 +20,26 @@ Whenever you see a code block (like the one in the next section), you will _also
 
 :::
 
+## Understanding Docker
+
+In order to make use of Docker (and understand what's happening when you get errors), it's helpful to have _some_ sense of what's going on behind the scenes. You can click on the image below to make it larger, or you can download and print out [a PDF version](../img/Docker.pdf).
+
+![Sketch of Docker Usage](../img/Docker.png){.lightbox}
+
+So here's what's happening:
+
+1. You issue the `docker pull {{< var env.image >}}` command to your computer, which turns around and asks Docker Hub for a copy of this image.
+2. Docker Hub responds by transferring a copy of the `{{< var env.image >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.
+3. You issue the `docker run ... {{< var env.image >}} ...` command to your computer, which uses the `{{< var env.image >}}` image to create a **container** called `{{< var env.name >}}`. `{{< var env.name >}}` will do _whatever_ it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But {{< var env.name >}} is _read-only_, although you can make changes to the container while it's running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image... we can cover this if you ever do it.
+4. As part of the `docker run` command, we also told Docker what resources the container could access. There are two main types of resources for our purposes:
+    - A **mount point** which is a part of your hard drive that Docker can use to write things down (remember, it's read-only). In this case, we use that `$(pwd)`, which is short-hand for `print working directory` where we ran the `docker run` command. And we tell the container to connect the current directory on your computer to a directory called `work` (which resides in `/home/jovyan/` on the container) on the `{{< var env.name >}}` container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down Docker.
+    - One or more **ports** which are kind of like channels on a radio where the container can talk to other computers. In this case, we connect port 8888 on `{{< var env.name >}}` to port 8888 on your computer. And _that_ is why you have to tell your browser to go to [`http://localhost:8888`](http://localhost:8888) to access Jupyter Lab.
+5. Now when you type things into the browser and tell code to 'run', what's actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.
+6. This shows the anatomy of the basic Docker command below to help you understand what all those numbers and letters mean.
+
 ## Installing
 
-You can then install this container by opening up a Shell/Terminal and simply running:
+You can install the {{< var env.image >}} image by opening up a Shell/Terminal and simply running:
 
 ```bash
 docker pull {{< var env.image >}}
@@ -32,6 +47,7 @@ docker pull {{< var env.image >}}
 
 **Note**: if you want to use something other than `{{< var env.image >}}` you can see the list of available images here: [hub.docker.com/repository/docker/jreades/sds](https://hub.docker.com/repository/docker/jreades/sds)
 
+Technically, this can be done automatically as part of `docker run...` but it can be easier to separate downloading the image from starting up the virtual machine. One the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line... on a plane... on a train... on a boat... wherever you can safely use your laptop!
 
 ## Running Jupyter Only
 
@@ -44,7 +60,7 @@ If you are using a M1 Mac then you may need to add `--platform linux/amd64` opti
 The basic command to launch the programming environment is:
 
 ```bash
-docker run --name {{< var env.name >}} --rm -ti -p 8888:8888 -v "$(pwd):/home/jovyan/work" \
+docker run --name {{< var env.name >}} --rm -d -p 8888:8888 -v "$(pwd):/home/jovyan/work" \
     {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
@@ -90,6 +106,14 @@ The Dask port is where the Dask task manager will be visible when you are making
 In principle the below will work. We have it working on Mac OSX and the same process *should* work on Windows. In practice, this should be considered 'beta' in the sense that the documentation is still in development and we're working out a few kinks. We'll keep you posted on our progress!
 :::
 
+### Using Devcontainer
+
+The easier (but less tested) way to connect is to download the contents of `test-vscode-project` [from GitHub](https://github.com/jreades/sds_env/tree/master/test-vscode-project). You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g. `$HOME/Documents/CASA/fsds/`). 
+
+You then tell VSCode to `Open Workspace from File` and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it _still_ has to pull the image from Docker Hub. You can break this into steps by running `docker pull {{< var env.image >}}` _before_ dealing with downloading these files and moving them into position.
+
+### Using Attach to Running Container
+
 To enable VSCode integration you'll need to create additional 'mount points' ('locations' on *your computer's* file system) that the Docker image can access. At this point the command becomes *very* long, which is why there is a script designed to make this a more straightforward process provided below.
 
 ```bash
@@ -124,8 +148,6 @@ You can supplement these with the Markdown linting extension and a range of othe
 Once this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided. 
 
 Once you've gone through this _once_ it should be fairly straightforward on subsequent runs. At that point you can browse to the notebooks (which are usually being mounted from your own machine) and run them as if you were doing all of this within the Docker container. It's kind of mind-melting but pretty cool.
-
-### Step-by-Step Instructions
 
 #### Connect
 
@@ -185,11 +207,19 @@ And here we go...
 
 ## Running Everything (Script)
 
-In order to be able to access all of the services (persistent VS Code extensions, Quarto, Dask...) it's easier to make use of the [Bash script provided](https://github.com/jreades/sds_env/blob/master/docker/docker.sh) together with the default [configuration file](https://github.com/jreades/sds_env/blob/master/docker/config.sh). This allows you to turn Quarto and Dask on/off by commenting/uncommenting a port number in the `config.sh` file and streamlines the Docker launch process to: `bash docker.sh start`.
+There are so many options that we actually [created a Bash script](https://github.com/jreades/sds_env/raw/master/docker/docker.sh) to do most of it for you; however, this needs to be paired with a [configuration file](https://github.com/jreades/sds_env/raw/master/docker/config.sh) that is in the same folder as the `docker.sh` script so it's an extra step to getting up and running. This allows you to turn Quarto and Dask on/off by commenting/editing/uncommenting a port number in the `config.sh` file and streamlines the Docker launch process.
 
-The shutdown process (which will shutdown the container and then delete it) is: `bash docker.sh stop`.
+To start Docker using the script: 
+```shell
+bash docker.sh start
+```
 
-## Deleting
+To cleanly shut down the container and then delete it (the image is still available for starting): 
+```shell
+bash docker.sh stop
+```
+
+## Deleting the Docker Image
 
 Should you wish to remove the image and container from your system then the following approaches are available:
 
