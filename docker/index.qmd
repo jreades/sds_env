@@ -11,7 +11,7 @@ lightbox:
   loop: false
 ---
 
-You will need [Docker](https://www.docker.com) (Desktop) to be able to install the Spatial Data Science (SDS) environment. If you do not wish to create an account with Docker then you may want to follow advice [provided here](https://github.com/docker/docker.github.io/issues/6910#issuecomment-532393783) though we cannot condone it.
+You will need [Docker](https://www.docker.com) to be able to install the Spatial Data Science (SDS) environment.
 
 ::: {.callout-tip}
 ## Copy Code to Clipboard
@@ -28,16 +28,15 @@ In order to make use of Docker (and understand what's happening when you get err
 
 So here's what's happening:
 
-1. You issue the `docker pull {{< var env.image >}}` command to your computer, which turns around and asks Docker Hub for a copy of this image.
-2. Docker Hub responds by transferring a copy of the `{{< var env.image >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.
-3. You issue the `docker run ... {{< var env.image >}} ...` command to your computer, which uses the `{{< var env.image >}}` image to create a **container** called `{{< var env.name >}}`. `{{< var env.name >}}` will do _whatever_ it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But {{< var env.name >}} is _read-only_, although you can make changes to the container while it's running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image... we can cover this if you ever do it.
+1. You issue the `docker pull {{< var env.image >}}` command to your computer, which turns around and asks Docker Hub for a copy of this image. Docker Hub responds by transferring a copy of the `{{< var env.image >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.^[A virtual machine is just a computer that runs _on_ your computer. So it 'borrows' resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.]
+3. You issue the `docker run ... {{< var env.image >}} ...` command to your computer, which uses the `{{< var env.image >}}` image as a template to create a **container** called `{{< var env.name >}}`^[A container is the name Docker uses to refer to a _running_ virtual machine. The image on its own does nothing until you tell docker to `run` it, at which point it becomes a container!]. `{{< var env.name >}}` will do _whatever_ it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But {{< var env.name >}} is _read-only_, although you can make changes to the container while it's running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image... we can cover this if you ever do it.
 4. As part of the `docker run` command, we also told Docker what resources the container could access. There are two main types of resources for our purposes:
-    - A **mount point** which is a part of your hard drive that Docker can use to write things down (remember, it's read-only). In this case, we use that `$(pwd)`, which is short-hand for `print working directory` where we ran the `docker run` command. And we tell the container to connect the current directory on your computer to a directory called `work` (which resides in `/home/jovyan/` on the container) on the `{{< var env.name >}}` container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down Docker.
-    - One or more **ports** which are kind of like channels on a radio where the container can talk to other computers. In this case, we connect port 8888 on `{{< var env.name >}}` to port 8888 on your computer. And _that_ is why you have to tell your browser to go to [`http://localhost:8888`](http://localhost:8888) to access Jupyter Lab.
+    - A **mount point** which is a part of your computer's hard drive that Docker can use to write things down permanently. We use `$(pwd)`, which is short-hand for `print working directory` and refers to the 'place' on your computer where we issued the `docker run` command. We tell Docker to connect this to a directory called `work` (which resides in `/home/jovyan/`) on the `{{< var env.name >}}` container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down Docker.
+    - One or more **ports** which are like channels on a radio where the container can talk to other computers (including yours). In this case, we connect port 8888 on `{{< var env.name >}}` to port 8888 on your computer. And _that_ is why you have to tell your browser to go to [`localhost:8888`](http://localhost:8888) to access Jupyter Lab.
 5. Now when you type things into the browser and tell code to 'run', what's actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.
 6. This shows the anatomy of the basic Docker command below to help you understand what all those numbers and letters mean.
 
-## Installing
+## Installing (Essential)
 
 You can install the {{< var env.image >}} image by opening up a Shell/Terminal and simply running:
 
@@ -45,44 +44,76 @@ You can install the {{< var env.image >}} image by opening up a Shell/Terminal a
 docker pull {{< var env.image >}}
 ```
 
-**Note**: if you want to use something other than `{{< var env.image >}}` you can see the list of available images here: [hub.docker.com/repository/docker/jreades/sds](https://hub.docker.com/repository/docker/jreades/sds)
+Once the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line... on a plane... on a train... on a boat... wherever you can safely use your laptop!
 
-Technically, this can be done automatically as part of `docker run...` but it can be easier to separate downloading the image from starting up the virtual machine. One the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line... on a plane... on a train... on a boat... wherever you can safely use your laptop!
+## Jupyter Lab (Required)
 
-## Running Jupyter Only
+**For most users this is *all* you need to do.**
 
 :::{.callout-important}
 ## M1/M2 Macs
 
-If you are using a M1 Mac then you may need to add `--platform linux/amd64` option to the run commands below. I don't know if this will work as I don't have a M1 Mac to test.
+If you are using a M1 or M2 Mac then you may need to change the command below as follows: `-d -p 8888:8888` becomes `-d --platform linux/amd64 -p 8888:8888`. 
+
 :::
 
 The basic command to launch the programming environment is:
 
 ```bash
-docker run --name {{< var env.name >}} --rm -d -p 8888:8888 -v "$(pwd):/home/jovyan/work" \
-    {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+docker run --name {{< var env.name >}} --rm -d -p 8888:8888 \ 
+  -v "$(pwd):/home/jovyan/work" \
+  {{< var env.image >}} start.sh jupyter lab \
+  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
+And here's the one-line version for Windows users:
+
+```bash
+docker run --name {{< var env.name >}} --rm -d -p 8888:8888 -v "$(pwd):/home/jovyan/work" {{< var env.image >}} start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
 **Note**: the `pwd` in the command above means use the _current_ directory. So if you simply open a Terminal, Git Bash, or Command Prompt then Docker will 'mount' (_i.e._ make visible to the programming environment) the current directory as `work` in the programming environment. This is most likely to be your home directory and means that _everything_ in your home directory is potentially delete-able or write-able and *that* is a major security risk. 
 
-I would _strongly_ suggest that you `cd` (Change Directory) to a sub-folder along the lines of `./Documents/code/` so that you have the link `work <-> code` between the virtual machine that Docker is running and your computer (which is the 'host'). Obviously, this assumes that you've created a `code` directory in your Documents folder and you can revise according to what you have done instead!
+I would _strongly_ suggest that you `cd` (Change Directory) to a sub-folder such as `$HOME/Documents/CASA/` so that you have the link `work <-> CASA` between the virtual machine and your computer (which is the 'host'). This will prevent Docker accessing more of your hard drive than it needs to and is, consequently, a bit more secure.
 
-Anyway, assuming that you have run the command above exactly as explained, then you will then be able to point your browser to [localhost:8888](localhost:8888/lab?). You are likely to be prompted to enter a **Password**. This password is currently `casa2021`.
+If things have gone well then you should now be able to connect to the virtual machine by pointing your browser at: [localhost:8888](http://localhost:8888/lab/) and you should see something like this:
 
-A couple of notes on the command above:
+![Jupyter Lab Success](../img/Jupyter_Lab.png){height="350px"}
 
-- This opens the `8888` port of the container, so to access the Lab instance,
-  you will have to point your browser to [`localhost:8888`](localhost:8888/lab/) Note that there is no space between `localhost` and `8888`, just a colon (`:`).
-- The command also mounts the current folder (`pwd`) for the container, but you can replace that with the path to any folder on your local machine; for instance, on a Mac you could use something like `-v "/Users/<your username>/Documents/git/i2p:/home/jovyan/work"` instead and then this would _always_ link the `i2p` folder to `work` in the programming environment; however, I'd suggest that you wait until you understand how paths work before attempting to change this).
-- The `name` ensures that you don't accidentally run three versions of the same Docker image!
 
-## Running Dask and/or Quarto
+## Bash Script (Intermediate)
+
+:::{.callout-warning}
+### Intermediate Topic
+
+This next section is _only_ if you want to start using multiple images/containers or manipulating the way in which the {{< var env.image >}} runs. **This is _not_ needed for most students**.
+
+:::
+
+There are so many options that we [created a Bash script](https://github.com/jreades/sds_env/raw/master/docker/docker.sh) to do most of it for you; however, this needs to be paired with a [configuration file](https://github.com/jreades/sds_env/raw/master/docker/config.sh) that is kept in the same folder as the `docker.sh` script. So it's an extra step to getting up and running, but it allows you to easily change the port on which Jupyter Lab is served as well as to turn Quarto and Dask on/off by commenting/editing/uncommenting the port number in the `config.sh` file.
+
+This simplifies the process to the point of starting Docker with: 
+```shell
+bash docker.sh start
+```
+
+And you can cleanly shut down the container using: 
+```shell
+bash docker.sh stop
+```
+
+## Dask and Quarto (Advanced)
+
+:::{.callout-warning}
+### Advanced Topic
+
+This next section is _only_ if you need to run either Dask or Quarto (both of which are provided by {{< var env.image >}}). **This is _not_ needed for most students**.
+
+:::
 
 To run Dask and Quarto you need to 'open up' other ports on the Docker image:
 
 ```bash
-docker run --name {{< var env.name >}} --rm -ti \
+docker run --name {{< var env.name >}} --rm -d \
   -p 8888:8888 -p 4201:4201 -p 8787:8787 \
   -v "$(pwd):/home/jovyan/work" \
   {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
@@ -94,17 +125,20 @@ You will then need to ensure that Quarto runs on *the same port* when you start 
 quarto preview --host 0.0.0.0 --port 4201
 ```
 
-Notice the everything to do with Quarto is on port `4201`, but note additionaly the `--host 0.0.0.0` that is required to allow you to view Quarto's output (if you want to serve a web site, for instance, instead of static content) from *outside* the Docker container.
+Notice the everything to do with Quarto is on port `4201`, but note additionally the `--host 0.0.0.0` that is required to allow you to view Quarto's output if you want to serve a web site, for instance, instead of static content *outside* of the Docker container.
 
 The Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g. using four cores at once where you've enabled this is Docker preferences on your [Mac](https://docs.docker.com/desktop/settings/mac/) or [Windows](https://docs.docker.com/desktop/settings/windows/) machined).
 
-## Enabling VSCode Integration
+## VSCode Integration (Advanced)
 
 :::{.callout-warning}
-## Beta Feature
+## Advanced Topic
 
-In principle the below will work. We have it working on Mac OSX and the same process *should* work on Windows. In practice, this should be considered 'beta' in the sense that the documentation is still in development and we're working out a few kinks. We'll keep you posted on our progress!
+This next section is _only_ if you want to program in VSCode instead of Jupyter Lab. **This is _not_ needed for most students**.
+
 :::
+
+In principle the below will work. We have it working on Mac OSX and the same process *should* work on Windows. In practice, this should be considered a '**beta feature**' in the sense that the documentation is still in development and we're working out a few kinks. We'll keep you posted on our progress!
 
 ### Using Devcontainer
 
@@ -205,23 +239,10 @@ And here we go...
 
 ![Running code in a container](./img/06-Success.png){width="75%" fig-alt="Success! Running code in a remote container via VSCode" group="vscode"}
 
-## Running Everything (Script)
 
-There are so many options that we actually [created a Bash script](https://github.com/jreades/sds_env/raw/master/docker/docker.sh) to do most of it for you; however, this needs to be paired with a [configuration file](https://github.com/jreades/sds_env/raw/master/docker/config.sh) that is in the same folder as the `docker.sh` script so it's an extra step to getting up and running. This allows you to turn Quarto and Dask on/off by commenting/editing/uncommenting a port number in the `config.sh` file and streamlines the Docker launch process.
+## Deleting the Image (Optional)
 
-To start Docker using the script: 
-```shell
-bash docker.sh start
-```
-
-To cleanly shut down the container and then delete it (the image is still available for starting): 
-```shell
-bash docker.sh stop
-```
-
-## Deleting the Docker Image
-
-Should you wish to remove the image and container from your system then the following approaches are available:
+Should you wish to remove the image and container from your system completely at the end of Term 1 then the following approaches are available:
 
 ### Deleting by Filter
 
