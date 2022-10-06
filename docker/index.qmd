@@ -36,9 +36,16 @@ So here's what's happening:
 5. Now when you type things into the browser and tell code to 'run', what's actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.
 6. This shows the anatomy of the basic Docker command below to help you understand what all those numbers and letters mean.
 
-## Installing (Essential)
+## Installing
 
-You can install the {{< var env.image >}} image by opening up a Shell/Terminal and simply running:
+:::{.callout-warning}
+## Essential Topic
+
+This next section is _essential_ to running the {{< var env.name >}} environment.
+
+:::
+
+You can download the {{< var env.image >}} image by opening up a Shell/Terminal and simply running:
 
 ```bash
 docker pull {{< var env.image >}}
@@ -46,9 +53,14 @@ docker pull {{< var env.image >}}
 
 Once the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line... on a plane... on a train... on a boat... wherever you can safely use your laptop!
 
-## Jupyter Lab (Required)
+## Jupyter Lab
 
-**For most users this is *all* you need to do.**
+:::{.callout-warning}
+## Essential Topic
+
+This next section is _essential_ to running the {{< var env.name >}} environment, but for most users this is the only thing that you need to do to get started.
+
+:::
 
 :::{.callout-important}
 ## M1/M2 Macs
@@ -80,7 +92,7 @@ If things have gone well then you should now be able to connect to the virtual m
 ![Jupyter Lab Success](../img/Jupyter_Lab.png){height="350px"}
 
 
-## Bash Script (Intermediate)
+## Bash Script
 
 :::{.callout-warning}
 ### Intermediate Topic
@@ -101,7 +113,7 @@ And you can cleanly shut down the container using:
 bash docker.sh stop
 ```
 
-## Dask and Quarto (Advanced)
+## Dask and Quarto
 
 :::{.callout-warning}
 ### Advanced Topic
@@ -129,7 +141,7 @@ Notice the everything to do with Quarto is on port `4201`, but note additionally
 
 The Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g. using four cores at once where you've enabled this is Docker preferences on your [Mac](https://docs.docker.com/desktop/settings/mac/) or [Windows](https://docs.docker.com/desktop/settings/windows/) machined).
 
-## VSCode Integration (Advanced)
+## VSCode Integration
 
 :::{.callout-warning}
 ## Advanced Topic
@@ -195,7 +207,7 @@ Choose the `Attach to Running Container...` option to list active Docker contain
 
 ![Attach to a running container](./img/02-Attach.png){width="75%" fig-alt="Select a running container. Ideally the one you want to use VSCode with!" group="vscode"}
 
-In this case, we're only running one container named `fsds` and pulled from `jreades/sds:2022`:
+We're only running one container named `fsds` built from the `jreades/sds:2022` image. Your container may have a different name (e.g. `{{< var env.name >}}`) but the *image* should be named `{{< var env.image >}}`:
 
 ![The list of running containers](./img/02-container.png){.nolightbox}
 
@@ -205,7 +217,7 @@ If all has gone well, then a new window should open and you'll notice one small,
 
 ![An attached workspace](./img/03-Attached.png){width="75%" fig-alt="Notice the Remote Container icon has changed at the bottom." group="vscode"}
 
-VSCode confirms that this window is now connected to the `fsds` container:
+VSCode confirms that this window is now connected to the `fsds` container^[Remember that your container may be called something else, like `{{< var env.name >}}`, but that doesn't matter so long as you are using the right image (e.g. `{{< var env.image >}}`). You can name the container *anything* at start-up using `--name <your_chosen_name>` and if you don't provide one then Docker will make one up.]:
 
 ![Running on a Container](./img/03-running.png){.nolightbox}
 
@@ -240,7 +252,14 @@ And here we go...
 ![Running code in a container](./img/06-Success.png){width="75%" fig-alt="Success! Running code in a remote container via VSCode" group="vscode"}
 
 
-## Deleting the Image (Optional)
+## Deleting the Image
+
+:::{.callout-warning}
+## Optional Topic
+
+This next section is _only_ if you want to remove all traces of the Docker images from your computer (e.g. to free up space or diagnose a potential versioning issue).
+
+:::
 
 Should you wish to remove the image and container from your system completely at the end of Term 1 then the following approaches are available:
 

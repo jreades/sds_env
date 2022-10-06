@@ -235,12 +235,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul class="collapse">
   <li><a href="#understanding-docker" id="toc-understanding-docker" class="nav-link active" data-scroll-target="#understanding-docker">Understanding Docker</a></li>
-  <li><a href="#installing-essential" id="toc-installing-essential" class="nav-link" data-scroll-target="#installing-essential">Installing (Essential)</a></li>
-  <li><a href="#jupyter-lab-required" id="toc-jupyter-lab-required" class="nav-link" data-scroll-target="#jupyter-lab-required">Jupyter Lab (Required)</a></li>
-  <li><a href="#bash-script-intermediate" id="toc-bash-script-intermediate" class="nav-link" data-scroll-target="#bash-script-intermediate">Bash Script (Intermediate)</a></li>
-  <li><a href="#dask-and-quarto-advanced" id="toc-dask-and-quarto-advanced" class="nav-link" data-scroll-target="#dask-and-quarto-advanced">Dask and Quarto (Advanced)</a></li>
-  <li><a href="#vscode-integration-advanced" id="toc-vscode-integration-advanced" class="nav-link" data-scroll-target="#vscode-integration-advanced">VSCode Integration (Advanced)</a></li>
-  <li><a href="#deleting-the-image-optional" id="toc-deleting-the-image-optional" class="nav-link" data-scroll-target="#deleting-the-image-optional">Deleting the Image (Optional)</a></li>
+  <li><a href="#installing" id="toc-installing" class="nav-link" data-scroll-target="#installing">Installing</a></li>
+  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
+  <li><a href="#bash-script" id="toc-bash-script" class="nav-link" data-scroll-target="#bash-script">Bash Script</a></li>
+  <li><a href="#dask-and-quarto" id="toc-dask-and-quarto" class="nav-link" data-scroll-target="#dask-and-quarto">Dask and Quarto</a></li>
+  <li><a href="#vscode-integration" id="toc-vscode-integration" class="nav-link" data-scroll-target="#vscode-integration">VSCode Integration</a></li>
+  <li><a href="#deleting-the-image" id="toc-deleting-the-image" class="nav-link" data-scroll-target="#deleting-the-image">Deleting the Image</a></li>
   <li><a href="#citing" id="toc-citing" class="nav-link" data-scroll-target="#citing">Citing</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -312,15 +312,40 @@ Copy Code to Clipboard
 <li>This shows the anatomy of the basic Docker command below to help you understand what all those numbers and letters mean.</li>
 </ol>
 </section>
-<section id="installing-essential" class="level2">
-<h2 class="anchored" data-anchor-id="installing-essential">Installing (Essential)</h2>
-<p>You can install the jreades/sds:2022 image by opening up a Shell/Terminal and simply running:</p>
+<section id="installing" class="level2">
+<h2 class="anchored" data-anchor-id="installing">Installing</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Essential Topic
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This next section is <em>essential</em> to running the sds2022 environment.</p>
+</div>
+</div>
+<p>You can download the jreades/sds:2022 image by opening up a Shell/Terminal and simply running:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2022</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line… on a plane… on a train… on a boat… wherever you can safely use your laptop!</p>
 </section>
-<section id="jupyter-lab-required" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-lab-required">Jupyter Lab (Required)</h2>
-<p><strong>For most users this is <em>all</em> you need to do.</strong></p>
+<section id="jupyter-lab" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter Lab</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Essential Topic
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This next section is <em>essential</em> to running the sds2022 environment, but for most users this is the only thing that you need to do to get started.</p>
+</div>
+</div>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -351,8 +376,8 @@ M1/M2 Macs
 </figure>
 </div>
 </section>
-<section id="bash-script-intermediate" class="level2">
-<h2 class="anchored" data-anchor-id="bash-script-intermediate">Bash Script (Intermediate)</h2>
+<section id="bash-script" class="level2">
+<h2 class="anchored" data-anchor-id="bash-script">Bash Script</h2>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -372,8 +397,8 @@ Intermediate Topic
 <p>And you can cleanly shut down the container using:</p>
 <pre class="shell"><code>bash docker.sh stop</code></pre>
 </section>
-<section id="dask-and-quarto-advanced" class="level2">
-<h2 class="anchored" data-anchor-id="dask-and-quarto-advanced">Dask and Quarto (Advanced)</h2>
+<section id="dask-and-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="dask-and-quarto">Dask and Quarto</h2>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -397,8 +422,8 @@ Advanced Topic
 <p>Notice the everything to do with Quarto is on port <code>4201</code>, but note additionally the <code>--host 0.0.0.0</code> that is required to allow you to view Quarto’s output if you want to serve a web site, for instance, instead of static content <em>outside</em> of the Docker container.</p>
 <p>The Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g.&nbsp;using four cores at once where you’ve enabled this is Docker preferences on your <a href="https://docs.docker.com/desktop/settings/mac/">Mac</a> or <a href="https://docs.docker.com/desktop/settings/windows/">Windows</a> machined).</p>
 </section>
-<section id="vscode-integration-advanced" class="level2">
-<h2 class="anchored" data-anchor-id="vscode-integration-advanced">VSCode Integration (Advanced)</h2>
+<section id="vscode-integration" class="level2">
+<h2 class="anchored" data-anchor-id="vscode-integration">VSCode Integration</h2>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -475,7 +500,7 @@ Jupyter Keymap Extension
 <p></p><figcaption class="figure-caption">Attach to a running container</figcaption><p></p>
 </figure>
 </div>
-<p>In this case, we’re only running one container named <code>fsds</code> and pulled from <code>jreades/sds:2022</code>:</p>
+<p>We’re only running one container named <code>fsds</code> built from the <code>jreades/sds:2022</code> image. Your container may have a different name (e.g.&nbsp;<code>sds2022</code>) but the <em>image</em> should be named <code>jreades/sds:2022</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./img/02-container.png" class="nolightbox img-fluid figure-img"></p>
@@ -492,7 +517,7 @@ Jupyter Keymap Extension
 <p></p><figcaption class="figure-caption">An attached workspace</figcaption><p></p>
 </figure>
 </div>
-<p>VSCode confirms that this window is now connected to the <code>fsds</code> container:</p>
+<p>VSCode confirms that this window is now connected to the <code>fsds</code> container<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./img/03-running.png" class="nolightbox img-fluid figure-img"></p>
@@ -542,8 +567,21 @@ Jupyter Keymap Extension
 </section>
 </section>
 </section>
-<section id="deleting-the-image-optional" class="level2">
-<h2 class="anchored" data-anchor-id="deleting-the-image-optional">Deleting the Image (Optional)</h2>
+<section id="deleting-the-image" class="level2">
+<h2 class="anchored" data-anchor-id="deleting-the-image">Deleting the Image</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Optional Topic
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This next section is <em>only</em> if you want to remove all traces of the Docker images from your computer (e.g.&nbsp;to free up space or diagnose a potential versioning issue).</p>
+</div>
+</div>
 <p>Should you wish to remove the image and container from your system completely at the end of Term 1 then the following approaches are available:</p>
 <section id="deleting-by-filter" class="level3">
 <h3 class="anchored" data-anchor-id="deleting-by-filter">Deleting by Filter</h3>
@@ -585,6 +623,7 @@ Jupyter Keymap Extension
 <ol>
 <li id="fn1"><p>A virtual machine is just a computer that runs <em>on</em> your computer. So it ‘borrows’ resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>A container is the name Docker uses to refer to a <em>running</em> virtual machine. The image on its own does nothing until you tell docker to <code>run</code> it, at which point it becomes a container!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Remember that your container may be called something else, like <code>sds2022</code>, but that doesn’t matter so long as you are using the right image (e.g.&nbsp;<code>jreades/sds:2022</code>). You can name the container <em>anything</em> at start-up using <code>--name &lt;your_chosen_name&gt;</code> and if you don’t provide one then Docker will make one up.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -708,7 +747,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"fade","descPosition":"right","closeEffect":"fade"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"fade","descPosition":"right","closeEffect":"fade","selector":".lightbox"});</script>
 
 
 
