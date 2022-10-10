@@ -73,6 +73,7 @@ That *should* do it, but in case you are still getting errors, then the followin
 ```bash
 echo 'export PATH="/Users/<your_username>/Library/TinTeX/bin:$PATH"' >> $HOME/.zshrc
 ```
+If you don't know your username, on a Mac it's usually available by running `whoami` in the Terminal.
 
 ## Windows
 
