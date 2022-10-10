@@ -32,10 +32,50 @@ I don't have access to a Windows machine to test this out, but there are plenty 
 
 If you use Linux already do you really need a recommendation? How about `vim` or `vi`?
 
+## Using Markdown
+
+For Markdown to be *useful* as more than just a lightweight way to write notes, we want to be able to *render* it into new output formats/contexts. Here are three... 
+
 ## Markdown & GitHub
 
 Markdown is the 'default' language of GitHub, which means it's worth your while to familiarise yourself with how it works. *However*, there are different 'flavours' of markdown, which *also* means that just because something works on GitHub it will work everywhere else in the same way. This is particularly common when dealing with optional parameters that try to give the 'renderer' (the thing that converts markdown to HTML, or LaTeX, or any other format) hints about how the content should look.
 
 ## Markdown & Notebooks
 
-Markdown is also the language of plain-text in Jupyter notebooks, which makes it doubly worth your while to familiarise yourself with how it works. 
+Markdown is also the language of plain-text cells in Jupyter notebooks, which makes it doubly worth your while to familiarise yourself with how it works. 
+
+## Quarto
+
+[Quarto](https://quarto.org) builds on RMarkdown to make the power of Markdown+Code available to other languages than R. In our [Foundations of Spatial Data Science](https://jreades.github.io/fsds/) module we use Quarto to do submissions but that's largely because it demonstrates how we can Quarto to write whole articles or dissertation!
+
+In many cases, it is as straightforward as installing Quarto and then running `quarto render ...`, but there are some tricks. In particular, to 'render' Markdown files to PDF, you will need to have some flabour to TeX installed. The default suggested by Quarto is TinyTex, and this can be installed using:
+```bash
+quarto install tool tinytex
+```
+
+But on *some* platforms there are additional issues:
+
+::: {.panel-tabset}
+## M1 and M2 Macs
+
+You will probably be able to successfully install `tinytex`, but will be told that no TeX installation could be found when trying to `render`. The issue relates to the `$PATH` where Quarto searches for a valid TeX installation and when completing the installation you may have seen a warning to the effect of "To complete the installation, please run the following..."
+
+So that's basically what we need to do. The first thing you need to do is find the TinyTeX binaries, in the cases that I've been able to fix these were found under *something* like `$HOME/Library/TinyTex/bin/`, but you may need to look further under `$HOME/Library/` to find the `TinyTex` directory.
+
+Once you know where TinyTeX is, you can then follow the directions:
+```bash
+cd $HOME/Library/TinTeX/bin/
+./universal-darwin/tlmgr option sys_bin $HOME/Library/TinyTeX/bin
+./universal-darwin/tlmgr path add
+```
+
+That *should* do it, but in case you are still getting errors, then the following might be necessary:
+```bash
+echo 'export PATH="/Users/<your_username>/Library/TinTeX/bin:$PATH"' >> $HOME/.zshrc
+```
+
+## Windows
+
+Most commands seem to require replacing `quarto` with `quarto.exe` to run correctly. So `quarto render Template.qmd` becaomes `quarto.exe render Template.qmd`.
+
+:::

@@ -284,7 +284,7 @@
     "href": "setup/markdown.html#markdown-notebooks",
     "title": "Markdown",
     "section": "Markdown & Notebooks",
-    "text": "Markdown & Notebooks\nMarkdown is also the language of plain-text in Jupyter notebooks, which makes it doubly worth your while to familiarise yourself with how it works."
+    "text": "Markdown & Notebooks\nMarkdown is also the language of plain-text cells in Jupyter notebooks, which makes it doubly worth your while to familiarise yourself with how it works."
   },
   {
     "objectID": "setup/jupyter_hub.html#setting-up-the-environment",
@@ -326,7 +326,7 @@
     "href": "setup/env.html#docker",
     "title": "Programming Environment",
     "section": "Docker",
-    "text": "Docker\nTo start, you will need to download Docker and install it. To test if Docker is installed correctly, try running this command in the Shell/Terminal:\ndocker pull jreades/sds:2022\nYou should see a lot of ‘layers’ being copied down – about 10GB worth – so don’t do this over a cellular connection! If that doesn’t work, then please move to the next section for more support. However, if that worked, then once the pull process completes you’ll need to type the following into the Shell/Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2022 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2022 start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\nAnd here’s the one-line version for Windows users:\ndocker run --rm -d --name sds2022 -p 8888:8888 -v \"$(pwd):/home/jovyan/work\" jreades/sds:2022 start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\nMany students will have issues at this point, in which case you’ll need to look in the next section for help. However, if you’re one of the lucky ones then you should now be able to connect to the virtual machine by pointing your browser at: localhost:8888. If this has worked as well, then you should see something like this:\n\n\n\nJupyter Lab Success\n\n\n\nDeep Dive into Setting up Docker\nA more extensive discussion (and additional instructions) can be found on the Using Docker page."
+    "text": "Docker\nTo start, you will need to download Docker and install it. To test if Docker is installed correctly, try running this command in the Shell/Terminal:\ndocker pull jreades/sds:2022\nYou should see a lot of ‘layers’ being copied down – about 10GB worth – so don’t do this over a cellular connection! If that doesn’t work, then please move to the next section for more support.\n\nFor Mac/LinuxFor Windows\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Shell/Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2022 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2022 start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Shell/Terminal. Note that this is the one-line version for Windows users:\ndocker run --rm -d --name sds2022 -p 8888:8888 -v \"$(pwd):/home/jovyan/work\" jreades/sds:2022 start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\n\nMany students will have issues at this point, in which case you’ll need to look in the next section for help. However, if you’re one of the lucky ones then you should now be able to connect to the virtual machine by pointing your browser at: localhost:8888. If this has worked as well, then you should see something like this:\n\n\n\nJupyter Lab Success\n\n\n\nDeep Dive into Setting up Docker\nA more extensive discussion (and additional instructions) can be found on the Using Docker page."
   },
   {
     "objectID": "setup/env.html#vscode",
@@ -656,5 +656,26 @@
     "title": "Using Docker",
     "section": "Deleting the Image",
     "text": "Deleting the Image\n\n\n\n\n\n\nOptional Topic\n\n\n\nThis next section is only if you want to remove all traces of the Docker images from your computer (e.g. to free up space or diagnose a potential versioning issue).\n\n\nShould you wish to remove the image and container from your system completely at the end of Term 1 then the following approaches are available:\n\nDeleting by Filter\nThis should be used with some care since it will try to delete all matching images and this may not be what you want:\ndocker ps -aqf \"name=sds\" --format=\"{{.Image}} {{.Names}} {{.ID}}\" | grep \"2019\" | cut -d' ' -f3 | xargs docker rm -f\ndocker images --format=\"{{.Repository}} {{.Tag}} {{.ID}}\" | grep \"sds\" | cut -d' ' -f3 | xargs docker rmi\n\n\nDeleting by Image\ndocker ps -aq # Get list of running processes and work out container IDs to remove\ndocker rm -f <list of container IDs>\ndocker images # Get list of available images and work out image IDs to remove\ndocker rmi -f <list of image IDs>"
+  },
+  {
+    "objectID": "setup/markdown.html#using-markdown",
+    "href": "setup/markdown.html#using-markdown",
+    "title": "Markdown",
+    "section": "Using Markdown",
+    "text": "Using Markdown\nFor Markdown to be useful as more than just a lightweight way to write notes, we want to be able to render it into new output formats/contexts. Here are three…"
+  },
+  {
+    "objectID": "setup/markdown.html#quarto",
+    "href": "setup/markdown.html#quarto",
+    "title": "Markdown",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto builds on RMarkdown to make the power of Markdown+Code available to other languages than R. In our Foundations of Spatial Data Science module we use Quarto to do submissions but that’s largely because it demonstrates how we can Quarto to write whole articles or dissertation!\nIn many cases, it is as straightforward as installing Quarto and then running quarto render ..., but there are some tricks. In particular, to ‘render’ Markdown files to PDF, you will need to have some flabour to TeX installed. The default suggested by Quarto is TinyTex, and this can be installed using:\nquarto install tool tinytex\nBut on some platforms there are additional issues:\n\nM1 and M2 MacsWindows\n\n\nYou will probably be able to successfully install tinytex, but will be told that no TeX installation could be found when trying to render. The issue relates to the $PATH where Quarto searches for a valid TeX installation and when completing the installation you may have seen a warning to the effect of “To complete the installation, please run the following…”\nSo that’s basically what we need to do. The first thing you need to do is find the TinyTeX binaries, in the cases that I’ve been able to fix these were found under something like $HOME/Library/TinyTex/bin/, but you may need to look further under $HOME/Library/ to find the TinyTex directory.\nOnce you know where TinyTeX is, you can then follow the directions:\ncd $HOME/Library/TinTeX/bin/\n./universal-darwin/tlmgr option sys_bin $HOME/Library/TinyTeX/bin\n./universal-darwin/tlmgr path add\nThat should do it, but in case you are still getting errors, then the following might be necessary:\necho 'export PATH=\"/Users/<your_username>/Library/TinTeX/bin:$PATH\"' >> $HOME/.zshrc\n\n\nMost commands seem to require replacing quarto with quarto.exe to run correctly. So quarto render Template.qmd becaomes quarto.exe render Template.qmd."
+  },
+  {
+    "objectID": "setup/markdown.html#windows",
+    "href": "setup/markdown.html#windows",
+    "title": "Markdown",
+    "section": "Windows",
+    "text": "Windows\nMost commands seem to require replacing quarto with quarto.exe to run correctly. So quarto render Template.qmd becaomes quarto.exe render Template.qmd."
   }
 ]
