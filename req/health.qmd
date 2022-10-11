@@ -13,25 +13,32 @@ We try to support as many different configurations as possible, but there is *no
 1. Your computer 8GB or less of RAM.
 2. Your computer has less than 20GB of free disk space remaining.
 
+
 Read on below to check what specification you have...
 
-### MacOS
+::: {.panel-tabset}
+
+## MacOS
 
 You will need to look up:
 
 - How much RAM does your _main_ computer have? [Help for Mac](https://www.macworld.co.uk/how-to/mac/much-ram-need-more-3793418/).
 - How much free disk space does your _main_ computer have? [Help for Mac](https://www.macworld.com/article/2972775/how-to-check-a-mac-free-hard-drive-space.html).
 
-### Windows
+## Windows
 
 You will need to look up:
 
 - How much RAM does your _main_ computer have? [Help for Windows](https://www.howtogeek.com/435644how-to-see-how-much-ram-is-in-your-pc-and-its-speed/).
 - How much free disk space does your _main_ computer have? [Help for Windows](https://www.lifewire.com/how-to-check-free-hard-drive-space-in-windows-2619187).
 
-### Linux
+## Linux
 
 We're going to assume that you know what you're doing. If you want a recommendation, we'd probably go with the latest Ubuntu desktop release.
+
+:::
+
+If your computer has less than 8GB of RAM *and/or* less than 20GB of free disk space you are likely to have issues with Docker and (on Windows) WSL2. Your options are: 1) add more RAM (possible on Windows); 2) back up and remove unnecessary files (Movies, Photos, and Applications are particularly big 'hogs').
 
 ### Recommendations
 

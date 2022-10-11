@@ -244,26 +244,29 @@ ul.task-list li input[type="checkbox"] {
 <li>Your computer has less than 20GB of free disk space remaining.</li>
 </ol>
 <p>Read on below to check what specification you have…</p>
-<section id="macos" class="level3">
-<h3 class="anchored" data-anchor-id="macos">MacOS</h3>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">MacOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Linux</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>You will need to look up:</p>
 <ul>
 <li>How much RAM does your <em>main</em> computer have? <a href="https://www.macworld.co.uk/how-to/mac/much-ram-need-more-3793418/">Help for Mac</a>.</li>
 <li>How much free disk space does your <em>main</em> computer have? <a href="https://www.macworld.com/article/2972775/how-to-check-a-mac-free-hard-drive-space.html">Help for Mac</a>.</li>
 </ul>
-</section>
-<section id="windows" class="level3">
-<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>You will need to look up:</p>
 <ul>
 <li>How much RAM does your <em>main</em> computer have? <a href="https://www.howtogeek.com/435644how-to-see-how-much-ram-is-in-your-pc-and-its-speed/">Help for Windows</a>.</li>
 <li>How much free disk space does your <em>main</em> computer have? <a href="https://www.lifewire.com/how-to-check-free-hard-drive-space-in-windows-2619187">Help for Windows</a>.</li>
 </ul>
-</section>
-<section id="linux" class="level3">
-<h3 class="anchored" data-anchor-id="linux">Linux</h3>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>We’re going to assume that you know what you’re doing. If you want a recommendation, we’d probably go with the latest Ubuntu desktop release.</p>
-</section>
+</div>
+</div>
+</div>
+<p>If your computer has less than 8GB of RAM <em>and/or</em> less than 20GB of free disk space you are likely to have issues with Docker and (on Windows) WSL2. Your options are: 1) add more RAM (possible on Windows); 2) back up and remove unnecessary files (Movies, Photos, and Applications are particularly big ‘hogs’).</p>
 <section id="recommendations" class="level3">
 <h3 class="anchored" data-anchor-id="recommendations">Recommendations</h3>
 <p>If you are looking for a recommendation as to what to buy:</p>
