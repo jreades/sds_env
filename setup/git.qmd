@@ -12,6 +12,15 @@ While it is not necessary that you learn all about how GitHub works *now*, it wi
 
 You will want to go to [GitHub.com](https://github.com/) and then click the `Sign up` button at the top right. Follow the instructions for creating a new account from there.
 
+::: {.callout-tip}
+## Use Your Personal Account
+
+Although you can always change it later (so if you've opened your GitHub account using your UCL email don't panic!), you may find it easier to:
+
+- Open a GitHub account using a personal email address to which you expect to always have access.
+- Then associate your UCL email address to this GitHub account so that you gain from any educational benefits offered by GitHub (there are some around private respositories and so on).
+:::
+
 ## Install Git Locally
 
 You can follow along with GitHub's [own instructions](https://github.com/git-guides/install-git) for installing Git on your own computer. In many cases (especially if you use a Mac) you may find that Git is already installed, you just didn't know it.
