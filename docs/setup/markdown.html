@@ -366,6 +366,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Most commands seem to require replacing <code>quarto</code> with <code>quarto.exe</code> to run correctly. So <code>quarto render Template.qmd</code> becaomes <code>quarto.exe render Template.qmd</code>.</p>
+<p>However, if you are <em>still</em> getting errors to the effect that Quarto cannot be found then you may need to make additional edites to your <code>.bashrc</code> file (this is the configuration file for <code>bash</code>):</p>
+<ul>
+<li>Check where Quarto is installed, it is most likely under <code>/mnt/c/Users/&lt;Your Username&gt;/AppData/Local/Programs/Quarto/bin</code> (replace <code>&lt;Your Username&gt;</code> as appropriate.</li>
+<li>Edit the <code>.bashrc</code> file in your <code>$HOME</code> directory. On Windows I would Google search for the best way to do this: “edit .bashrc file Windows”.</li>
+<li>Add the following line at the end of the file: <code>export PATH=/mnt/c/Users/&lt;Your Username&gt;/AppData/Local/Programs/Quarto/bin:$PATH</code></li>
+<li>Save the file and run <code>source .bashrc</code> in the Terminal.</li>
+<li>You should now be able to run the following command successfully: <code>quarto.exe --help</code></li>
+</ul>
 </div>
 </div>
 </div>

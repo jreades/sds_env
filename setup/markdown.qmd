@@ -83,4 +83,12 @@ The command above uses `whoami` to set the username and assumes that's how thing
 
 Most commands seem to require replacing `quarto` with `quarto.exe` to run correctly. So `quarto render Template.qmd` becaomes `quarto.exe render Template.qmd`.
 
+However, if you are *still* getting errors to the effect that Quarto cannot be found then you may need to make additional edites to your `.bashrc` file (this is the configuration file for `bash`):
+
+- Check where Quarto is installed, it is most likely under `/mnt/c/Users/<Your Username>/AppData/Local/Programs/Quarto/bin` (replace `<Your Username>` as appropriate.
+- Edit the `.bashrc` file in your `$HOME` directory. On Windows I would Google search for the best way to do this: “edit .bashrc file Windows”.
+- Add the following line at the end of the file: `export PATH=/mnt/c/Users/<Your Username>/AppData/Local/Programs/Quarto/bin:$PATH`
+- Save the file and run `source .bashrc` in the Terminal.
+- You should now be able to run the following command successfully: `quarto.exe --help`
+
 :::
