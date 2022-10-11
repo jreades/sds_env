@@ -11,7 +11,7 @@ lightbox:
   loop: false
 ---
 
-You will need [Docker](https://www.docker.com) to be able to install the Spatial Data Science (SDS) environment.
+You will need to install **and** run [Docker](https://www.docker.com) to be able to install the Spatial Data Science (SDS) environment. So after installing the Docker application, please make sure that you launch the application (especially on Windows) at least once before trying to run any Docker commands on the command line. You'll know that you've done this is you see the 'Docker Desktop' window which lists downloaded images and running containers.
 
 ::: {.callout-tip}
 ## Copy Code to Clipboard
@@ -52,6 +52,8 @@ docker pull {{< var env.image >}}
 ```
 
 Once the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line... on a plane... on a train... on a boat... wherever you can safely use your laptop!
+
+However, before you move on to the next step, please run the Docker application by double-clicking it (Mac) or searching for it in the Windows menu (PC). You should wait until you see the 'Docker Desktop' window appear before moving to the next step.
 
 ## Jupyter Lab
 
