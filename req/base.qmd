@@ -6,6 +6,8 @@ date: "9/9/2022"
 
 In order to access the majority of the features that this module uses, you will need to install several 'base' utilities:
 
+::: {.panel-tabset}
+
 ## MacOS
 
 You will need to install the following:
@@ -18,3 +20,18 @@ You will need to install the following:
 You will need to install the following:
 
 1. WSL 2, for which you can follow [these instructions](https://www.digitalocean.com/community/tutorials/how-to-install-the-windows-subsystem-for-linux-2-on-microsoft-windows-10).
+
+Once WSL is installed, you will need to familiarise yourself with how having two operating systems (that can talk to each other) works. This will actually be *useful* for understanding how Docker works, but can be profoundly confusing. 
+
+The first, and perhaps most important, thing is [understanding where 'data' is being stored](https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations):
+
+- Under Linux the user directory is apparently: `\\wsl$\<DistroName>\home\<UserName>\`
+- Under Windows the user directory is: `C:\Users\<UserName>\` or `/mnt/c/Users/<UserName>/`
+
+These are *different* locations on your computer's hard drive, so you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found [this page on Microsoft’s web site](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-windows-terminal) that goes through some of the post-WSL installation steps, and see especially the additional page on [Windows Terminal configuration](https://learn.microsoft.com/en-us/windows/terminal/install).
+
+Slightly confusingly, you *can* [run Linux commands directly from Windows](https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations#interoperability-between-windows-and-linux-commands), usually be adding `wsl` in front of the Linux command (e.g. `wsl ls *.csv` from Windows, where in Linux the command would be `ls *.csv`).
+
+Common installation errors are [covered here](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting?source=recommendations).
+
+:::

@@ -311,8 +311,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="markdown-editors" class="level2">
 <h2 class="anchored" data-anchor-id="markdown-editors">Markdown Editors</h2>
 <p>Over time you will undoubtedly learn how to write markdwon without need to think much (if at all) about how to type the formatting ‘codes’, but a simple markdown editor can make your life much, much easier. Even when you’re highly experienced!</p>
-<section id="for-macos" class="level3">
-<h3 class="anchored" data-anchor-id="for-macos">For MacOS</h3>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">For MacOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">For Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">For Linux</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>There’s a <a href="https://www.fossmint.com/best-markdown-editors-for-macos/">good overview</a> of ‘free’<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> editors for the Mac which highlights a few in particular:</p>
 <ol type="1">
 <li><a href="https://macdown.uranusjr.com/">MacDown</a> – I’ve not used this, but it seems determinedly FOSS so is probably a good choice.</li>
@@ -320,15 +322,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://atom.io/">Atom</a> – I’ve used Atom for editing Python code but believe it’s largely plugin-based so it clearly supports markdown too.</li>
 </ol>
 <p><a href="https://www.typora.io/">Typora</a> <em>was</em> free while in beta, but I thought it was worth the modest amount of money asked for something that was <em>super-fast</em> and gave me a tool with which to write up my research, not just my code and teaching content. <a href="https://ia.net/writer">iA Writer</a> is another good (paid for) option because it runs on iPad and iPhone as well! Together with the <a href="https://workingcopyapp.com">Working Copy</a> Git client for iOS I’ve used iA Writer to draft articles, make notes directly in my codebase, and correct errors found at the last minute in my teaching materials. Like Typora, iA Writer is probably intended <em>more</em> for writing text, not writing complex Reveal.js presentations or non-standard markdown.</p>
-</section>
-<section id="for-windows" class="level3">
-<h3 class="anchored" data-anchor-id="for-windows">For Windows</h3>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>I don’t have access to a Windows machine to test this out, but there are plenty of opinions to be found by Googling ‘best Windows Markdown editors’ or ‘best <em>free</em> Windows Markdown editors’. There’s one <a href="https://becomeawritertoday.com/best-markdown-editor/">for writers</a> and <a href="https://www.makeuseof.com/best-markdown-editors-windows/">a more generic set of recommendations</a>. Have a look around and see what you like!</p>
-</section>
-<section id="for-linux" class="level3">
-<h3 class="anchored" data-anchor-id="for-linux">For Linux</h3>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>If you use Linux already do you really need a recommendation? How about <code>vim</code> or <code>vi</code>?</p>
-</section>
+</div>
+</div>
+</div>
 </section>
 <section id="using-markdown" class="level2">
 <h2 class="anchored" data-anchor-id="using-markdown">Using Markdown</h2>
@@ -349,10 +351,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tool tinytex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>But on <em>some</em> platforms there are additional issues:</p>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">M1 and M2 Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Windows</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Mac</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Windows</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>You will probably be able to successfully install <code>tinytex</code>, but will be told that no TeX installation could be found when trying to <code>render</code>. The issue relates to the <code>$PATH</code> where Quarto searches for a valid TeX installation and when completing the installation you may have seen a warning to the effect of “To complete the installation, please run the following…”</p>
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>You will probably be able to successfully install <code>tinytex</code>, but <em>then</em> be told that no TeX installation could be found when trying to <code>render</code>. The issue relates to the <code>$PATH</code> where Quarto searches for a valid TeX installation and when completing the installation you may have seen a warning to the effect of “To complete the installation, please run the following…”</p>
 <p>So that’s basically what we need to do. The first thing you need to do is find the TinyTeX binaries, in the cases that I’ve been able to fix these were found under <em>something</em> like <code>$HOME/Library/TinyTex/bin/</code>, but you may need to look further under <code>$HOME/Library/</code> to find the <code>TinyTex</code> directory.</p>
 <p>Once you know where TinyTeX is (adjust the <code>cd</code> command below as necessary), you can then follow the suggestion given:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/Library/TinyTeX/bin/</span>
@@ -362,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"export PATH=</span><span class="dt">\"</span><span class="st">/Users/</span><span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span><span class="st">/Library/TinyTeX/bin:</span><span class="dt">\$</span><span class="st">PATH</span><span class="dt">\"</span><span class="st">"</span> <span class="op">&gt;&gt;</span> <span class="va">$HOME</span>/.zshrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The command above uses <code>whoami</code> to set the username and assumes that’s how things should be set up, but don’t blindly copy+paste and assume this will work! You could, for instance, check this location exists <em>first</em> using: <code>ls /Users/$(whoami)/Library/TinyTeX/bin/</code> That will show if the path exists! The above command then updates the <code>$PATH</code> variable used by your Terminal to look for binaries, enabling Quarto to find TinyTeX <em>once you close and then re-open a new Shell</em>.</p>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Most commands seem to require replacing <code>quarto</code> with <code>quarto.exe</code> to run correctly. So <code>quarto render Template.qmd</code> becaomes <code>quarto.exe render Template.qmd</code>.</p>
 </div>
 </div>

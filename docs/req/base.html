@@ -132,19 +132,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-soft-skills">    
         <li>
     <a class="dropdown-item" href="../skills/attention.html">
- <span class="dropdown-text">Your Attention Please</span></a>
+ <span class="dropdown-text">How to Pay Attention</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../skills/reading.html">
- <span class="dropdown-text">How to Read</span></a>
+ <span class="dropdown-text">How to <em>Read</em></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../skills/thinking.html">
- <span class="dropdown-text">How to Think</span></a>
+ <span class="dropdown-text">How to <em>Think</em></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../skills/help.html">
- <span class="dropdown-text">Getting Help</span></a>
+ <span class="dropdown-text">How to Get Help</span></a>
   </li>  
     </ul>
   </li>
@@ -195,14 +195,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#macos" id="toc-macos" class="nav-link active" data-scroll-target="#macos">MacOS</a></li>
-  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -236,23 +229,35 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>In order to access the majority of the features that this module uses, you will need to install several ‘base’ utilities:</p>
-<section id="macos" class="level2">
-<h2 class="anchored" data-anchor-id="macos">MacOS</h2>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">MacOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Windows</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>You will need to install the following:</p>
 <ol type="1">
 <li>The Xcode Command Line Tools, which can usually be installed <a href="https://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/">directly from the Terminal</a>. If that does not work for you, then you can use the <a href="https://developer.apple.com/download/all/">Apple Developer website</a> to download and install manually. <em>Note</em>: this may require you to get a free developer account.</li>
 <li>Although not strictly necessary, you’ll <em>eventually</em> want the Homebrew package manager, which can also be installed <a href="https://phoenixnap.com/kb/install-homebrew-on-mac">directly from the Terminal</a>.</li>
 </ol>
-</section>
-<section id="windows" class="level2">
-<h2 class="anchored" data-anchor-id="windows">Windows</h2>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>You will need to install the following:</p>
 <ol type="1">
 <li>WSL 2, for which you can follow <a href="https://www.digitalocean.com/community/tutorials/how-to-install-the-windows-subsystem-for-linux-2-on-microsoft-windows-10">these instructions</a>.</li>
 </ol>
+<p>Once WSL is installed, you will need to familiarise yourself with how having two operating systems (that can talk to each other) works. This will actually be <em>useful</em> for understanding how Docker works, but can be profoundly confusing.</p>
+<p>The first, and perhaps most important, thing is <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations">understanding where ‘data’ is being stored</a>:</p>
+<ul>
+<li>Under Linux the user directory is apparently: <code>\\wsl$\&lt;DistroName&gt;\home\&lt;UserName&gt;\</code></li>
+<li>Under Windows the user directory is: <code>C:\Users\&lt;UserName&gt;\</code> or <code>/mnt/c/Users/&lt;UserName&gt;/</code></li>
+</ul>
+<p>These are <em>different</em> locations on your computer’s hard drive, so you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-windows-terminal">this page on Microsoft’s web site</a> that goes through some of the post-WSL installation steps, and see especially the additional page on <a href="https://learn.microsoft.com/en-us/windows/terminal/install">Windows Terminal configuration</a>.</p>
+<p>Slightly confusingly, you <em>can</em> <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations#interoperability-between-windows-and-linux-commands">run Linux commands directly from Windows</a>, usually be adding <code>wsl</code> in front of the Linux command (e.g.&nbsp;<code>wsl ls *.csv</code> from Windows, where in Linux the command would be <code>ls *.csv</code>).</p>
+<p>Common installation errors are <a href="https://learn.microsoft.com/en-us/windows/wsl/troubleshooting?source=recommendations">covered here</a>.</p>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
