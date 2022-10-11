@@ -34,4 +34,6 @@ Slightly confusingly, you *can* [run Linux commands directly from Windows](https
 
 Common installation errors are [covered here](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting?source=recommendations).
 
+Finally, if you are *still* being told that you can't install WSL2 and Linux, then the most likely cause of this issue is a setting in the BIOS of the computer itself. There are a couple of settings that need changing at a very low level to enable Hyper-V virtualisation. I would start by following [this MS guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual) and, if there is still a problem, check [this blog post](https://s1gr1d.medium.com/how-to-set-up-linux-on-windows-with-wsl-2-debe2a64d20d).
+
 :::
