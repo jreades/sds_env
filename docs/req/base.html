@@ -195,7 +195,13 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#windows-linux-shell" id="toc-windows-linux-shell" class="nav-link active" data-scroll-target="#windows-linux-shell">Windows + Linux + Shell</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -240,25 +246,52 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>You will need to install the following:</p>
+<p>You will need to install WSL2:</p>
 <ol type="1">
-<li>WSL 2, for which you can follow <a href="https://www.digitalocean.com/community/tutorials/how-to-install-the-windows-subsystem-for-linux-2-on-microsoft-windows-10">these instructions</a>.</li>
+<li>There is good guidance <a href="https://learn.microsoft.com/en-us/windows/wsl/install">from Microsoft</a> for Windows 11 and more recent ‘builds’ of Windows 10.</li>
+<li>There are also <a href="https://www.digitalocean.com/community/tutorials/how-to-install-the-windows-subsystem-for-linux-2-on-microsoft-windows-10">older instructions</a> for Windows 10.</li>
 </ol>
-<p>Once WSL is installed, you will need to familiarise yourself with how having two operating systems (that can talk to each other) works. This will actually be <em>useful</em> for understanding how Docker works, but can be profoundly confusing.</p>
-<p>The first, and perhaps most important, thing is <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations">understanding where ‘data’ is being stored</a>:</p>
-<ul>
-<li>Under Linux the user directory is apparently: <code>\\wsl$\&lt;DistroName&gt;\home\&lt;UserName&gt;\</code></li>
-<li>Under Windows the user directory is: <code>C:\Users\&lt;UserName&gt;\</code> or <code>/mnt/c/Users/&lt;UserName&gt;/</code></li>
-</ul>
-<p>These are <em>different</em> locations on your computer’s hard drive, so you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-windows-terminal">this page on Microsoft’s web site</a> that goes through some of the post-WSL installation steps, and see especially the additional page on <a href="https://learn.microsoft.com/en-us/windows/terminal/install">Windows Terminal configuration</a>.</p>
-<p>Slightly confusingly, you <em>can</em> <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations#interoperability-between-windows-and-linux-commands">run Linux commands directly from Windows</a>, usually be adding <code>wsl</code> in front of the Linux command (e.g.&nbsp;<code>wsl ls *.csv</code> from Windows, where in Linux the command would be <code>ls *.csv</code>).</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Creating a Linux User
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When installing WSL2 make sure you set up a <em>new <code>Linux</code> user</em> and do not end up running everything as <code>root</code>.</p>
+</div>
+</div>
+<p>Once WSL2 is installed, you will need to familiarise yourself with how having two operating systems that can talk to each other works. That is covered in the next section. This will actually be <em>useful</em> for understanding how Docker works, but can be profoundly confusing.</p>
 <p>Common installation errors are <a href="https://learn.microsoft.com/en-us/windows/wsl/troubleshooting?source=recommendations">covered here</a>.</p>
 <p>Finally, if you are <em>still</em> being told that you can’t install WSL2 and Linux, then the most likely cause of this issue is a setting in the BIOS of the computer itself. There are a couple of settings that need changing at a very low level to enable Hyper-V virtualisation. I would start by following <a href="https://learn.microsoft.com/en-us/windows/wsl/install-manual">this MS guide</a> and, if there is still a problem, check <a href="https://s1gr1d.medium.com/how-to-set-up-linux-on-windows-with-wsl-2-debe2a64d20d">this blog post</a>.</p>
 </div>
 </div>
 </div>
+<section id="windows-linux-shell" class="level2">
+<h2 class="anchored" data-anchor-id="windows-linux-shell">Windows + Linux + Shell</h2>
+<p>The behaviour of the ‘shell’ (command line) is quite confusing because, with WSL2, you effectively end up with two ‘home’ directories: one for your Windows user, and one for your new Ubuntu user. Starting a Linux shell/command line puts you in your Linux home directory (the username may be completely different from your Windows username). Starting a Windows shell/command line puts you in your Windows home directory (again, the username may be completely different from your Linux username).</p>
+<p>So the first, and perhaps most important, thing is <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations">understanding where ‘data’ is being stored</a>:</p>
+<ul>
+<li>Under Linux the user directory is apparently something like: <code>\\wsl$\&lt;DistroName&gt;\home\&lt;UserName&gt;\</code> but you can usually get it by simply typing <code>cd $HOME</code> and then <code>pwd</code> when starting a new <em>Linux</em> shell.</li>
+<li>Under Windows the user directory is: <code>C:\Users\&lt;UserName&gt;\</code> or <code>/mnt/c/Users/&lt;UserName&gt;/</code>, and you can often simply type <code>pwd</code> when opening a new <em>Windows</em> shell.</li>
+</ul>
+<p>So these are <em>different</em> locations on your computer’s hard drive, and you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-windows-terminal">this page on Microsoft’s web site</a> that goes through some of the post-WSL2 installation steps, but see especially the additional page on <a href="https://learn.microsoft.com/en-us/windows/terminal/install">Windows Terminal configuration</a>.</p>
+<p>Slightly confusingly, you <em>can</em> <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations#interoperability-between-windows-and-linux-commands">run Linux commands directly from Windows</a>, usually be adding <code>wsl</code> in front of the Linux command (e.g.&nbsp;<code>wsl ls *.csv</code> from Windows, where in Linux the command would be <code>ls *.csv</code>).</p>
+<p>To make it easy to move from the Linux side of your machine to the Windows machine you can <em>also</em> do this:</p>
+<ol type="1">
+<li>Work out where your CASA files are stored on the Windows side (see above: <code>/mnt/c/Users/&lt;UserName&gt;/My\ Documents/CASA/...</code> where <code>&lt;UserName&gt;</code> is your Windows user name).</li>
+<li><code>cd</code> to this location and type <code>pwd</code> to output the full path to the CASA directory.</li>
+<li>Copy this.</li>
+<li>Now start a <em>Linux</em> shell and run the following command <em>once</em> (you do not need to do it ever again): <code>echo "export WIN_HOME=\"/mnt/c/Users/.../CASA/\"" &gt;&gt; $HOME/.bashrc</code>. Replace the <code>...</code> with the rest of the actual path! The <code>\"</code> is very important, don’t try to change those!</li>
+<li>Now run <code>source .bashrc</code> and you should see no errors.</li>
+</ol>
+<p>Once you have done this you will have added a single line to your <code>.bashrc</code> file in Linux. This will create a ‘shortcut’ for bash in Linux. From here on out you <em>should</em> be able to type <code>cd $WIN_HOME</code> and move immediately over to the <code>CASA</code> directory on the Windows side. This will save having to remember (and type) the Windows path each time.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
