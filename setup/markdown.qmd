@@ -62,18 +62,18 @@ You will probably be able to successfully install `tinytex`, but will be told th
 
 So that's basically what we need to do. The first thing you need to do is find the TinyTeX binaries, in the cases that I've been able to fix these were found under *something* like `$HOME/Library/TinyTex/bin/`, but you may need to look further under `$HOME/Library/` to find the `TinyTex` directory.
 
-Once you know where TinyTeX is, you can then follow the directions:
+Once you know where TinyTeX is (adjust the `cd` command below as necessary), you can then follow the suggestion given:
 ```bash
-cd $HOME/Library/TinTeX/bin/
+cd $HOME/Library/TinyTeX/bin/
 ./universal-darwin/tlmgr option sys_bin $HOME/Library/TinyTeX/bin
 ./universal-darwin/tlmgr path add
 ```
 
-That *should* do it, but in case you are still getting errors, then the following might be necessary:
+That *should* do it, but in case you are still getting errors, then the following might be necessary (again, adjust the path if necessary):
 ```bash
-echo 'export PATH="/Users/<your_username>/Library/TinTeX/bin:$PATH"' >> $HOME/.zshrc
+echo "export PATH=\"/Users/$(whoami)/Library/TinyTeX/bin:\$PATH\"" >> $HOME/.zshrc
 ```
-If you don't know your username, on a Mac it's usually available by running `whoami` in the Terminal.
+The command above uses `whoami` to set the username and assumes that's how things should be set up, but don't blindly copy+paste and assume this will work! You could, for instance, check this location exists *first* using: `ls /Users/$(whoami)/Library/TinyTeX/bin/` That will show if the path exists! The above command then updates the `$PATH` variable used by your Terminal to look for binaries, enabling Quarto to find TinyTeX *once you close and then re-open a new Shell*.
 
 ## Windows
 
