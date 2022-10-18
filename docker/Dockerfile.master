@@ -42,6 +42,7 @@ RUN fix-permissions $CONDA_DIR \
 ENV TEMP_DEB="quarto.deb"
 RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-fonts-recommended \
+    lmodern \
     pandoc \
     pandoc-citeproc \
     curl \
@@ -65,6 +66,34 @@ RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
              /home/$USERNAME/.vscode-server \
              /home/$USERNAME/.vscode-server-insiders
 
+#--- Install some fonts ---#
+ARG GFONTS='https://fonts.google.com/download'
+ARG SPECTRAL='Spectral'
+ARG SPECTRAL_SC='Spectral%20SC'
+ARG ROBOTO='Roboto'
+ARG JETBRAINS='JetBrains%20Mono'
+
+RUN echo $HOME
+RUN mkdir -p $HOME/.local/share/fonts/ \
+&& curl -L "${GFONTS}?family=${ROBOTO}" --output $ROBOTO.zip \
+  && unzip -o $ROBOTO.zip \
+  && mv *.ttf $HOME/.local/share/fonts/ \
+  && rm $ROBOTO.zip \
+&& curl -L "${GFONTS}?family=${SPECTRAL}" --output $SPECTRAL.zip \
+  && unzip -o $SPECTRAL.zip \
+  && mv *.ttf $HOME/.local/share/fonts/ \
+  && rm $SPECTRAL.zip \
+&& curl -L "${GFONTS}?family=${SPECTRAL_SC}" --output $SPECTRAL_SC.zip \
+  && unzip -o $SPECTRAL_SC.zip \
+  && mv *.ttf $HOME/.local/share/fonts/ \
+  && rm $SPECTRAL_SC.zip \
+&& curl -L "${GFONTS}?family=${JETBRAINS}" --output $JETBRAINS.zip \
+  && unzip -o $JETBRAINS.zip \
+  && mv *.ttf $HOME/.local/share/fonts/ \
+  && rm $JETBRAINS.zip \
+&& chown -R $USERNAME .local/share/fonts
+
+#--- Make Proj4 Easy to Find ---#
 # Change depending on whether using base environment
 RUN echo "export PROJ_LIB=/opt/conda/share/proj/" >> ~/.bashrc
 #RUN echo "export PROJ_LIB=/opt/conda/envs/${env_nm}/share/proj/" >> ~/.bashrc
