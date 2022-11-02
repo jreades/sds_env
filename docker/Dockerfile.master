@@ -93,6 +93,13 @@ RUN mkdir -p $HOME/.local/share/fonts/ \
   && rm $JETBRAINS.zip \
 && chown -R $USERNAME .local/share/fonts
 
+# Should rebuild the font manager and allow us to access
+# the fonts we've just added in Matplotlib... *should*
+RUN /opt/conda/bin/python -c "import matplotlib.font_manager;"
+
+# And this is how to check what's been installed in the system:
+# grep '"name"' ~/.cache/matplotlib/fontlist-v330.json | sort | uniq
+
 #--- Make Proj4 Easy to Find ---#
 # Change depending on whether using base environment
 RUN echo "export PROJ_LIB=/opt/conda/share/proj/" >> ~/.bashrc
