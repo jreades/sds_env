@@ -54,6 +54,7 @@ dependencies:
   - rasterio 
   - rasterstats 
   - scipy
+  - shap
   - seaborn
   - spacy 
   - spacy[transformer] 
