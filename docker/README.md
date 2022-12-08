@@ -6,7 +6,7 @@ From there, you can follow the guides provided on [jreades.github.io/sds_env](jr
 
 ## Cross-Platform Compilation
 
-To support M1/M2 Macs it's now necessary to compile Docker images for ARM64 as well as AMD64-bit architectures. The most straightforward instructions I've found are [here](https://medium.com/geekculture/docker-build-with-mac-m1-d668c802ab96) but there are additional steps [for Linux](https://nexus.eddiesinentropy.net/2020/01/12/Building-Multi-architecture-Docker-Images-With-Buildx/):
+To support M1/M2 Macs it's now necessary to compile Docker images for ARM64 as well as AMD64-bit architectures. The most straightforward instructions I've found are [here](https://medium.com/geekculture/docker-build-with-mac-m1-d668c802ab96) but there are additional steps [for Linux](https://nexus.eddiesinentropy.net/2020/01/12/Building-Multi-architecture-Docker-Images-With-Buildx/) (and remember to [add your user to the `docker` group](https://vikaspogu.dev/posts/docker-buildx-setup/):
 
 ```shell
 docker buildx create --name <buildername>
