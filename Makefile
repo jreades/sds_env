@@ -1,5 +1,5 @@
-export DOCKER_NM='jreades/sds:2021'
-export ENV_NM='sds2021'
+export DOCKER_NM='jreades/sds:2022'
+export ENV_NM='base' # 'sds2022'
 test: test_py # test_rs
 stacks: py_stack # r_stack
 test_py:
@@ -8,10 +8,10 @@ test_r:
 	docker run -v `pwd`:/home/jovyan/work ${DOCKER_NM} start.sh jupyter nbconvert --execute /home/jovyan/test/gds/check_r_stack.ipynb
 py_stack: 
 	# Python
-	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh conda list -n ${ENV_NM} > conda/environment_py.txt
-	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh sed -i "1 i SDS version: ${DOCKER_NM}" conda/environment_py.txt
-	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh \
-		python -c "import subprocess, pandas; fo=open('conda/environment_py.md', 'w'); fo.write(pandas.read_json(subprocess.check_output(['conda', 'list', '-n', ${ENV_NM}, '--json']))[['name', 'version', 'build_string', 'channel']].to_markdown()); fo.close()"
+	echo "SDS version: ${DOCKER_NM}" > conda/environment_py.txt
+	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh conda list -n ${ENV_NM} >> conda/environment_py.txt
+	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh conda list -n ${ENV_NM} --json >> conda/environment_py.json
+	python -c "import subprocess, pandas; fo=open('conda/environment_py.md', 'w'); fo.write(pandas.read_json('conda/environment_py.json')[['name', 'version', 'build_string', 'channel']].to_markdown()); fo.close()"
 	docker run -v ${PWD}:/home/jovyan --rm ${DOCKER_NM} start.sh sed -i "1s/^/\n/" conda/environment_py.md
 r_stack: 
 	# R
