@@ -36,18 +36,18 @@ dependencies:
   - mgwr 
   - momepy
   - nbdime 
-  - networkx 
+  #- networkx 
   - nltk 
-  - numba
+  #- numba
   - osmnx
   - palettable 
-  - pandas-profiling
+  #- pandas-profiling
   - pointpats
   - polyline
   - plotly
   - psycopg2
   - pygeos
-  - pymc3
+  #- pymc3
   - pykrige
   - pysal
   #- qgrid 
@@ -70,6 +70,7 @@ dependencies:
     - contractions 
     - dtreeviz
     - dtreeviz[xgboost]
+    - duckdb==0.6.1
     - fastai==1.0.61 # Huanfa's QM
     - geofeather 
     - gurobipy==9.5.1 # Huanfa's QM
@@ -86,6 +87,7 @@ dependencies:
     - pulp==2.6.0 # Huanfa's QM
     - rfpimp
     - scikit-posthocs
+    - skimpy
     - sklearn-som
     - smopy # NOT a typo! Not the same thing as sompy!
     - top2vec

@@ -19,5 +19,10 @@ docker push <tags>
 
 In my case, the last command (when run from `sds_env`) becomes:
 ```shell
+docker login docker.io
 export IMG_NM=sds:2022i && docker buildx build --tag jreades/${IMG_NM} -o type=registry --platform=linux/arm64,linux/amd64 --compress --file docker/Dockerfile.master .
+```
+Multi-platform images can *only* be sent to the registry. However, a single-platform image can be sent to `images`:
+```shell
+export IMG_NM=sds:2022i && docker buildx build --tag jreades/${IMG_NM} --output=type=docker --platform=linux/amd64 --compress --file docker/Dockerfile.master .
 ```
