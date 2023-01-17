@@ -74,24 +74,24 @@ ARG ROBOTO='Roboto'
 ARG JETBRAINS='JetBrains%20Mono'
 
 RUN echo $HOME
-RUN mkdir -p $HOME/.local/share/fonts/ \
+RUN mkdir -p /home/$USERNAME/.local/share/fonts/ \
 && curl -L "${GFONTS}?family=${ROBOTO}" --output $ROBOTO.zip \
   && unzip -o $ROBOTO.zip \
-  && mv *.ttf $HOME/.local/share/fonts/ \
+  && mv *.ttf /home/$USERNAME/.local/share/fonts/ \
   && rm $ROBOTO.zip \
 && curl -L "${GFONTS}?family=${SPECTRAL}" --output $SPECTRAL.zip \
   && unzip -o $SPECTRAL.zip \
-  && mv *.ttf $HOME/.local/share/fonts/ \
+  && mv *.ttf /home/$USERNAME/.local/share/fonts/ \
   && rm $SPECTRAL.zip \
 && curl -L "${GFONTS}?family=${SPECTRAL_SC}" --output $SPECTRAL_SC.zip \
   && unzip -o $SPECTRAL_SC.zip \
-  && mv *.ttf $HOME/.local/share/fonts/ \
+  && mv *.ttf /home/$USERNAME/.local/share/fonts/ \
   && rm $SPECTRAL_SC.zip \
 && curl -L "${GFONTS}?family=${JETBRAINS}" --output $JETBRAINS.zip \
   && unzip -o $JETBRAINS.zip \
-  && mv *.ttf $HOME/.local/share/fonts/ \
+  && mv *.ttf /home/$USERNAME/.local/share/fonts/ \
   && rm $JETBRAINS.zip \
-&& chown -R $USERNAME .local/share/fonts
+&& chown -R $USERNAME /home/$USERNAME/.local/share/fonts
 
 # Should rebuild the font manager and allow us to access
 # the fonts we've just added in Matplotlib... *should*
