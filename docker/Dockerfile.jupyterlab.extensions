@@ -7,8 +7,9 @@
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
 
 # Clean up
-RUN jupyter lab build -y --dev-build=False \ 
-    && jupyter lab clean -y \
+#RUN jupyter lab build -y --dev-build=False \ 
+#    && jupyter lab clean -y \
+RUN jupyter lab clean -y \
     && conda clean --all -f -y \
     && npm cache clean --force \
     && rm -rf $CONDA_DIR/share/jupyter/lab/staging \
