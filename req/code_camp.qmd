@@ -1,7 +1,7 @@
 ---
 title: "Code Camp"
 author: "Jon Reades"
-date: "9/9/2022"
+date: "9/7/2023"
 ---
 
 Prior to (re)joining CASA from the [Department of Geography](https://www.kcl.ac.uk/geography) at [King's College London](htts://www.kcl.ac.uk/), [Dr. Mic Ferretti](https://mobile.twitter.com/miccferr/), [Dr. Zara Shabrina](https://twitter.com/zarashabrina), [Dr. James Millington](https://twitter.com/jamesmillington), and I developed [Code Camp](https://kingsgeocomputation.org/teaching/code-camp/code-camp-python/).

@@ -1,7 +1,7 @@
 ---
 title: "Geography and computers: Past, present, and future"
 author: "Jon Reades"
-date: "9/9/2022"
+date: "9/7/2023"
 tbl-colwidths: [75,25]
 toc: false
 number-sections: true

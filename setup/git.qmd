@@ -1,7 +1,7 @@
 ---
 title: "Git & GitHub"
 author: "Jon Reades"
-date: "9/9/2022"
+date: "9/7/2023"
 ---
 
 Git is a 'version control system', which is a fancy way of saying that it has the potential to store a complete, line-by-line history of your work... so long as it's in a plain-text format like [Markdown](./markdown.qmd) or Python/R code files. Git updates all of this history on your computer every time you 'commit' the changes you've told it about by 'adding' a file. With GitHub you can then synchronise these changes so that you have a full backup (code and content are no longer just on your computer), publish a web site (via github.io), or collaborate with other people (via public, shared 'repositories'). 

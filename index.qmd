@@ -1,7 +1,7 @@
 ---
 title: "CASA's Urban Spatial Science Platform"
 author: "Jon Reades"
-date: "9/9/2022"
+date: "9/7/2023"
 ---
 
 In order to get you started on your spatial and data science 'journey' you will need to follow the guidance provided on the pages we've linked to below. These are divided into three sections: 

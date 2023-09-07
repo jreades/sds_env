@@ -1,7 +1,7 @@
 ---
 title: "Health Check"
 author: "Jon Reades"
-date: "9/9/2022"
+date: "9/7/2023"
 ---
 
 When answering the questions below, 'your computer' is the machine on which you plan to do the programming. You will also have some ability to run code remotely on UCL's JupyterHub or on Google Collab (see [No Install](./no_install.qmd)), but you will find that limitations in processing power on these cloud platforms can make this a frustrating experience.

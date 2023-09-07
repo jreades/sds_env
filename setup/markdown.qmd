@@ -1,7 +1,7 @@
 ---
 title: "Markdown"
 author: "Jon Reades"
-date: "9/9/2022"
+date: "9/7/2023"
 ---
 
 Markdown is a 'markup language' for documents that is compatible with a lot of different tools (including GitHub and Jupyter) that we use day-in and day-out for doing our research and teaching. Many of us have now largely stopped using Word (and even LaTeX) except for the final polishing of a document. Why? Because Markdown is faster, simpler, and just gets out of the way when we're writing. So rather than fiddling about with Word's styles (or, worse, discovering that you *should* have been using styles all along) or with LaTeX's painful table layout, you can just get on with writing in Markdown and *then* export to Word or LaTeX for the final steps. Best of both worlds!

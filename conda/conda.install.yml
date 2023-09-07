@@ -25,7 +25,6 @@ dependencies:
   - ipyparallel 
   - jupyter_bokeh
   - jupyterlab_code_formatter # Supports labextension
-  - jupyter-dash # Plotly support
   - jupyterlab-geojson
   - jupyterlab-variableinspector
   - jupyter-lsp-python # Provides LSP Extension + Server
@@ -69,8 +68,8 @@ dependencies:
     - dtreeviz
     - dtreeviz[xgboost]
     - duckdb
-    - fastai==1.0.61 # Huanfa's QM
-    - gurobipy==9.5.1 # Huanfa's QM
+    - fastai #==1.0.61 # Huanfa's QM
+    - gurobipy #==9.5.1 # Huanfa's QM
     #- git+https://github.com/smazzanti/mrmr # Supports feature selection
     #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - joypy
@@ -81,13 +80,13 @@ dependencies:
     - matplotlib-scalebar 
     - mgwr
     - num2words
-    - pulp==2.6.0 # Huanfa's QM
+    - pulp #==2.6.0 # Huanfa's QM
     - rfpimp
     - scikit-posthocs
     - skimpy
     - sklearn-som
     - smopy # NOT a typo! Not the same thing as sompy!
-    - text_to_num
+    #- text_to_num
     - top2vec
     - unidecode
     - wordcloud
