@@ -4,6 +4,8 @@
 # a clean build.
 # && jupyter labextension install --no-build @rmotr/jupyterlab-solutions \
 
+RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
+
 # Clean up
 RUN jupyter lab build -y --dev-build=False \ 
     && jupyter lab clean -y \

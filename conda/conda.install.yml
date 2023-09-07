@@ -7,7 +7,9 @@ channels:
   - defaults
 dependencies:
   - pip 
+  #- altair
   - black # Supports code formatter labextension
+  #- bokeh
   - catboost
   - clustergram
   - contextily 
@@ -43,10 +45,11 @@ dependencies:
   - palettable 
   #- pandas-profiling
   - pointpats
+  - polars
   - polyline
   - plotly
   - psycopg2
-  - pygeos
+  #- pygeos # Not needed with Shapely2 and Geopandas
   #- pymc3
   - pykrige
   - pysal
@@ -70,7 +73,7 @@ dependencies:
     - contractions 
     - dtreeviz
     - dtreeviz[xgboost]
-    - duckdb==0.6.1
+    - duckdb
     - fastai==1.0.61 # Huanfa's QM
     - geofeather 
     - gurobipy==9.5.1 # Huanfa's QM
@@ -90,6 +93,7 @@ dependencies:
     - skimpy
     - sklearn-som
     - smopy # NOT a typo! Not the same thing as sompy!
+    - text_to_num
     - top2vec
     - unidecode
     - wordcloud
