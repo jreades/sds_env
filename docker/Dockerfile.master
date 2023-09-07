@@ -12,13 +12,13 @@
 
 #--- Build from Jupyter-provided Minimal Install ---#
 # https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
-# Mid-June 2022
-FROM jupyter/scipy-notebook:lab-3.4.3
+# 5 September 2023
+FROM jupyter/scipy-notebook:lab-4.0.5
 
 LABEL maintainer="j.reades@ucl.ac.uk"
 
-ENV env_nm 'sds2022'
-ENV kernel_nm 'SDS2022'
+ENV env_nm 'sds2023'
+ENV kernel_nm 'SDS2023'
 ENV yaml_nm 'conda.install.yml'
 ENV pip_nm 'pip.install.txt'
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -49,6 +49,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gdebi-core \
     && rm -rf /var/lib/apt/lists/*
 
+# Does this create an AMD64 dependency that
+# can't be overruled by ARM64 library?
 RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
 RUN gdebi --non-interactive quarto-linux-amd64.deb
 RUN rm quarto-linux-amd64.deb

@@ -13,19 +13,16 @@ dependencies:
   - catboost
   - clustergram
   - contextily 
-  - cmake<3.20
+  #- cmake<3.20
   - dash
   - descartes
-  - feather-format 
   - gensim 
   - geopandas
   - geopy 
   - hdbscan
   - icecream
   - ipyleaflet 
-  - ipympl 
   - ipyparallel 
-  - ipywidgets 
   - jupyter_bokeh
   - jupyterlab_code_formatter # Supports labextension
   - jupyter-dash # Plotly support
@@ -37,7 +34,7 @@ dependencies:
   #- mkl-service
   - mgwr 
   - momepy
-  - nbdime 
+  #- nbdime 
   #- networkx 
   - nltk 
   #- numba
@@ -48,7 +45,7 @@ dependencies:
   - polars
   - polyline
   - plotly
-  - psycopg2
+  #- psycopg2
   #- pygeos # Not needed with Shapely2 and Geopandas
   #- pymc3
   - pykrige
@@ -56,11 +53,9 @@ dependencies:
   #- qgrid 
   - rasterio 
   - rasterstats 
-  - scipy
   - shap
-  - seaborn
   - spacy 
-  - spacy[transformer] 
+#  - spacy[transformer] 
   - spopt
   - tabulate  # For exporting from pandas to markdown
   - textblob 
@@ -75,7 +70,6 @@ dependencies:
     - dtreeviz[xgboost]
     - duckdb
     - fastai==1.0.61 # Huanfa's QM
-    - geofeather 
     - gurobipy==9.5.1 # Huanfa's QM
     #- git+https://github.com/smazzanti/mrmr # Supports feature selection
     #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
