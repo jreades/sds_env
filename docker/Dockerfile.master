@@ -4,6 +4,15 @@
 # to your .rc (.zshrc/.bashrc) file. This is *only*
 # needed when building from source. Otherwise just pull
 # as below.
+#
+# When building on M1/M2, it might be enough to simply add `--platform linux/amd64`
+# to the build command to get something that works on both platforms. However, I 
+# suspect it would be better to build separate images (provided they both result in
+# the same versions of most libraries being isntalled) for AMD64 and ARM64. See also:
+# - https://pythonspeed.com/articles/docker-build-problems-mac/
+# - https://docs.docker.com/build/building/multi-platform/
+# - https://stackoverflow.com/a/72915044/1600439
+# - https://docs.docker.com/engine/reference/commandline/manifest/
 
 # How to pull and run this image:
 # > export IMG_NM=sds:XXXX (where XXXX is the version you wish to run)
