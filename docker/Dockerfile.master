@@ -13,6 +13,9 @@
 # - https://docs.docker.com/build/building/multi-platform/
 # - https://stackoverflow.com/a/72915044/1600439
 # - https://docs.docker.com/engine/reference/commandline/manifest/
+#
+# This seems to have worked:
+#  export IMG_NM=sds:2023-silicon && docker build --platform linux/arm64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
 
 # How to pull and run this image:
 # > export IMG_NM=sds:XXXX (where XXXX is the version you wish to run)
@@ -60,9 +63,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Does this create an AMD64 dependency that
 # can't be overruled by ARM64 library?
-RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
-RUN gdebi --non-interactive quarto-linux-amd64.deb
-RUN rm quarto-linux-amd64.deb
+ARG BUILDPLATFORM
+RUN if [[ "$BUILDPLATFORM" = */arm64 ]]; then \
+    curl -LO https://quarto.org/download/latest/quarto-linux-arm64.deb && \
+        gdebi --non-interactive quarto-linux-arm64.deb && \
+        rm quarto-linux-arm64.deb; \
+  else \
+    curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb && \
+        gdebi --non-interactive quarto-linux-amd64.deb && \
+        rm quarto-linux-amd64.deb; \
+  fi
+#RUN curl -LO https://quarto.org/download/latest/$DEB
+#RUN gdebi --non-interactive $DEB
+#RUN rm $DEB
 
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
