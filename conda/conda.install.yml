@@ -47,7 +47,6 @@ dependencies:
   #- psycopg2
   #- pygeos # Not needed with Shapely2 and Geopandas
   #- pymc3
-  - pykrige
   - pysal
   #- qgrid 
   - rasterio 
@@ -81,6 +80,7 @@ dependencies:
     - mgwr
     - num2words
     - pulp #==2.6.0 # Huanfa's QM
+    - pykrige # Might not be available for Apple Silicon
     - rfpimp
     - scikit-posthocs
     - skimpy
