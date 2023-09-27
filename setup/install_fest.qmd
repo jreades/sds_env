@@ -13,6 +13,10 @@ Please make sure that you have installed the [Base Utilities](../req/base.qmd) *
 
 :::
 
+## Base Utilities
+
+{{< include ../req/wsl.qmd >}}
+
 ## MacOS
 
 ::: {.callout-tip}
@@ -68,12 +72,5 @@ It is highly unlikely that you have a 32-bit machine, so if in doubt download th
 - [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/win32)
 
 
-## Next Steps
-
-::: {.callout-important}
-## Run Docker
-
-Now that you have installed the software above, the next step is to test out Docker. The command to do this can be found [here](env.qmd#docker).
-
-:::
+{{< include docker.qmd >}}
 

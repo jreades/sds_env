@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jon Reades">
-<meta name="dcterms.date" content="2023-09-07">
 
-<title>CASA Computing Environment - Programming Environment</title>
+<title>CASA Computing Environment – docker</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../setup/no_install.html" rel="next">
-<link href="../setup/markdown.html" rel="prev">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -102,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -206,119 +202,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/env.html">Programming Environment</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git &amp; GitHub</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/markdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Markdown</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/env.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Programming Environment</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/no_install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">No Install Options</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Install ‘Fest’</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#vscode" id="toc-vscode" class="nav-link active" data-scroll-target="#vscode">VSCode</a></li>
-  <li><a href="#anaconda-python" id="toc-anaconda-python" class="nav-link" data-scroll-target="#anaconda-python">Anaconda Python</a></li>
+  <li><a href="#docker" id="toc-docker" class="nav-link active" data-scroll-target="#docker">Docker</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Programming Environment</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jon Reades </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 7, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<p>Over the years, we have experimented with a range of approaches to setting you up with a programming environment, and we have come to the conclusion that <strong>Docker</strong> is the most robust way to ensure a consistent experience. This guarantees that all students end up with the same versions of each library, that difficult-to-diagnose hardware/OS issues are minimised, and that running/recovery is the most straightforward.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Base Utilities
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Before beginning <em>any</em> of the steps below, make sure you have installed the <a href="../req/base.html">Base Utilities</a> for your Operating System and checked the other hardware and software requirements.</p>
-</div>
-</div>
-<p>Since Docker is <em>very</em> complex, you might want to read the <strong><a href="../docker/index.html#understanding-docker">Understanding Docker</a></strong> section on the ‘additional information’ page. We have tried to explain in <em>fairly</em> simple terms how it works, though we can’t take away all of the complexity.</p>
-<p>A very small number of students are <strong>unable to run Docker</strong> on older machines running Windows 10 Home, in which case <strong>Anaconda Python</strong> can be used with the [configuration <a href="../conda/index.html">that we provide</a>. However, if your machine runs Docker then you <strong>must</strong> use Docker: this isolates the programming environment from your computer, ensuring that nothing is clobbered by accident, and guaranteeing that you are working with the same version of every Python library as the rest of the class (and the versions for which the practicals are tested).</p>
-<p><strong>Anaconda is only supported as a last resort</strong>.</p>
-<section id="docker" class="level3">
-<h3 class="anchored" data-anchor-id="docker">Docker</h3>
+<section id="docker" class="level2">
+<h2 class="anchored" data-anchor-id="docker">Docker</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -387,6 +291,19 @@ Windows
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <p>Once the <code>pull</code> process completes you’ll need to copy+paste the following into the Shell/Terminal. Note that this is the one-line version for Windows users:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2023 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2023 start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Non-Latin Characters in Paths
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Many applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the <code>$(pwd)</code> part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something <em>like</em> <code>C:\Users\a1509\</code> in which case just replace the <code>$(pwd)</code> with this and you <em>should</em> be good to go.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -397,32 +314,9 @@ Windows
 <figcaption class="figure-caption">Jupyter Lab Success</figcaption>
 </figure>
 </div>
-</section>
-</section>
-<section id="vscode" class="level2">
-<h2 class="anchored" data-anchor-id="vscode">VSCode</h2>
-<p>We have built the <code>jreades/sds:2023</code> image for a streamlined, effective in-browser experience. However, if you’re more familiar with IDEs then <a href="https://code.visualstudio.com">VSCode</a> offers the ability to intergrate with Docker images so that you write your code in VSCode and it’s sent to the Docker image for execution. You can read the instructions on the more detailed <a href="../docker/index.html#vscode-integration"><strong>Using Docker</strong></a> page.</p>
-</section>
-<section id="anaconda-python" class="level2">
-<h2 class="anchored" data-anchor-id="anaconda-python">Anaconda Python</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We <em>only</em> support Anaconda Python as a fallback for students who would otherwise be unable to complete the module because their computer does not support Docker. If you <em>choose</em> to use Anaconda (but could run Docker) then we will not be able to support you.</p>
-</div>
-</div>
-<p>You are always free to install Anaconda Python and to <a href="../conda/index.html">use our YAML configuration script</a> to install the SDS environment, but you should do this in your own time: in previous years students have encountered difficult-to-diagnose bugs in their code (and lost marks in the Assessments!) because they had installed an older or more recent version of a Python library than the one configured and tested in the SDS environment.</p>
-<p>We believe that the replication advantages of <em>virtualisation</em> outweigh the disbenefits in terms of <em>performance</em>. It also means that you will spend less time installing libraries and more time running code, which is where your attention should really be when you are familiarising yourself with the <em>foundations</em> of data science.</p>
-<p>Eventually you will, of course, want to install and manage your own programming environment (possibly even by building and sharing Docker images!) but this can be left for later when you have developed an appreciation of how and when virtualisation is (or is not) an appropriate solution to your needs.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -659,18 +553,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../setup/markdown.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Markdown</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../setup/no_install.html" class="pagination-link">
-        <span class="nav-page-text">No Install Options</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

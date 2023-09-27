@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jon Reades">
-<meta name="dcterms.date" content="2023-09-07">
 
-<title>CASA Computing Environment - Base Utilities</title>
+<title>CASA Computing Environment – wsl</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../req/code_camp.html" rel="next">
-<link href="../req/health.html" rel="prev">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -68,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -172,88 +168,19 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../req/base.html">Base Utilities</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../req/health.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Health Check</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../req/base.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Base Utilities</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../req/code_camp.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Code Camp</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#windows-linux-shell" id="toc-windows-linux-shell" class="nav-link active" data-scroll-target="#windows-linux-shell">Windows + Linux + Shell</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Base Utilities</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jon Reades </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 7, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<p>In order to access the majority of the features that this module uses, you will need to install several ‘base’ utilities:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">MacOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Windows</a></li></ul>
 <div class="tab-content">
@@ -296,42 +223,8 @@ If You Need More Help
 </div>
 </div>
 </div>
-<section id="windows-linux-shell" class="level2">
-<h2 class="anchored" data-anchor-id="windows-linux-shell">Windows + Linux + Shell</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Creating a Linux User
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you want to install a full Linux distribution (e.g.&nbsp;because you want to do <em>more</em> than just run Docker) then make sure you set up a <em>new <code>Linux</code> user</em> and do not end up running everything as <code>root</code>.</p>
-</div>
-</div>
-<p>To make full use of WSL2 and Linux (if you want to do more than just use Docker) you will need to familiarise yourself with how having two operating systems that can talk to each other works. That is covered in the next section. This will actually be <em>useful</em> for understanding how Docker works, as it can be profoundly confusing.</p>
-<p>The behaviour of the ‘shell’ (command line) is quite confusing because, with WSL2, you effectively end up with two ‘home’ directories: one for your Windows user, and one for your new Ubuntu user. Starting a Linux shell/command line puts you in your Linux home directory (the username may be completely different from your Windows username). Starting a Windows shell/command line puts you in your Windows home directory (again, the username may be completely different from your Linux username).</p>
-<p>So the first, and perhaps most important, thing is <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations">understanding where ‘data’ is being stored</a>:</p>
-<ul>
-<li>Under Linux the user directory is apparently something like: <code>\\wsl$\&lt;DistroName&gt;\home\&lt;UserName&gt;\</code> but you can usually get it by simply typing <code>cd $HOME</code> and then <code>pwd</code> when starting a new <em>Linux</em> shell.</li>
-<li>Under Windows the user directory is: <code>C:\Users\&lt;UserName&gt;\</code> or <code>/mnt/c/Users/&lt;UserName&gt;/</code>, and you can often simply type <code>pwd</code> when opening a new <em>Windows</em> shell.</li>
-</ul>
-<p>So these are <em>different</em> locations on your computer’s hard drive, and you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-windows-terminal">this page on Microsoft’s web site</a> that goes through some of the post-WSL2 installation steps, but see especially the additional page on <a href="https://learn.microsoft.com/en-us/windows/terminal/install">Windows Terminal configuration</a>.</p>
-<p>Slightly confusingly, you <em>can</em> <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations#interoperability-between-windows-and-linux-commands">run Linux commands directly from Windows</a>, usually be adding <code>wsl</code> in front of the Linux command (e.g.&nbsp;<code>wsl ls *.csv</code> from Windows, where in Linux the command would be <code>ls *.csv</code>).</p>
-<p>To make it easy to move from the Linux side of your machine to the Windows machine you can <em>also</em> do this:</p>
-<ol type="1">
-<li>Work out where your CASA files are stored on the Windows side (see above: <code>/mnt/c/Users/&lt;UserName&gt;/My\ Documents/CASA/...</code> where <code>&lt;UserName&gt;</code> is your Windows user name).</li>
-<li><code>cd</code> to this location and type <code>pwd</code> to output the full path to the CASA directory.</li>
-<li>Copy this.</li>
-<li>Now start a <em>Linux</em> shell and run the following command <em>once</em> (you do not need to do it ever again): <code>echo "export WIN_HOME=\"/mnt/c/Users/.../CASA/\"" &gt;&gt; $HOME/.bashrc</code>. Replace the <code>...</code> with the rest of the actual path! The <code>\"</code> is very important, don’t try to change those!</li>
-<li>Now run <code>source .bashrc</code> and you should see no errors.</li>
-</ol>
-<p>Once you have done this you will have added a single line to your <code>.bashrc</code> file in Linux. This will create a ‘shortcut’ for bash in Linux. From here on out you <em>should</em> be able to type <code>cd $WIN_HOME</code> and move immediately over to the <code>CASA</code> directory on the Windows side. This will save having to remember (and type) the Windows path each time.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -567,23 +460,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../req/health.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Health Check</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../req/code_camp.html" class="pagination-link">
-        <span class="nav-page-text">Code Camp</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2023, Jon Reades</div>   
-    <div class="nav-footer-center"><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</div>
+    <div class="nav-footer-center"><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

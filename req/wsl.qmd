@@ -1,0 +1,37 @@
+
+::: {.panel-tabset}
+
+## MacOS
+
+You need the **Xcode Command Line Tools** installed on your Mac. In some cases this may have *already* been installed, but it's the same process to check as to install:
+
+1. Open the `Terminal` application (which can be found under `Utilities` in your `Applications` folder).
+2. Type the following: `xcode-select --install` and then hit Enter (&#9166;)
+
+Unless you get an outright *error* you can proceed to the next step:
+
+3. Although not strictly necessary, you'll *eventually* want the Homebrew package manager, which can also be installed [directly from the Terminal](https://phoenixnap.com/kb/install-homebrew-on-mac). 
+
+## Windows
+
+You will need to install WSL2 but, strangely, you do not actually need to install a full Linux O/S, so as far as we can tell this means you only need to run the following commands in the `Windows PowerShell`:
+
+1. `wsl --install` should quickly install the subsystem that we need.
+2. `wsl --update` will ensure that the most up-to-date version is available.
+
+That *should* be it: Docker should now run without complaint.
+
+::: {.callout-tip}
+### If You Need More Help
+
+1. There is good guidance [from Microsoft](https://learn.microsoft.com/en-us/windows/wsl/install) for Windows 11 and more recent 'builds' of Windows 10.
+2. There are also [older instructions](https://www.digitalocean.com/community/tutorials/how-to-install-the-windows-subsystem-for-linux-2-on-microsoft-windows-10) for Windows 10.
+
+Common installation errors are [covered here](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting?source=recommendations).
+
+Finally, if you are *still* being told that you can't install WSL2 and Linux, then the most likely cause of this issue is a setting in the BIOS of the computer itself. There are a couple of settings that need changing at a very low level to enable Hyper-V virtualisation. I would start by following [this MS guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual) and, if there is still a problem, check [this blog post](https://s1gr1d.medium.com/how-to-set-up-linux-on-windows-with-wsl-2-debe2a64d20d).
+
+:::
+
+:::
+
