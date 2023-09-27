@@ -747,5 +747,12 @@
     "title": "Install ‘Fest’",
     "section": "Windows",
     "text": "Windows\n\n\n\n\n\n\n32- or 64-bit?\n\n\n\nIt is highly unlikely that you have a 32-bit machine, so if in doubt download the 64-bit version.\n\n\n\nDocker Desktop for Windows\nVS Code\nQuarto\nR-4.3.1\nR Studio Desktop\nGit\nGitHub Desktop"
+  },
+  {
+    "objectID": "setup/install_fest.html#next-steps",
+    "href": "setup/install_fest.html#next-steps",
+    "title": "Install ‘Fest’",
+    "section": "Next Steps",
+    "text": "Next Steps\n\n\n\n\n\n\nRun Docker\n\n\n\nNow that you have installed the software above, the next step is to test out Docker. The command to do this can be found here."
   }
 ]
