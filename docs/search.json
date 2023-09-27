@@ -746,6 +746,6 @@
     "href": "setup/install_fest.html#windows",
     "title": "Install ‘Fest’",
     "section": "Windows",
-    "text": "Windows\n\nDocker Desktop for Windows\nVS Code\nQuarto\nR-4.3.1\nR Studio Desktop\nGit\nGitHub Desktop"
+    "text": "Windows\n\n\n\n\n\n\n32- or 64-bit?\n\n\n\nIt is highly unlikely that you have a 32-bit machine, so if in doubt download the 64-bit version.\n\n\n\nDocker Desktop for Windows\nVS Code\nQuarto\nR-4.3.1\nR Studio Desktop\nGit\nGitHub Desktop"
   }
 ]

@@ -6,6 +6,13 @@ date: "9/27/2023"
 
 This page is intended for use at our annual 'install fest' during Induction Week. It is intended To support you in getting the final key bits of software set up on your laptop/computer so that you are ready to begin your studies in Week 1. This is the full list of installers require.
 
+::: {.callout-important}
+## Install the Base Utilities First
+
+Please make sure that you have installed the [Base Utilities](../req/base.qmd) *first* before installing the applications below. You can continue to download these in the background though!
+
+:::
+
 ## MacOS
 
 ::: {.callout-tip}
@@ -44,6 +51,13 @@ You will need to install the following:
 :::
 
 ## Windows
+
+::: {.callout-tip}
+## 32- or 64-bit?
+
+It is highly unlikely that you have a 32-bit machine, so if in doubt download the 64-bit version.
+
+:::
 
 - [Docker Desktop for Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
 - [VS Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user)
