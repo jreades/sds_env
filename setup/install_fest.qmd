@@ -1,0 +1,56 @@
+---
+title: "Install 'Fest'"
+author: "Jon Reades"
+date: "9/27/2023"
+---
+
+This page is intended for use at our annual 'install fest' during Induction Week. It is intended To support you in getting the final key bits of software set up on your laptop/computer so that you are ready to begin your studies in Week 1. This is the full list of installers require.
+
+## MacOS
+
+::: {.callout-tip}
+## Intel or Apple M1/M2?
+
+Apple has migrated away from using Intel computer chips and now designs its own 'Silicon' chipset instead. Confusingly, these are often *also* referred to by their technical specification as `AMD64` (Intel) and `ARM64` (Apple). To find out which you have, click on the Apple icon (&#63743;) and select `About this Mac`. Look at the `Processor` section and you should see which type of computer you have.
+
+:::
+
+::: {.panel-tabset}
+
+## On Intel
+
+You will need to install the following:
+
+- [Docker Desktop for Mac with Intel chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64)
+- [VS Code (Universal)](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)
+- [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-macos.pkg)
+- [R-4.3.1 for AMD64](https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.3.1-x86_64.pkg)
+- [R Studio Desktop](https://download1.rstudio.org/electron/macos/RStudio-2023.09.0-463.dmg)
+- [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/darwin)
+- [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_4_20.zip)
+
+## On Apple Silicon
+
+You will need to install the following:
+
+- [Docker Desktop for Mac with Apple silicon](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64)
+- [VS Code (ARM64)](https://code.visualstudio.com/sha/download?build=stable&os=darwin-arm64)
+- [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-macos.pkg)
+- [R-4.3.1 for ARM64](https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.3.1-arm64.pkg)
+- [R Studio Desktop](https://download1.rstudio.org/electron/macos/RStudio-2023.09.0-463.dmg)
+- [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64)
+- [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_4_20.zip)
+
+:::
+
+## Windows
+
+- [Docker Desktop for Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
+- [VS Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user)
+- [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-win.msi)
+- [R-4.3.1](https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe)
+- [R Studio Desktop](https://download1.rstudio.org/electron/windows/RStudio-2023.09.0-463.exe)
+- [Git](https://git-scm.com/download/win)
+- [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/win32)
+
+

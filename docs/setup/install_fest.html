@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jon Reades">
-<meta name="dcterms.date" content="2023-09-07">
+<meta name="dcterms.date" content="2023-09-27">
 
-<title>CASA Computing Environment - Health Check</title>
+<title>CASA Computing Environment - Install ‘Fest’</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../req/base.html" rel="next">
+<link href="../setup/no_install.html" rel="prev">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -131,6 +131,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../setup/no_install.html" rel="" target="">
  <span class="dropdown-text">No Install Options</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/install_fest.html" rel="" target="">
+ <span class="dropdown-text">Install ‘Fest’</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -172,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../req/health.html">Health Check</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/install_fest.html">Install ‘Fest’</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -186,20 +190,32 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../req/health.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Health Check</span></a>
+  <a href="../setup/git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git &amp; GitHub</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../req/base.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Base Utilities</span></a>
+  <a href="../setup/markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Markdown</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../req/code_camp.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Code Camp</span></a>
+  <a href="../setup/env.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Programming Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/no_install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">No Install Options</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Install ‘Fest’</span></a>
   </div>
 </li>
     </ul>
@@ -212,9 +228,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#hardware-requirements" id="toc-hardware-requirements" class="nav-link active" data-scroll-target="#hardware-requirements">Hardware Requirements</a></li>
-  <li><a href="#software-requirements" id="toc-software-requirements" class="nav-link" data-scroll-target="#software-requirements">Software Requirements</a></li>
-  <li><a href="#system-updates" id="toc-system-updates" class="nav-link" data-scroll-target="#system-updates">System Updates</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link active" data-scroll-target="#macos">MacOS</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -223,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Health Check</h1>
+<h1 class="title">Install ‘Fest’</h1>
 </div>
 
 
@@ -240,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 7, 2023</p>
+      <p class="date">September 27, 2023</p>
     </div>
   </div>
   
@@ -250,117 +265,63 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>When answering the questions below, ‘your computer’ is the machine on which you plan to do the programming. You will also have some ability to run code remotely on UCL’s JupyterHub or on Google Collab (see <a href="./no_install.qmd">No Install</a>), but you will find that limitations in processing power on these cloud platforms can make this a frustrating experience.</p>
-<section id="hardware-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="hardware-requirements">Hardware Requirements</h2>
-<p>We try to support as many different configurations as possible, but there is <em>no</em> programming environment that installs and runs seamlessly on <em>all</em> computers. However, in our experience the students <strong>most likely to encounter problems</strong> share one or more of the following:</p>
-<ol type="1">
-<li>Your computer 8GB or less of RAM.</li>
-<li>Your computer has less than 20GB of free disk space remaining.</li>
-</ol>
-<p>Read on below to check what specification you have…</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">MacOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Linux</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>You will need to look up:</p>
-<ul>
-<li>How much RAM does your <em>main</em> computer have? <a href="https://www.macworld.co.uk/how-to/mac/much-ram-need-more-3793418/">Help for Mac</a>.</li>
-<li>How much free disk space does your <em>main</em> computer have? <a href="https://www.macworld.com/article/2972775/how-to-check-a-mac-free-hard-drive-space.html">Help for Mac</a>.</li>
-</ul>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>You will need to look up:</p>
-<ul>
-<li>How much RAM does your <em>main</em> computer have? <a href="https://www.howtogeek.com/435644how-to-see-how-much-ram-is-in-your-pc-and-its-speed/">Help for Windows</a>.</li>
-<li>How much free disk space does your <em>main</em> computer have? <a href="https://www.lifewire.com/how-to-check-free-hard-drive-space-in-windows-2619187">Help for Windows</a>.</li>
-</ul>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p>We’re going to assume that you know what you’re doing. If you want a recommendation, we’d probably go with the latest Ubuntu desktop release.</p>
-</div>
-</div>
-</div>
-<p>If your computer has less than 8GB of RAM <em>and/or</em> less than 20GB of free disk space you are likely to have issues with Docker and (on Windows) WSL2. Your options are: 1) add more RAM (possible on Windows); 2) back up and remove unnecessary files (Movies, Photos, and Applications are particularly big ‘hogs’).</p>
-<section id="recommendations" class="level3">
-<h3 class="anchored" data-anchor-id="recommendations">Recommendations</h3>
-<p>If you are looking for a recommendation as to what to buy:</p>
-<ol type="1">
-<li>Don’t worry about getting the fastest chip, get as much RAM as you can. You should aim for 32GB of RAM, but get more if you can afford it.</li>
-<li>Don’t worry about getting the biggest hard drive, get the fastest one you can. You should get a SSD (Solid State Drive), but get a M2 type SSD if you can afford it and it’s available for your system.</li>
-<li>Only after you’ve sorted this out should you look for the fastest chipset that’s still within your budget.</li>
-</ol>
-<section id="should-you-buy-a-windows-linux-or-apple-machine" class="level4">
-<h4 class="anchored" data-anchor-id="should-you-buy-a-windows-linux-or-apple-machine">Should you buy a Windows, Linux, or Apple machine?</h4>
-<p>You should probably stick with whatever you’re familiar with since learning your way around a new Operating System while <em>also</em> learning to code is just raising the bar unnecessarily. Around CASA we use a mix of all three, and you can probably find as many opinions as there are staff members.</p>
-</section>
-<section id="should-you-buy-a-m2-or-m1-mac" class="level4">
-<h4 class="anchored" data-anchor-id="should-you-buy-a-m2-or-m1-mac">Should you buy a M2 or M1 Mac?</h4>
-<p>It depends. Here’s a <a href="https://www.macworld.com/article/785824/m2-vs-m1-pro-max-ultra-performance-graphics.html">good article from MacWorld</a> covering the pros and cons. Short answer: right <em>now</em> (June 2022) the M1 is probably faster for most data science applications, but expect that to have changed by June 2023. But either way: a fast chip with not enough RAM will be much slower than a slow chip with abundant RAM.</p>
+<p>This page is intended for use at our annual ‘install fest’ during Induction Week. It is intended To support you in getting the final key bits of software set up on your laptop/computer so that you are ready to begin your studies in Week 1. This is the full list of installers require.</p>
+<section id="macos" class="level2">
+<h2 class="anchored" data-anchor-id="macos">MacOS</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Saving Money
+Intel or Apple M1/M2?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Two easy things to do to save money on a new machine are:</p>
-<ol type="1">
-<li>Unless there is a specific reason to do so (e.g.&nbsp;getting a system with Apple’s M1/M2 chip), don’t buy the latest machine, buy a model from earlier in the year/the previous year instead and upgrade the RAM and hard drive instead.</li>
-<li>Only buy the machine when you have access to a student discount. The discount for Apple computers is relatively modest (ca. 10%) compared to ‘back to school’ offers for Windows machines, but as the Brits would say: even 10% is better than a kick in the teeth!</li>
-</ol>
+<p>Apple has migrated away from using Intel computer chips and now designs its own ‘Silicon’ chipset instead. Confusingly, these are often <em>also</em> referred to by their technical specification as <code>AMD64</code> (Intel) and <code>ARM64</code> (Apple). To find out which you have, click on the Apple icon () and select <code>About this Mac</code>. Look at the <code>Processor</code> section and you should see which type of computer you have.</p>
 </div>
 </div>
-</section>
-</section>
-</section>
-<section id="software-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="software-requirements">Software Requirements</h2>
-<p>We try to support as many different configurations as possible, but there is <em>no</em> programming environment that installs and runs seamlessly on <em>all</em> computers. However, in our experience the students <strong>most likely to encounter problems</strong> share one or more of the following:</p>
-<ol type="1">
-<li>Your computer runs Windows 10 Home or older, or</li>
-<li>Your computer runs MacOS 10.13 (High Sierra) or older.</li>
-</ol>
-<p>As long as your computer is running one of the last two major releases of the Operating System you should encounter few issues.</p>
-<section id="macos-1" class="level3">
-<h3 class="anchored" data-anchor-id="macos-1">MacOS</h3>
-<p>You will need to look up:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">On Intel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">On Apple Silicon</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>You will need to install the following:</p>
 <ul>
-<li>What Operating System and Version is your <em>main</em> computer running? <a href="https://support.apple.com/en-gb/HT201260">Help for Mac</a>.</li>
+<li><a href="https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-mac-amd64">Docker Desktop for Mac with Intel chip</a></li>
+<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=darwin-universal">VS Code (Universal)</a></li>
+<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-macos.pkg">Quarto</a></li>
+<li><a href="https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.3.1-x86_64.pkg">R-4.3.1 for AMD64</a></li>
+<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2023.09.0-463.dmg">R Studio Desktop</a></li>
+<li><a href="https://central.github.com/deployments/desktop/desktop/latest/darwin">GitHub Desktop</a></li>
+<li><a href="https://iterm2.com/downloads/stable/iTerm2-3_4_20.zip">iTerm2</a></li>
 </ul>
-</section>
-<section id="windows-1" class="level3">
-<h3 class="anchored" data-anchor-id="windows-1">Windows</h3>
-<p>You will need to look up:</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>You will need to install the following:</p>
 <ul>
-<li>What Operating System and Version is your <em>main</em> computer running? <a href="https://support.microsoft.com/en-gb/help/13443/windows-which-version-am-i-running">Help for Windows</a>.</li>
+<li><a href="https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-mac-arm64">Docker Desktop for Mac with Apple silicon</a></li>
+<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=darwin-arm64">VS Code (ARM64)</a></li>
+<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-macos.pkg">Quarto</a></li>
+<li><a href="https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.3.1-arm64.pkg">R-4.3.1 for ARM64</a></li>
+<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2023.09.0-463.dmg">R Studio Desktop</a></li>
+<li><a href="https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64">GitHub Desktop</a></li>
+<li><a href="https://iterm2.com/downloads/stable/iTerm2-3_4_20.zip">iTerm2</a></li>
 </ul>
+</div>
+</div>
+</div>
 </section>
-<section id="recommendations-1" class="level3">
-<h3 class="anchored" data-anchor-id="recommendations-1">Recommendations</h3>
-<p>If you are using a Mac then your system should have the option to update to the latest version of the MacOS at no charge. If you are unable to update then it is likely that you have an older machine that is not fully supported by the most recent Operating System and, in all probability, you will also encounter issues running the programming environment.</p>
-<p>If you are using a Windows PC then try to update to either Windows 11 or to Windows 10 Pro as this will ‘unlock’ additional features that are useful for supporting the programming environment. As a student you are likely to qualify for significantly cheaper/free updates, so make sure you do this when you have access to a discount.</p>
-</section>
-</section>
-<section id="system-updates" class="level2">
-<h2 class="anchored" data-anchor-id="system-updates">System Updates</h2>
-<p>Now that you know your computer is ‘up-to-spec’, please ensure that your computer is fully up-to-date with all Operating System and application updates before following any of the <em>other</em> steps in this brief guide to getting started.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Automatic Updates
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Once you have <a href="./env.qmd">installed</a> the programming environment we <em>strongly</em> recommend that you <strong>turn off automatic updates</strong> for your computer until the end of the academic year. This is not to say that you should <em>not</em> install security and other updates over the course of the year, but to emphasise that it should be <strong>at a time of your choosing</strong>. In previous years, students’ computers have automatically updated to a whole new operating system version two nights before an assessment deadline, breaking existing code and causing lots of needless stress.</p>
-</div>
-</div>
+<section id="windows" class="level2">
+<h2 class="anchored" data-anchor-id="windows">Windows</h2>
+<ul>
+<li><a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">Docker Desktop for Windows</a></li>
+<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=win32-x64-user">VS Code</a></li>
+<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-win.msi">Quarto</a></li>
+<li><a href="https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe">R-4.3.1</a></li>
+<li><a href="https://download1.rstudio.org/electron/windows/RStudio-2023.09.0-463.exe">R Studio Desktop</a></li>
+<li><a href="https://git-scm.com/download/win">Git</a></li>
+<li><a href="https://central.github.com/deployments/desktop/desktop/latest/win32">GitHub Desktop</a></li>
+</ul>
 
 
 </section>
@@ -601,11 +562,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../setup/no_install.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">No Install Options</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../req/base.html" class="pagination-link">
-        <span class="nav-page-text">Base Utilities</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

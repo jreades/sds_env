@@ -144,7 +144,7 @@
     "href": "skills/index.html",
     "title": "Soft Skills",
     "section": "",
-    "text": "Paying attention: learning how to deal with distractions is essential to maintaining focus and retaining the infromation you’re taking in through reading and coding.\nReading: too many students try to read either everything or nothing when they should be doing something in between, so we’ve tried to collect some ideas on how to read to help you get started.\nThinking: the other big challenge for many students is learning how to approach literature and learning critically so that you learn how to integrate ideas and form your own. Learning how to think for yourself is essential.\nAsking for help: just because we want you to become an organised, motivated self-learner does not mean we don’t want to help you achieve this! Suffering in silence is not going to get you extra marks, so we’ve also offered tips on how to ask for help in a way that is most likely to get you what you need.\n\nThese pages are by no means complete, nor will the advice they offer work for everyone, but it is absolutely essential that you are as aware of how you learn as you are of what you are learning. The skill of ‘meta-cognition’ is one that will allow you to carry on learning effectively for the rest of your life!"
+    "text": "We think that there are some fundamentally important soft-skills for successfully completing a MSc: we try to teach these in our modules as well, but we think it’s useful to flag them here as well:\n\nPaying attention: learning how to deal with distractions is essential to maintaining focus and retaining the infromation you’re taking in through reading and coding.\nReading: too many students try to read either everything or nothing when they should be doing something in between, so we’ve tried to collect some ideas on how to read to help you get started.\nThinking: the other big challenge for many students is learning how to approach literature and learning critically so that you learn how to integrate ideas and form your own. Learning how to think for yourself is essential.\nAsking for help: just because we want you to become an organised, motivated self-learner does not mean we don’t want to help you achieve this! Suffering in silence is not going to get you extra marks, so we’ve also offered tips on how to ask for help in a way that is most likely to get you what you need.\n\nThese pages are by no means complete, nor will the advice they offer work for everyone, but it is absolutely essential that you are as aware of how you learn as you are of what you are learning. The skill of ‘meta-cognition’ is one that will allow you to carry on learning effectively for the rest of your life!"
   },
   {
     "objectID": "skills/reading.html",
@@ -683,7 +683,7 @@
     "href": "req/base.html#windows-linux-shell",
     "title": "Base Utilities",
     "section": "Windows + Linux + Shell",
-    "text": "Windows + Linux + Shell\nThe behaviour of the ‘shell’ (command line) is quite confusing because, with WSL2, you effectively end up with two ‘home’ directories: one for your Windows user, and one for your new Ubuntu user. Starting a Linux shell/command line puts you in your Linux home directory (the username may be completely different from your Windows username). Starting a Windows shell/command line puts you in your Windows home directory (again, the username may be completely different from your Linux username).\nSo the first, and perhaps most important, thing is understanding where ‘data’ is being stored:\n\nUnder Linux the user directory is apparently something like: \\\\wsl$\\<DistroName>\\home\\<UserName>\\ but you can usually get it by simply typing cd $HOME and then pwd when starting a new Linux shell.\nUnder Windows the user directory is: C:\\Users\\<UserName>\\ or /mnt/c/Users/<UserName>/, and you can often simply type pwd when opening a new Windows shell.\n\nSo these are different locations on your computer’s hard drive, and you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found this page on Microsoft’s web site that goes through some of the post-WSL2 installation steps, but see especially the additional page on Windows Terminal configuration.\nSlightly confusingly, you can run Linux commands directly from Windows, usually be adding wsl in front of the Linux command (e.g. wsl ls *.csv from Windows, where in Linux the command would be ls *.csv).\nTo make it easy to move from the Linux side of your machine to the Windows machine you can also do this:\n\nWork out where your CASA files are stored on the Windows side (see above: /mnt/c/Users/<UserName>/My\\ Documents/CASA/... where <UserName> is your Windows user name).\ncd to this location and type pwd to output the full path to the CASA directory.\nCopy this.\nNow start a Linux shell and run the following command once (you do not need to do it ever again): echo \"export WIN_HOME=\\\"/mnt/c/Users/.../CASA/\\\"\" >> $HOME/.bashrc. Replace the ... with the rest of the actual path! The \\\" is very important, don’t try to change those!\nNow run source .bashrc and you should see no errors.\n\nOnce you have done this you will have added a single line to your .bashrc file in Linux. This will create a ‘shortcut’ for bash in Linux. From here on out you should be able to type cd $WIN_HOME and move immediately over to the CASA directory on the Windows side. This will save having to remember (and type) the Windows path each time."
+    "text": "Windows + Linux + Shell\nThe behaviour of the ‘shell’ (command line) is quite confusing because, with WSL2, you effectively end up with two ‘home’ directories: one for your Windows user, and one for your new Ubuntu user. Starting a Linux shell/command line puts you in your Linux home directory (the username may be completely different from your Windows username). Starting a Windows shell/command line puts you in your Windows home directory (again, the username may be completely different from your Linux username).\nSo the first, and perhaps most important, thing is understanding where ‘data’ is being stored:\n\nUnder Linux the user directory is apparently something like: \\\\wsl$\\&lt;DistroName&gt;\\home\\&lt;UserName&gt;\\ but you can usually get it by simply typing cd $HOME and then pwd when starting a new Linux shell.\nUnder Windows the user directory is: C:\\Users\\&lt;UserName&gt;\\ or /mnt/c/Users/&lt;UserName&gt;/, and you can often simply type pwd when opening a new Windows shell.\n\nSo these are different locations on your computer’s hard drive, and you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found this page on Microsoft’s web site that goes through some of the post-WSL2 installation steps, but see especially the additional page on Windows Terminal configuration.\nSlightly confusingly, you can run Linux commands directly from Windows, usually be adding wsl in front of the Linux command (e.g. wsl ls *.csv from Windows, where in Linux the command would be ls *.csv).\nTo make it easy to move from the Linux side of your machine to the Windows machine you can also do this:\n\nWork out where your CASA files are stored on the Windows side (see above: /mnt/c/Users/&lt;UserName&gt;/My\\ Documents/CASA/... where &lt;UserName&gt; is your Windows user name).\ncd to this location and type pwd to output the full path to the CASA directory.\nCopy this.\nNow start a Linux shell and run the following command once (you do not need to do it ever again): echo \"export WIN_HOME=\\\"/mnt/c/Users/.../CASA/\\\"\" &gt;&gt; $HOME/.bashrc. Replace the ... with the rest of the actual path! The \\\" is very important, don’t try to change those!\nNow run source .bashrc and you should see no errors.\n\nOnce you have done this you will have added a single line to your .bashrc file in Linux. This will create a ‘shortcut’ for bash in Linux. From here on out you should be able to type cd $WIN_HOME and move immediately over to the CASA directory on the Windows side. This will save having to remember (and type) the Windows path each time."
   },
   {
     "objectID": "docker/index.html#footnotes",
@@ -705,5 +705,47 @@
     "title": "Markdown",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nNot all of these are still free.↩︎"
+  },
+  {
+    "objectID": "skills/thinking.html#why-am-i-making-this-hard-for-you",
+    "href": "skills/thinking.html#why-am-i-making-this-hard-for-you",
+    "title": "How to Think",
+    "section": "",
+    "text": "Another challenge for many students is that they want the ‘right’ answer to how to do things. There’s more academic literature on this, but for a thought-provoking look at why it might be a good idea for us to make your life hard then What IKEA and Our Education System Have in Common is an easy read.\nHere’s the summary:\n\nIKEA is easy, but you don’t learn anything.\nIKEA is about getting things done/finishing.\nIKEA is convenient, but it’s not creative.\nIKEA is standardised, but it is actually primed for hacking.\n\nBut there is a great response to the original post that adds nuance to this:\n\nThe thing to keep in mind, though, is that following recipies is how we learn skills to start with. If you were teaching someone to cook, for example, you wouldn’t throw the person into the kitchen and tell them to be creative with the food. Instead, you would teach them to follow recipies so that they can practice skills, and learn how to properly balance flavours and textures. Then, when they’ve mastered some recipies, you teach them how to mix up and re-combine recipies, and eventually come up with their own."
+  },
+  {
+    "objectID": "setup/index.html#installation",
+    "href": "setup/index.html#installation",
+    "title": "Setup",
+    "section": "",
+    "text": "Once you’ve ticked off the Requirements, you can start installing the tools that you will use to write and run both code and documentation. You will need set up Git and GitHub in order to manage, share, and version code. To write documentation and comments on code you will be want a Markdown editor and to familiarise yourself with Markdown’s syntax. And, finally, you will need to install the programming environment."
+  },
+  {
+    "objectID": "req/fest.html",
+    "href": "req/fest.html",
+    "title": "Install ‘Fest’ Requirements",
+    "section": "",
+    "text": "To support you in getting set up on your laptop/computer here is the full list of installers required to get set up for our Term 1 modules.\n\n\n\n\n\n\nIntel or Apple M1/M2?\n\n\n\nApple has migrated away from using Intel computer chips and now designs its own ‘Silicon’ chipset instead. Confusingly, these are often also referred to by their technical specification as AMD64 (Intel) and ARM64 (Apple). To find out which you have, click on the Apple icon () and select About this Mac. Look at the Processor section and you should see which type of computer you have.\n\n\n\nMacOS on Intel ChipWindows on Intel Chip\n\n\nYou will need to install the following:\n\n\n## MacOS on Apple M1/M2 Chip"
+  },
+  {
+    "objectID": "setup/install_fest.html",
+    "href": "setup/install_fest.html",
+    "title": "Install ‘Fest’",
+    "section": "",
+    "text": "This page is intended for use at our annual ‘install fest’ during Induction Week. It is intended To support you in getting the final key bits of software set up on your laptop/computer so that you are ready to begin your studies in Week 1. This is the full list of installers require."
+  },
+  {
+    "objectID": "setup/install_fest.html#macos",
+    "href": "setup/install_fest.html#macos",
+    "title": "Install ‘Fest’",
+    "section": "MacOS",
+    "text": "MacOS\n\n\n\n\n\n\nIntel or Apple M1/M2?\n\n\n\nApple has migrated away from using Intel computer chips and now designs its own ‘Silicon’ chipset instead. Confusingly, these are often also referred to by their technical specification as AMD64 (Intel) and ARM64 (Apple). To find out which you have, click on the Apple icon () and select About this Mac. Look at the Processor section and you should see which type of computer you have.\n\n\n\nOn IntelOn Apple Silicon\n\n\nYou will need to install the following:\n\nDocker Desktop for Mac with Intel chip\nVS Code (Universal)\nQuarto\nR-4.3.1 for AMD64\nR Studio Desktop\nGitHub Desktop\niTerm2\n\n\n\nYou will need to install the following:\n\nDocker Desktop for Mac with Apple silicon\nVS Code (ARM64)\nQuarto\nR-4.3.1 for ARM64\nR Studio Desktop\nGitHub Desktop\niTerm2"
+  },
+  {
+    "objectID": "setup/install_fest.html#windows",
+    "href": "setup/install_fest.html#windows",
+    "title": "Install ‘Fest’",
+    "section": "Windows",
+    "text": "Windows\n\nDocker Desktop for Windows\nVS Code\nQuarto\nR-4.3.1\nR Studio Desktop\nGit\nGitHub Desktop"
   }
 ]
