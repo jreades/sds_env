@@ -164,6 +164,13 @@ You then tell VSCode to `Open Workspace from File` and point it to this director
 
 To enable VSCode integration you'll need to create additional 'mount points' ('locations' on *your computer's* file system) that the Docker image can access. At this point the command becomes *very* long, which is why there is a script designed to make this a more straightforward process provided below.
 
+::: {.callout-tip}
+# M1/M2 Macs
+
+Remember to add `-silicon` to the image name ({{< var env.image >}} if you are suing a M1 or M2 Mac.
+
+::: 
+
 ```bash
 docker run --rm -d --name {{< var env.name >}} \
   -p 8888:8888 -p 4201:4201 -p 8787:8787 \

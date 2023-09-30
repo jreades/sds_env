@@ -95,3 +95,6 @@ Some questions to ask yourself:
 8. Looking at my peers, is there someone who is doing really well who I could talk to about *how* they study, code, or write? How do they organise their time? How do they make use of the resources (literature, etc.)?
 
 If all you want is *a pass* then organise yourself for a solid pass. If you want to *excel* then you're going to have to do things a bit differently. There's space for both approaches, but being clear about which *you* want will help you to prioritise the important stuff.
+
+Also pay attention to what constitutes a 'good' output: in some cases you are being asked to write a scientific/academic essay, [for which there are easy-to-follow 'rules'](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619), but this doesn't work for **non**-scientific formats!
+

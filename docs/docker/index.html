@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -167,6 +167,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../setup/no_install.html" rel="" target="">
  <span class="dropdown-text">No Install Options</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/install_fest.html" rel="" target="">
+ <span class="dropdown-text">Install ‘Fest’</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -267,7 +271,7 @@ Copy Code to Clipboard
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Whenever you see a code block (like the one in the next section), you will <em>also</em> see a ‘clipboard’ icon (<a href="../img/copy-to-clipboard.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Copy to Clipboard Icon"><img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon"></a>) to the right. If you click on that, the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal. That will save you have to laboriously type the commands, which usually leads to errors.</p>
+<p>Whenever you see a code block (like the one in the next section), you will <em>also</em> see a ‘clipboard’ icon (<a href="../img/copy-to-clipboard.png" class="lightbox" title="Copy to Clipboard Icon" data-gallery="quarto-lightbox-gallery-10"><img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon"></a>) to the right. If you click on that, the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal. That will save you have to laboriously type the commands, which usually leads to errors.</p>
 </div>
 </div>
 <section id="understanding-docker" class="level2">
@@ -275,7 +279,7 @@ Copy Code to Clipboard
 <p>In order to make use of Docker (and understand what’s happening when you get errors), it’s helpful to have <em>some</em> sense of what’s going on behind the scenes. You can click on the image below to make it larger, or you can download and print out <a href="../img/Docker.pdf">a PDF version</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/Docker.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Sketch of Docker Usage"><img src="../img/Docker.png" class="img-fluid figure-img"></a></p>
+<p><a href="../img/Docker.png" class="lightbox" title="Sketch of Docker Usage" data-gallery="quarto-lightbox-gallery-1"><img src="../img/Docker.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">Sketch of Docker Usage</figcaption>
 </figure>
 </div>
@@ -352,7 +356,7 @@ M1/M2 Macs
 <p>If things have gone well then you should now be able to connect to the virtual machine by pointing your browser at: <a href="http://localhost:8888/lab/">localhost:8888</a> and you should see something like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/Jupyter_Lab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Jupyter Lab Success"><img src="../img/Jupyter_Lab.png" height="350" class="figure-img"></a></p>
+<p><a href="../img/Jupyter_Lab.png" class="lightbox" title="Jupyter Lab Success" data-gallery="quarto-lightbox-gallery-2"><img src="../img/Jupyter_Lab.png" height="350" class="figure-img"></a></p>
 <figcaption class="figure-caption">Jupyter Lab Success</figcaption>
 </figure>
 </div>
@@ -427,6 +431,19 @@ Advanced Topic
 <section id="using-attach-to-running-container" class="level3">
 <h3 class="anchored" data-anchor-id="using-attach-to-running-container">Using Attach to Running Container</h3>
 <p>To enable VSCode integration you’ll need to create additional ‘mount points’ (‘locations’ on <em>your computer’s</em> file system) that the Docker image can access. At this point the command becomes <em>very</em> long, which is why there is a script designed to make this a more straightforward process provided below.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+M1/M2 Macs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember to add <code>-silicon</code> to the image name (jreades/sds:2023 if you are suing a M1 or M2 Mac.</p>
+</div>
+</div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2023 <span class="dt">\</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
@@ -467,7 +484,7 @@ Jupyter Keymap Extension
 <p>Use the Remote Containers icon (<img src="./img/01-icon.png" class="nolightbox" height="14" alt="Dev Containers icon">) to bring up the ‘open’ menu.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/01-Connect.png" class="lightbox" data-gallery="vscode" title="The Remote Containers Dialogue"><img src="./img/01-Connect.png" class="img-fluid figure-img" style="width:75.0%" alt="Click the green icon at the bottom-left corner of VSCode"></a></p>
+<p><a href="./img/01-Connect.png" class="lightbox" title="The Remote Containers Dialogue" data-gallery="vscode"><img src="./img/01-Connect.png" class="img-fluid figure-img" style="width:75.0%" alt="Click the green icon at the bottom-left corner of VSCode"></a></p>
 <figcaption class="figure-caption">The Remote Containers Dialogue</figcaption>
 </figure>
 </div>
@@ -477,7 +494,7 @@ Jupyter Keymap Extension
 <p>Choose the <code>Attach to Running Container...</code> option to list active Docker containers.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/02-Attach.png" class="lightbox" data-gallery="vscode" title="Attach to a running container"><img src="./img/02-Attach.png" class="img-fluid figure-img" style="width:75.0%" alt="Select a running container. Ideally the one you want to use VSCode with!"></a></p>
+<p><a href="./img/02-Attach.png" class="lightbox" title="Attach to a running container" data-gallery="vscode"><img src="./img/02-Attach.png" class="img-fluid figure-img" style="width:75.0%" alt="Select a running container. Ideally the one you want to use VSCode with!"></a></p>
 <figcaption class="figure-caption">Attach to a running container</figcaption>
 </figure>
 </div>
@@ -494,7 +511,7 @@ Jupyter Keymap Extension
 <p>If all has gone well, then a new window should open and you’ll notice one small, but significant change:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/03-Attached.png" class="lightbox" data-gallery="vscode" title="An attached workspace"><img src="./img/03-Attached.png" class="img-fluid figure-img" style="width:75.0%" alt="Notice the Remote Container icon has changed at the bottom."></a></p>
+<p><a href="./img/03-Attached.png" class="lightbox" title="An attached workspace" data-gallery="vscode"><img src="./img/03-Attached.png" class="img-fluid figure-img" style="width:75.0%" alt="Notice the Remote Container icon has changed at the bottom."></a></p>
 <figcaption class="figure-caption">An attached workspace</figcaption>
 </figure>
 </div>
@@ -511,7 +528,7 @@ Jupyter Keymap Extension
 <p>Now, if we try to open a file/folder under the open menu (<img src="./img/04-menu.png" class="nolightbox" height="16" alt="Open menu">), you’ll notice that we’re not browsing ‘our computer’ any more! Instead, we’re browsing files on the Docker container.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/04-Open_Folder.png" class="lightbox" data-gallery="vscode" title="Opening files on the container"><img src="./img/04-Open_Folder.png" class="img-fluid figure-img" style="width:75.0%" alt="You will almost always find what you need under /home/jovyan/work"></a></p>
+<p><a href="./img/04-Open_Folder.png" class="lightbox" title="Opening files on the container" data-gallery="vscode"><img src="./img/04-Open_Folder.png" class="img-fluid figure-img" style="width:75.0%" alt="You will almost always find what you need under /home/jovyan/work"></a></p>
 <figcaption class="figure-caption">Opening files on the container</figcaption>
 </figure>
 </div>
@@ -530,7 +547,7 @@ Jupyter Keymap Extension
 <p>You need to install the <em>same</em> VSCode extensions that you’d use when running Python locally on your computer into the ‘remote’ container. VSCode will do a pretty good job prompting you, but you’ve got the <a href="#required-extensions">list above</a> and can also seem them (notice I’ve selected <code>CONTAINER</code>) on the left-hand <code>Extensions</code> (<img src="./img/05-menu.png" class="nolightbox" height="16" alt="Extensions menu">) menu in the screenshot below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/05-Extensions.png" class="lightbox" data-gallery="vscode" title="Extensions installed in Container"><img src="./img/05-Extensions.png" class="img-fluid figure-img" style="width:75.0%" alt="All being well you should only need to install these once."></a></p>
+<p><a href="./img/05-Extensions.png" class="lightbox" title="Extensions installed in Container" data-gallery="vscode"><img src="./img/05-Extensions.png" class="img-fluid figure-img" style="width:75.0%" alt="All being well you should only need to install these once."></a></p>
 <figcaption class="figure-caption">Extensions installed in Container</figcaption>
 </figure>
 </div>
@@ -541,7 +558,7 @@ Jupyter Keymap Extension
 <p>And here we go…</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/06-Success.png" class="lightbox" data-gallery="vscode" title="Running code in a container"><img src="./img/06-Success.png" class="img-fluid figure-img" style="width:75.0%" alt="Success! Running code in a remote container via VSCode"></a></p>
+<p><a href="./img/06-Success.png" class="lightbox" title="Running code in a container" data-gallery="vscode"><img src="./img/06-Success.png" class="img-fluid figure-img" style="width:75.0%" alt="Success! Running code in a remote container via VSCode"></a></p>
 <figcaption class="figure-caption">Running code in a container</figcaption>
 </figure>
 </div>
@@ -863,7 +880,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"right","closeEffect":"fade","openEffect":"fade","selector":".lightbox"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"fade","descPosition":"right","closeEffect":"fade"});</script>
 
 
 
