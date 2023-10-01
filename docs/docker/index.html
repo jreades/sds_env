@@ -271,7 +271,7 @@ Copy Code to Clipboard
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Whenever you see a code block (like the one in the next section), you will <em>also</em> see a ‘clipboard’ icon (<a href="../img/copy-to-clipboard.png" class="lightbox" title="Copy to Clipboard Icon" data-gallery="quarto-lightbox-gallery-10"><img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon"></a>) to the right. If you click on that, the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal. That will save you have to laboriously type the commands, which usually leads to errors.</p>
+<p>Whenever you see a code block (like the one in the next section), you will <em>also</em> see a ‘clipboard’ icon (<a href="../img/copy-to-clipboard.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Copy to Clipboard Icon"><img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon"></a>) to the right. If you click on that, the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal. That will save you have to laboriously type the commands, which usually leads to errors.</p>
 </div>
 </div>
 <section id="understanding-docker" class="level2">
@@ -279,9 +279,22 @@ Copy Code to Clipboard
 <p>In order to make use of Docker (and understand what’s happening when you get errors), it’s helpful to have <em>some</em> sense of what’s going on behind the scenes. You can click on the image below to make it larger, or you can download and print out <a href="../img/Docker.pdf">a PDF version</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/Docker.png" class="lightbox" title="Sketch of Docker Usage" data-gallery="quarto-lightbox-gallery-1"><img src="../img/Docker.png" class="img-fluid figure-img"></a></p>
+<p><a href="../img/Docker.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Sketch of Docker Usage"><img src="../img/Docker.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">Sketch of Docker Usage</figcaption>
 </figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+M1/M2 Macs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember that on an M1 or M2 Mac you need to add <code>-silicon</code> to the docker image name. So <code>jreades/sds:2023</code> becomes <code>jreades/sds:2023-silicon</code>.</p>
+</div>
 </div>
 <p>So here’s what’s happening:</p>
 <ol type="1">
@@ -312,7 +325,7 @@ Essential Topic
 </div>
 </div>
 <p>You can download the jreades/sds:2023 image by opening up a Shell/Terminal and simply running:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2023 <span class="co"># Or jreades/sds:2023-silicon on a M1/M2 Mac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line… on a plane… on a train… on a boat… wherever you can safely use your laptop!</p>
 <p>However, before you move on to the next step, please run the Docker application by double-clicking it (Mac) or searching for it in the Windows menu (PC). You should wait until you see the ‘Docker Desktop’ window appear before moving to the next step.</p>
 </section>
@@ -331,24 +344,12 @@ Essential Topic
 <p>This next section is <em>essential</em> to running the sds2023 environment, but for most users this is the only thing that you need to do to get started.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-M1/M2 Macs
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are using a M1 or M2 Mac then you may need to change the command below as follows: <code>-d -p 8888:8888</code> becomes <code>-d --platform linux/amd64 -p 8888:8888</code>.</p>
-</div>
-</div>
 <p>The basic command to launch the programming environment is:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> sds2023 <span class="at">--rm</span> <span class="at">-d</span> <span class="at">-p</span> 8888:8888 <span class="dt">\ </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2023 start.sh jupyter lab <span class="dt">\</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But don’t forget to add <code>-silicon</code> to jreades/sds:2023 on a newer Mac with Apple silicon (M1 or M2)!</p>
 <p>And here’s the one-line version for Windows users:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> sds2023 <span class="at">--rm</span> <span class="at">-d</span> <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2023 start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Note</strong>: the <code>pwd</code> in the command above means use the <em>current</em> directory. So if you simply open a Terminal, Git Bash, or Command Prompt then Docker will ‘mount’ (<em>i.e.</em> make visible to the programming environment) the current directory as <code>work</code> in the programming environment. This is most likely to be your home directory and means that <em>everything</em> in your home directory is potentially delete-able or write-able and <em>that</em> is a major security risk.</p>
@@ -356,7 +357,7 @@ M1/M2 Macs
 <p>If things have gone well then you should now be able to connect to the virtual machine by pointing your browser at: <a href="http://localhost:8888/lab/">localhost:8888</a> and you should see something like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/Jupyter_Lab.png" class="lightbox" title="Jupyter Lab Success" data-gallery="quarto-lightbox-gallery-2"><img src="../img/Jupyter_Lab.png" height="350" class="figure-img"></a></p>
+<p><a href="../img/Jupyter_Lab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Jupyter Lab Success"><img src="../img/Jupyter_Lab.png" height="350" class="figure-img"></a></p>
 <figcaption class="figure-caption">Jupyter Lab Success</figcaption>
 </figure>
 </div>
@@ -374,6 +375,7 @@ Intermediate Topic
 </div>
 <div class="callout-body-container callout-body">
 <p>This next section is <em>only</em> if you want to start using multiple images/containers or manipulating the way in which the jreades/sds:2023 runs. <strong>This is <em>not</em> needed for most students</strong>.</p>
+<p>As well, this script only works if you have a full Unix/Linux-compatible system. So macOS has this by default. On Windows you need to take the next step <em>after</em> install WSL2 and actually install a full Linux distribution (we’d suggest Ubuntu).</p>
 </div>
 </div>
 <p>There are so many options that we <a href="https://github.com/jreades/sds_env/raw/master/docker/docker.sh">created a Bash script</a> to do most of it for you; however, this needs to be paired with a <a href="https://github.com/jreades/sds_env/raw/master/docker/config.sh">configuration file</a> that is kept in the same folder as the <code>docker.sh</code> script. So it’s an extra step to getting up and running, but it allows you to easily change the port on which Jupyter Lab is served as well as to turn Quarto and Dask on/off by commenting/editing/uncommenting the port number in the <code>config.sh</code> file.</p>
@@ -484,7 +486,7 @@ Jupyter Keymap Extension
 <p>Use the Remote Containers icon (<img src="./img/01-icon.png" class="nolightbox" height="14" alt="Dev Containers icon">) to bring up the ‘open’ menu.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/01-Connect.png" class="lightbox" title="The Remote Containers Dialogue" data-gallery="vscode"><img src="./img/01-Connect.png" class="img-fluid figure-img" style="width:75.0%" alt="Click the green icon at the bottom-left corner of VSCode"></a></p>
+<p><a href="./img/01-Connect.png" class="lightbox" data-gallery="vscode" title="The Remote Containers Dialogue"><img src="./img/01-Connect.png" class="img-fluid figure-img" style="width:75.0%" alt="Click the green icon at the bottom-left corner of VSCode"></a></p>
 <figcaption class="figure-caption">The Remote Containers Dialogue</figcaption>
 </figure>
 </div>
@@ -494,11 +496,11 @@ Jupyter Keymap Extension
 <p>Choose the <code>Attach to Running Container...</code> option to list active Docker containers.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/02-Attach.png" class="lightbox" title="Attach to a running container" data-gallery="vscode"><img src="./img/02-Attach.png" class="img-fluid figure-img" style="width:75.0%" alt="Select a running container. Ideally the one you want to use VSCode with!"></a></p>
+<p><a href="./img/02-Attach.png" class="lightbox" data-gallery="vscode" title="Attach to a running container"><img src="./img/02-Attach.png" class="img-fluid figure-img" style="width:75.0%" alt="Select a running container. Ideally the one you want to use VSCode with!"></a></p>
 <figcaption class="figure-caption">Attach to a running container</figcaption>
 </figure>
 </div>
-<p>We’re only running one container named <code>fsds</code> built from the <code>jreades/sds:2022</code> image. Your container may have a different name (e.g.&nbsp;<code>sds2023</code>) but the <em>image</em> should be named <code>jreades/sds:2023</code>:</p>
+<p>In this screenshot we’re running one container named <code>fsds</code> that was built from the <code>jreades/sds:2022</code> image. Your container may have a different name (e.g.&nbsp;<code>sds2023</code>) but the <em>image</em> should be named <code>jreades/sds:2023</code> or `jreades/sds:2023-silicon:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./img/02-container.png" class="nolightbox img-fluid figure-img"></p>
@@ -511,7 +513,7 @@ Jupyter Keymap Extension
 <p>If all has gone well, then a new window should open and you’ll notice one small, but significant change:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/03-Attached.png" class="lightbox" title="An attached workspace" data-gallery="vscode"><img src="./img/03-Attached.png" class="img-fluid figure-img" style="width:75.0%" alt="Notice the Remote Container icon has changed at the bottom."></a></p>
+<p><a href="./img/03-Attached.png" class="lightbox" data-gallery="vscode" title="An attached workspace"><img src="./img/03-Attached.png" class="img-fluid figure-img" style="width:75.0%" alt="Notice the Remote Container icon has changed at the bottom."></a></p>
 <figcaption class="figure-caption">An attached workspace</figcaption>
 </figure>
 </div>
@@ -528,7 +530,7 @@ Jupyter Keymap Extension
 <p>Now, if we try to open a file/folder under the open menu (<img src="./img/04-menu.png" class="nolightbox" height="16" alt="Open menu">), you’ll notice that we’re not browsing ‘our computer’ any more! Instead, we’re browsing files on the Docker container.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/04-Open_Folder.png" class="lightbox" title="Opening files on the container" data-gallery="vscode"><img src="./img/04-Open_Folder.png" class="img-fluid figure-img" style="width:75.0%" alt="You will almost always find what you need under /home/jovyan/work"></a></p>
+<p><a href="./img/04-Open_Folder.png" class="lightbox" data-gallery="vscode" title="Opening files on the container"><img src="./img/04-Open_Folder.png" class="img-fluid figure-img" style="width:75.0%" alt="You will almost always find what you need under /home/jovyan/work"></a></p>
 <figcaption class="figure-caption">Opening files on the container</figcaption>
 </figure>
 </div>
@@ -547,7 +549,7 @@ Jupyter Keymap Extension
 <p>You need to install the <em>same</em> VSCode extensions that you’d use when running Python locally on your computer into the ‘remote’ container. VSCode will do a pretty good job prompting you, but you’ve got the <a href="#required-extensions">list above</a> and can also seem them (notice I’ve selected <code>CONTAINER</code>) on the left-hand <code>Extensions</code> (<img src="./img/05-menu.png" class="nolightbox" height="16" alt="Extensions menu">) menu in the screenshot below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/05-Extensions.png" class="lightbox" title="Extensions installed in Container" data-gallery="vscode"><img src="./img/05-Extensions.png" class="img-fluid figure-img" style="width:75.0%" alt="All being well you should only need to install these once."></a></p>
+<p><a href="./img/05-Extensions.png" class="lightbox" data-gallery="vscode" title="Extensions installed in Container"><img src="./img/05-Extensions.png" class="img-fluid figure-img" style="width:75.0%" alt="All being well you should only need to install these once."></a></p>
 <figcaption class="figure-caption">Extensions installed in Container</figcaption>
 </figure>
 </div>
@@ -558,7 +560,7 @@ Jupyter Keymap Extension
 <p>And here we go…</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/06-Success.png" class="lightbox" title="Running code in a container" data-gallery="vscode"><img src="./img/06-Success.png" class="img-fluid figure-img" style="width:75.0%" alt="Success! Running code in a remote container via VSCode"></a></p>
+<p><a href="./img/06-Success.png" class="lightbox" data-gallery="vscode" title="Running code in a container"><img src="./img/06-Success.png" class="img-fluid figure-img" style="width:75.0%" alt="Success! Running code in a remote container via VSCode"></a></p>
 <figcaption class="figure-caption">Running code in a container</figcaption>
 </figure>
 </div>
@@ -880,7 +882,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"fade","descPosition":"right","closeEffect":"fade"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"fade","loop":false,"descPosition":"right","selector":".lightbox","closeEffect":"fade"});</script>
 
 
 

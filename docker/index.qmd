@@ -26,6 +26,14 @@ In order to make use of Docker (and understand what's happening when you get err
 
 ![Sketch of Docker Usage](../img/Docker.png){.lightbox}
 
+::: {.callout-tip}
+### M1/M2 Macs
+
+Remember that on an M1 or M2 Mac you need to add `-silicon` to the docker image name. So `{{< var env.image >}}` becomes `{{< var env.image >}}-silicon`.
+
+:::
+
+
 So here's what's happening:
 
 1. You issue the `docker pull {{< var env.image >}}` command to your computer, which turns around and asks Docker Hub for a copy of this image. Docker Hub responds by transferring a copy of the `{{< var env.image >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.^[A virtual machine is just a computer that runs _on_ your computer. So it 'borrows' resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.]
@@ -48,7 +56,7 @@ This next section is _essential_ to running the {{< var env.name >}} environment
 You can download the {{< var env.image >}} image by opening up a Shell/Terminal and simply running:
 
 ```bash
-docker pull {{< var env.image >}}
+docker pull {{< var env.image >}} # Or {{< var env.image >}}-silicon on a M1/M2 Mac
 ```
 
 Once the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line... on a plane... on a train... on a boat... wherever you can safely use your laptop!
@@ -64,13 +72,6 @@ This next section is _essential_ to running the {{< var env.name >}} environment
 
 :::
 
-:::{.callout-important}
-## M1/M2 Macs
-
-If you are using a M1 or M2 Mac then you may need to change the command below as follows: `-d -p 8888:8888` becomes `-d --platform linux/amd64 -p 8888:8888`. 
-
-:::
-
 The basic command to launch the programming environment is:
 
 ```bash
@@ -79,6 +80,8 @@ docker run --name {{< var env.name >}} --rm -d -p 8888:8888 \
   {{< var env.image >}} start.sh jupyter lab \
   --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
+
+But don't forget to add `-silicon` to {{< var env.image >}} on a newer Mac with Apple silicon (M1 or M2)!
 
 And here's the one-line version for Windows users:
 
@@ -100,6 +103,8 @@ If things have gone well then you should now be able to connect to the virtual m
 ### Intermediate Topic
 
 This next section is _only_ if you want to start using multiple images/containers or manipulating the way in which the {{< var env.image >}} runs. **This is _not_ needed for most students**.
+
+As well, this script only works if you have a full Unix/Linux-compatible system. So macOS has this by default. On Windows you need to take the next step *after* install WSL2 and actually install a full Linux distribution (we'd suggest Ubuntu).
 
 :::
 
@@ -216,7 +221,7 @@ Choose the `Attach to Running Container...` option to list active Docker contain
 
 ![Attach to a running container](./img/02-Attach.png){width="75%" fig-alt="Select a running container. Ideally the one you want to use VSCode with!" group="vscode"}
 
-We're only running one container named `fsds` built from the `jreades/sds:2022` image. Your container may have a different name (e.g. `{{< var env.name >}}`) but the *image* should be named `{{< var env.image >}}`:
+In this screenshot we're running one container named `fsds` that was built from the `jreades/sds:2022` image. Your container may have a different name (e.g. `{{< var env.name >}}`) but the *image* should be named `{{< var env.image >}}` or `{{< var env.image >}}-silicon:
 
 ![The list of running containers](./img/02-container.png){.nolightbox}
 
