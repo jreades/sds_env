@@ -232,6 +232,24 @@ And here we go...
 
 ![Running code in a container](./img/06-Success.png){width="75%" fig-alt="Success! Running code in a remote container via VSCode" group="vscode"}
 
+## Using the 'D' Drive
+
+::: {.callout-tip}
+
+This is best done before you have downloaded any images, though it should work *with* images downloaded as well.
+
+:::
+
+If your Windows computer has two drives (`C` and `D`) and you want to store your docker images on the `D` drive, then you will need to **carefully** follow [the instructions here](https://stackoverflow.com/a/66314636/1600439) in order to relocate the `docker-desktop-data` folder:
+
+1. Shut down Docker Desktop completely (the Docker icon will disappear from the Windows 'tray' lower-right).
+2. Run `wsl --shutdown` in the Power Shell
+3. Run `wsl --export docker-desktop-data docker-desktop-data.tar`
+4. Run `wsl --unregister docker-desktop-data`
+5. Run `wsl --import docker-desktop-data D:\docker\ docker-desktop-data.tar --version 2`
+6. Delete `docker-desktop-data.tar`
+7. **Restart the computer**!
+8. Login and restart Docker.
 
 ## Deleting the Image
 
