@@ -13,13 +13,6 @@ lightbox:
 
 You will need to install **and** run [Docker](https://www.docker.com) to be able to install the Spatial Data Science (SDS) environment. So after installing the Docker application, please make sure that you launch the application (especially on Windows) at least once before trying to run any Docker commands on the command line. You'll know that you've done this is you see the 'Docker Desktop' window which lists downloaded images and running containers.
 
-::: {.callout-tip}
-## Copy Code to Clipboard
-
-Whenever you see a code block (like the one in the next section), you will _also_ see a 'clipboard' icon (![Copy to Clipboard Icon](../img/copy-to-clipboard.png){height="18px"}) to the right. If you click on that, the code will be copied to your computer's 'clipboard' so that you can then paste it into the Terminal. That will save you have to laboriously type the commands, which usually leads to errors.
-
-:::
-
 ## Understanding Docker
 
 In order to make use of Docker (and understand what's happening when you get errors), it's helpful to have _some_ sense of what's going on behind the scenes. You can click on the image below to make it larger, or you can download and print out [a PDF version](../img/Docker.pdf).
@@ -36,15 +29,30 @@ Remember that on an M1 or M2 Mac you need to add `-silicon` to the docker image 
 
 So here's what's happening:
 
-1. You issue the `docker pull {{< var env.image >}}` command to your computer, which turns around and asks Docker Hub for a copy of this image. Docker Hub responds by transferring a copy of the `{{< var env.image >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.^[A virtual machine is just a computer that runs _on_ your computer. So it 'borrows' resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.]
-3. You issue the `docker run ... {{< var env.image >}} ...` command to your computer, which uses the `{{< var env.image >}}` image as a template to create a **container** called `{{< var env.name >}}`^[A container is the name Docker uses to refer to a _running_ virtual machine. The image on its own does nothing until you tell docker to `run` it, at which point it becomes a container!]. `{{< var env.name >}}` will do _whatever_ it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But {{< var env.name >}} is _read-only_, although you can make changes to the container while it's running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image... we can cover this if you ever do it.
-4. As part of the `docker run` command, we also told Docker what resources the container could access. There are two main types of resources for our purposes:
+#### Step 1. `docker pull`
+
+You issue the `docker pull {{< var env.image >}}` command to your computer, which turns around and asks Docker Hub for a copy of this image. Docker Hub responds by transferring a copy of the `{{< var env.image >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.^[A virtual machine is just a computer that runs _on_ your computer. So it 'borrows' resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.]
+
+#### Step 2, `docker run`
+
+You issue the `docker run ... {{< var env.image >}} ...` command to your computer, which uses the `{{< var env.image >}}` image as a template to create a **container** called `{{< var env.name >}}`^[A container is the name Docker uses to refer to a _running_ virtual machine. The image on its own does nothing until you tell docker to `run` it, at which point it becomes a container!]. `{{< var env.name >}}` will do _whatever_ it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But {{< var env.name >}} is _read-only_, although you can make changes to the container while it's running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image... we can cover this if you ever do it.
+
+As part of the `docker run` command, we also told Docker what resources the container could access. There are two main types of resources for our purposes:
+
     - A **mount point** which is a part of your computer's hard drive that Docker can use to write things down permanently. We use `$(pwd)`, which is short-hand for `print working directory` and refers to the 'place' on your computer where we issued the `docker run` command. We tell Docker to connect this to a directory called `work` (which resides in `/home/jovyan/`) on the `{{< var env.name >}}` container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down Docker.
     - One or more **ports** which are like channels on a radio where the container can talk to other computers (including yours). In this case, we connect port 8888 on `{{< var env.name >}}` to port 8888 on your computer. And _that_ is why you have to tell your browser to go to [`localhost:8888`](http://localhost:8888) to access Jupyter Lab.
-5. Now when you type things into the browser and tell code to 'run', what's actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.
-6. This shows the anatomy of the basic Docker command below to help you understand what all those numbers and letters mean.
 
-## Installing
+#### Step 4. Interacting with the Container
+
+Now when you type things into the browser and tell code to 'run', what's actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.
+
+#### Step 5. Anatomy of `docker run`
+
+This shows the anatomy of the basic Docker command below to help you understand what all those numbers and letters mean. The most important for most users are:
+
+- `-v`: this specified the point on your hard drive that the {{< var env.name >}} can use. By default we use `$(pwd)` which means 'use the location where the `docker run` command was executed. You can also 'hard code' this to something like `/Users/<your username>/Documents/casa/fsds/` if you always want to use the same location.
+- `-p`: this specified the channel (or `port`) on which the web browser can talk to the {{< var env.name >}}.
+- `{{< var env.image >}}`: this specified the image we wanted to use
 
 :::{.callout-warning}
 ## Essential Topic
@@ -53,48 +61,7 @@ This next section is _essential_ to running the {{< var env.name >}} environment
 
 :::
 
-You can download the {{< var env.image >}} image by opening up a Shell/Terminal and simply running:
-
-```bash
-docker pull {{< var env.image >}} # Or {{< var env.image >}}-silicon on a M1/M2 Mac
-```
-
-Once the image has been downloaded it will be saved on your computer and you will not need to download it again. This means that you can code off-line... on a plane... on a train... on a boat... wherever you can safely use your laptop!
-
-However, before you move on to the next step, please run the Docker application by double-clicking it (Mac) or searching for it in the Windows menu (PC). You should wait until you see the 'Docker Desktop' window appear before moving to the next step.
-
-## Jupyter Lab
-
-:::{.callout-warning}
-## Essential Topic
-
-This next section is _essential_ to running the {{< var env.name >}} environment, but for most users this is the only thing that you need to do to get started.
-
-:::
-
-The basic command to launch the programming environment is:
-
-```bash
-docker run --name {{< var env.name >}} --rm -d -p 8888:8888 \ 
-  -v "$(pwd):/home/jovyan/work" \
-  {{< var env.image >}} start.sh jupyter lab \
-  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
-```
-
-But don't forget to add `-silicon` to {{< var env.image >}} on a newer Mac with Apple silicon (M1 or M2)!
-
-And here's the one-line version for Windows users:
-
-```bash
-docker run --name {{< var env.name >}} --rm -d -p 8888:8888 -v "$(pwd):/home/jovyan/work" {{< var env.image >}} start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
-```
-**Note**: the `pwd` in the command above means use the _current_ directory. So if you simply open a Terminal, Git Bash, or Command Prompt then Docker will 'mount' (_i.e._ make visible to the programming environment) the current directory as `work` in the programming environment. This is most likely to be your home directory and means that _everything_ in your home directory is potentially delete-able or write-able and *that* is a major security risk. 
-
-I would _strongly_ suggest that you `cd` (Change Directory) to a sub-folder such as `$HOME/Documents/CASA/` so that you have the link `work <-> CASA` between the virtual machine and your computer (which is the 'host'). This will prevent Docker accessing more of your hard drive than it needs to and is, consequently, a bit more secure.
-
-If things have gone well then you should now be able to connect to the virtual machine by pointing your browser at: [localhost:8888](http://localhost:8888/lab/) and you should see something like this:
-
-![Jupyter Lab Success](../img/Jupyter_Lab.png){height="350px"}
+{{< include ../setup/docker.qmd >}}
 
 
 ## Bash Script
@@ -102,7 +69,7 @@ If things have gone well then you should now be able to connect to the virtual m
 :::{.callout-warning}
 ### Intermediate Topic
 
-This next section is _only_ if you want to start using multiple images/containers or manipulating the way in which the {{< var env.image >}} runs. **This is _not_ needed for most students**.
+This next section is _only_ if you want to start using multiple images/containers or manipulating the way in which the {{< var env.image >}} runs. **This is _not_ needed for most students**. 
 
 As well, this script only works if you have a full Unix/Linux-compatible system. So macOS has this by default. On Windows you need to take the next step *after* install WSL2 and actually install a full Linux distribution (we'd suggest Ubuntu).
 
@@ -125,7 +92,7 @@ bash docker.sh stop
 :::{.callout-warning}
 ### Advanced Topic
 
-This next section is _only_ if you need to run either Dask or Quarto (both of which are provided by {{< var env.image >}}). **This is _not_ needed for most students**.
+This next section is _only_ if you need to run either Dask or Quarto (both of which are provided by {{< var env.image >}}). **This is _not_ needed by students in Week 1, though you will use Quarto for the group project**.
 
 :::
 

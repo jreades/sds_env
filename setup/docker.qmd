@@ -85,7 +85,7 @@ Many applications assume that the user's home directory (where your user stores 
 
 :::
 
-If you have issues at this point, then you'll need to do [more reading](../docker/index.qmd#installing). However, *most* of you should now be able to connect to the virtual machine by pointing your browser at: [localhost:8888](http://localhost:8888/lab/) where you should see something like this:
+If you have issues at this point, then you'll need to do [more reading](../docker/index.qmd). However, *most* of you should now be able to connect to the virtual machine by pointing your browser at: [localhost:8888](http://localhost:8888/lab/) where you should see something like this:
 
 ![Jupyter Lab Success](../img/Jupyter_Lab.png){height="350px"}
 
