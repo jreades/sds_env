@@ -1,17 +1,17 @@
 // CASA Standard Computing Environment
-// Author: Steven Gray (@sjg)
-// Version: 1.0 (28-09-2022)
+// Author: Steven Gray (@sjg); Jon Reades (@jreades)
+// Version: 2.0 (28-09-2023)
 
 {
-    "name": "sds2022",
-    "image" : "jreades/sds:2022",
+    "name": "sds2023",
+    "image" : "jreades/sds:2023",
 
     "containerEnv": {
         "ServerApp.password": "${localEnv:ServerApp.password}",
         "LabApp.password": "${localEnv:LabApp.password}"
     },
 
-    "runArgs": ["--name=sds2022"],
+    "runArgs": ["--name=sds2023"],
 
     "postStartCommand": "jupyter lab",
 
