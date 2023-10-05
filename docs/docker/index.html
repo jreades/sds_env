@@ -222,6 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#bash-script" id="toc-bash-script" class="nav-link" data-scroll-target="#bash-script">Bash Script</a></li>
   <li><a href="#dask-and-quarto" id="toc-dask-and-quarto" class="nav-link" data-scroll-target="#dask-and-quarto">Dask and Quarto</a></li>
   <li><a href="#vscode-integration" id="toc-vscode-integration" class="nav-link" data-scroll-target="#vscode-integration">VSCode Integration</a></li>
+  <li><a href="#using-the-d-drive" id="toc-using-the-d-drive" class="nav-link" data-scroll-target="#using-the-d-drive">Using the ‘D’ Drive</a></li>
   <li><a href="#deleting-the-image" id="toc-deleting-the-image" class="nav-link" data-scroll-target="#deleting-the-image">Deleting the Image</a></li>
   <li><a href="#citing" id="toc-citing" class="nav-link" data-scroll-target="#citing">Citing</a></li>
   </ul>
@@ -265,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In order to make use of Docker (and understand what’s happening when you get errors), it’s helpful to have <em>some</em> sense of what’s going on behind the scenes. You can click on the image below to make it larger, or you can download and print out <a href="../img/Docker.pdf">a PDF version</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/Docker.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Sketch of Docker Usage"><img src="../img/Docker.png" class="img-fluid figure-img"></a></p>
+<p><a href="../img/Docker.png" class="lightbox" title="Sketch of Docker Usage" data-gallery="quarto-lightbox-gallery-1"><img src="../img/Docker.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">Sketch of Docker Usage</figcaption>
 </figure>
 </div>
@@ -329,7 +330,7 @@ Copy Code to Clipboard
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Whenever you see a ‘code block’, you will <em>also</em> see a ‘clipboard’ icon (<a href="../img/copy-to-clipboard.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Copy to Clipboard Icon"><img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon"></a>) in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the <code>Terminal</code> or <code>Power Shell</code>. That will save you a lot of time and effort.</p>
+<p>Whenever you see a ‘code block’, you will <em>also</em> see a ‘clipboard’ icon (<a href="../img/copy-to-clipboard.png" class="lightbox" title="Copy to Clipboard Icon" data-gallery="quarto-lightbox-gallery-10"><img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon"></a>) in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the <code>Terminal</code> or <code>Power Shell</code>. That will save you a lot of time and effort.</p>
 </div>
 </div>
 </section>
@@ -400,7 +401,7 @@ Windows
 <p>If you have issues at this point, then you’ll need to do <a href="../docker/index.html">more reading</a>. However, <em>most</em> of you should now be able to connect to the virtual machine by pointing your browser at: <a href="http://localhost:8888/lab/">localhost:8888</a> where you should see something like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/Jupyter_Lab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Jupyter Lab Success"><img src="../img/Jupyter_Lab.png" height="350" class="figure-img"></a></p>
+<p><a href="../img/Jupyter_Lab.png" class="lightbox" title="Jupyter Lab Success" data-gallery="quarto-lightbox-gallery-2"><img src="../img/Jupyter_Lab.png" height="350" class="figure-img"></a></p>
 <figcaption class="figure-caption">Jupyter Lab Success</figcaption>
 </figure>
 </div>
@@ -471,6 +472,19 @@ Advanced Topic
 <p>In principle the below will work. We have it working on Mac OSX and the same process <em>should</em> work on Windows. In practice, this should be considered a ‘<strong>beta feature</strong>’ in the sense that the documentation is still in development and we’re working out a few kinks. We’ll keep you posted on our progress!</p>
 <section id="using-devcontainer" class="level3">
 <h3 class="anchored" data-anchor-id="using-devcontainer">Using Devcontainer</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Currently Broken
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We’re investigating why this approach doesn’t work, but we’re currently unable to get the devcontainer approach to run successfully despite having attempted to update it for 2023. We’ll correct this when we can.</p>
+</div>
+</div>
 <p>The easier (but less tested) way to connect is to download the contents of <code>test-vscode-project</code> <a href="https://github.com/jreades/sds_env/tree/master/test-vscode-project">from GitHub</a>. You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g.&nbsp;<code>$HOME/Documents/CASA/fsds/</code>).</p>
 <p>You then tell VSCode to <code>Open Workspace from File</code> and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it <em>still</em> has to pull the image from Docker Hub. You can break this into steps by running <code>docker pull jreades/sds:2023</code> <em>before</em> dealing with downloading these files and moving them into position.</p>
 </section>
@@ -487,7 +501,7 @@ M1/M2 Macs
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Remember to add <code>-silicon</code> to the image name (jreades/sds:2023 if you are suing a M1 or M2 Mac.</p>
+<p>Remember to add <code>-silicon</code> to the image name (jreades/sds:2023) if you are suing a M1 or M2 Mac.</p>
 </div>
 </div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2023 <span class="dt">\</span></span>
@@ -530,7 +544,7 @@ Jupyter Keymap Extension
 <p>Use the Remote Containers icon (<img src="./img/01-icon.png" class="nolightbox" height="14" alt="Dev Containers icon">) to bring up the ‘open’ menu.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/01-Connect.png" class="lightbox" data-gallery="vscode" title="The Remote Containers Dialogue"><img src="./img/01-Connect.png" class="img-fluid figure-img" style="width:75.0%" alt="Click the green icon at the bottom-left corner of VSCode"></a></p>
+<p><a href="./img/01-Connect.png" class="lightbox" title="The Remote Containers Dialogue" data-gallery="vscode"><img src="./img/01-Connect.png" class="img-fluid figure-img" style="width:75.0%" alt="Click the green icon at the bottom-left corner of VSCode"></a></p>
 <figcaption class="figure-caption">The Remote Containers Dialogue</figcaption>
 </figure>
 </div>
@@ -540,7 +554,7 @@ Jupyter Keymap Extension
 <p>Choose the <code>Attach to Running Container...</code> option to list active Docker containers.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/02-Attach.png" class="lightbox" data-gallery="vscode" title="Attach to a running container"><img src="./img/02-Attach.png" class="img-fluid figure-img" style="width:75.0%" alt="Select a running container. Ideally the one you want to use VSCode with!"></a></p>
+<p><a href="./img/02-Attach.png" class="lightbox" title="Attach to a running container" data-gallery="vscode"><img src="./img/02-Attach.png" class="img-fluid figure-img" style="width:75.0%" alt="Select a running container. Ideally the one you want to use VSCode with!"></a></p>
 <figcaption class="figure-caption">Attach to a running container</figcaption>
 </figure>
 </div>
@@ -557,7 +571,7 @@ Jupyter Keymap Extension
 <p>If all has gone well, then a new window should open and you’ll notice one small, but significant change:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/03-Attached.png" class="lightbox" data-gallery="vscode" title="An attached workspace"><img src="./img/03-Attached.png" class="img-fluid figure-img" style="width:75.0%" alt="Notice the Remote Container icon has changed at the bottom."></a></p>
+<p><a href="./img/03-Attached.png" class="lightbox" title="An attached workspace" data-gallery="vscode"><img src="./img/03-Attached.png" class="img-fluid figure-img" style="width:75.0%" alt="Notice the Remote Container icon has changed at the bottom."></a></p>
 <figcaption class="figure-caption">An attached workspace</figcaption>
 </figure>
 </div>
@@ -574,7 +588,7 @@ Jupyter Keymap Extension
 <p>Now, if we try to open a file/folder under the open menu (<img src="./img/04-menu.png" class="nolightbox" height="16" alt="Open menu">), you’ll notice that we’re not browsing ‘our computer’ any more! Instead, we’re browsing files on the Docker container.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/04-Open_Folder.png" class="lightbox" data-gallery="vscode" title="Opening files on the container"><img src="./img/04-Open_Folder.png" class="img-fluid figure-img" style="width:75.0%" alt="You will almost always find what you need under /home/jovyan/work"></a></p>
+<p><a href="./img/04-Open_Folder.png" class="lightbox" title="Opening files on the container" data-gallery="vscode"><img src="./img/04-Open_Folder.png" class="img-fluid figure-img" style="width:75.0%" alt="You will almost always find what you need under /home/jovyan/work"></a></p>
 <figcaption class="figure-caption">Opening files on the container</figcaption>
 </figure>
 </div>
@@ -593,7 +607,7 @@ Jupyter Keymap Extension
 <p>You need to install the <em>same</em> VSCode extensions that you’d use when running Python locally on your computer into the ‘remote’ container. VSCode will do a pretty good job prompting you, but you’ve got the <a href="#required-extensions">list above</a> and can also seem them (notice I’ve selected <code>CONTAINER</code>) on the left-hand <code>Extensions</code> (<img src="./img/05-menu.png" class="nolightbox" height="16" alt="Extensions menu">) menu in the screenshot below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/05-Extensions.png" class="lightbox" data-gallery="vscode" title="Extensions installed in Container"><img src="./img/05-Extensions.png" class="img-fluid figure-img" style="width:75.0%" alt="All being well you should only need to install these once."></a></p>
+<p><a href="./img/05-Extensions.png" class="lightbox" title="Extensions installed in Container" data-gallery="vscode"><img src="./img/05-Extensions.png" class="img-fluid figure-img" style="width:75.0%" alt="All being well you should only need to install these once."></a></p>
 <figcaption class="figure-caption">Extensions installed in Container</figcaption>
 </figure>
 </div>
@@ -604,12 +618,39 @@ Jupyter Keymap Extension
 <p>And here we go…</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/06-Success.png" class="lightbox" data-gallery="vscode" title="Running code in a container"><img src="./img/06-Success.png" class="img-fluid figure-img" style="width:75.0%" alt="Success! Running code in a remote container via VSCode"></a></p>
+<p><a href="./img/06-Success.png" class="lightbox" title="Running code in a container" data-gallery="vscode"><img src="./img/06-Success.png" class="img-fluid figure-img" style="width:75.0%" alt="Success! Running code in a remote container via VSCode"></a></p>
 <figcaption class="figure-caption">Running code in a container</figcaption>
 </figure>
 </div>
 </section>
 </section>
+</section>
+<section id="using-the-d-drive" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-d-drive">Using the ‘D’ Drive</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is best done before you have downloaded any images, though it should work <em>with</em> images downloaded as well.</p>
+</div>
+</div>
+<p>If your Windows computer has two drives (<code>C</code> and <code>D</code>) and you want to store your docker images on the <code>D</code> drive, then you will need to <strong>carefully</strong> follow <a href="https://stackoverflow.com/a/66314636/1600439">the instructions here</a> in order to relocate the <code>docker-desktop-data</code> folder:</p>
+<ol type="1">
+<li>Shut down Docker Desktop completely (the Docker icon will disappear from the Windows ‘tray’ lower-right).</li>
+<li>Run <code>wsl --shutdown</code> in the Power Shell</li>
+<li>Run <code>wsl --export docker-desktop-data docker-desktop-data.tar</code></li>
+<li>Run <code>wsl --unregister docker-desktop-data</code></li>
+<li>Run <code>wsl --import docker-desktop-data D:\docker\ docker-desktop-data.tar --version 2</code></li>
+<li>Delete <code>docker-desktop-data.tar</code></li>
+<li><strong>Restart the computer</strong>!</li>
+<li>Login and restart Docker.</li>
+</ol>
 </section>
 <section id="deleting-the-image" class="level2">
 <h2 class="anchored" data-anchor-id="deleting-the-image">Deleting the Image</h2>
@@ -926,7 +967,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"fade","descPosition":"right","openEffect":"fade","selector":".lightbox"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"right","loop":false,"openEffect":"fade","closeEffect":"fade","selector":".lightbox"});</script>
 
 
 

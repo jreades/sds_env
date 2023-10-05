@@ -128,6 +128,13 @@ In principle the below will work. We have it working on Mac OSX and the same pro
 
 ### Using Devcontainer
 
+::: {.callout-important}
+## Currently Broken
+
+We're investigating why this approach doesn't work, but we're currently unable to get the devcontainer approach to run successfully despite having attempted to update it for 2023. We'll correct this when we can.
+
+:::
+
 The easier (but less tested) way to connect is to download the contents of `test-vscode-project` [from GitHub](https://github.com/jreades/sds_env/tree/master/test-vscode-project). You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g. `$HOME/Documents/CASA/fsds/`). 
 
 You then tell VSCode to `Open Workspace from File` and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it _still_ has to pull the image from Docker Hub. You can break this into steps by running `docker pull {{< var env.image >}}` _before_ dealing with downloading these files and moving them into position.
@@ -139,7 +146,7 @@ To enable VSCode integration you'll need to create additional 'mount points' ('l
 ::: {.callout-tip}
 # M1/M2 Macs
 
-Remember to add `-silicon` to the image name ({{< var env.image >}} if you are suing a M1 or M2 Mac.
+Remember to add `-silicon` to the image name ({{< var env.image >}}) if you are suing a M1 or M2 Mac.
 
 ::: 
 
