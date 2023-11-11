@@ -10,6 +10,13 @@ For *most* users you should really be looking at this through the [GitHub.io](ht
 
 =========================
 
+## To Dos
+
+1. Work out why the Intel (AMD64) image is so much larger than the Apple Silicon (ARM64) image. I can get a decent report using `docker history --format "{{.Size}}\t{{.CreatedBy}}" --no-trunc jreades/sds:2023-intel | grep -e "[G]B"` which traces the difference back to just two layers:
+   - 6.52GB	`RUN |2 USERNAME=jovyan TARGETPLATFORM=linux/amd64 /bin/bash -c mamba env update -n base --quiet --file ./${yaml_nm}     && conda clean --all --yes --force-pkgs-dirs     && find /opt/conda/ -follow -type f -name '*.a' -delete     && find /opt/conda/ -follow -type f -name '*.pyc' -delete     && find /opt/conda/ -follow -type f -name '*.js.map' -delete     && pip cache purge     && rm -rf /home/$NB_USER/.cache/pip     && rm ./${yaml_nm} # buildkit`
+   - 5.48GB	`RUN |2 USERNAME=jovyan TARGETPLATFORM=linux/amd64 /bin/bash -c fix-permissions $CONDA_DIR     && fix-permissions $HOME # buildkit`
+   - My *guess* is that the second command's effect *depends* on the effects of the first: there are a *lot* of files modified by the `mamba` update but they end up with a different/wrong set of permissions from what the `fix-permissions` script is expecting so it then has to modify the permissions on *all* of them which almost doubles the size of image.
+
 ## Using UCL JupyterHub
 
 ### **Creating an Environment (Staff)**
