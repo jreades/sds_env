@@ -8,6 +8,12 @@ Whenever you see a 'code block', you will _also_ see a 'clipboard' icon (![Copy 
 
 ## Docker
 
+::: {.callout-important}
+## Windows Users
+
+Please ensure that you have installed WSL2 *before* installing Docker!
+:::
+
 After you've installed Docker, You must start the Docker app running before any of the commands below will work. You'll know that you've succeeded when you see the 'Docker Desktop' window appear listing downloaded images and running containers.
 
 #### Downloading the {{< var env.image >}} Image
