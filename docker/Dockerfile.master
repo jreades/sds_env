@@ -53,6 +53,7 @@ RUN fix-permissions $CONDA_DIR \
 #--- Quarto ---#
 ENV TEMP_DEB="quarto.deb"
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    texlive \
     texlive-fonts-recommended \
     lmodern \
     pandoc \
@@ -73,9 +74,6 @@ RUN if [[ "$BUILDPLATFORM" = */arm64 ]]; then \
         gdebi --non-interactive quarto-linux-amd64.deb && \
         rm quarto-linux-amd64.deb; \
   fi
-#RUN curl -LO https://quarto.org/download/latest/$DEB
-#RUN gdebi --non-interactive $DEB
-#RUN rm $DEB
 
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
