@@ -64,8 +64,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Does this create an AMD64 dependency that
 # can't be overruled by ARM64 library?
-ARG BUILDPLATFORM
-RUN if [[ "$BUILDPLATFORM" = */arm64 ]]; then \
+#ARG DOCKER_PLATFORM=$TARGETPLATFORM
+ARG TARGETPLATFORM
+#ARG BUILDPLATFORM
+#RUN if [[ "$BUILDPLATFORM" = */arm64 ]]; then \
+RUN if [[ "$TARGETPLATFORM" = */arm64 ]]; then \
     curl -LO https://quarto.org/download/latest/quarto-linux-arm64.deb && \
         gdebi --non-interactive quarto-linux-arm64.deb && \
         rm quarto-linux-arm64.deb; \
