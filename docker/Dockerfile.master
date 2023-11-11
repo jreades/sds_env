@@ -35,56 +35,44 @@ ENV yaml_nm 'conda.install.yml'
 ENV pip_nm 'pip.install.txt'
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
+ARG USERNAME='jovyan'
+ARG TARGETPLATFORM
+
+SHELL ["/bin/bash", "-c"]
+
+#--- Quarto ---#
+USER root
+INCLUDE+ ./docker/Dockerfile.quarto
+RUN rm -rf /var/lib/apt/lists/*
+
 #--- Python ---#
+USER $NB_UID
 INCLUDE+ ./docker/Dockerfile.python.install
 
 ENV PATH /opt/conda/bin:$PATH
 ENV PROJ_LIB /opt/conda/share/proj/
 
-#--- JupyterLab config ---#
-USER root
+# INCLUDE+ ./docker/Dockerfile.jupyterlab.extensions
 
-INCLUDE+ ./docker/Dockerfile.jupyterlab.extensions
+#--- Tidy and fix permissions ---#
+# Clean up
+RUN jupyter lab clean -y \
+    && conda clean --all -f -y \
+    && npm cache clean --force \
+    && rm -rf $CONDA_DIR/share/jupyter/lab/staging \
+    && rm -rf /home/$NB_USER/.node-gyp/* \
+    && rm -rf /home/$NB_USER/.local/* \
+    && rm -rf /home/$NB_USER/.cache/rosetta \
+    && rm -rf /home/$NB_USER/.cache/yarn 
 
-# Fix permissions
 RUN fix-permissions $CONDA_DIR \
     && fix-permissions $HOME
-
-#--- Quarto ---#
-ENV TEMP_DEB="quarto.deb"
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    texlive \
-    texlive-fonts-recommended \
-    lmodern \
-    pandoc \
-    pandoc-citeproc \
-    curl \
-    gdebi-core \
-    && rm -rf /var/lib/apt/lists/*
-
-# Does this create an AMD64 dependency that
-# can't be overruled by ARM64 library?
-#ARG DOCKER_PLATFORM=$TARGETPLATFORM
-ARG TARGETPLATFORM
-#ARG BUILDPLATFORM
-#RUN if [[ "$BUILDPLATFORM" = */arm64 ]]; then \
-RUN if [[ "$TARGETPLATFORM" = */arm64 ]]; then \
-    curl -LO https://quarto.org/download/latest/quarto-linux-arm64.deb && \
-        gdebi --non-interactive quarto-linux-arm64.deb && \
-        rm quarto-linux-arm64.deb; \
-  else \
-    curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb && \
-        gdebi --non-interactive quarto-linux-amd64.deb && \
-        rm quarto-linux-amd64.deb; \
-  fi
 
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
 USER $NB_UID
 
 # VSCode Extension Folder (optional usage)
-ARG USERNAME='jovyan'
-
 RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
              /home/$USERNAME/.vscode-server-insiders/extensions \
     && chown -R $USERNAME \ 
@@ -122,8 +110,8 @@ RUN mkdir -p /home/$USERNAME/.local/share/fonts/ \
 # the fonts we've just added in Matplotlib... *should*
 RUN /opt/conda/bin/python -c "import matplotlib.font_manager;"
 
-# And this is how to check what's been installed in the system:
-# grep '"name"' ~/.cache/matplotlib/fontlist-v330.json | sort | uniq
+# Disable message
+RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
 
 #--- Make Proj4 Easy to Find ---#
 # Change depending on whether using base environment

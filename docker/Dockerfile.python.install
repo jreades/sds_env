@@ -4,7 +4,6 @@ RUN conda install --freeze-installed --yes mamba \
     && conda config --add channels pyviz \
     && conda config --set channel_priority strict
 
-SHELL ["/bin/bash", "-c"]
 COPY ./conda/${yaml_nm} ./
 #RUN mamba env create -n ${env_nm} --quiet --file ./${yaml_nm} \
 RUN mamba env update -n base --quiet --file ./${yaml_nm} \
