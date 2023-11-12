@@ -47,6 +47,7 @@ dependencies:
   #- psycopg2
   #- pygeos # Not needed with Shapely2 and Geopandas
   #- pymc3
+  - pyogrio
   - pysal
   #- qgrid 
   - rasterio 
