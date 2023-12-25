@@ -26,6 +26,7 @@ dependencies:
   - jupyter_bokeh
   - jupyterlab_code_formatter # Supports labextension
   - jupyterlab-geojson
+  - jupyterlab-quarto
   - jupyterlab-variableinspector
   - jupyter-lsp-python # Provides LSP Extension + Server
   - legendgram 
