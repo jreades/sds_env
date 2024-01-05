@@ -89,6 +89,7 @@ dependencies:
     - sklearn-som
     - smopy # NOT a typo! Not the same thing as sompy!
     #- text_to_num
+    - tldr  # Useful replacement for man
     - top2vec
     - unidecode
     - wordcloud
