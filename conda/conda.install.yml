@@ -69,6 +69,7 @@ dependencies:
     - dtreeviz
     - dtreeviz[xgboost]
     - duckdb
+    - esda # (alternative to PySAL stuff)
     - fastai #==1.0.61 # Huanfa's QM
     - gurobipy #==9.5.1 # Huanfa's QM
     #- git+https://github.com/smazzanti/mrmr # Supports feature selection
@@ -77,9 +78,11 @@ dependencies:
     - jupytext
     - kneed
     - langdetect
+    - libpysal
     - lightgbm 
     - matplotlib-scalebar 
     - mgwr
+    - mpl_toolkits
     - num2words
     - pulp #==2.6.0 # Huanfa's QM
     - pykrige # Might not be available for Apple Silicon
