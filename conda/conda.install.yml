@@ -26,7 +26,6 @@ dependencies:
   - jupyter_bokeh
   - jupyterlab_code_formatter # Supports labextension
   - jupyterlab-geojson
-  - jupyterlab-quarto
   - jupyterlab-variableinspector
   - jupyter-lsp-python # Provides LSP Extension + Server
   - legendgram 
@@ -38,9 +37,9 @@ dependencies:
   #- networkx 
   - nltk 
   #- numba
+  - openpyxl
   - osmnx
   - palettable 
-  #- pandas-profiling
   - pointpats
   - polars
   - polyline
@@ -61,8 +60,8 @@ dependencies:
   - textblob 
   - tzlocal 
   - umap-learn
-  - openpyxl
   - xlsxwriter
+  - ydata-profiling
   - pip:
     - boruta # Supports feature selection
     - contractions 
@@ -75,6 +74,7 @@ dependencies:
     #- git+https://github.com/smazzanti/mrmr # Supports feature selection
     #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - joypy
+    - jupyterlab-quarto
     - jupytext
     - kneed
     - langdetect
@@ -82,7 +82,7 @@ dependencies:
     - lightgbm 
     - matplotlib-scalebar 
     - mgwr
-    - mpl_toolkits
+    #- mpl_toolkits
     - num2words
     - pulp #==2.6.0 # Huanfa's QM
     - pykrige # Might not be available for Apple Silicon
