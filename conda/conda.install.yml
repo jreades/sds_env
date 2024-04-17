@@ -60,6 +60,7 @@ dependencies:
   - textblob 
   - tzlocal 
   - umap-learn
+  - xlrd
   - xlsxwriter
   - ydata-profiling
   - pip:
