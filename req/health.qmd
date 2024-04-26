@@ -4,7 +4,7 @@ author: "Jon Reades"
 date: "9/7/2023"
 ---
 
-When answering the questions below, 'your computer' is the machine on which you plan to do the programming. You will also have some ability to run code remotely on UCL's JupyterHub or on Google Collab (see [No Install](./no_install.qmd)), but you will find that limitations in processing power on these cloud platforms can make this a frustrating experience.
+When answering the questions below, 'your computer' is the machine on which you plan to do the programming. You will also have some ability to run code remotely on UCL's JupyterHub or on Google Collab (see [No Install](../setup/no_install.qmd)), but you will find that limitations in processing power on these cloud platforms can make this a frustrating experience.
 
 ## Hardware Requirements
 
@@ -100,6 +100,6 @@ Now that you know your computer is 'up-to-spec', please ensure that your compute
 ::: {.callout-warning}
 ## Automatic Updates
 
-Once you have [installed](./env.qmd) the programming environment we *strongly* recommend that you **turn off automatic updates** for your computer until the end of the academic year. This is not to say that you should *not* install security and other updates over the course of the year, but to emphasise that it should be **at a time of your choosing**. In previous years, students' computers have automatically updated to a whole new operating system version two nights before an assessment deadline, breaking existing code and causing lots of needless stress.
+Once you have [installed](../setup/env.qmd) the programming environment we *strongly* recommend that you **turn off automatic updates** for your computer until the end of the academic year. This is not to say that you should *not* install security and other updates over the course of the year, but to emphasise that it should be **at a time of your choosing**. In previous years, students' computers have automatically updated to a whole new operating system version two nights before an assessment deadline, breaking existing code and causing lots of needless stress.
 
 :::

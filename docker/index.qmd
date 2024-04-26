@@ -2,8 +2,6 @@
 title: "Using Docker"
 author: "Jon Reades"
 date: "9/7/2023"
-filters:
-  - lightbox
 lightbox:
   match: auto
   effect: fade
