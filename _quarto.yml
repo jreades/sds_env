@@ -14,6 +14,9 @@ website:
   repo-url: https://github.com/jreades/sds_env/
   repo-actions: [issue]
   favicon: "/img/favicon.ico"
+  open-graph:
+    locale: en_GB
+    site-name: "Spatial Data Science Environment"
   page-navigation: true
   reader-mode: true
   page-footer: 
