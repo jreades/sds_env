@@ -4,3 +4,4 @@ cloud-config.yml
 notebooks
 
 /.quarto/
+/_site/
