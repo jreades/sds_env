@@ -8,6 +8,9 @@ project:
   resources:
     - "img"
 
+execute:
+  freeze: auto
+
 website:
   title: "CASA Computing Environment"
   image: "img/CASA_Logo_no_text.png"
