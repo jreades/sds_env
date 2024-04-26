@@ -1,5 +1,4 @@
 cloud-config.yml
-.*
 *.ova
 notebooks
 
