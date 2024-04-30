@@ -24,7 +24,17 @@ None outstanding.
 
 ## Citing
 
-This draws heavily on Dani Arribas-Bel's work for Liverpool. If you use this, you should cite him.
+```bibtex
+@software{uss:2024,
+  author = {Reades, Jon},
+  title = {\texttt{sds_env}: A containerised platform for Urban Spatial Science},
+  url = {https://github.com/jreades/sds_env/},
+  version = {2023},
+  date = {2023-10-01},
+}
+```
+
+This draws heavily on Dani Arribas-Bel's work for Liverpool.
 
 [![DOI](https://zenodo.org/badge/65582539.svg)](https://zenodo.org/badge/latestdoi/65582539)
 
