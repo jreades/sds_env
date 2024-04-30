@@ -1,0 +1,31 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: "Urban Spatial Science Platform"
+message: >-
+  Build files and general-purpose support content
+  for students on CASA's Urban Spatial Science programme.
+type: software
+authors:
+  - given-names: Jon
+    family-names: Reades
+    email: j.reades@ucl.ac.uk
+    affiliation: University College London
+    orcid: 'https://orcid.org/0000-0002-1443-9263'
+repository-code: 'https://github.com/jreades/sds_env/'
+url: 'https://jreades.github.io/sds_env/'
+repository: 'https://jreades.github.io/sds_env/'
+abstract: >-
+  This is a set of practical 'setup guides' for our
+  USS programme, covering the basic 'tools of the 
+  trade' in getting up and running with Python in 
+  a virtualised environment as well as other useful
+  applications and technologies for coding.
+keywords:
+  - python
+  - programming
+  - docker
+  - markdown
+  - github
+license: CC-BY-NC-4.0
