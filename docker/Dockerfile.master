@@ -25,20 +25,26 @@
 #--- Build from Jupyter-provided Minimal Install ---#
 # https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
 # 5 September 2023
-FROM jupyter/scipy-notebook:lab-4.0.5
+#FROM quay.io/jupyter/scipy-notebook:lab-4.0.5
+FROM quay.io/jupyter/minimal-notebook:2024-04-29
 
-LABEL maintainer="j.reades@ucl.ac.uk"
+LABEL maintainer="Jon Reades <j.reades@ucl.ac.uk>"
 
-ENV env_nm 'sds2023'
-ENV kernel_nm 'SDS2023'
+ENV env_nm 'sds2024'
+ENV kernel_nm 'SDS2024'
 ENV yaml_nm 'conda.install.yml'
 ENV pip_nm 'pip.install.txt'
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
-ARG USERNAME='jovyan'
 ARG TARGETPLATFORM
 
 SHELL ["/bin/bash", "-c"]
+
+#--- Base ---#
+USER root
+RUN apt-get update && apt-get install -y \
+    gcc \ 
+    musl-dev
 
 #--- Quarto ---#
 USER root
@@ -73,38 +79,19 @@ RUN fix-permissions $CONDA_DIR \
 USER $NB_UID
 
 # VSCode Extension Folder (optional usage)
-RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
-             /home/$USERNAME/.vscode-server-insiders/extensions \
-    && chown -R $USERNAME \ 
-             /home/$USERNAME/.vscode-server \
-             /home/$USERNAME/.vscode-server-insiders
+RUN mkdir -p /home/$NB_USER/.vscode-server/extensions \
+             /home/$NB_USER/.vscode-server-insiders/extensions \
+    && chown -R $NB_USER \ 
+             /home/$NB_USER/.vscode-server \
+             /home/$NB_USER/.vscode-server-insiders
 
 #--- Install some fonts ---#
-ARG GFONTS='https://fonts.google.com/download'
-ARG SPECTRAL='Spectral'
-ARG SPECTRAL_SC='Spectral%20SC'
-ARG ROBOTO='Roboto'
-ARG JETBRAINS='JetBrains%20Mono'
-
-RUN echo $HOME
-RUN mkdir -p /home/$USERNAME/.local/share/fonts/ \
-&& curl -L "${GFONTS}?family=${ROBOTO}" --output $ROBOTO.zip \
-  && unzip -o $ROBOTO.zip \
-  && mv *.ttf /home/$USERNAME/.local/share/fonts/ \
-  && rm $ROBOTO.zip \
-&& curl -L "${GFONTS}?family=${SPECTRAL}" --output $SPECTRAL.zip \
-  && unzip -o $SPECTRAL.zip \
-  && mv *.ttf /home/$USERNAME/.local/share/fonts/ \
-  && rm $SPECTRAL.zip \
-&& curl -L "${GFONTS}?family=${SPECTRAL_SC}" --output $SPECTRAL_SC.zip \
-  && unzip -o $SPECTRAL_SC.zip \
-  && mv *.ttf /home/$USERNAME/.local/share/fonts/ \
-  && rm $SPECTRAL_SC.zip \
-&& curl -L "${GFONTS}?family=${JETBRAINS}" --output $JETBRAINS.zip \
-  && unzip -o $JETBRAINS.zip \
-  && mv *.ttf /home/$USERNAME/.local/share/fonts/ \
-  && rm $JETBRAINS.zip \
-&& chown -R $USERNAME /home/$USERNAME/.local/share/fonts
+ADD /fonts/*.zip /home/${NB_USER}/
+RUN mkdir -p /home/$NB_USER/.local/share/fonts/ \
+    && unzip -o '*.zip' \
+    && mv *.ttf /home/$NB_USER/.local/share/fonts/ \
+    && rm *.zip \
+    && chown -R $NB_USER /home/$NB_USER/.local/share/fonts
 
 # Should rebuild the font manager and allow us to access
 # the fonts we've just added in Matplotlib... *should*

@@ -4,16 +4,16 @@ RUN conda install --freeze-installed --yes mamba \
     && conda config --add channels pyviz \
     && conda config --set channel_priority strict
 
-COPY ./conda/${yaml_nm} ./
-#RUN mamba env create -n ${env_nm} --quiet --file ./${yaml_nm} \
-RUN mamba env update -n base --quiet --file ./${yaml_nm} \
+ADD ./conda/${yaml_nm} /home/${NB_USER}/
+#RUN mamba env create -n ${env_nm} --quiet --file ${yaml_nm} \
+RUN mamba env update -n base --quiet --file ${yaml_nm} \
     && conda clean --all --yes --force-pkgs-dirs \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && pip cache purge \ 
     && rm -rf /home/$NB_USER/.cache/pip \ 
-    && rm ./${yaml_nm}
+    && rm ${yaml_nm}
 
 # Pre-cache fonts
 #RUN /opt/conda/envs/${env_nm}/bin/python -c "import matplotlib.pyplot;"
@@ -37,6 +37,7 @@ RUN echo "export SPACY_DATA_DIR=${SPACY_DATA_SIR} # spacy.load("/path/to/en_core
 # This bloats the Docker image but not massively
 #RUN /opt/conda/envs/${env_nm}/bin/python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger'); nltk.download('omw-1.4')"
 RUN /opt/conda/bin/python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger'); nltk.download('omw-1.4')"
+RUN /opt/conda/bin/python -c "import duckdb; db = duckdb.connect(); db.execute('INSTALL spatial'); db.execute('INSTALL httpfs'); db.execute('LOAD spatial; LOAD httpfs;');"
 
 # This bloats the Docker image massively
 # RUN python -m spacy download en_core_web_sm

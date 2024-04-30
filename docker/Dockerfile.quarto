@@ -1,6 +1,6 @@
 #--- Quarto ---#
 ENV TEMP_DEB="quarto.deb"
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends \
     texlive \
     texlive-fonts-recommended \
     lmodern \
