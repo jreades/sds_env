@@ -1,11 +1,11 @@
 #--- Quarto ---#
 USER root
-ENV TEMP_DEB="quarto.deb"
+
 RUN apt-get install -y --no-install-recommends \
-    texlive \
+    #texlive \
+    #pandoc \
     texlive-fonts-recommended \
     lmodern \
-    pandoc \
     pandoc-citeproc \
     curl \
     gdebi-core

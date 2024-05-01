@@ -96,6 +96,7 @@ dependencies:
   - pyarrow
   - pyogrio
   - pysal
+  - pyzmq
   - python-duckdb
   #- qgrid 
   - rasterio
