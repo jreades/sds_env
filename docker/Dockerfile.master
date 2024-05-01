@@ -4,75 +4,47 @@
 # to your .rc (.zshrc/.bashrc) file. This is *only*
 # needed when building from source. Otherwise just pull
 # as below.
-#
-# When building on M1/M2, it might be enough to simply add `--platform linux/amd64`
-# to the build command to get something that works on both platforms. However, I 
-# suspect it would be better to build separate images (provided they both result in
-# the same versions of most libraries being isntalled) for AMD64 and ARM64. See also:
-# - https://pythonspeed.com/articles/docker-build-problems-mac/
-# - https://docs.docker.com/build/building/multi-platform/
-# - https://stackoverflow.com/a/72915044/1600439
-# - https://docs.docker.com/engine/reference/commandline/manifest/
-#
-# This seems to have worked:
-#  export IMG_NM=sds:2023-silicon && docker build --platform linux/arm64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
-
-# How to pull and run this image:
-# > export IMG_NM=sds:XXXX (where XXXX is the version you wish to run)
-# > docker pull jreades/${IMG_NM}
-# > docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work jreades/${IMG_NM} start.sh jupyter lab (see also the docker.sh script)
 
 #--- Build from Jupyter-provided Minimal Install ---#
-# https://github.com/jupyter/docker-stacks/blob/master/docs/using/selecting.md
-# 5 September 2023
-#FROM quay.io/jupyter/scipy-notebook:lab-4.0.5
+#  export IMG_NM=sds:2024-silicon && docker build --platform linux/arm64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
+#  export IMG_NM=sds:2024-intel && docker build --platform linux/amd64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
 FROM quay.io/jupyter/minimal-notebook:2024-04-29
-
 LABEL maintainer="Jon Reades <j.reades@ucl.ac.uk>"
-
-ENV env_nm 'sds2024'
-ENV kernel_nm 'SDS2024'
-ENV yaml_nm 'conda.install.yml'
-ENV pip_nm 'pip.install.txt'
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 ARG TARGETPLATFORM
 
-SHELL ["/bin/bash", "-c"]
+#ENV env_nm 'base'
+#ENV env_path ''
+ENV env_nm 'sds2024'
+ENV env_path 'envs/${env_nm}/'
+
+ENV yaml_nm 'conda.install.yml'
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+#SHELL ["/bin/bash", "-c"]
 
 #--- Base ---#
 USER root
 RUN apt-get update && apt-get install -y \
+    && apt-get install -y \
     gcc \ 
-    musl-dev
+    musl-dev \
+    && apt-cache policy musl-dev
+
+#--- Install some fonts ---#
+USER $NB_UID
+ADD /fonts/*.zip /home/${NB_USER}/
+RUN mkdir -p /home/$NB_USER/.local/share/fonts/ \
+    && unzip -o '*.zip' \
+    && mv *.ttf /home/$NB_USER/.local/share/fonts/ \
+    && rm *.zip \
+    && chown -R $NB_USER /home/$NB_USER/.local/share/fonts
 
 #--- Quarto ---#
-USER root
 INCLUDE+ ./docker/Dockerfile.quarto
-RUN rm -rf /var/lib/apt/lists/*
 
 #--- Python ---#
-USER $NB_UID
 INCLUDE+ ./docker/Dockerfile.python.install
-
-ENV PATH /opt/conda/bin:$PATH
-ENV PROJ_LIB /opt/conda/share/proj/
-
-# INCLUDE+ ./docker/Dockerfile.jupyterlab.extensions
-
-#--- Tidy and fix permissions ---#
-# Clean up
-RUN jupyter lab clean -y \
-    && conda clean --all -f -y \
-    && npm cache clean --force \
-    && rm -rf $CONDA_DIR/share/jupyter/lab/staging \
-    && rm -rf /home/$NB_USER/.node-gyp/* \
-    && rm -rf /home/$NB_USER/.local/* \
-    && rm -rf /home/$NB_USER/.cache/rosetta \
-    && rm -rf /home/$NB_USER/.cache/yarn 
-
-RUN fix-permissions $CONDA_DIR \
-    && fix-permissions $HOME
 
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
@@ -81,26 +53,6 @@ USER $NB_UID
 # VSCode Extension Folder (optional usage)
 RUN mkdir -p /home/$NB_USER/.vscode-server/extensions \
              /home/$NB_USER/.vscode-server-insiders/extensions \
-    && chown -R $NB_USER \ 
+    && chown -R $NB_UID \ 
              /home/$NB_USER/.vscode-server \
              /home/$NB_USER/.vscode-server-insiders
-
-#--- Install some fonts ---#
-ADD /fonts/*.zip /home/${NB_USER}/
-RUN mkdir -p /home/$NB_USER/.local/share/fonts/ \
-    && unzip -o '*.zip' \
-    && mv *.ttf /home/$NB_USER/.local/share/fonts/ \
-    && rm *.zip \
-    && chown -R $NB_USER /home/$NB_USER/.local/share/fonts
-
-# Should rebuild the font manager and allow us to access
-# the fonts we've just added in Matplotlib... *should*
-RUN /opt/conda/bin/python -c "import matplotlib.font_manager;"
-
-# Disable message
-RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
-
-#--- Make Proj4 Easy to Find ---#
-# Change depending on whether using base environment
-RUN echo "export PROJ_LIB=/opt/conda/share/proj/" >> ~/.bashrc
-#RUN echo "export PROJ_LIB=/opt/conda/envs/${env_nm}/share/proj/" >> ~/.bashrc

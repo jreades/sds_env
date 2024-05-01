@@ -4,31 +4,44 @@
 # name: sds2022
 channels:
   - conda-forge
-  - defaults
-dependencies:
-  - pip 
+dependencies: 
   #- altair
   - black # Supports code formatter labextension
-  #- bokeh
+  - bokeh
   - catboost
   - clustergram
   - contextily 
+  - cubo # Data Cubes from GEE and STAC
+  - cython
   #- cmake<3.20
-  #- dash
+  - dask
+  - dask-geopandas
+  - datashader
   - descartes
+  - flake8 # Style enforcement
   - gensim 
+  - geoalchemy2 # PostGIS geometries
+  - geocube
   - geopandas
   - geopy 
+  - gstools # Multiprocessing
+  - h3-py
   - hdbscan
   - icecream
+  - ipykernel
   - ipyleaflet 
-  - ipyparallel 
+  - ipyparallel
+  - ipympl
+  - ipywidgets
+  - jupyterlab>=4.0 
   - jupyter_bokeh
   - jupyterlab_code_formatter # Supports labextension
   - jupyterlab-geojson
   - jupyterlab-variableinspector
   - jupyter-lsp-python # Provides LSP Extension + Server
+  - jupytext
   - legendgram 
+  - libgdal-arrow-parquet
   - lxml
   #- mkl-service
   - mgwr 
@@ -40,35 +53,12 @@ dependencies:
   - openpyxl
   - osmnx
   - palettable 
-  - pointpats
-  - polars
-  - polyline
-  - plotly
-  #- psycopg2
-  #- pygeos # Not needed with Shapely2 and Geopandas
-  #- pymc3
-  - pyogrio
-  - pysal
-  #- qgrid 
-  - rasterio 
-  - rasterstats 
-  - shap
-  - spacy 
-#  - spacy[transformer] 
-  - spopt
-  - tabulate  # For exporting from pandas to markdown
-  - textblob 
-  - tzlocal 
-  - umap-learn
-  - xlrd
-  - xlsxwriter
-  - ydata-profiling
+  - pip
   - pip:
     - boruta # Supports feature selection
     - contractions 
     - dtreeviz
     - dtreeviz[xgboost]
-    - duckdb
     - esda # (alternative to PySAL stuff)
     - fastai #==1.0.61 # Huanfa's QM
     - gurobipy #==9.5.1 # Huanfa's QM
@@ -76,7 +66,6 @@ dependencies:
     #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - joypy
     - jupyterlab-quarto
-    - jupytext
     - kneed
     - langdetect
     - libpysal
@@ -98,3 +87,38 @@ dependencies:
     - unidecode
     - wordcloud
     - xgboost
+  - pointpats
+  - polars
+  - polyline
+  - plotly
+  - psycopg2
+  #- pymc3
+  - pyarrow
+  - pyogrio
+  - pysal
+  - python-duckdb
+  #- qgrid 
+  - rasterio
+  - rasterstats
+  - rio-cogeo
+  - rioxarray
+  - scikit-learn
+  - seaborn
+  - shap
+  - spatialpandas
+  - spacy 
+#  - spacy[transformer]  # Add too much to image
+  - spopt
+  - sqlalchemy
+  - statsmodels
+  - tabulate  # For exporting from pandas to markdown
+  - textblob 
+  - tzlocal 
+  - umap-learn
+  - xarray
+  - xarray-spatial
+  - xarray_leaflet
+  - xlrd
+  - xlsxwriter
+  - xvec
+  - ydata-profiling

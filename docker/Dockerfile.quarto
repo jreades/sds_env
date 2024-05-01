@@ -1,4 +1,5 @@
 #--- Quarto ---#
+USER root
 ENV TEMP_DEB="quarto.deb"
 RUN apt-get install -y --no-install-recommends \
     texlive \
@@ -19,3 +20,6 @@ RUN if [[ "$TARGETPLATFORM" = */arm64 ]]; then \
         gdebi --non-interactive quarto-linux-amd64.deb && \
         rm quarto-linux-amd64.deb; \
   fi
+
+# Tidy up
+RUN rm -rf /var/lib/apt/lists/*
