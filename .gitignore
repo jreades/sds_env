@@ -5,3 +5,7 @@ notebooks
 /.quarto/
 /_site/
 /docs/
+
+.DS_Store
+.ipynb_checkpoints/
+sds_env.code-workspace
