@@ -16,6 +16,9 @@ ARG TARGETPLATFORM
 ENV yaml_nm 'conda.install.yml'
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
+#--- Avoid weird build issue ---#
+RUN mkdir -p /home/jovyan/.cache/conda
+
 #--- Base ---#
 USER root
 RUN apt-get update \
