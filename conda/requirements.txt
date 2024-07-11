@@ -1,0 +1,34 @@
+boruta # Supports feature selection
+contractions 
+dtreeviz
+dtreeviz[xgboost]
+duckdb
+esda # (alternative to PySAL stuff)
+fastai #==1.0.61 # Huanfa's QM
+gurobipy #==9.5.1 # Huanfa's QM
+#- git+https://github.com/smazzanti/mrmr # Supports feature selection
+#- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
+joypy
+jupyterlab-quarto
+jupytext
+kneed
+langdetect
+libpysal
+lightgbm 
+matplotlib-scalebar 
+mgwr
+#- mpl_toolkits
+num2words
+pulp #==2.6.0 # Huanfa's QM
+pykrige # Might not be available for Apple Silicon
+rfpimp
+scikit-posthocs
+skimpy
+sklearn-som
+smopy # NOT a typo! Not the same thing as sompy!
+#- text_to_num
+tldr  # Useful replacement for man
+top2vec
+unidecode
+wordcloud
+xgboost

@@ -1,14 +1,20 @@
-#ENV env_nm 'base'
+ENV env_nm 'base'
+#ENV env_nm 'sds2024'
 #ENV env_path '/opt/conda/'
-ENV env_nm 'sds2024'
-ENV env_path /opt/conda/envs/$env_nm/
+#ENV env_path /opt/conda/envs/$env_nm/
+
+RUN if [ "$env_nm" = "base" ]; then export env_path='/opt/conda/'; else export env_path="/opt/conda/envs/$env_nm/"; fi
 
 USER $NB_UID
 
 ADD ./conda/$yaml_nm ./
 
-RUN mamba env create -n $env_nm --quiet --file $yaml_nm \
-    #RUN mamba env update -n base --quiet --file ${yaml_nm} \
+#RUN conda env create -n $env_nm --quiet --file $yaml_nm --solver=libmamba \
+#RUN conda env update -n base --quiet --file ${yaml_nm} --solver=libmamba \
+RUN if [ "$env_nm" = "base" ]; \
+        then conda env update -n $env_nm --quiet --file $yaml_nm --solver=libmamba; \
+        else conda env create -n $env_nm --quiet --file $yaml_nm --solver=libmamba; \
+    fi \ 
     && rm $yaml_nm \
     && conda clean --all --yes --force-pkgs-dirs \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
@@ -55,10 +61,10 @@ RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements" 
     && rm -rf /home/$NB_USER/.local/* \
     && rm -rf /home/$NB_USER/.cache/rosetta \
     && rm -rf /home/$NB_USER/.cache/yarn \ 
-    && rm -rf /home/$NB_USER/.cache/pip \
+    && rm -rf /home/$NB_USER/.cache/pip 
     # Fix permissions
-    && fix-permissions $CONDA_DIR \
-    && fix-permissions /home/$NB_USER
+    #&& fix-permissions $CONDA_DIR \
+    #&& fix-permissions /home/$NB_USER
 
 #--- Final steps
 USER $NB_UID
@@ -67,7 +73,7 @@ RUN source activate $env_nm \
     #&& jupyter kernelspec install $env_path --user --replace --name=$env_nm --display-name="Python (${env_nm})" \
     && ipython kernel install --user --name $env_nm --display-name="Python (${env_nm})" \
     && conda deactivate \
-    && jupyter kernelspec remove -y python3 
+    && if [ "$env_nm" != "base" ]; then jupyter kernelspec remove -y python3; fi
 
 RUN jupyter lab --generate-config \
     && echo "c.MultiKernelManager.default_kernel_name='$env_nm'" >> \

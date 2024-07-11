@@ -65,6 +65,7 @@ dependencies:
     #- git+https://github.com/smazzanti/mrmr # Supports feature selection
     #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
     - joypy
+    - jupyterlab
     - jupyterlab-quarto
     - kneed
     - langdetect

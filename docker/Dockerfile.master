@@ -8,35 +8,83 @@
 #--- Build from Jupyter-provided Minimal Install ---#
 #  export IMG_NM=sds:2024-silicon && docker build --platform linux/arm64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
 #  export IMG_NM=sds:2024-intel && docker build --platform linux/amd64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
-FROM quay.io/jupyter/minimal-notebook:2024-04-29
+#FROM --platform=linux/amd64 quay.io/jupyter/minimal-notebook:2024-07-08
+#FROM --platform=linux/arm64 quay.io/jupyter/minimal-notebook:2024-07-08
+#FROM --platform=linux/amd64 continuumio/miniconda3:23.10.0-1
 LABEL maintainer="Jon Reades <j.reades@ucl.ac.uk>"
 
 ARG TARGETPLATFORM
+
+#ENV NB_USER = "$(echo `whoami`)"
+#RUN echo ${NB_USER}
 
 ENV yaml_nm 'conda.install.yml'
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 #--- Avoid weird build issue ---#
-RUN mkdir -p /home/jovyan/.cache/conda
+RUN mkdir -p /home/${NB_USER}/.cache/conda
 
 #--- Base ---#
 USER root
 RUN apt-get update \
     && apt-get install -y \
         gcc \ 
-        musl-dev \
+        musl-dev \ 
+        # Not in miniconda
+        # unzip \ 
     && apt-cache policy musl-dev 
 # Ideally we could skip the apt-get update
-# if we knew where musl-dev is available
+# if we knew where musl-dev is available to 
+# download.
 
 #--- Install some fonts ---#
+# To use web fonts: https://fonts.google.com/knowledge/using_type/using_web_fonts
+# To load web fonts: https://fonts.google.com/knowledge/using_type/using_web_fonts_from_a_font_delivery_service
+# For the HTML header:
+# <link rel="preconnect" href="https://fonts.googleapis.com">
+# <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+# <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
+# <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+# <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+# For the Micro-5 font:
+# .micro-5-regular {
+#   font-family: "Micro 5", sans-serif;
+#   font-weight: 400;
+#   font-style: normal;
+# }
+# .sedan-regular {
+#   font-family: "Sedan", serif;
+#   font-weight: 400;
+#   font-style: normal;
+# }
+# .sedan-regular-italic {
+#   font-family: "Sedan", serif;
+#   font-weight: 400;
+#   font-style: italic;
+# }
+# // <uniquifier>: Use a unique and descriptive class name
+# // <weight>: Use a value from 200 to 900
+
+# .source-code-pro-<uniquifier> {
+#   font-family: "Source Code Pro", monospace;
+#   font-optical-sizing: auto;
+#   font-weight: <weight>;
+#   font-style: normal;
+# }
+
 USER $NB_UID
 ADD /fonts/*.zip /home/${NB_USER}/
-RUN mkdir -p /home/$NB_USER/.local/share/fonts/ \
-    && unzip -o '*.zip' \
-    && mv *.ttf /home/$NB_USER/.local/share/fonts/ \
-    && rm *.zip \
-    && chown -R $NB_USER /home/$NB_USER/.local/share/fonts
+RUN mkdir -p /home/${NB_USER}/.local/share/fonts/ \
+    && sh -x \
+        && for i in `ls /home/${NB_USER}/*.zip`; \
+            do \
+                unzip -o "$i"; \
+                mv *.ttf /home/${NB_USER}/.local/share/fonts/; \
+                rm "$i"; \
+            done \
+        \
+    \
+    && chown -R ${NB_USER} /home/${NB_USER}/.local/share/fonts
 
 #--- Quarto ---#
 INCLUDE+ ./docker/Dockerfile.quarto
