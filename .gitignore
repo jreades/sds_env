@@ -1,11 +1,12 @@
 cloud-config.yml
+*.code-workspace
 *.ova
 notebooks
 
 /.quarto/
 /_site/
 /docs/
+/fonts/static
 
 .DS_Store
 .ipynb_checkpoints/
-sds_env.code-workspace
