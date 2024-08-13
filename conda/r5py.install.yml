@@ -5,120 +5,76 @@
 channels:
   - conda-forge
 dependencies: 
-  #- altair
   - black # Supports code formatter labextension
-  - bokeh
-  - catboost
-  - clustergram
-  - contextily 
-  - cubo # Data Cubes from GEE and STAC
+  #- contextily 
   - cython
   #- cmake<3.20
-  - dask
-  - dask-geopandas
+  #- dask
+  #- dask-geopandas
   - datashader
   - descartes
-  - flake8 # Style enforcement
-  - gensim 
-  - geoalchemy2 # PostGIS geometries
-  - geocube
+  #- gensim 
   - geopandas
   - geopy 
   - gstools # Multiprocessing
   - h3-py
   - hdbscan
-  - icecream
   - ipykernel
   - ipyleaflet 
   - ipyparallel
   - ipympl
   - ipywidgets
   - jupyterlab>=4.0 
-  - jupyter_bokeh
   - jupyterlab_code_formatter # Supports labextension
   - jupyterlab-geojson
   - jupyterlab-variableinspector
   - jupyter-lsp-python # Provides LSP Extension + Server
   - jupytext
-  - legendgram 
   - libgdal-arrow-parquet
   - lxml
-  #- mkl-service
-  - mgwr 
-  - momepy
-  #- nbdime 
-  #- networkx 
-  - nltk 
-  #- numba
+  - networkx[default,extra]
+  #- nltk 
   - openpyxl
-  #- osmnx
+  - osmnx
   - palettable 
   - pip
   - pip:
-    - boruta # Supports feature selection
-    - contractions 
-    - dtreeviz
-    - dtreeviz[xgboost]
-    - esda # (alternative to PySAL stuff)
     - fastai #==1.0.61 # Huanfa's QM
     - gurobipy #==9.5.1 # Huanfa's QM
-    #- git+https://github.com/smazzanti/mrmr # Supports feature selection
-    #- git+http://github.com/kingsgeocomp/SOMPY#egg=sompy
-    - joypy
-    - jupyterlab-quarto
-    - kneed
-    #- langdetect
+    #- jupyterlab-quarto
     - libpysal
-    - lightgbm 
-    - matplotlib-scalebar 
-    #- mpl_toolkits
-    #- num2words
+    #- matplotlib-scalebar 
     - pulp #==2.6.0 # Huanfa's QM
-    - pykrige # Might not be available for Apple Silicon
     - rfpimp
-    - scikit-posthocs
     - skimpy
-    - sklearn-som
-    - smopy # NOT a typo! Not the same thing as sompy!
-    #- text_to_num
-    - tldr  # Useful replacement for man
-    - top2vec
-    - unidecode
-    - wordcloud
-    - xgboost
+    #- top2vec
+    #- unidecode
   - pointpats
   - polars
   - polyline
   - plotly
-  - psycopg2
   #- pymc3
   - pyarrow
   - pyogrio
   - pysal
   - pyzmq
   - python-duckdb
-  #- qgrid 
+  - r5py
   - rasterio
   - rasterstats
   - rio-cogeo
   - rioxarray
   - scikit-learn
   - seaborn
-  - shap
   - spatialpandas
-#  - spacy 
-#  - spacy[transformer]  # Add too much to image
   - spopt
-  - sqlalchemy
   - statsmodels
   - tabulate  # For exporting from pandas to markdown
-#  - textblob 
   - tzlocal 
-  - umap-learn
+  #- umap-learn
   - xarray
   - xarray-spatial
   - xarray_leaflet
   - xlrd
   - xlsxwriter
   - xvec
-  - ydata-profiling

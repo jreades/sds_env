@@ -1,0 +1,56 @@
+# syntax = edrevo/dockerfile-plus
+# To make the above work, you need to add 
+# `export DOCKER_BUILDKIT=1` (without the back-tics)
+# to your .rc (.zshrc/.bashrc) file. This is *only*
+# needed when building from source. Otherwise just pull
+# as below.
+
+#--- Build from Jupyter-provided Minimal Install ---#
+#  export IMG_NM=sds:2024-silicon && docker build --platform linux/arm64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
+#  export IMG_NM=sds:2024-intel && docker build --platform linux/amd64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
+#FROM --platform=linux/amd64 quay.io/jupyter/minimal-notebook:2024-07-08
+FROM --platform=linux/arm64 quay.io/jupyter/minimal-notebook:2024-07-08
+#FROM --platform=linux/amd64 continuumio/miniconda3:23.10.0-1
+LABEL maintainer="Jon Reades <j.reades@ucl.ac.uk>"
+
+ARG TARGETPLATFORM
+
+#ENV NB_USER = "$(echo `whoami`)"
+#RUN echo ${NB_USER}
+
+ENV yaml_nm 'r5py.install.yml'
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ENV r5v 'v7.2'
+
+#--- Avoid weird build issue ---#
+RUN mkdir -p /home/${NB_USER}/.cache/conda
+
+#--- Base ---#
+USER root
+RUN apt-get update \
+    && apt-get install -y \
+        gcc \ 
+        default-jre
+
+#--- R5 download ---#
+# It's not clear to me if we could run r5py
+# and force it to download the R5 Jar just
+# once during build, or whether it would 
+# keep trying to do this each time...
+RUN wget -O r5-all.jar https://github.com/conveyal/r5/releases/download/${r5v}/r5-${r5v}-all.jar \
+  && mkdir -p /usr/share/java/r5 \ 
+  && mv r5-all.jar /usr/share/java/r5/
+
+#--- Python ---#
+INCLUDE+ ./docker/Dockerfile.python.install
+
+#--- Configure startup params ---#
+# Switch back to user to avoid accidental container runs as root
+USER $NB_UID
+
+# VSCode Extension Folder (optional usage)
+RUN mkdir -p /home/$NB_USER/.vscode-server/extensions \
+             /home/$NB_USER/.vscode-server-insiders/extensions \
+    && chown -R $NB_UID \ 
+             /home/$NB_USER/.vscode-server \
+             /home/$NB_USER/.vscode-server-insiders
