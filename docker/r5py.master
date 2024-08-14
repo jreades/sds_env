@@ -8,8 +8,8 @@
 #--- Build from Jupyter-provided Minimal Install ---#
 #  export IMG_NM=sds:2024-silicon && docker build --platform linux/arm64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
 #  export IMG_NM=sds:2024-intel && docker build --platform linux/amd64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
-#FROM --platform=linux/amd64 quay.io/jupyter/minimal-notebook:2024-07-08
-FROM --platform=linux/arm64 quay.io/jupyter/minimal-notebook:2024-07-08
+FROM --platform=linux/amd64 quay.io/jupyter/minimal-notebook:2024-07-08
+#FROM --platform=linux/arm64 quay.io/jupyter/minimal-notebook:2024-07-08
 #FROM --platform=linux/amd64 continuumio/miniconda3:23.10.0-1
 LABEL maintainer="Jon Reades <j.reades@ucl.ac.uk>"
 

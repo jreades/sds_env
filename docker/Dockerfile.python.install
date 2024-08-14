@@ -40,12 +40,14 @@ RUN source activate ${env_nm} \
     && MPLBACKEND=Agg python -c "import matplotlib.pyplot" \
     && python -c "import matplotlib.font_manager;" \
     && python -c "import logging; logging.basicConfig(level='INFO'); import black" \
-    && python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger'); nltk.download('omw-1.4')" \
-    && python -c "import duckdb; db = duckdb.connect(); db.execute('INSTALL spatial'); db.execute('INSTALL httpfs'); db.execute('LOAD spatial; LOAD httpfs;');" \
     && conda deactivate
 
-# This bloats the Docker image massively
-# RUN python -m spacy download en_core_web_sm
+RUN if [ -v "$r5v" ]; then \
+        source activate ${env_nm} \
+        && python -c "import nltk; nltk.download('wordnet'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('city_database'); nltk.download('averaged_perceptron_tagger'); nltk.download('omw-1.4')" \
+        && python -c "import duckdb; db = duckdb.connect(); db.execute('INSTALL spatial'); db.execute('INSTALL httpfs'); db.execute('LOAD spatial; LOAD httpfs;');" \
+        && conda deactivate; \
+    fi  
 
 #--- Tidy and fix permissions ---#
 USER root

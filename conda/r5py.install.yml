@@ -58,7 +58,7 @@ dependencies:
   - pyogrio
   - pysal
   - pyzmq
-  - python-duckdb
+  #- python-duckdb
   - r5py
   - rasterio
   - rasterstats
