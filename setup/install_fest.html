@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jon Reades">
-<meta name="dcterms.date" content="2023-09-27">
+<meta name="dcterms.date" content="2024-09-18">
 
-<title>CASA Computing Environment - Install ‘Fest’</title>
+<title>Install ‘Fest’ – CASA Computing Environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="CASA Computing Environment - Install ‘Fest’">
+<meta property="og:title" content="Install ‘Fest’ – CASA Computing Environment">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://jreades.github.io/sds_env/setup/img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -138,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Welcome</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Requirements</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-requirements">    
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Setup</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-setup">    
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-soft-skills" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-soft-skills" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Soft Skills</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-soft-skills">    
@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -219,11 +219,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/install_fest.html">Install ‘Fest’</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -302,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 27, 2023</p>
+      <p class="date">September 18, 2024</p>
     </div>
   </div>
   
@@ -381,7 +381,7 @@ If You Need More Help
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Intel or Apple M1/M2?
+Intel or Apple M-chip?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -398,11 +398,11 @@ Windows 32- or 64-bit?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It is highly unlikely that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.</p>
+<p>It is <em>highly unlikely</em> that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.</p>
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Apple Intel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Apple Silicon (M1/M2)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">On Windows</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Apple Intel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Apple Silicon (M-chips)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">On Windows</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>You will need to install the following:</p>
@@ -410,19 +410,19 @@ Windows 32- or 64-bit?
 <li>Essential:
 <ul>
 <li><a href="https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-mac-amd64">Docker Desktop for Mac with Intel chip</a></li>
-<li><a href="https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.3.1-x86_64.pkg">R-4.3.1 for AMD64</a></li>
-<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2023.09.0-463.dmg">R Studio Desktop</a></li>
-<li><a href="https://qgis.org/downloads/macos/qgis-macos-pr.dmg">QGIS 3.32</a></li>
+<li><a href="https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.4.1-x86_64.pkg">R-4.4.1 for x86-64/AMD64</a></li>
+<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg">R Studio Desktop</a></li>
+<li><a href="https://qgis.org/downloads/macos/qgis-macos-ltr.dmg">QGIS Long-Term Release (LTR)</a></li>
 </ul></li>
 <li>Nice to have:
 <ul>
-<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=darwin-universal">VS Code (Universal)</a></li>
-<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-macos.pkg">Quarto</a></li>
 <li><a href="https://central.github.com/deployments/desktop/desktop/latest/darwin">GitHub Desktop</a></li>
 </ul></li>
 <li>Completely optional:
 <ul>
-<li><a href="https://iterm2.com/downloads/stable/iTerm2-3_4_20.zip">iTerm2</a></li>
+<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=darwin-universal">VS Code (Universal)</a></li>
+<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg">Quarto</a></li>
+<li><a href="https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip">iTerm2</a></li>
 </ul></li>
 </ul>
 </div>
@@ -432,19 +432,19 @@ Windows 32- or 64-bit?
 <li>Essential:
 <ul>
 <li><a href="https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-mac-arm64">Docker Desktop for Mac with Apple silicon</a></li>
-<li><a href="https://qgis.org/downloads/macos/qgis-macos-pr.dmg">QGIS 3.32</a></li>
-<li><a href="https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.3.1-arm64.pkg">R-4.3.1 for ARM64</a></li>
-<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2023.09.0-463.dmg">R Studio Desktop</a></li>
+<li><a href="https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.4.1-arm64.pkg">R-4.4.1 for ARM64</a></li>
+<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg">R Studio Desktop</a></li>
 </ul></li>
 <li>Nice to have:
 <ul>
-<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=darwin-arm64">VS Code (ARM64)</a></li>
-<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-macos.pkg">Quarto</a></li>
+<li><a href="https://qgis.org/downloads/macos/qgis-macos-ltr.dmg">QGIS Long-Term Release (LTR)</a></li>
 <li><a href="https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64">GitHub Desktop</a></li>
 </ul></li>
 <li>Completely optional:
 <ul>
-<li><a href="https://iterm2.com/downloads/stable/iTerm2-3_4_20.zip">iTerm2</a></li>
+<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=darwin-arm64">VS Code (ARM64)</a></li>
+<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg">Quarto</a></li>
+<li><a href="https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip">iTerm2</a></li>
 </ul></li>
 </ul>
 </div>
@@ -453,9 +453,9 @@ Windows 32- or 64-bit?
 <li>Essential:
 <ul>
 <li><a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">Docker Desktop for Windows</a></li>
-<li><a href="https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe">R-4.3.1</a></li>
-<li><a href="https://download1.rstudio.org/electron/windows/RStudio-2023.09.0-463.exe">R Studio Desktop</a></li>
-<li><a href="https://qgis.org/downloads/QGIS-OSGeo4W-3.32.3-1.msi">QGIS 3.32</a></li>
+<li><a href="https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe">R-4.4.1</a></li>
+<li><a href="https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe">R Studio Desktop</a></li>
+<li><a href="https://qgis.org/downloads/QGIS-OSGeo4W-3.34.10-1.msi">QGIS Long-Term Release (LTR)</a></li>
 <li><a href="https://git-scm.com/download/win">Git</a></li>
 </ul></li>
 <li>Nice to have:
@@ -499,40 +499,40 @@ Windows Users
 </div>
 <p>After you’ve installed Docker, You must start the Docker app running before any of the commands below will work. You’ll know that you’ve succeeded when you see the ‘Docker Desktop’ window appear listing downloaded images and running containers.</p>
 <section id="downloading-the-image" class="level4">
-<h4 class="anchored" data-anchor-id="downloading-the-image">Downloading the jreades/sds:2023 Image</h4>
+<h4 class="anchored" data-anchor-id="downloading-the-image">Downloading the jreades/sds:2024 Image</h4>
 <p>To test if Docker is installed correctly, try running this command in either the <code>Terminal</code> (macOS) or the <code>Power Shell</code> (Windows):</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Intel Macs and Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">M1/M2 Silicon Macs</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Intel Macs and Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">M-Chip Silicon Macs</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>If your Apple computer has an Intel chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>) or is running Windows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p>If your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2023-silicon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024-silicon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <p>You should see a lot of ‘layers’ being copied down – about 10GB worth – so don’t do this over a cellular connection! If that <em>doesn’t</em> happen then you may need to do <a href="../docker/index.html">more reading about Docker</a>.</p>
 </section>
 <section id="starting-the-container" class="level4">
-<h4 class="anchored">Starting the sds2023 Container</h4>
+<h4 class="anchored">Starting the sds2024 Container</h4>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">For Intel Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">For M1/M2 Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">For Windows</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">For Intel Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">For M-Chip Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">For Windows</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>Once the <code>pull</code> process completes you’ll need to copy+paste the following into the <code>Terminal</code> as the <em>bare minimum</em> for getting up and running:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2023 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2023 start.sh jupyter lab <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024 start.sh jupyter lab <span class="dt">\</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <p>Once the <code>pull</code> process completes you’ll need to copy+paste the following into the <code>Terminal</code> as the <em>bare minimum</em> for getting up and running:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2023 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2023-silicon start.sh jupyter lab <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-silicon start.sh jupyter lab <span class="dt">\</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
@@ -550,7 +550,7 @@ Windows
 </div>
 </div>
 <p>Once the <code>pull</code> process completes you’ll need to copy+paste the following into the <code>Power Shell</code> (<em>note</em>: <strong>not into the Command Prompt (cmd)</strong>). Note that this is the one-line version for Windows users:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2023 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2023 start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2024 start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="errors-starting-a-container" class="level2 callout-danger">
 <h2 class="anchored" data-anchor-id="errors-starting-a-container">Errors Starting a Container</h2>
 <p>Many applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the <code>$(pwd)</code> part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something <em>like</em> <code>C:\Users\a1509\</code> in which case just replace the <code>$(pwd)</code> with this and you <em>should</em> be good to go.</p>
@@ -606,18 +606,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -649,7 +638,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/jreades\.github\.io\/sds_env\/");
@@ -657,7 +668,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

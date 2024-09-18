@@ -1,71 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jreades.github.io/sds_env/skills/thinking.html</loc>
-    <lastmod>2024-04-26T13:31:18.525Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/skills/index.html</loc>
-    <lastmod>2024-04-26T13:31:18.525Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/skills/attention.html</loc>
-    <lastmod>2024-04-26T13:31:18.525Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/setup/markdown.html</loc>
-    <lastmod>2024-04-26T13:31:18.524Z</lastmod>
-  </url>
-  <url>
     <loc>https://jreades.github.io/sds_env/setup/install_fest.html</loc>
-    <lastmod>2024-04-26T13:31:18.524Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/setup/git.html</loc>
-    <lastmod>2024-04-26T13:31:18.524Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/setup/docker.html</loc>
-    <lastmod>2024-04-26T13:31:18.523Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/req/index.html</loc>
-    <lastmod>2024-04-26T13:31:18.512Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/req/code_camp.html</loc>
-    <lastmod>2024-04-26T13:31:18.511Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/index.html</loc>
-    <lastmod>2024-04-30T08:48:56.834Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/conda/index.html</loc>
-    <lastmod>2024-04-26T13:31:18.454Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jreades.github.io/sds_env/docker/index.html</loc>
-    <lastmod>2024-04-26T13:33:30.675Z</lastmod>
+    <lastmod>2024-09-18T09:31:09.275Z</lastmod>
   </url>
   <url>
     <loc>https://jreades.github.io/sds_env/req/base.html</loc>
     <lastmod>2024-04-26T13:31:18.511Z</lastmod>
   </url>
   <url>
-    <loc>https://jreades.github.io/sds_env/req/health.html</loc>
-    <lastmod>2024-04-26T13:35:07.881Z</lastmod>
+    <loc>https://jreades.github.io/sds_env/req/code_camp.html</loc>
+    <lastmod>2024-04-26T13:31:18.511Z</lastmod>
   </url>
   <url>
-    <loc>https://jreades.github.io/sds_env/req/wsl.html</loc>
-    <lastmod>2024-04-26T13:31:18.512Z</lastmod>
+    <loc>https://jreades.github.io/sds_env/skills/reading.html</loc>
+    <lastmod>2024-05-07T16:54:56.098Z</lastmod>
   </url>
   <url>
-    <loc>https://jreades.github.io/sds_env/setup/env.html</loc>
-    <lastmod>2024-04-26T13:31:18.524Z</lastmod>
+    <loc>https://jreades.github.io/sds_env/skills/help.html</loc>
+    <lastmod>2024-04-26T13:31:18.525Z</lastmod>
   </url>
   <url>
-    <loc>https://jreades.github.io/sds_env/setup/index.html</loc>
+    <loc>https://jreades.github.io/sds_env/setup/no_install.html</loc>
     <lastmod>2024-04-26T13:31:18.524Z</lastmod>
   </url>
   <url>
@@ -73,15 +29,59 @@
     <lastmod>2024-04-26T13:31:18.524Z</lastmod>
   </url>
   <url>
-    <loc>https://jreades.github.io/sds_env/setup/no_install.html</loc>
+    <loc>https://jreades.github.io/sds_env/setup/git.html</loc>
     <lastmod>2024-04-26T13:31:18.524Z</lastmod>
   </url>
   <url>
-    <loc>https://jreades.github.io/sds_env/skills/help.html</loc>
+    <loc>https://jreades.github.io/sds_env/req/health.html</loc>
+    <lastmod>2024-04-26T13:35:07.881Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/conda/index.html</loc>
+    <lastmod>2024-04-26T13:31:18.454Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/req/wsl.html</loc>
+    <lastmod>2024-04-26T13:31:18.512Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/setup/docker.html</loc>
+    <lastmod>2024-09-18T09:31:57.350Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/index.html</loc>
+    <lastmod>2024-04-30T08:48:56.834Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/req/index.html</loc>
+    <lastmod>2024-04-26T13:31:18.512Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/setup/index.html</loc>
+    <lastmod>2024-04-26T13:31:18.524Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/setup/markdown.html</loc>
+    <lastmod>2024-04-26T13:31:18.524Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/skills/attention.html</loc>
     <lastmod>2024-04-26T13:31:18.525Z</lastmod>
   </url>
   <url>
-    <loc>https://jreades.github.io/sds_env/skills/reading.html</loc>
-    <lastmod>2024-05-07T16:54:56.098Z</lastmod>
+    <loc>https://jreades.github.io/sds_env/skills/index.html</loc>
+    <lastmod>2024-04-26T13:31:18.525Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/skills/thinking.html</loc>
+    <lastmod>2024-04-26T13:31:18.525Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/docker/index.html</loc>
+    <lastmod>2024-04-26T13:33:30.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jreades.github.io/sds_env/setup/env.html</loc>
+    <lastmod>2024-04-26T13:31:18.524Z</lastmod>
   </url>
 </urlset>
