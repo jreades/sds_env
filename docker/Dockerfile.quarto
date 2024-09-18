@@ -1,12 +1,12 @@
 #--- Quarto ---#
 USER root
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get install --no-install-recommends -y \
     #texlive \
     #pandoc \
+    #pandoc-citeproc \
     texlive-fonts-recommended \
     lmodern \
-    pandoc-citeproc \
     curl \
     gdebi-core
 
