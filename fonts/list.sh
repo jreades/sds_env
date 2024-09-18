@@ -3,7 +3,7 @@
 GFONTS='https://fonts.google.com/download'
 SPECTRAL='Spectral'
 SPECTRAL_SC='Spectral%20SC'
-ROBOTO='Roboto'
+ROBOTO='Roboto Flex'
 JETBRAINS='JetBrains%20Mono'
 SOURCE='Source%20Code%20Pro'
 SOURCESANS='Source%20Sans%203'

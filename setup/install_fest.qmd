@@ -1,7 +1,7 @@
 ---
 title: "Install 'Fest'"
 author: "Jon Reades"
-date: "9/27/2023"
+date: "9/18/2024"
 ---
 
 This page is intended for use at our annual 'install fest' during Induction Week. It is intended To support you in getting the final key bits of software set up on your laptop/computer so that you are ready to begin your studies in Week 1. This is the full list of installers require.
@@ -20,7 +20,7 @@ Please make sure that you have installed the [Base Utilities](../req/base.qmd) *
 ## Installation
 
 ::: {.callout-tip}
-## Intel or Apple M1/M2?
+## Intel or Apple M-chip?
 
 Apple has migrated away from using Intel computer chips and now designs its own 'Silicon' chipset instead. Confusingly, these are often *also* referred to by their technical specification as `AMD64` (Intel) and `ARM64` (Apple). To find out which you have, click on the Apple icon (&#63743;) and select `About this Mac`. Look at the `Processor` section and you should see which type of computer you have.
 
@@ -29,7 +29,7 @@ Apple has migrated away from using Intel computer chips and now designs its own 
 ::: {.callout-tip}
 ## Windows 32- or 64-bit?
 
-It is highly unlikely that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.
+It is *highly unlikely* that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.
 
 :::
 
@@ -41,39 +41,39 @@ You will need to install the following:
 
 - Essential:
   - [Docker Desktop for Mac with Intel chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64)
-  - [R-4.3.1 for AMD64](https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.3.1-x86_64.pkg)
-  - [R Studio Desktop](https://download1.rstudio.org/electron/macos/RStudio-2023.09.0-463.dmg)
-  - [QGIS 3.32](https://qgis.org/downloads/macos/qgis-macos-pr.dmg)
+  - [R-4.4.1 for x86-64/AMD64](https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.4.1-x86_64.pkg)
+  - [R Studio Desktop](https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg)
+  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg)
 - Nice to have: 
-  - [VS Code (Universal)](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)
-  - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-macos.pkg)
   - [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/darwin)
 - Completely optional:
-  - [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_4_20.zip)
+  - [VS Code (Universal)](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)
+  - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg)
+  - [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip)
 
-## Apple Silicon (M1/M2)
+## Apple Silicon (M-chips)
 
 You will need to install the following:
 
 - Essential: 
   - [Docker Desktop for Mac with Apple silicon](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64) 
-  - [QGIS 3.32](https://qgis.org/downloads/macos/qgis-macos-pr.dmg) 
-  - [R-4.3.1 for ARM64](https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.3.1-arm64.pkg)
-  - [R Studio Desktop](https://download1.rstudio.org/electron/macos/RStudio-2023.09.0-463.dmg)
+  - [R-4.4.1 for ARM64](https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.4.1-arm64.pkg)
+  - [R Studio Desktop](https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg)
 - Nice to have:
-  - [VS Code (ARM64)](https://code.visualstudio.com/sha/download?build=stable&os=darwin-arm64) 
-  - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-macos.pkg)
+  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg) 
   - [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64)
 - Completely optional:
-  - [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_4_20.zip)
+  - [VS Code (ARM64)](https://code.visualstudio.com/sha/download?build=stable&os=darwin-arm64) 
+  - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg)
+  - [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip)
 
 ## On Windows
 
 - Essential:
   - [Docker Desktop for Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
-  - [R-4.3.1](https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe)
-  - [R Studio Desktop](https://download1.rstudio.org/electron/windows/RStudio-2023.09.0-463.exe)
-  - [QGIS 3.32](https://qgis.org/downloads/QGIS-OSGeo4W-3.32.3-1.msi)
+  - [R-4.4.1](https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe)
+  - [R Studio Desktop](https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe)
+  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/QGIS-OSGeo4W-3.34.10-1.msi)
   - [Git](https://git-scm.com/download/win)
 - Nice to have:
   - [VS Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user)

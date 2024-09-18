@@ -30,7 +30,7 @@ If your Apple computer has an Intel chipset (see: &#63743; -> `About this Mac` -
 docker pull {{< var env.image >}}
 ```
 
-## M1/M2 Silicon Macs
+## M-Chip Silicon Macs
 
 If your Apple computer has an M1 or M2 'Silicon' chipset (see: &#63743; -> `About this Mac` -> `Processor`): 
 
@@ -57,7 +57,7 @@ docker run --rm -d --name {{< var env.name >}} -p 8888:8888 \
   --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
-## For M1/M2 Macs
+## For M-Chip Macs
 
 Once the `pull` process completes you'll need to copy+paste the following into the `Terminal` as the *bare minimum* for getting up and running:
 

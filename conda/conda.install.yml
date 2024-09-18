@@ -1,7 +1,11 @@
 # To install/reinstall the environment:
 #   conda-env create -f conda.install.yml
+# To deal with issues reported by missing mamba solver:
+#   https://github.com/ContinuumIO/anaconda-issues/issues/13353#issuecomment-2260475729
+#   OR:
+#   conda install -c conda-forge --solver=classic ...
 #
-# name: sds2022
+# name: sds2024
 channels:
   - conda-forge
 dependencies: 
@@ -81,7 +85,7 @@ dependencies:
     - sklearn-som
     - smopy # NOT a typo! Not the same thing as sompy!
     #- text_to_num
-    - tldr  # Useful replacement for man
+    #- tldr  # Replacement for man, but installed via node
     - top2vec
     - unidecode
     - wordcloud
@@ -93,6 +97,7 @@ dependencies:
   - psycopg2
   #- pymc3
   - pyarrow
+  - pydub
   - pyogrio
   - pysal
   - pyzmq

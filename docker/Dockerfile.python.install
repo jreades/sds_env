@@ -57,6 +57,7 @@ RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements" 
     # Clean up
     && jupyter lab clean -y \
     && conda clean --all -f -y \
+    && npm install -g tldr \
     && npm cache clean --force \
     && rm -rf $CONDA_DIR/share/jupyter/lab/staging \
     && rm -rf /home/$NB_USER/.node-gyp/* \
