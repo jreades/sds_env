@@ -1,0 +1,243 @@
+---
+format:
+  revealjs:
+    theme: [serif, slides.scss]
+    preload-iframes: true
+    # multiplex: true 
+    # embed-resources: true
+author: "Andy Maclachlan"
+title: "How to Succeed"
+footer: "How to Succeed • Andy Maclachlan & Jon Reades"
+highlight-style: github
+code-copy: true
+code-line-numbers: true
+slide-level: 2
+title-slide-attributes:
+  data-background-image: ../img/CASA_Logo_no_text.png
+  data-background-size: cover
+  data-background-position: center
+  data-background-opacity: '0.17'
+logo: ../img/CASA_logo.png
+history: false
+css: slides.css
+---
+
+# Aims
+
+I hope to arm you with a range of:
+
+- Strategies
+- Hints
+- Tips
+- Tidbits of advice 
+
+... which will allow to you embark upon your degree knowing what you can do to achieve the best result you can!
+
+::: {.notes}
+
+This session was inspired by the difficulties encountered by some of our students in the last couple of years. By giving you this information now, hopefully you will be able to avoid some of the pitfalls they encountered!
+
+:::
+
+# Ready to Go?
+
+# Key to Success #1: Reading
+
+## Assigned Readings
+
+:::: {.columns}
+::: {.column width="50%"}
+- Read widely
+- Look at the reading list ([readingslists.ucl.ac.uk](http://readinglists.ucl.ac.uk))
+- Check the library for availability
+- Think critically^[Just because it was published, it doesn’t mean it’s correct!] 
+:::
+::: {.column width="50%"}
+
+```{=html}
+<iframe width="500" height="425" src="http://readinglists.ucl.ac.uk/search.html?q=casa" title="CASA Reading Lists"></iframe>
+```
+
+:::
+::::
+
+::: {.notes}
+Knowing where to find the best material is vital to success in your degree
+:::
+
+## UCL Library {.smaller}
+
+The UCL Library Services Website is a very good place to start if you want to find books located in UCL [www.ucl.ac.uk/library/](http://www.ucl.ac.uk/library/).
+
+```{=html}
+<iframe width="700" height="405" src="https://www.ucl.ac.uk/library/" title="Using the Library"></iframe>
+```
+
+UCL has lots of libraries -- you will probably find most useful items in the UCL Science Library, the Bartlett Library or we have a small CASA library where you can borrow books.
+
+## Google Scholar
+
+Find academic articles using Google Scholar ([scholar.google.com](https://scholar.google.com/)), it’s great! Much better than a standard google search for finding books, journal articles, working papers etc.
+
+## Google Scholar (2)
+
+You can also link Google scholar to the UCL library, so if you find an article you might like to read Google will give you the UCL link to access it! 
+
+## Web of Science
+
+Web of Science is also an excellent [search tool](https://www.webofscience.com/wos/woscc/basic-search) for finding academic articles. It will automatically link to items in the UCL catalogue as you need to log in via your institutional credentials.
+
+## Read Widely? {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+1. Set the Scene Readings
+
+- UN Sustainable Development Goals
+- C40 cities 
+- Give cities a seat at the top table, Acuto 2016
+- Scientists must have a say in the future of cities, McPherson 2016
+- Global science for city policy, Acuto 2018
+- London Plan
+- New Urban Agenda
+
+:::
+::: {.column width="50%"}
+2. Technical Readings 
+
+The detail of the method you are using = where, how +why
+:::
+::::
+
+# Key to Success #2: Writing
+
+## Why it Matters
+
+Being able to write well is absolutely key to success.
+
+If you are unable to present your argument well in English, your grades will suffer accordingly.
+
+Poor quality of written English a contributing factor in failed CASA dissertations in the past.
+
+There are a number of factors which could lead to poor written work, but fortunately there are solutions to all of them...
+
+## ESL
+
+If English isn’t your first language the UCL Centre For Languages & International Education has taught courses which run during the term ([www.ucl.ac.uk/languages-international-education](https://www.ucl.ac.uk/languages-international-education/ucl-academic-communication-centre)) and there are also mobile apps ([www.ucl.ac.uk/english-usage/apps/](http://www.ucl.ac.uk/english-usage/apps/))
+
+Also, the Writing Lab ([www.ucl.ac.uk/writing-lab/](https://www.ucl.ac.uk/writing-lab/))!
+
+## The Writing Lab
+
+
+## 'Academic' English
+
+Developed through the programme and modules.
+
+Other resources:
+
+- UCL [Transition Study Skills](https://www.ucl.ac.uk/writing-lab/online-resources/help-at-ucl)
+- UCL Institute of Education has [excellent online guides](http://www.ucl.ac.uk/ioe-writing-centre)
+
+MOOCs are available elsewhere: 
+
+- E.g. [EdX](https://www.edx.org/course/how-write-essay-uc-berkeleyx-colwri2-1x)! 
+
+# Task 1!
+
+You have 10 minutes to read through the two introductions provided^[Both were submitted in previous years as part of the GIS Coursework Assessment] and answer these questions:
+
+1. Which is the better introduction?
+2. Why? (List as many reasons as you can think of...)
+
+# Marshal Your Arguments
+
+Read the hand-outs.
+
+## How to Reference
+
+Variety of academic referencing styles, but we prefer [Harvard referencing](https://www.ucl.ac.uk/ich/services/library/resources/harvard):
+
+- Bao (2003) compares this population group with...
+- An earlier study (Bao, 2003) concluded that...
+- Smith et al. (2006) conducted a situation analysis...
+- Al-Hasani (2003, p27) stated that “this method is more suitable for analysis of complex emergency situations” 
+
+## Use a Reference Manager
+
+Reference management software is **BRILLIANT** so use it!
+
+[Zotero](https://www.zotero.org/) is FREE and works across multiple platforms.
+
+## Zotero
+
+Add citations to your library with **ONE CLICK** from your (Firefox or Chrome) browser.
+
+Will automatically detect whether a journal article, book, webpage etc.  
+
+## Zotero (2)
+
+Citations can be imported straight into Microsoft Word / Google docs / Markdown using a 'plugin'.
+
+Zotero will then build your alphabetical reference list at the end according to the style you choose!
+
+## Zotero (3)
+
+Your personal reference 'library' is stored online *and* locally on your computer (and synced) so you can access from anywhere. Free backups!
+
+Other reference management software such as EndNote is available (EndNote is good, but quite pricey...)
+
+** Big hint #1 – DOWNLOAD ZOTERO TODAY AND PRACTICE USING IT – IT WILL MAKE YOUR LIFE ABOUT 300% BETTER**
+
+## Plagiarism
+
+- Perhaps the most serious academic offense and one that could lead to you failing your degree!
+- Passing off someone else's work as your own.
+- Whether deliberately or accidentally (e.g. forgetting to cite something you copied from a source)
+- You will get credit every time you reference the work of someone you have read -- so make sure you cite them correctly!
+- We are all experts at spotting plagiarism (indeed it can be a bit of a sport for lecturers), so DON’T DO IT!!
+
+See my last point on Zotero to help with this!
+
+## Some Examples
+ 
+- Students try to change enough words to minimise their Turnitin score, but we’ve been doing this for many years and normally tell. 
+- Students submit `.zip` files in attempt to avoid their work going through Turnitin, but *all* work goes through Turnitin. 
+- Students screenshot figures from web sources, or even published papers, but when we check they can't show how they produced them. 
+- An applicant provided a work sample based on the town of Stowe, Vermont USA. We recognised that they had directly copied an ArcGIS tutorial for the spatial analyst toolbox.
+
+## Test Yourself
+
+Many cases of plagiarism are accidental, but this is **not** an excuse.
+
+You must all complete the referencing and plagiarism quiz on Moodle. We will log all people who have and haven’t completed and will chase you if you don’t complete it. 
+
+Log onto the CASA page (where these slides will be along with other induction week materials) and complete the short quiz. 
+
+## The Solution?
+
+If in doubt, ask.
+
+
+## Cheating
+
+![We Promise You An 'A'! Promise!](./img/China_Essay_Service.png)
+
+## Cheating (2)
+
+- If you are caught using one of these companies the penalties are *harsh*: they typically include immediate expulsion and the withholding *any* qualification you might have qualified for!
+- You run the very real risk of being blackmailed throughout your degree and career. 
+- The types of assignments we set are difficult for these companies to handle because they don’t have the necessary skills to complete them to a high standard.
+
+## Get Help!
+
+We recognise that there are many reasons students might plagiarise or cheat, for example:
+
+- Leaving the work until the last minute 
+- Feel overwhelmed and panicking 
+- Having to dedicate time to over personal issues (e.g. health or family)
+
+*Talk* to the staff (your personal tutor, the departmental tutor, the module leader, *anyone*) if you are facing issues that could be affecting your studies.
+
+# Original, Insightful and Coherent?
+
