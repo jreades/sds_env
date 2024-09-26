@@ -458,19 +458,6 @@ If You Need More Help
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Copy Code to Clipboard
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Whenever you see a ‘code block’, you will <em>also</em> see a ‘clipboard’ icon (<img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon">) in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the <code>Terminal</code> or <code>Power Shell</code>. That will save you a lot of time and effort.</p>
-</div>
-</div>
 </section>
 <section id="docker" class="level2">
 <h2 class="anchored" data-anchor-id="docker">Docker</h2>
@@ -487,12 +474,43 @@ Windows Users
 <p>Please ensure that you have installed WSL2 <em>before</em> installing Docker!</p>
 </div>
 </div>
-<p>After you’ve installed Docker, You must start the Docker app running before any of the commands below will work. You’ll know that you’ve succeeded when you see the ‘Docker Desktop’ window appear listing downloaded images and running containers.</p>
+<p>Docker is ‘virtualisation’ tool that allows you to run ‘virtual machines’ on your computer’s ‘host’ operating system. That’s a lot of new, probably meaningless words. If you’re one of those people who (understandably) likes to understand what’s going on then here’s how some people define it:</p>
+<ol type="1">
+<li>Google on <a href="https://cloud.google.com/learn/what-is-a-virtual-machine#">What is a virtual machine</a>?</li>
+<li>VMWare on <a href="https://www.vmware.com/topics/virtual-machine#">What is a virtual machine</a>?</li>
+<li>Microsoft on <a href="https://azure.microsoft.com/en-gb/resources/cloud-computing-dictionary/what-is-a-virtual-machine">What is a virtual machine (VM)</a>?</li>
+</ol>
+<p>I would suggest reading these <em>while</em> you’re downloading Docker… And then, <em>after</em> you’ve downloaded Docker, you need to:</p>
+<ol type="1">
+<li>Install it – usually this will mean opening the image and either dragging it your Application folder (Mac) or running the installer (Windows)</li>
+<li>Start it running – double-click the Docker icon in your Applications folder to start Docker running.</li>
+<li>Finish setup – once Docker is started, you should see the login screen below. You do <em>not</em> need to create an account (notice <code>Continue with signing in</code>) and then on all the subsequent questions you can <code>Skip</code> (upper-right corner) answering as well.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/Docker_Login.png" class="img-fluid figure-img"></p>
+<figcaption>Docker trying to make you create an account</figcaption>
+</figure>
+</div>
+<p>You <strong>must start the Docker app running</strong> before any of the commands below will work. You’ll know that you’ve succeeded when you see the ‘Docker Desktop’ window appear listing ‘downloaded images’ and ‘running containers’.</p>
 <section id="downloading-the-image" class="level4">
 <h4 class="anchored" data-anchor-id="downloading-the-image">Downloading the jreades/sds:2024 Image</h4>
-<p>To test if Docker is installed correctly, try running this command in either the <code>Terminal</code> (macOS) or the <code>Power Shell</code> (Windows):</p>
+<p>To test if Docker is installed correctly, you will need either the <code>Terminal</code> (macOS) or the <code>Power Shell</code> (Windows).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Copy Code to Clipboard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Whenever you see a ‘code block’ below, you will <em>also</em> see a ‘clipboard’ icon (<img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon">) in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the <code>Terminal</code> or <code>Power Shell</code>. That will save you a lot of time and effort.</p>
+</div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Intel Macs and Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">M-Chip Silicon Macs</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Intel Macs and Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Silicon/M-Chip Macs</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>If your Apple computer has an Intel chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>) or is running Windows:</p>
@@ -504,7 +522,7 @@ Windows Users
 </div>
 </div>
 </div>
-<p>You should see a lot of ‘layers’ being copied down – about 10GB worth – so don’t do this over a cellular connection! If that <em>doesn’t</em> happen then you may need to do <a href="../docker/index.html">more reading about Docker</a>.</p>
+<p>You should see a lot of ‘layers’ being copied down – between 2GB and 5GB worth – so don’t do this over a cellular connection! If that <em>doesn’t</em> happen then you may need to do <a href="../docker/index.html">more reading about Docker</a>.</p>
 </section>
 <section id="starting-the-container" class="level4">
 <h4 class="anchored">Starting the sds2024 Container</h4>
