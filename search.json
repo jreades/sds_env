@@ -24,7 +24,7 @@
     "href": "setup/install_fest.html#installation",
     "title": "Install ‘Fest’",
     "section": "Installation",
-    "text": "Installation\n\n\n\n\n\n\nIntel or Apple M-chip?\n\n\n\nApple has migrated away from using Intel computer chips and now designs its own ‘Silicon’ chipset instead. Confusingly, these are often also referred to by their technical specification as AMD64 (Intel) and ARM64 (Apple). To find out which you have, click on the Apple icon () and select About this Mac. Look at the Processor section and you should see which type of computer you have.\n\n\n\n\n\n\n\n\nWindows 32- or 64-bit?\n\n\n\nIt is highly unlikely that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.\n\n\n\nApple IntelApple Silicon (M-chips)On Windows\n\n\nYou will need to install the following:\n\nEssential:\n\nDocker Desktop for Mac with Intel chip\nR-4.4.1 for x86-64/AMD64\nR Studio Desktop\nQGIS Long-Term Release (LTR)\n\nNice to have:\n\nGitHub Desktop\n\nCompletely optional:\n\nVS Code (Universal)\nQuarto\niTerm2\n\n\n\n\nYou will need to install the following:\n\nEssential:\n\nDocker Desktop for Mac with Apple silicon\nR-4.4.1 for ARM64\nR Studio Desktop\n\nNice to have:\n\nQGIS Long-Term Release (LTR)\nGitHub Desktop\n\nCompletely optional:\n\nVS Code (ARM64)\nQuarto\niTerm2\n\n\n\n\n\nEssential:\n\nDocker Desktop for Windows\nR-4.4.1\nR Studio Desktop\nQGIS Long-Term Release (LTR)\nGit\n\nNice to have:\n\nVS Code\nQuarto\nGitHub Desktop\n\n\n\n\n\n\n\n\n\n\n\nCopy Code to Clipboard\n\n\n\nWhenever you see a ‘code block’, you will also see a ‘clipboard’ icon () in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal or Power Shell. That will save you a lot of time and effort.",
+    "text": "Installation\n\n\n\n\n\n\nIntel or Apple M-chip?\n\n\n\nApple has migrated away from using Intel computer chips and now designs its own ‘Silicon’ chipset instead. Confusingly, these are often also referred to by their technical specification as AMD64 (Intel) and ARM64 (Apple). To find out which you have, click on the Apple icon () and select About this Mac. Look at the Processor section and you should see which type of computer you have.\n\n\n\n\n\n\n\n\nWindows 32- or 64-bit?\n\n\n\nIt is highly unlikely that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.\n\n\n\nApple IntelApple Silicon (M-chips)On Windows\n\n\nYou will need to install the following:\n\nEssential:\n\nDocker Desktop for Mac with Intel chip\nR-4.4.1 for x86-64/AMD64\nR Studio Desktop\n\nGood to have:\n\nQGIS Long-Term Release (LTR)\nGitHub Desktop\n\nCompletely optional:\n\nVS Code (Universal)\nQuarto\niTerm2\n\n\n\n\nYou will need to install the following:\n\nEssential:\n\nDocker Desktop for Mac with Apple silicon\nR-4.4.1 for ARM64\nR Studio Desktop\n\nGood to have:\n\nQGIS Long-Term Release (LTR)\nGitHub Desktop\n\nCompletely optional:\n\nVS Code (ARM64)\nQuarto\niTerm2\n\n\n\n\n\nEssential:\n\nDocker Desktop for Windows\nR-4.4.1\nR Studio Desktop\nGit\n\nGood to have:\n\nQGIS Long-Term Release (LTR)\nGitHub Desktop\n\nCompletely optional:\n\nVS Code\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nCopy Code to Clipboard\n\n\n\nWhenever you see a ‘code block’, you will also see a ‘clipboard’ icon () in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal or Power Shell. That will save you a lot of time and effort.",
     "crumbs": [
       "Install 'Fest'"
     ]
@@ -50,173 +50,217 @@
     ]
   },
   {
-    "objectID": "req/base.html",
-    "href": "req/base.html",
-    "title": "Base Utilities",
+    "objectID": "setup/env.html",
+    "href": "setup/env.html",
+    "title": "Programming Environment",
     "section": "",
-    "text": "In order to access the majority of the features that this module uses, you will need to install several ‘base’ utilities:",
+    "text": "Over the years, we have experimented with a range of approaches to setting you up with a programming environment, and we have come to the conclusion that Docker is the most robust way to ensure a consistent experience. This guarantees that all students end up with the same versions of each library, that difficult-to-diagnose hardware/OS issues are minimised, and that running/recovery is the most straightforward.\nSince Docker is very complex, you might want to read the Understanding Docker section on the ‘additional information’ page. We have tried to explain in fairly simple terms how it works, though we can’t take away all of the complexity.\nA very small number of students are unable to run Docker on older machines running Windows 10 Home, in which case Anaconda Python can be used with the configuration that we provide. However, if your machine runs Docker then you must use Docker: this isolates the programming environment from your computer, ensuring that nothing is clobbered by accident, and guaranteeing that you are working with the same version of every Python library as the rest of the class (and the versions for which the practicals are tested).\nAnaconda is only supported as a last resort.",
     "crumbs": [
-      "Base Utilities"
+      "Programming Environment"
     ]
   },
   {
-    "objectID": "req/base.html#windows-linux-shell",
-    "href": "req/base.html#windows-linux-shell",
-    "title": "Base Utilities",
-    "section": "Windows + Linux + Shell",
-    "text": "Windows + Linux + Shell\n\n\n\n\n\n\nCreating a Linux User\n\n\n\nIf you want to install a full Linux distribution (e.g. because you want to do more than just run Docker) then make sure you set up a new Linux user and do not end up running everything as root.\n\n\nTo make full use of WSL2 and Linux (if you want to do more than just use Docker) you will need to familiarise yourself with how having two operating systems that can talk to each other works. That is covered in the next section. This will actually be useful for understanding how Docker works, as it can be profoundly confusing.\nThe behaviour of the ‘shell’ (command line) is quite confusing because, with WSL2, you effectively end up with two ‘home’ directories: one for your Windows user, and one for your new Ubuntu user. Starting a Linux shell/command line puts you in your Linux home directory (the username may be completely different from your Windows username). Starting a Windows shell/command line puts you in your Windows home directory (again, the username may be completely different from your Linux username).\nSo the first, and perhaps most important, thing is understanding where ‘data’ is being stored:\n\nUnder Linux the user directory is apparently something like: \\\\wsl$\\&lt;DistroName&gt;\\home\\&lt;UserName&gt;\\ but you can usually get it by simply typing cd $HOME and then pwd when starting a new Linux shell.\nUnder Windows the user directory is: C:\\Users\\&lt;UserName&gt;\\ or /mnt/c/Users/&lt;UserName&gt;/, and you can often simply type pwd when opening a new Windows shell.\n\nSo these are different locations on your computer’s hard drive, and you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found this page on Microsoft’s web site that goes through some of the post-WSL2 installation steps, but see especially the additional page on Windows Terminal configuration.\nSlightly confusingly, you can run Linux commands directly from Windows, usually be adding wsl in front of the Linux command (e.g. wsl ls *.csv from Windows, where in Linux the command would be ls *.csv).\nTo make it easy to move from the Linux side of your machine to the Windows machine you can also do this:\n\nWork out where your CASA files are stored on the Windows side (see above: /mnt/c/Users/&lt;UserName&gt;/My\\ Documents/CASA/... where &lt;UserName&gt; is your Windows user name).\ncd to this location and type pwd to output the full path to the CASA directory.\nCopy this.\nNow start a Linux shell and run the following command once (you do not need to do it ever again): echo \"export WIN_HOME=\\\"/mnt/c/Users/.../CASA/\\\"\" &gt;&gt; $HOME/.bashrc. Replace the ... with the rest of the actual path! The \\\" is very important, don’t try to change those!\nNow run source .bashrc and you should see no errors.\n\nOnce you have done this you will have added a single line to your .bashrc file in Linux. This will create a ‘shortcut’ for bash in Linux. From here on out you should be able to type cd $WIN_HOME and move immediately over to the CASA directory on the Windows side. This will save having to remember (and type) the Windows path each time.",
+    "objectID": "setup/env.html#docker",
+    "href": "setup/env.html#docker",
+    "title": "Programming Environment",
+    "section": "Docker",
+    "text": "Docker\n\n\n\n\n\n\nWindows Users\n\n\n\nPlease ensure that you have installed WSL2 before installing Docker!\n\n\nAfter you’ve installed Docker, You must start the Docker app running before any of the commands below will work. You’ll know that you’ve succeeded when you see the ‘Docker Desktop’ window appear listing downloaded images and running containers.\n\nDownloading the jreades/sds:2024 Image\nTo test if Docker is installed correctly, try running this command in either the Terminal (macOS) or the Power Shell (Windows):\n\nIntel Macs and WindowsM-Chip Silicon Macs\n\n\nIf your Apple computer has an Intel chipset (see:  -&gt; About this Mac -&gt; Processor) or is running Windows:\ndocker pull jreades/sds:2024\n\n\nIf your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; About this Mac -&gt; Processor):\ndocker pull jreades/sds:2024-silicon\n\n\n\nYou should see a lot of ‘layers’ being copied down – about 10GB worth – so don’t do this over a cellular connection! If that doesn’t happen then you may need to do more reading about Docker.\n\n\nStarting the sds2024 Container\n\nFor Intel MacsFor M-Chip MacsFor Windows\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2024 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024 start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2024 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024-silicon start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\n\n\n\n\n\n\nWindows\n\n\n\nYou should follow this Microsoft guide to ensure that Use the WSL 2 based engine is checked. This may require restarting Docker.\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Power Shell (note: not into the Command Prompt (cmd)). Note that this is the one-line version for Windows users:\ndocker run --rm -d --name sds2024 -p 8888:8888 -v \"$(pwd):/home/jovyan/work\" jreades/sds:2024 start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\nErrors Starting a Container\nMany applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the $(pwd) part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something like C:\\Users\\a1509\\ in which case just replace the $(pwd) with this and you should be good to go.\n\n\n\n\nIf you have issues at this point, then you’ll need to do more reading. However, most of you should now be able to connect to the virtual machine by pointing your browser at: localhost:8888 where you should see something like this:\n\n\n\nJupyter Lab Success",
     "crumbs": [
-      "Base Utilities"
+      "Programming Environment"
     ]
   },
   {
-    "objectID": "req/code_camp.html",
-    "href": "req/code_camp.html",
-    "title": "Code Camp",
+    "objectID": "setup/env.html#errors-starting-a-container",
+    "href": "setup/env.html#errors-starting-a-container",
+    "title": "Programming Environment",
+    "section": "Errors Starting a Container",
+    "text": "Errors Starting a Container\nMany applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the $(pwd) part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something like C:\\Users\\a1509\\ in which case just replace the $(pwd) with this and you should be good to go.",
+    "crumbs": [
+      "Programming Environment"
+    ]
+  },
+  {
+    "objectID": "setup/env.html#vscode",
+    "href": "setup/env.html#vscode",
+    "title": "Programming Environment",
+    "section": "VSCode",
+    "text": "VSCode\nWe have built the jreades/sds:2024 image for a streamlined, effective in-browser experience. However, if you’re more familiar with IDEs then VSCode offers the ability to intergrate with Docker images so that you write your code in VSCode and it’s sent to the Docker image for execution. You can read the instructions on the more detailed Using Docker page.",
+    "crumbs": [
+      "Programming Environment"
+    ]
+  },
+  {
+    "objectID": "setup/env.html#anaconda-python",
+    "href": "setup/env.html#anaconda-python",
+    "title": "Programming Environment",
+    "section": "Anaconda Python",
+    "text": "Anaconda Python\n\n\n\n\n\n\nWarning\n\n\n\nWe only support Anaconda Python as a fallback for students who would otherwise be unable to complete the module because their computer does not support Docker. If you choose to use Anaconda (but could run Docker) then we will not be able to support you.\n\n\nYou are always free to install Anaconda Python and to use our YAML configuration script to install the SDS environment, but you should do this in your own time: in previous years students have encountered difficult-to-diagnose bugs in their code (and lost marks in the Assessments!) because they had installed an older or more recent version of a Python library than the one configured and tested in the SDS environment.\nWe believe that the replication advantages of virtualisation outweigh the disbenefits in terms of performance. It also means that you will spend less time installing libraries and more time running code, which is where your attention should really be when you are familiarising yourself with the foundations of data science.\nEventually you will, of course, want to install and manage your own programming environment (possibly even by building and sharing Docker images!) but this can be left for later when you have developed an appreciation of how and when virtualisation is (or is not) an appropriate solution to your needs.",
+    "crumbs": [
+      "Programming Environment"
+    ]
+  },
+  {
+    "objectID": "docker/index.html",
+    "href": "docker/index.html",
+    "title": "Using Docker",
     "section": "",
-    "text": "Prior to (re)joining CASA from the Department of Geography at King’s College London, Dr. Mic Ferretti, Dr. Zara Shabrina, Dr. James Millington, and I developed Code Camp.\nCode Camp provides a gentle introduction to the basics of programming in Python. Across ten sessions you will learn about syntax, variables, ‘simple’ data structures such as lists and dictionaries, and about the fundamentals of writing functions for reusable code. The sessions are entirely self-led: you should follow along at your own pace and remember that ‘it’s a marathon, not a sprint’. Don’t cram it all into the last week of summer holidays!\nStudents from previous years have repeatedly said that completing Code Camp helped them to feel more ready for the Foundations of Spatial Data Science module, enabling them to do better on assessments and on the programme as a whole.\nSo please, complete Code Camp by the start of term and, if possible, go through the materials more than once!\nYou should have received instructions via email for running Code Camp, but here they are again…",
-    "crumbs": [
-      "Code Camp"
-    ]
+    "text": "You will need to install and run Docker to be able to install the Spatial Data Science (SDS) environment. So after installing the Docker application, please make sure that you launch the application (especially on Windows) at least once before trying to run any Docker commands on the command line. You’ll know that you’ve done this is you see the ‘Docker Desktop’ window which lists downloaded images and running containers."
   },
   {
-    "objectID": "req/code_camp.html#options",
-    "href": "req/code_camp.html#options",
-    "title": "Code Camp",
-    "section": "Options",
-    "text": "Options\nCode Camp is publicly accessible through a code-sharing web site called GitHub and can be run using either:\n\nGoogle’s ‘Collaboratory’, or\nThe Open Source Binder tool.\n\nIn both cases there is nothing to install on your computer. You could even use a tablet or phone, though we wouldn't really recommend it. There are two main differences: ‘Colab’ notebooks require an account but can be saved into Google Drive; Binder does not require any registration, but you won’t be able to save anything.",
-    "crumbs": [
-      "Code Camp"
-    ]
+    "objectID": "docker/index.html#understanding-docker",
+    "href": "docker/index.html#understanding-docker",
+    "title": "Using Docker",
+    "section": "Understanding Docker",
+    "text": "Understanding Docker\nIn order to make use of Docker (and understand what’s happening when you get errors), it’s helpful to have some sense of what’s going on behind the scenes. You can click on the image below to make it larger, or you can download and print out a PDF version.\n\n\n\nSketch of Docker Usage\n\n\n\n\n\n\n\n\nM1/M2 Macs\n\n\n\nRemember that on an M1 or M2 Mac you need to add -silicon to the docker image name. So jreades/sds:2024 becomes jreades/sds:2024-silicon.\n\n\nSo here’s what’s happening:\n\nStep 1. docker pull\nYou issue the docker pull jreades/sds:2024 command to your computer, which turns around and asks Docker Hub for a copy of this image. Docker Hub responds by transferring a copy of the jreades/sds:2024 image to your computer. You now have a file containing all the instructions to set up and run a virtual machine on your computer.1\n\n\nStep 2, docker run\nYou issue the docker run ... jreades/sds:2024 ... command (which you’ll be running in a minute) from your computer, and this tells Docker to use the jreades/sds:2024 image as a template for creating a container called sds20242. sds2024 will do whatever it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But sds2024 is read-only, although you can make changes to the container while it’s running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image… we can cover this if you ever do it.\nAs part of the docker run command, we also told Docker what resources the container could access. There are two main types of resources for our purposes:\n\nA mount point which is a part of your computer’s hard drive that Docker can use to write things down permanently. We use $(pwd), which is short-hand for print working directory and refers to the ‘place’ on your computer where we issued the docker run command. We tell Docker to connect this to a directory called work (which resides in /home/jovyan/) on the sds2024 container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down Docker.\nOne or more ports which are like channels on a radio where the container can talk to other computers (including yours). In this case, we connect port 8888 on sds2024 to port 8888 on your computer. And that is why you have to tell your browser to go to localhost:8888 to access Jupyter Lab.\n\n\n\nStep 4. Interacting with the Container\nNow when you type things into the browser and tell code to ‘run’, what’s actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.\n\n\nStep 5. Anatomy of docker run\nIn the next section you’ll see the full Docker run command, here we just want to focus on the most important options (each -X is an option) for most users:\n\n-v: this specified the point on your hard drive that the sds2024 can use. By default we use $(pwd) which means ‘use the location where the docker run command was executed. You can also ’hard code’ this to something like /Users/&lt;your username&gt;/Documents/casa/fsds/ if you always want to use the same location.\n-p: this specified the channel (or port) on which the web browser can talk to the sds2024.\njreades/sds:2024: this specified the image we wanted to use\n\n\n\n\n\n\n\nEssential Topic\n\n\n\nThis next section is essential to running the sds2024 environment.\n\n\n\n\n\n\n\n\nCopy Code to Clipboard\n\n\n\nWhenever you see a ‘code block’, you will also see a ‘clipboard’ icon () in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal or Power Shell. That will save you a lot of time and effort."
   },
   {
-    "objectID": "req/code_camp.html#using-google-colab",
-    "href": "req/code_camp.html#using-google-colab",
-    "title": "Code Camp",
-    "section": "Using Google Colab",
-    "text": "Using Google Colab\n\nHow to get started:\n\nGo to Google’s Colab site and sign in using your Google account details (or create an account if you don’t already have one).\nChoose File then Open and select the GitHub tab from the open options (it’s between Google Drive and Upload).\nEnter the following URL: https://github.com/kingsgeocomp/code-camp (Jon was with King’s when he helped to create this resource)\nYou should now see a list of notebooks to choose from – the first few are fairly quick to complete, but they get harder as you go along – select the first on in the sequence and click Open in Colab.\nYou will need to trust the notebook in order to run it.\n\nNow you can run code in your web browser! When you are done for the day you can save the notebook to your Google Drive – to re-run that notebook you can just load it from Google Drive, rather than going back to GitHub, but remember that you need to re-run all the cells up to the point where you saved the notebook. Being able to save and re-run a notebook is the main difference from Binder.",
-    "crumbs": [
-      "Code Camp"
-    ]
+    "objectID": "docker/index.html#docker",
+    "href": "docker/index.html#docker",
+    "title": "Using Docker",
+    "section": "Docker",
+    "text": "Docker\n\n\n\n\n\n\nWindows Users\n\n\n\nPlease ensure that you have installed WSL2 before installing Docker!\n\n\nAfter you’ve installed Docker, You must start the Docker app running before any of the commands below will work. You’ll know that you’ve succeeded when you see the ‘Docker Desktop’ window appear listing downloaded images and running containers.\n\nDownloading the jreades/sds:2024 Image\nTo test if Docker is installed correctly, try running this command in either the Terminal (macOS) or the Power Shell (Windows):\n\nIntel Macs and WindowsM-Chip Silicon Macs\n\n\nIf your Apple computer has an Intel chipset (see:  -&gt; About this Mac -&gt; Processor) or is running Windows:\ndocker pull jreades/sds:2024\n\n\nIf your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; About this Mac -&gt; Processor):\ndocker pull jreades/sds:2024-silicon\n\n\n\nYou should see a lot of ‘layers’ being copied down – about 10GB worth – so don’t do this over a cellular connection! If that doesn’t happen then you may need to do more reading about Docker.\n\n\nStarting the sds2024 Container\n\nFor Intel MacsFor M-Chip MacsFor Windows\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2024 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024 start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2024 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024-silicon start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\n\n\n\n\n\n\nWindows\n\n\n\nYou should follow this Microsoft guide to ensure that Use the WSL 2 based engine is checked. This may require restarting Docker.\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Power Shell (note: not into the Command Prompt (cmd)). Note that this is the one-line version for Windows users:\ndocker run --rm -d --name sds2024 -p 8888:8888 -v \"$(pwd):/home/jovyan/work\" jreades/sds:2024 start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\nErrors Starting a Container\nMany applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the $(pwd) part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something like C:\\Users\\a1509\\ in which case just replace the $(pwd) with this and you should be good to go.\n\n\n\n\nIf you have issues at this point, then you’ll need to do more reading. However, most of you should now be able to connect to the virtual machine by pointing your browser at: localhost:8888 where you should see something like this:\n\n\n\nJupyter Lab Success"
   },
   {
-    "objectID": "req/code_camp.html#using-binder",
-    "href": "req/code_camp.html#using-binder",
-    "title": "Code Camp",
-    "section": "Using Binder",
-    "text": "Using Binder\nAll you need to do to get started is click the image below: \nThat’s it! But in case clicking that image doesn’t work, you can also go to: https://bit.ly/33Rc5QD. When Binder starts, you will be able to run the notebooks! The main difference from Colab is that you have to download a notebook from Binder to your local computer in order to save it. To re-run the same notebook, you’d need to upload the notebook to Binder again. So Binder has no ‘memory’ of your work between interactions.",
-    "crumbs": [
-      "Code Camp"
-    ]
+    "objectID": "docker/index.html#errors-starting-a-container",
+    "href": "docker/index.html#errors-starting-a-container",
+    "title": "Using Docker",
+    "section": "Errors Starting a Container",
+    "text": "Errors Starting a Container\nMany applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the $(pwd) part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something like C:\\Users\\a1509\\ in which case just replace the $(pwd) with this and you should be good to go."
   },
   {
-    "objectID": "skills/reading.html",
-    "href": "skills/reading.html",
-    "title": "How to Read",
+    "objectID": "docker/index.html#bash-script",
+    "href": "docker/index.html#bash-script",
+    "title": "Using Docker",
+    "section": "Bash Script",
+    "text": "Bash Script\n\n\n\n\n\n\nIntermediate Topic\n\n\n\nThis next section is only if you want to start using multiple images/containers or manipulating the way the jreades/sds:2024 starts up. This is not needed for most students.\nAs well, this script only works if you have a full Unix/Linux-compatible system. So macOS has this by default. On Windows you need to take the next step after install WSL2 and actually install a full Linux distribution (we’d suggest Ubuntu).\n\n\nThere are so many additional options for configuring Docker that we created a Bash script to do most of it for you; however, this needs to be paired with a configuration file that is kept in the same folder as the docker.sh script.\nSo it’s an extra step to getting up and running, but it allows you to easily change the port on which Jupyter Lab is served as well as to turn Quarto and Dask on/off by commenting/editing/uncommenting the port number in the config.sh file. You cannot run this in the Windows Power Shell.\nThis simplifies the process to the point of starting Docker with:\nbash docker.sh start\nAnd you can cleanly shut down the container using:\nbash docker.sh stop"
+  },
+  {
+    "objectID": "docker/index.html#dask-and-quarto",
+    "href": "docker/index.html#dask-and-quarto",
+    "title": "Using Docker",
+    "section": "Dask and Quarto",
+    "text": "Dask and Quarto\n\n\n\n\n\n\nAdvanced Topic\n\n\n\nThis next section is only if you need to run either Dask or Quarto (both of which are provided by jreades/sds:2024). This is not needed by students in Week 1, though you will use Quarto for the group project.\n\n\nTo run Dask and Quarto you need to ‘open up’ other ports on the Docker image:\ndocker run --name sds2024 --rm -d \\\n  -p 8888:8888 -p 4201:4201 -p 8787:8787 \\\n  -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024 jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\nUsing the Terminal built into the sds2024 container, you will then need to ensure that the version of Quarto built into the image runs on the same port that you specified when starting up Docker:\nquarto preview --host 0.0.0.0 --port 4201\nNotice the everything to do with Quarto is on port 4201, but note additionally the --host 0.0.0.0 that is required to allow you to view Quarto’s output if you want to serve a web site, for instance, instead of static content outside of the Docker container.\nThe Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g. using four cores at once where you’ve enabled this is Docker preferences on your Mac or Windows machine)."
+  },
+  {
+    "objectID": "docker/index.html#vscode-integration",
+    "href": "docker/index.html#vscode-integration",
+    "title": "Using Docker",
+    "section": "VSCode Integration",
+    "text": "VSCode Integration\n\n\n\n\n\n\nAdvanced Topic\n\n\n\nThis next section is only if you want to program in VSCode instead of Jupyter Lab. This is not needed for most students.\n\n\nIn principle the below will work. We have it working on Mac OSX and the same process should work on Windows. In practice, this should be considered a ‘beta feature’ in the sense that the documentation is still in development and we’re working out a few kinks. We’ll keep you posted on our progress!\n\nUsing Devcontainer\n\n\n\n\n\n\nCurrently Broken\n\n\n\nWe’re investigating why this approach doesn’t work, but we’re currently unable to get the devcontainer approach to run successfully despite having attempted to update it for 2023. We’ll correct this when we can.\n\n\nThe easier (but less tested) way to connect is to download the contents of test-vscode-project from GitHub. You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g. $HOME/Documents/CASA/fsds/).\nYou then tell VSCode to Open Workspace from File and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it still has to pull the image from Docker Hub. You can break this into steps by running docker pull jreades/sds:2024 before dealing with downloading these files and moving them into position.\n\n\nUsing Attach to Running Container\nTo enable VSCode integration you’ll need to create additional ‘mount points’ (‘locations’ on your computer’s file system) that the Docker image can access. At this point the command becomes very long, which is why there is a script designed to make this a more straightforward process provided below.\n\n\n\n\n\n\nM1/M2 Macs\n\n\n\nRemember to add -silicon to the image name (jreades/sds:2024) if you are suing a M1 or M2 Mac.\n\n\ndocker run --rm -d --name sds2024 \\\n  -p 8888:8888 -p 4201:4201 -p 8787:8787 \\\n  -v \"$(pwd):/home/jovyan/work\" \\\n  -v \"${HOME}/.vscode/containers/sds2024-extensions:/home/jovyan/.vscode-server/extensions\" \\\n  -v \"${HOME}/.vscode/containers/sds2024-insiders:/home/jovyan/.vscode-server-insiders\" \\\n  jreades/sds:2024 jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\nRequired Extensions\nThis then enables you to install the required integration extensions as follows:\n\nThe Dev - Containers extension from Microsoft, which will allow you to use a Docker container as a virtual environment from VSCode.\nThe Docker extension from Microsoft, which allows you to interact with images/containers from within VSCode.\nThe Jupyter exension, which will allow you to execute Jupyter Notebooks directly within VSCode.\nThe Jupyter Renderers extension which adds support for media outputs, especially interactive ones.\nThe Pylance extension which works as a language server (will do code highlighting, syntax checking, etc.) for Python.\nThe Python extension which provides rich support for Python &gt;= 3.7.\nThe Gremlins Tracker extension which highlights non-printing characters that can make code fail to execute properly.\n\n\n\n\n\n\n\nJupyter Keymap Extension\n\n\n\nThe “Jupyter Keymap” exension which provides the same keymaps in VSCode that exist in JupyterLab is globally enabled and does not need to be installed..\n\n\nYou can supplement these with the Markdown linting extension and a range of other tools.\nOnce this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided.\nOnce you’ve gone through this once it should be fairly straightforward on subsequent runs. At that point you can browse to the notebooks (which are usually being mounted from your own machine) and run them as if you were doing all of this within the Docker container. It’s kind of mind-melting but pretty cool.\n\n\nConnect\nUse the Remote Containers icon () to bring up the ‘open’ menu.\n\n\n\nThe Remote Containers Dialogue\n\n\n\n\nAttach\nChoose the Attach to Running Container... option to list active Docker containers.\n\n\n\nAttach to a running container\n\n\nIn this screenshot we’re running one container named fsds that was built from the jreades/sds:2022 image. Your container may have a different name (e.g. sds2024) but the image should be named jreades/sds:2024 or `jreades/sds:2024-silicon:\n\n\n\nThe list of running containers\n\n\n\n\nAttached!\nIf all has gone well, then a new window should open and you’ll notice one small, but significant change:\n\n\n\nAn attached workspace\n\n\nVSCode confirms that this window is now connected to the fsds container3:\n\n\n\nRunning on a Container\n\n\n\n\nOpen Sesame\nNow, if we try to open a file/folder under the open menu (), you’ll notice that we’re not browsing ‘our computer’ any more! Instead, we’re browsing files on the Docker container.\n\n\n\nOpening files on the container\n\n\nSo how do we find the notebooks? Well, when we launched the container we had this line:\n  -v \"$(pwd):/home/jovyan/work\" \\\nThat told Docker to connect the current working directory (where you ran the command) to /home/jovyan/work on the container. So anything under /home/jovyan/work is actually a file that can be found on our computer. Below, you can see that I’ve browsed to the fsds/practicals directory on my computer and am now ready to start running (and editing) my notebooks using an IDE instead of JupyterLab’s web interface:\n\n\n\nNotice the path on the container\n\n\n\n\nExtensions\nYou need to install the same VSCode extensions that you’d use when running Python locally on your computer into the ‘remote’ container. VSCode will do a pretty good job prompting you, but you’ve got the list above and can also seem them (notice I’ve selected CONTAINER) on the left-hand Extensions () menu in the screenshot below:\n\n\n\nExtensions installed in Container\n\n\nOnce the extensions are installed, provided that you use the same startup command each time (and don’t change the name of the container from fsds) those extensions should be ready-to-go and you won’t need to reinstall again.\n\n\nSuccess!\nAnd here we go…\n\n\n\nRunning code in a container"
+  },
+  {
+    "objectID": "docker/index.html#using-the-d-drive",
+    "href": "docker/index.html#using-the-d-drive",
+    "title": "Using Docker",
+    "section": "Using the ‘D’ Drive",
+    "text": "Using the ‘D’ Drive\n\n\n\n\n\n\nLimited Functionality\n\n\n\nWe’ve had a lot of trouble getting this to work on the machine to which we had access. These instructions should work but it seems like if you get any of them wrong you need to uninstall and reinstall Docker completely so it’s very difficult and time-consuming to work out why this isn’t working as it should.\n\n\n\n\n\n\n\n\nTip\n\n\n\nThis is best done before you have downloaded any images, though it should work with images downloaded as well.\n\n\nIf your Windows computer has two drives (C and D) and you want to store your docker images on the D drive, then you will need to carefully follow the instructions here in order to relocate the docker-desktop-data folder:\n\nShut down Docker Desktop completely (the Docker icon will disappear from the Windows ‘tray’ lower-right).\nRun wsl --shutdown in the Power Shell\nRun wsl --export docker-desktop-data docker-desktop-data.tar\nRun wsl --unregister docker-desktop-data\nRun wsl --import docker-desktop-data D:\\docker\\ docker-desktop-data.tar --version 2\nDelete docker-desktop-data.tar\nRestart the computer!\nLogin and restart Docker."
+  },
+  {
+    "objectID": "docker/index.html#deleting-the-image",
+    "href": "docker/index.html#deleting-the-image",
+    "title": "Using Docker",
+    "section": "Deleting the Image",
+    "text": "Deleting the Image\n\n\n\n\n\n\nOptional Topic\n\n\n\nThis next section is only if you want to remove all traces of the Docker images from your computer (e.g. to free up space or diagnose a potential versioning issue).\n\n\nShould you wish to remove the image and container from your system completely at the end of Term 1 then the following approaches are available:\n\nDeleting by Filter\nThis should be used with some care since it will try to delete all matching images and this may not be what you want:\ndocker ps -aqf \"name=sds\" --format=\"{{.Image}} {{.Names}} {{.ID}}\" | grep \"2019\" | cut -d' ' -f3 | xargs docker rm -f\ndocker images --format=\"{{.Repository}} {{.Tag}} {{.ID}}\" | grep \"sds\" | cut -d' ' -f3 | xargs docker rmi\n\n\nDeleting by Image\ndocker ps -aq # Get list of running processes and work out container IDs to remove\ndocker rm -f &lt;list of container IDs&gt;\ndocker images # Get list of available images and work out image IDs to remove\ndocker rmi -f &lt;list of image IDs&gt;"
+  },
+  {
+    "objectID": "docker/index.html#citing",
+    "href": "docker/index.html#citing",
+    "title": "Using Docker",
+    "section": "Citing",
+    "text": "Citing\nThis draws on Dani Arribas-Bel’s work for Liverpool. If you use this, you should also credit him.\n\n\n\nDOI\n\n\n@software{hadoop,\n  author = {{Dani Arribas-Bel}},\n  title = {\\texttt{gds_env}: A containerised platform for Geographic Data Science},\n  url = {https://github.com/darribas/gds_env},\n  version = {3.0},\n  date = {2019-08-06},\n}"
+  },
+  {
+    "objectID": "docker/index.html#footnotes",
+    "href": "docker/index.html#footnotes",
+    "title": "Using Docker",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nA virtual machine is just a computer that runs on your computer. So it ‘borrows’ resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.↩︎\nA container is the name Docker uses to refer to a running virtual machine. The image on its own does nothing until you tell docker to run it, at which point it becomes a container!↩︎\nRemember that your container may be called something else, like sds2024, but that doesn’t matter so long as you are using the right image (e.g. jreades/sds:2024). You can name the container anything at start-up using --name &lt;your_chosen_name&gt; and if you don’t provide one then Docker will make one up.↩︎"
+  },
+  {
+    "objectID": "skills/thinking.html",
+    "href": "skills/thinking.html",
+    "title": "How to Think",
     "section": "",
-    "text": "Although the guidance below, from Tim Squirrel’s Guide is intended for undergraduate essays in history or philosophy, the advice works for all kinds of reading.",
+    "text": "Another challenge for many students is that they want the ‘right’ answer to how to do things. There’s more academic literature on this, but for a thought-provoking look at why it might be a good idea for us to make your life hard then What IKEA and Our Education System Have in Common is an easy read.\nHere’s the summary:\n\nIKEA is easy, but you don’t learn anything.\nIKEA is about getting things done/finishing.\nIKEA is convenient, but it’s not creative.\nIKEA is standardised, but it is actually primed for hacking.\n\nBut there is a great response to the original post that adds nuance to this:\n\nThe thing to keep in mind, though, is that following recipies is how we learn skills to start with. If you were teaching someone to cook, for example, you wouldn’t throw the person into the kitchen and tell them to be creative with the food. Instead, you would teach them to follow recipies so that they can practice skills, and learn how to properly balance flavours and textures. Then, when they’ve mastered some recipies, you teach them how to mix up and re-combine recipies, and eventually come up with their own.",
     "crumbs": [
-      "How to *Read*"
+      "How to *Think*"
     ]
   },
   {
-    "objectID": "skills/reading.html#referencing",
-    "href": "skills/reading.html#referencing",
-    "title": "How to Read",
-    "section": "Referencing",
-    "text": "Referencing\nYou’ll be hearing a lot more about this at the start of term, but the first part of reading is making sure that you are able to trace where the ideas that you’re presenting/discussing/refuting came from. So that means keeping track of what you’ve read and being able to reference it (correctly) right from the start. So a quick sense of how to reference reliably:\n\nIf you are using the exact words of another writer then use double-quotes and supply a page number. For example: As Reades (2021, p.45) wrote: “We need to reference properly because otherwise we have no sense of where an idea came from…”\nIf you are paraphrasing another writer then use single-quotes and supply a page number where relevant. For example: Reades (2021, p.45) argues for the importance of good referencing since ‘without it we have little sense of where ideas come from’…\nIf you are just making a general point then a simple Author and Year citation is sufficient. For example: Reades(2021) and others (Dennett 2015, Fry 2018) have noted the importance of good referencing practice…",
-    "crumbs": [
-      "How to *Read*"
-    ]
-  },
-  {
-    "objectID": "skills/reading.html#getting-started",
-    "href": "skills/reading.html#getting-started",
-    "title": "How to Read",
-    "section": "Getting Started",
-    "text": "Getting Started\nIdeally, whenever you are reading an academic article (or other publication) you should be thinking about how you would differ from or improve upon or disagree with the writer. The only way you can do this (and consequently, the only way to get a decent mark) is to do some careful reading:\n\nLook at the reading list. If it seems incredibly long, then your instructor is not expecting you to read it all. What they are expecting you to do is look through it and pick out the articles that speak to you (subject to guidance about what reading is essential) and to your take on the assessments. So a long reading list is not an excuse to not read any of it. Look through the list, identify if there are any readings marked as essential. Read them. If there aren’t any essential readings, pick a few which look interesting and relevant, then read them.\nRead some more. Look through the Bibliographies of the papers and books you’ve just read. See where their ideas came from. Mark out a few of the most promising-looking readings. Read them.\nNote the difference between reading to understand the topic and reading to reference. It is totally fine to use Wikipedia, lecture notes, etc to familiarise yourself with the key arguments and concepts. It is considerably less fine to cite them as your only sources.\nArticles. Read the abstract first. Does it look like it’s relevant? If not, don’t waste your time. If it does, skim it to develop a better sense of how it’s organised, what the intro and conclusion say and whether it’s worth your time to read it more closely. Skip all equations/code. Look over the bibliography as above.\nBooks. In an ideal world you should read books. Great books. Like mine of course! :-) More realistically, unless your entire dissertation hinges on a particular argument made in great detail, then for undergraduate and masters’ study do not read whole books. It’s a waste of your time. You won’t remember any of it, it will drain all of your energy, and you only get one reference and viewpoint out of it. Read the intro and conclusion so that you get the gist of their argument. Pick a chapter from the contents page which looks like it’s relevant to your essay. Read that. As above, find relevant references and follow them up.\nThere is one exception to the ‘books rule’: if you are going to present a ‘Foucauldian critique’ or a ‘Beaudrillardian perspective’ as part of a dissertation then you had better read at least the standard university-level primer on this thinker. You cannot rely on one journal article author’s perspective on a ‘great thinker’s’ oeuvre if you are presenting your work as if it were based on the thinker and not the article.\nIf an article is worth reading in detail, then read critically. For the sake of all that is holy, read critically. This is absolutely essential. Don’t just stare at the pages and try to absorb them like a plant absorbs nutrients. Ask yourself questions (why did they do this? do I think that was a good idea? how would I have done this?) and try to make the process active.\n\nSo things to think about while reading articles:\n\nThe central claim the author is making. Usually there is only one, perhaps two. Summarise it in one sentence if you can.\nWhat is the frame of their argument? When in history is it set? Who are the key actors? Are they responding to another author? If so, what is the argument they’re responding to? Try to position their argument in context. This allows you to:\nCritically assess the claims made. This obviously doesn’t just mean ‘say they’re wrong’. They might well be wrong, but you’ll need to find reasons for it. Generate a list of three reasons for each line of attack you want to take. Scrap the weakest two. If you think they’re right, why are they right? Are there other authors who corroborate their claims? Are there logical reasons to prefer their argument?",
-    "crumbs": [
-      "How to *Read*"
-    ]
-  },
-  {
-    "objectID": "skills/reading.html#article-summary-template",
-    "href": "skills/reading.html#article-summary-template",
-    "title": "How to Read",
-    "section": "Article Summary Template",
-    "text": "Article Summary Template\nMake sure you take notes on everything you read. Put page numbers in those notes. In fact, write down any potentially useful (and, ideally, flexible) quotes verbatim with the page numbers. Your goal is to read everything once even if you reference it repeatedly.\nHere is a template for summarising an article. It’s probably a little long, but while you develop your critical faculties it should be useful. To give you a sense of how you might fill this out, here’s a completed example of a summary document for Geography and computers: Past, present, and future.",
-    "crumbs": [
-      "How to *Read*"
-    ]
-  },
-  {
-    "objectID": "skills/help.html",
-    "href": "skills/help.html",
-    "title": "How to Get Help",
+    "objectID": "skills/thinking.html#why-am-i-making-this-hard-for-you",
+    "href": "skills/thinking.html#why-am-i-making-this-hard-for-you",
+    "title": "How to Think",
     "section": "",
-    "text": "We all need help from time to time—and that’s what we’re here to provide—but the best way to ‘get help’ will always be taking steps to ‘help yourself’ first!",
+    "text": "Another challenge for many students is that they want the ‘right’ answer to how to do things. There’s more academic literature on this, but for a thought-provoking look at why it might be a good idea for us to make your life hard then What IKEA and Our Education System Have in Common is an easy read.\nHere’s the summary:\n\nIKEA is easy, but you don’t learn anything.\nIKEA is about getting things done/finishing.\nIKEA is convenient, but it’s not creative.\nIKEA is standardised, but it is actually primed for hacking.\n\nBut there is a great response to the original post that adds nuance to this:\n\nThe thing to keep in mind, though, is that following recipies is how we learn skills to start with. If you were teaching someone to cook, for example, you wouldn’t throw the person into the kitchen and tell them to be creative with the food. Instead, you would teach them to follow recipies so that they can practice skills, and learn how to properly balance flavours and textures. Then, when they’ve mastered some recipies, you teach them how to mix up and re-combine recipies, and eventually come up with their own.",
     "crumbs": [
-      "How to Get Help"
+      "How to *Think*"
     ]
   },
   {
-    "objectID": "skills/help.html#important",
-    "href": "skills/help.html#important",
-    "title": "How to Get Help",
-    "section": "Important!",
-    "text": "Important!\nWhen you are first learning to code there is no such thing as a stupid question. From time to time we all have lazy questions, which is what happens when we are frustrated and just want to know ‘the answer’ without putting in the work to clarify the problem. However, if any time you find yourself stuck on a particular problem there is a 100% chance that someone else in the class is having the same problem as well but hasn’t quite worked up the courage to ask. So please: ask.",
+    "objectID": "skills/thinking.html#thinking-like-a-programmer",
+    "href": "skills/thinking.html#thinking-like-a-programmer",
+    "title": "How to Think",
+    "section": "Thinking Like a Programmer",
+    "text": "Thinking Like a Programmer\nFor the record, there are many things that can’t be solved by code or coders, but there are many things that can be tackled by learning to think like a programmer. This can include:\n\nUnderstanding: make sure that you actually understand the problem before you try to solve it. Try to explain it to someone else. Try to explain it to a pet or stuffed animal. Write it down. You may feel silly doing some of these things, but saying it/writing it forces you to organise your thoughts and often gives you the answer halfway through the explanation.\nPlanning: “Given X, what steps do I need to achieve Y?” You can start with comments, bullet points, or whatever format helps you to get the skeleton of an answer in place before you spend ages writing the first few lines of code or the first few lines of your essay. Markdown is good here!\nDividing: never try to solve a hard problem in one go. Break it down into little steps. Easy steps. Do the easiest one first (if you can separate it out from the first one). Check your solution works for that part. Take the next step. Check the two steps work together. Build from there. As programmers and Venture Capitalists would tell you: iterate! Same for an essay or written submission.\nUnsticking: try to stay curious rather than getting angry or frustrated. Debugging is a step-by-step process: comment things out, add print statements, break it back down again into the basics and gradually re-add pieces until you can see where it all breaks.\nPracticing: I like this quote “Practice. Practice. Practice. It’ll only be a matter of time before you recognize that ‘this problem could easily be solved with .’”\n\n\n“The art of debugging is figuring out what you really told your program to do rather than what you thought you told it to do.” — Andrew Singer\n\nOn a more practical level, here are common mistakes made by new programmers.",
     "crumbs": [
-      "How to Get Help"
+      "How to *Think*"
     ]
   },
   {
-    "objectID": "skills/help.html#helping-yourself",
-    "href": "skills/help.html#helping-yourself",
-    "title": "How to Get Help",
-    "section": "Helping Yourself",
-    "text": "Helping Yourself\nHere are four things that you can do to ‘help yourself’ first:\n\nUse Google–this is one course where saying “I googled it…” will be taken as a good sign! Probably the biggest difference between a good programmer and a new programmer is that the good one knows which terms to type into Google to get the answer that they need right away.\nUse Stack Overflow–as you become a better programmer you’ll start to understand how to frame your question in ways that produce the answer you need in the first couple of search results, but whether you’re a beginner or an expert Stack Overflow is your friend. True story: I have sometimes found answers that I provided (but didn’t remember giving) when trying to solve a problem.\nUse the work of others–beyond the readings that we’ve assigned to support the module’s learning outcomes there is a world of knowledge out there on which you can build! Use Google Scholar, Medium, and dedicated tutorial-type sites like Towards Data Science and Programming Historian to see if you can find others who have had similar challenges.\nUse the dedicated Slack channel–this provides a much richer experience than the Moodle Forum and should be your primary means of requesting help outside of scheduled teaching hours because you can get answers from other staff, other students, and the wider CASA community.\n\nYes, this is a lot of things to do when you want to know the answer to what feels like a simple question, but it’s an investment. If we just ‘give’ you the answer then chances are you’ll forget it as soon as your code starts running again; hwoever, if you’ve had to invest your time and energy in sorting through a whole range of answers (some useful, some not) then you have found it for yourself in a way that you’ll not soon forget. In fact, you’ve learned something about both how to frame questions and how to identify useful answers. That, frankly, is a much more valuable skill!",
+    "objectID": "skills/thinking.html#what-this-means-for-you",
+    "href": "skills/thinking.html#what-this-means-for-you",
+    "title": "How to Think",
+    "section": "What This Means for You",
+    "text": "What This Means for You\n\nWe will not give you the answer. This will be frustrating and annoying (particularly when you are already frustrated that something is not working) but by asking you questions we will try to teach you to solve problems for yourself.\nIf you keep asking us the same questions you will get increasingly abrupt answers. You should be scared to ask us the same question for the 20th time. You should not be scared to admit that you’re struggling with something.\nSometimes there is no answer! Every year the data changes. The policies and issues change. I teach things a little differently. This is much more like the real world and sometimes I don’t know what we’ll find when we start coding.\nYou need to work out how you learn best.\nYou will need to think critically about what you are doing. There’s a good article on How to write better essays which leads on to a blog on how to write better undergraduate essays (see above). You’re obviously not undergraduates any more and we expect more of you, but as a starting point this is a good one, especially for those of you who are new to the UK way of teaching and learning.",
     "crumbs": [
-      "How to Get Help"
+      "How to *Think*"
     ]
   },
   {
-    "objectID": "skills/help.html#creating-opportunities",
-    "href": "skills/help.html#creating-opportunities",
-    "title": "How to Get Help",
-    "section": "Creating Opportunities",
-    "text": "Creating Opportunities\nLearning to code is like learning a language: you need to practice! Set yourself little problems or tasks and see if you can apply what you’ve learned in class to a problem in a different class, or to a friend’s problem, or just something you’re curious about! In the same way that practicing your Chinese or French with native speakers will help you to learn those languages, so will practicing your Python.",
+    "objectID": "skills/index.html",
+    "href": "skills/index.html",
+    "title": "Soft Skills",
+    "section": "",
+    "text": "We think that there are some fundamentally important soft-skills for successfully completing a MSc: we try to teach these in our modules as well, but we think it’s useful to flag them here as well:\n\nPaying attention: learning how to deal with distractions is essential to maintaining focus and retaining the infromation you’re taking in through reading and coding.\nReading: too many students try to read either everything or nothing when they should be doing something in between, so we’ve tried to collect some ideas on how to read to help you get started.\nThinking: the other big challenge for many students is learning how to approach literature and learning critically so that you learn how to integrate ideas and form your own. Learning how to think for yourself is essential.\nAsking for help: just because we want you to become an organised, motivated self-learner does not mean we don’t want to help you achieve this! Suffering in silence is not going to get you extra marks, so we’ve also offered tips on how to ask for help in a way that is most likely to get you what you need.\n\nThese pages are by no means complete, nor will the advice they offer work for everyone, but it is absolutely essential that you are as aware of how you learn as you are of what you are learning. The skill of ‘meta-cognition’ is one that will allow you to carry on learning effectively for the rest of your life!"
+  },
+  {
+    "objectID": "skills/attention.html",
+    "href": "skills/attention.html",
+    "title": "How to Pay Attention",
+    "section": "",
+    "text": "Learning to code is hard work and I’m pretty sure that I’m a lot less exciting than your average YouTube star. So if I have to compete with YouTube (or with your friends on WhatsApp, Snapchat, WeChat, or whatever) for your attention then I’ll probably lose. And your computer and phone are designed to distract you because they are interested in engagement—they don’t care that you should be engaging with your studies, they want you to pick them up and use them. This is why you get so many notifications!",
     "crumbs": [
-      "How to Get Help"
+      "How to Pay Attention"
     ]
   },
   {
-    "objectID": "skills/help.html#how-we-can-help",
-    "href": "skills/help.html#how-we-can-help",
-    "title": "How to Get Help",
-    "section": "How We Can Help",
-    "text": "How We Can Help\nIf you’ve gone through steps 1–4 and don’t feel any closer to a solution then it’s time to get our input! So the final steps:\n\nMake use of ‘Office Hours’–if you are struggling, then tell us! We can’t help you if we don’t know that you’re lost! That doesn’t mean that we can simply ‘give’ you the answers to challenging questions, but we will do everything that we can to support you in finding and understanding the answers.\nEmail us–Slack will usually be faster, but for personal questions or ones you’re just not comfortable asking in public, then email away!\nSign up for online classes–realistically, you will have a lot on your plate this year, but if you want or need more practice with Python then there is a wealth of options out there for ‘further study’ and ‘further practice’. Perhaps you’ll find a resource that speaks to you in a way that our module doesn’t!",
+    "objectID": "skills/attention.html#evidence-base",
+    "href": "skills/attention.html#evidence-base",
+    "title": "How to Pay Attention",
+    "section": "Evidence Base",
+    "text": "Evidence Base\nThere is plenty of evidence to back this up:\n\nDistractions make learning harder\nNearly half of students distracted by technology\nThe effect of cellphones on attention and learning…\nDistractions make retaining info harder\nThe interrupted learner: how distractions during live and video lectures influence learning outcomes",
     "crumbs": [
-      "How to Get Help"
+      "How to Pay Attention"
     ]
   },
   {
-    "objectID": "skills/help.html#how-to-ask-for-help",
-    "href": "skills/help.html#how-to-ask-for-help",
-    "title": "How to Get Help",
-    "section": "How to Ask for Help",
-    "text": "How to Ask for Help\nHowever tired you are, don’t send a stream of consciousness late-night email saying little more than “Hey, I’m stuck on this problem can you solve it?” Go to bed. Sleep on it. And if you’re still stuck in the morning it’s time for the email.\nWhat does a useful email look like? You might want to follow this overview of how to get a busy person to respond to your email:\n\nKeep it short.\nFormat it for readability and clarity.\nMake it clear what you want me to do.\nBe reasonable with your request.\nShow me why I should take the time to help you.\n\nThat last point isn’t quite as rude as it sounds! If you’ve gone through steps 1–4 above, then it’s actually easy to explain what you’ve done, what you’ve found, why you think things aren’t working, and whether you have any ideas for solving your issue! If you’ve done all this then your question will never be a result of laziness, so that suggests there’s something for us to learn about how we teach!\nIn academia there are a few more things I’d add:\n\nWhat module are you emailing me about?\nWhat is your student id? (Especially if it’s about Extenuating Circumstances or an Assessment)\nIs the question about a specific practical, lecture, or technical problem?\n\nAnd here is some additional insight into how to email your professor (without being annoying AF):\n\nSalutation: should I use “Dear”, “Hello” or “Hi”?\nHonourific: should I use “Mr”, “Ms”, “Dr” or “Professor”? Hint: don’t ever use Mr/Mrs/Ms.\nName: for god’s sake, please try not to get this wrong.\nExceptions: always look at how your Prof or TA responds to you for cues about how to respond to them.\nBe nice: treat your TA and Prof like human beings please!\nRemind me who you are: anything that allows me to place you and your question in context will help me to give you effective help.\nThe reason: tell me as precisely as possible why you are emailing me and what you want/hope to achieve by doing so.\nDo the legwork (this is the ‘show me why I should take the time to help’ thing above): if the answer is in the Syllabus or the recorded content then I may not answer your question. Or I may just write “It’s in the syllabus” and leave it at that. Show me that you’ve tried to answer your question yourself and give me a sense of what you’ve already tried. For instance, if your problem is technical then “I couldn’t install the software and it didn’t work” tells me nothing about your actual problem (see also information on asking a good tech question).\nWrap-up and Sign-off: is there a deadline (e.g. for a recommendation) or some other issue that I need to factor into my plans? Some recognition of thanks never goes amiss.\n\n\nThe Follow-Up!\nIf we don’t reply to you then send a reminder! The trick is to send the reminder at the right time: if you are about to fail an assessment or are three weeks into the course and still can’t run the programming environment then your problem is urgent and you can send a reminder much sooner than if you’re wondering ‘if X would be a good topic for the final assessment’. As the Medium blogger puts it: “If it can wait a week, let it wait a week” (before following up).\n\n\nWhy This Matters\nWe all have different ‘registers’ for speaking with other people: family (siblings vs. grandparents), friends (close friends vs. acquaintances), and so on. A professionally-written email is a vital work skill since most of the people that you will end up working for will use email over all the other channels available now. Sending an email like this will not get you the help you need:\n\nHey Bossman,\nAre U awake at 2am like me? LOL. Having problems and not going to finish the report in time for meeting tomorrow. Can you give me an extension?\nLater.\n\nIf you’re worried that you might not be hitting the right ‘tone’ then it’s ok to say so and to ask if you could write it better/differently in the future. This shows reflection and thought, which is all that we really want from our students anyway!",
+    "objectID": "skills/attention.html#managing-distraction",
+    "href": "skills/attention.html#managing-distraction",
+    "title": "How to Pay Attention",
+    "section": "Managing Distraction",
+    "text": "Managing Distraction\nSo my recommendations for studying (online or offline) are:\n\nTurn off as many notifications as possible. On the Mac there is a ‘Do not disturb’ setting that you can enable in the Notifications section of your System Preferences. You can set it to turn on by time, and also add a setting short-cut to your ‘Notification Centre’ (upper-right corner of your desktop).\nUninstall messaging apps that you cannot turn off. If quitting the app disables notifications then that’s fine. But if you can’t disable notifications then I’d suggest uninstalling the messaging app entirely. Facebook Messenger, for instance, is a massive memory-hog and usually available on the desktop UI anyway.\nBlock access to distracting web sites. There are a number of tools that you can set up to block access to Facebook and other social media sites at set times of day. My Achilles heel is the news: if I’m struggling I tend to read news articles, so if I really need to make sure I don’t have the browser open to the home page of my favourite news sites.\nUse time-blocking. This is a well understood approach to managing your time as detailed, for example, here and used by many academics (who get even more email than you!).\nWork out a schedule. It’s a lot easier to avoid distractions if you have a routine that enables you to say “OK, I will work from 9–11 and then have a look at my email.” It is easier to be in control if you can give yourself rewards later. And if you get into a routine, as a parent probably suggested when you were an undergraduate (certainly mine did and I ignored them), then you’ll find that your ‘productivity’ improves dramatically. My mother was right, dammit.",
     "crumbs": [
-      "How to Get Help"
+      "How to Pay Attention"
     ]
   },
   {
-    "objectID": "skills/help.html#what-grade-do-you-want",
-    "href": "skills/help.html#what-grade-do-you-want",
-    "title": "How to Get Help",
-    "section": "What Grade Do You Want?",
-    "text": "What Grade Do You Want?\nFinally, we want you to think about how to learn what you need to learn. This is called meta-cognition—thinking about thinking—and it’s probably one of the most important study skills of all. So here you need to think about what you want from, for example, an assessment: do you just want to pass, or do you want to hit it out of the park?\nSome questions to ask yourself:\n\nFor an exam: What kinds of questions might it include?\nFor an essay/written piece: What kinds of topics have we covered in class?\nFor either: identify key terms, define those terms, and question the question (what might be the assumptions behind it?).\nWhich of resources would help me to study/prepare?\nHow should I make use of lecture notes, practice exam questions, textbook and other readings, instructor office hours, peer discussions, and tutoring. Write down why each resource would be useful and how you could use it to map out a study/writing plan.\nHow does my essay work as a story? I don’t necessarily mean a mystery or adventure novel, but a good essay has: a plot (what is sometimes called a narrative arc), characters (the key ideas from the literature, the data, the methods, the problems…), development (which character needs to be introduced first?), and a conclusion (what happened?). Have a look at the Tim Squirrel Guide where it talks about essay stucture.\nLooking at this literature/piece of research, is this the way that I would have done it? If I would have done it differently do I think that would have been more, or less, effective? Why or why not?\nLooking at my peers, is there someone who is doing really well who I could talk to about how they study, code, or write? How do they organise their time? How do they make use of the resources (literature, etc.)?\n\nIf all you want is a pass then organise yourself for a solid pass. If you want to excel then you’re going to have to do things a bit differently. There’s space for both approaches, but being clear about which you want will help you to prioritise the important stuff.\nAlso pay attention to what constitutes a ‘good’ output: in some cases you are being asked to write a scientific/academic essay, for which there are easy-to-follow ‘rules’, but this doesn’t work for non-scientific formats!",
+    "objectID": "skills/attention.html#the-problem-of-no-breaks",
+    "href": "skills/attention.html#the-problem-of-no-breaks",
+    "title": "How to Pay Attention",
+    "section": "The Problem of No Breaks",
+    "text": "The Problem of No Breaks\nFrequent distraction is one problem, but (in a sense) getting enough distraction is another. As this piece suggests, it’s also important that you give yourself downtime between Zoom/Teams/whatever sessions. I will try to remember to bake these into our ‘lectures’, but you should also suggest breaks if you feel yourself flagging! This also applies, however, to your wider degree: Masters degrees are intense and you need to give yourself permission for a timeout… stepping away from the computer and going for a walk, doing some knitting, taking a weekend to visit another city or go on a camping trip, whatever floats your boat!",
     "crumbs": [
-      "How to Get Help"
+      "How to Pay Attention"
     ]
   },
   {
@@ -540,217 +584,383 @@
     ]
   },
   {
-    "objectID": "skills/attention.html",
-    "href": "skills/attention.html",
-    "title": "How to Pay Attention",
+    "objectID": "skills/Template.html",
+    "href": "skills/Template.html",
+    "title": "Reading1",
     "section": "",
-    "text": "Learning to code is hard work and I’m pretty sure that I’m a lot less exciting than your average YouTube star. So if I have to compete with YouTube (or with your friends on WhatsApp, Snapchat, WeChat, or whatever) for your attention then I’ll probably lose. And your computer and phone are designed to distract you because they are interested in engagement—they don’t care that you should be engaging with your studies, they want you to pick them up and use them. This is why you get so many notifications!",
-    "crumbs": [
-      "How to Pay Attention"
-    ]
+    "text": "Is it an academic paper, technical report, blogpost, etc.? And what kind of contribution is trying to make? Conceptual, theoretical, empirical or something else?"
   },
   {
-    "objectID": "skills/attention.html#evidence-base",
-    "href": "skills/attention.html#evidence-base",
-    "title": "How to Pay Attention",
-    "section": "Evidence Base",
-    "text": "Evidence Base\nThere is plenty of evidence to back this up:\n\nDistractions make learning harder\nNearly half of students distracted by technology\nThe effect of cellphones on attention and learning…\nDistractions make retaining info harder\nThe interrupted learner: how distractions during live and video lectures influence learning outcomes",
-    "crumbs": [
-      "How to Pay Attention"
-    ]
-  },
-  {
-    "objectID": "skills/attention.html#managing-distraction",
-    "href": "skills/attention.html#managing-distraction",
-    "title": "How to Pay Attention",
-    "section": "Managing Distraction",
-    "text": "Managing Distraction\nSo my recommendations for studying (online or offline) are:\n\nTurn off as many notifications as possible. On the Mac there is a ‘Do not disturb’ setting that you can enable in the Notifications section of your System Preferences. You can set it to turn on by time, and also add a setting short-cut to your ‘Notification Centre’ (upper-right corner of your desktop).\nUninstall messaging apps that you cannot turn off. If quitting the app disables notifications then that’s fine. But if you can’t disable notifications then I’d suggest uninstalling the messaging app entirely. Facebook Messenger, for instance, is a massive memory-hog and usually available on the desktop UI anyway.\nBlock access to distracting web sites. There are a number of tools that you can set up to block access to Facebook and other social media sites at set times of day. My Achilles heel is the news: if I’m struggling I tend to read news articles, so if I really need to make sure I don’t have the browser open to the home page of my favourite news sites.\nUse time-blocking. This is a well understood approach to managing your time as detailed, for example, here and used by many academics (who get even more email than you!).\nWork out a schedule. It’s a lot easier to avoid distractions if you have a routine that enables you to say “OK, I will work from 9–11 and then have a look at my email.” It is easier to be in control if you can give yourself rewards later. And if you get into a routine, as a parent probably suggested when you were an undergraduate (certainly mine did and I ignored them), then you’ll find that your ‘productivity’ improves dramatically. My mother was right, dammit.",
-    "crumbs": [
-      "How to Pay Attention"
-    ]
-  },
-  {
-    "objectID": "skills/attention.html#the-problem-of-no-breaks",
-    "href": "skills/attention.html#the-problem-of-no-breaks",
-    "title": "How to Pay Attention",
-    "section": "The Problem of No Breaks",
-    "text": "The Problem of No Breaks\nFrequent distraction is one problem, but (in a sense) getting enough distraction is another. As this piece suggests, it’s also important that you give yourself downtime between Zoom/Teams/whatever sessions. I will try to remember to bake these into our ‘lectures’, but you should also suggest breaks if you feel yourself flagging! This also applies, however, to your wider degree: Masters degrees are intense and you need to give yourself permission for a timeout… stepping away from the computer and going for a walk, doing some knitting, taking a weekend to visit another city or go on a camping trip, whatever floats your boat!",
-    "crumbs": [
-      "How to Pay Attention"
-    ]
-  },
-  {
-    "objectID": "skills/index.html",
-    "href": "skills/index.html",
-    "title": "Soft Skills",
+    "objectID": "skills/Template.html#what-kind-of-reading-is-it",
+    "href": "skills/Template.html#what-kind-of-reading-is-it",
+    "title": "Reading1",
     "section": "",
-    "text": "We think that there are some fundamentally important soft-skills for successfully completing a MSc: we try to teach these in our modules as well, but we think it’s useful to flag them here as well:\n\nPaying attention: learning how to deal with distractions is essential to maintaining focus and retaining the infromation you’re taking in through reading and coding.\nReading: too many students try to read either everything or nothing when they should be doing something in between, so we’ve tried to collect some ideas on how to read to help you get started.\nThinking: the other big challenge for many students is learning how to approach literature and learning critically so that you learn how to integrate ideas and form your own. Learning how to think for yourself is essential.\nAsking for help: just because we want you to become an organised, motivated self-learner does not mean we don’t want to help you achieve this! Suffering in silence is not going to get you extra marks, so we’ve also offered tips on how to ask for help in a way that is most likely to get you what you need.\n\nThese pages are by no means complete, nor will the advice they offer work for everyone, but it is absolutely essential that you are as aware of how you learn as you are of what you are learning. The skill of ‘meta-cognition’ is one that will allow you to carry on learning effectively for the rest of your life!"
+    "text": "Is it an academic paper, technical report, blogpost, etc.? And what kind of contribution is trying to make? Conceptual, theoretical, empirical or something else?"
   },
   {
-    "objectID": "skills/thinking.html",
-    "href": "skills/thinking.html",
-    "title": "How to Think",
+    "objectID": "skills/Template.html#who-is-the-intended-audience",
+    "href": "skills/Template.html#who-is-the-intended-audience",
+    "title": "Reading1",
+    "section": "2 Who is the intended audience?",
+    "text": "2 Who is the intended audience?\n\nIs it intended for academics, field experts, the general public? etc.? For example, if you think this is intended for someone who needs to learn new skills or someone who is in a policy-making position how do you know this?"
+  },
+  {
+    "objectID": "skills/Template.html#how-is-the-piece-structured",
+    "href": "skills/Template.html#how-is-the-piece-structured",
+    "title": "Reading1",
+    "section": "3 How is the piece structured?",
+    "text": "3 How is the piece structured?\n\nBriefly, how is it organised in terms of headings, sub-headings, sections, etc.? Can you explain this structure responds to the kind of reading and type of audience?"
+  },
+  {
+    "objectID": "skills/Template.html#what-are-the-key-ideas-concepts-or-theories-discussed",
+    "href": "skills/Template.html#what-are-the-key-ideas-concepts-or-theories-discussed",
+    "title": "Reading1",
+    "section": "4 What are the key ideas, concepts, or theories discussed?",
+    "text": "4 What are the key ideas, concepts, or theories discussed?\n\nBriefly identify the specific areas that the contribution engages with. How do you know this?"
+  },
+  {
+    "objectID": "skills/Template.html#what-is-the-overall-contribution",
+    "href": "skills/Template.html#what-is-the-overall-contribution",
+    "title": "Reading1",
+    "section": "5 What is the overall contribution?",
+    "text": "5 What is the overall contribution?\n\nWhat does it build on or what gap does it respond to? What are the key findings or conclusions?"
+  },
+  {
+    "objectID": "skills/Template.html#what-issues-or-gaps-remain",
+    "href": "skills/Template.html#what-issues-or-gaps-remain",
+    "title": "Reading1",
+    "section": "6 What issues or gaps remain?",
+    "text": "6 What issues or gaps remain?\n\nIf relevant, are there assumptions that might not hold in other contexts? Can you think of other case studies or contexts where the reading would apply and explain why? If you think the contribution is generally valid can you explain why? Are there areas for future work identified?"
+  },
+  {
+    "objectID": "skills/Template.html#how-does-this-connect-to-the-moduleprogramme",
+    "href": "skills/Template.html#how-does-this-connect-to-the-moduleprogramme",
+    "title": "Reading1",
+    "section": "7 How does this connect to the module/programme?",
+    "text": "7 How does this connect to the module/programme?\n\nReflecting on the answers given by the two students, what connects this reading to the rest of module? For example, why did we assign it and make you talk about it? Does it prompt reflection on anything else you’ve read? Are there connections to other modules you’re taking? Why? What further questions does this reading raise for you?"
+  },
+  {
+    "objectID": "skills/help.html",
+    "href": "skills/help.html",
+    "title": "How to Get Help",
     "section": "",
-    "text": "Another challenge for many students is that they want the ‘right’ answer to how to do things. There’s more academic literature on this, but for a thought-provoking look at why it might be a good idea for us to make your life hard then What IKEA and Our Education System Have in Common is an easy read.\nHere’s the summary:\n\nIKEA is easy, but you don’t learn anything.\nIKEA is about getting things done/finishing.\nIKEA is convenient, but it’s not creative.\nIKEA is standardised, but it is actually primed for hacking.\n\nBut there is a great response to the original post that adds nuance to this:\n\nThe thing to keep in mind, though, is that following recipies is how we learn skills to start with. If you were teaching someone to cook, for example, you wouldn’t throw the person into the kitchen and tell them to be creative with the food. Instead, you would teach them to follow recipies so that they can practice skills, and learn how to properly balance flavours and textures. Then, when they’ve mastered some recipies, you teach them how to mix up and re-combine recipies, and eventually come up with their own.",
+    "text": "We all need help from time to time—and that’s what we’re here to provide—but the best way to ‘get help’ will always be taking steps to ‘help yourself’ first!",
     "crumbs": [
-      "How to *Think*"
+      "How to Get Help"
     ]
   },
   {
-    "objectID": "skills/thinking.html#why-am-i-making-this-hard-for-you",
-    "href": "skills/thinking.html#why-am-i-making-this-hard-for-you",
-    "title": "How to Think",
+    "objectID": "skills/help.html#important",
+    "href": "skills/help.html#important",
+    "title": "How to Get Help",
+    "section": "Important!",
+    "text": "Important!\nWhen you are first learning to code there is no such thing as a stupid question. From time to time we all have lazy questions, which is what happens when we are frustrated and just want to know ‘the answer’ without putting in the work to clarify the problem. However, if any time you find yourself stuck on a particular problem there is a 100% chance that someone else in the class is having the same problem as well but hasn’t quite worked up the courage to ask. So please: ask.",
+    "crumbs": [
+      "How to Get Help"
+    ]
+  },
+  {
+    "objectID": "skills/help.html#helping-yourself",
+    "href": "skills/help.html#helping-yourself",
+    "title": "How to Get Help",
+    "section": "Helping Yourself",
+    "text": "Helping Yourself\nHere are four things that you can do to ‘help yourself’ first:\n\nUse Google–this is one course where saying “I googled it…” will be taken as a good sign! Probably the biggest difference between a good programmer and a new programmer is that the good one knows which terms to type into Google to get the answer that they need right away.\nUse Stack Overflow–as you become a better programmer you’ll start to understand how to frame your question in ways that produce the answer you need in the first couple of search results, but whether you’re a beginner or an expert Stack Overflow is your friend. True story: I have sometimes found answers that I provided (but didn’t remember giving) when trying to solve a problem.\nUse the work of others–beyond the readings that we’ve assigned to support the module’s learning outcomes there is a world of knowledge out there on which you can build! Use Google Scholar, Medium, and dedicated tutorial-type sites like Towards Data Science and Programming Historian to see if you can find others who have had similar challenges.\nUse the dedicated Slack channel–this provides a much richer experience than the Moodle Forum and should be your primary means of requesting help outside of scheduled teaching hours because you can get answers from other staff, other students, and the wider CASA community.\n\nYes, this is a lot of things to do when you want to know the answer to what feels like a simple question, but it’s an investment. If we just ‘give’ you the answer then chances are you’ll forget it as soon as your code starts running again; hwoever, if you’ve had to invest your time and energy in sorting through a whole range of answers (some useful, some not) then you have found it for yourself in a way that you’ll not soon forget. In fact, you’ve learned something about both how to frame questions and how to identify useful answers. That, frankly, is a much more valuable skill!",
+    "crumbs": [
+      "How to Get Help"
+    ]
+  },
+  {
+    "objectID": "skills/help.html#creating-opportunities",
+    "href": "skills/help.html#creating-opportunities",
+    "title": "How to Get Help",
+    "section": "Creating Opportunities",
+    "text": "Creating Opportunities\nLearning to code is like learning a language: you need to practice! Set yourself little problems or tasks and see if you can apply what you’ve learned in class to a problem in a different class, or to a friend’s problem, or just something you’re curious about! In the same way that practicing your Chinese or French with native speakers will help you to learn those languages, so will practicing your Python.",
+    "crumbs": [
+      "How to Get Help"
+    ]
+  },
+  {
+    "objectID": "skills/help.html#how-we-can-help",
+    "href": "skills/help.html#how-we-can-help",
+    "title": "How to Get Help",
+    "section": "How We Can Help",
+    "text": "How We Can Help\nIf you’ve gone through steps 1–4 and don’t feel any closer to a solution then it’s time to get our input! So the final steps:\n\nMake use of ‘Office Hours’–if you are struggling, then tell us! We can’t help you if we don’t know that you’re lost! That doesn’t mean that we can simply ‘give’ you the answers to challenging questions, but we will do everything that we can to support you in finding and understanding the answers.\nEmail us–Slack will usually be faster, but for personal questions or ones you’re just not comfortable asking in public, then email away!\nSign up for online classes–realistically, you will have a lot on your plate this year, but if you want or need more practice with Python then there is a wealth of options out there for ‘further study’ and ‘further practice’. Perhaps you’ll find a resource that speaks to you in a way that our module doesn’t!",
+    "crumbs": [
+      "How to Get Help"
+    ]
+  },
+  {
+    "objectID": "skills/help.html#how-to-ask-for-help",
+    "href": "skills/help.html#how-to-ask-for-help",
+    "title": "How to Get Help",
+    "section": "How to Ask for Help",
+    "text": "How to Ask for Help\nHowever tired you are, don’t send a stream of consciousness late-night email saying little more than “Hey, I’m stuck on this problem can you solve it?” Go to bed. Sleep on it. And if you’re still stuck in the morning it’s time for the email.\nWhat does a useful email look like? You might want to follow this overview of how to get a busy person to respond to your email:\n\nKeep it short.\nFormat it for readability and clarity.\nMake it clear what you want me to do.\nBe reasonable with your request.\nShow me why I should take the time to help you.\n\nThat last point isn’t quite as rude as it sounds! If you’ve gone through steps 1–4 above, then it’s actually easy to explain what you’ve done, what you’ve found, why you think things aren’t working, and whether you have any ideas for solving your issue! If you’ve done all this then your question will never be a result of laziness, so that suggests there’s something for us to learn about how we teach!\nIn academia there are a few more things I’d add:\n\nWhat module are you emailing me about?\nWhat is your student id? (Especially if it’s about Extenuating Circumstances or an Assessment)\nIs the question about a specific practical, lecture, or technical problem?\n\nAnd here is some additional insight into how to email your professor (without being annoying AF):\n\nSalutation: should I use “Dear”, “Hello” or “Hi”?\nHonourific: should I use “Mr”, “Ms”, “Dr” or “Professor”? Hint: don’t ever use Mr/Mrs/Ms.\nName: for god’s sake, please try not to get this wrong.\nExceptions: always look at how your Prof or TA responds to you for cues about how to respond to them.\nBe nice: treat your TA and Prof like human beings please!\nRemind me who you are: anything that allows me to place you and your question in context will help me to give you effective help.\nThe reason: tell me as precisely as possible why you are emailing me and what you want/hope to achieve by doing so.\nDo the legwork (this is the ‘show me why I should take the time to help’ thing above): if the answer is in the Syllabus or the recorded content then I may not answer your question. Or I may just write “It’s in the syllabus” and leave it at that. Show me that you’ve tried to answer your question yourself and give me a sense of what you’ve already tried. For instance, if your problem is technical then “I couldn’t install the software and it didn’t work” tells me nothing about your actual problem (see also information on asking a good tech question).\nWrap-up and Sign-off: is there a deadline (e.g. for a recommendation) or some other issue that I need to factor into my plans? Some recognition of thanks never goes amiss.\n\n\nThe Follow-Up!\nIf we don’t reply to you then send a reminder! The trick is to send the reminder at the right time: if you are about to fail an assessment or are three weeks into the course and still can’t run the programming environment then your problem is urgent and you can send a reminder much sooner than if you’re wondering ‘if X would be a good topic for the final assessment’. As the Medium blogger puts it: “If it can wait a week, let it wait a week” (before following up).\n\n\nWhy This Matters\nWe all have different ‘registers’ for speaking with other people: family (siblings vs. grandparents), friends (close friends vs. acquaintances), and so on. A professionally-written email is a vital work skill since most of the people that you will end up working for will use email over all the other channels available now. Sending an email like this will not get you the help you need:\n\nHey Bossman,\nAre U awake at 2am like me? LOL. Having problems and not going to finish the report in time for meeting tomorrow. Can you give me an extension?\nLater.\n\nIf you’re worried that you might not be hitting the right ‘tone’ then it’s ok to say so and to ask if you could write it better/differently in the future. This shows reflection and thought, which is all that we really want from our students anyway!",
+    "crumbs": [
+      "How to Get Help"
+    ]
+  },
+  {
+    "objectID": "skills/help.html#what-grade-do-you-want",
+    "href": "skills/help.html#what-grade-do-you-want",
+    "title": "How to Get Help",
+    "section": "What Grade Do You Want?",
+    "text": "What Grade Do You Want?\nFinally, we want you to think about how to learn what you need to learn. This is called meta-cognition—thinking about thinking—and it’s probably one of the most important study skills of all. So here you need to think about what you want from, for example, an assessment: do you just want to pass, or do you want to hit it out of the park?\nSome questions to ask yourself:\n\nFor an exam: What kinds of questions might it include?\nFor an essay/written piece: What kinds of topics have we covered in class?\nFor either: identify key terms, define those terms, and question the question (what might be the assumptions behind it?).\nWhich of resources would help me to study/prepare?\nHow should I make use of lecture notes, practice exam questions, textbook and other readings, instructor office hours, peer discussions, and tutoring. Write down why each resource would be useful and how you could use it to map out a study/writing plan.\nHow does my essay work as a story? I don’t necessarily mean a mystery or adventure novel, but a good essay has: a plot (what is sometimes called a narrative arc), characters (the key ideas from the literature, the data, the methods, the problems…), development (which character needs to be introduced first?), and a conclusion (what happened?). Have a look at the Tim Squirrel Guide where it talks about essay stucture.\nLooking at this literature/piece of research, is this the way that I would have done it? If I would have done it differently do I think that would have been more, or less, effective? Why or why not?\nLooking at my peers, is there someone who is doing really well who I could talk to about how they study, code, or write? How do they organise their time? How do they make use of the resources (literature, etc.)?\n\nIf all you want is a pass then organise yourself for a solid pass. If you want to excel then you’re going to have to do things a bit differently. There’s space for both approaches, but being clear about which you want will help you to prioritise the important stuff.\nAlso pay attention to what constitutes a ‘good’ output: in some cases you are being asked to write a scientific/academic essay, for which there are easy-to-follow ‘rules’, but this doesn’t work for non-scientific formats!",
+    "crumbs": [
+      "How to Get Help"
+    ]
+  },
+  {
+    "objectID": "skills/reading.html",
+    "href": "skills/reading.html",
+    "title": "How to Read",
     "section": "",
-    "text": "Another challenge for many students is that they want the ‘right’ answer to how to do things. There’s more academic literature on this, but for a thought-provoking look at why it might be a good idea for us to make your life hard then What IKEA and Our Education System Have in Common is an easy read.\nHere’s the summary:\n\nIKEA is easy, but you don’t learn anything.\nIKEA is about getting things done/finishing.\nIKEA is convenient, but it’s not creative.\nIKEA is standardised, but it is actually primed for hacking.\n\nBut there is a great response to the original post that adds nuance to this:\n\nThe thing to keep in mind, though, is that following recipies is how we learn skills to start with. If you were teaching someone to cook, for example, you wouldn’t throw the person into the kitchen and tell them to be creative with the food. Instead, you would teach them to follow recipies so that they can practice skills, and learn how to properly balance flavours and textures. Then, when they’ve mastered some recipies, you teach them how to mix up and re-combine recipies, and eventually come up with their own.",
+    "text": "Although the guidance below, from Tim Squirrel’s Guide is intended for undergraduate essays in history or philosophy, the advice works for all kinds of reading.",
     "crumbs": [
-      "How to *Think*"
+      "How to *Read*"
     ]
   },
   {
-    "objectID": "skills/thinking.html#thinking-like-a-programmer",
-    "href": "skills/thinking.html#thinking-like-a-programmer",
-    "title": "How to Think",
-    "section": "Thinking Like a Programmer",
-    "text": "Thinking Like a Programmer\nFor the record, there are many things that can’t be solved by code or coders, but there are many things that can be tackled by learning to think like a programmer. This can include:\n\nUnderstanding: make sure that you actually understand the problem before you try to solve it. Try to explain it to someone else. Try to explain it to a pet or stuffed animal. Write it down. You may feel silly doing some of these things, but saying it/writing it forces you to organise your thoughts and often gives you the answer halfway through the explanation.\nPlanning: “Given X, what steps do I need to achieve Y?” You can start with comments, bullet points, or whatever format helps you to get the skeleton of an answer in place before you spend ages writing the first few lines of code or the first few lines of your essay. Markdown is good here!\nDividing: never try to solve a hard problem in one go. Break it down into little steps. Easy steps. Do the easiest one first (if you can separate it out from the first one). Check your solution works for that part. Take the next step. Check the two steps work together. Build from there. As programmers and Venture Capitalists would tell you: iterate! Same for an essay or written submission.\nUnsticking: try to stay curious rather than getting angry or frustrated. Debugging is a step-by-step process: comment things out, add print statements, break it back down again into the basics and gradually re-add pieces until you can see where it all breaks.\nPracticing: I like this quote “Practice. Practice. Practice. It’ll only be a matter of time before you recognize that ‘this problem could easily be solved with .’”\n\n\n“The art of debugging is figuring out what you really told your program to do rather than what you thought you told it to do.” — Andrew Singer\n\nOn a more practical level, here are common mistakes made by new programmers.",
+    "objectID": "skills/reading.html#referencing",
+    "href": "skills/reading.html#referencing",
+    "title": "How to Read",
+    "section": "Referencing",
+    "text": "Referencing\nYou’ll be hearing a lot more about this at the start of term, but the first part of reading is making sure that you are able to trace where the ideas that you’re presenting/discussing/refuting came from. So that means keeping track of what you’ve read and being able to reference it (correctly) right from the start. So a quick sense of how to reference reliably:\n\nIf you are using the exact words of another writer then use double-quotes and supply a page number. For example: As Reades (2021, p.45) wrote: “We need to reference properly because otherwise we have no sense of where an idea came from…”\nIf you are paraphrasing another writer then use single-quotes and supply a page number where relevant. For example: Reades (2021, p.45) argues for the importance of good referencing since ‘without it we have little sense of where ideas come from’…\nIf you are just making a general point then a simple Author and Year citation is sufficient. For example: Reades(2021) and others (Dennett 2015, Fry 2018) have noted the importance of good referencing practice…",
     "crumbs": [
-      "How to *Think*"
+      "How to *Read*"
     ]
   },
   {
-    "objectID": "skills/thinking.html#what-this-means-for-you",
-    "href": "skills/thinking.html#what-this-means-for-you",
-    "title": "How to Think",
-    "section": "What This Means for You",
-    "text": "What This Means for You\n\nWe will not give you the answer. This will be frustrating and annoying (particularly when you are already frustrated that something is not working) but by asking you questions we will try to teach you to solve problems for yourself.\nIf you keep asking us the same questions you will get increasingly abrupt answers. You should be scared to ask us the same question for the 20th time. You should not be scared to admit that you’re struggling with something.\nSometimes there is no answer! Every year the data changes. The policies and issues change. I teach things a little differently. This is much more like the real world and sometimes I don’t know what we’ll find when we start coding.\nYou need to work out how you learn best.\nYou will need to think critically about what you are doing. There’s a good article on How to write better essays which leads on to a blog on how to write better undergraduate essays (see above). You’re obviously not undergraduates any more and we expect more of you, but as a starting point this is a good one, especially for those of you who are new to the UK way of teaching and learning.",
+    "objectID": "skills/reading.html#getting-started",
+    "href": "skills/reading.html#getting-started",
+    "title": "How to Read",
+    "section": "Getting Started",
+    "text": "Getting Started\nIdeally, whenever you are reading an academic article (or other publication) you should be thinking about how you would differ from or improve upon or disagree with the writer. The only way you can do this (and consequently, the only way to get a decent mark) is to do some careful reading:\n\nLook at the reading list. If it seems incredibly long, then your instructor is not expecting you to read it all. What they are expecting you to do is look through it and pick out the articles that speak to you (subject to guidance about what reading is essential) and to your take on the assessments. So a long reading list is not an excuse to not read any of it. Look through the list, identify if there are any readings marked as essential. Read them. If there aren’t any essential readings, pick a few which look interesting and relevant, then read them.\nRead some more. Look through the Bibliographies of the papers and books you’ve just read. See where their ideas came from. Mark out a few of the most promising-looking readings. Read them.\nNote the difference between reading to understand the topic and reading to reference. It is totally fine to use Wikipedia, lecture notes, etc to familiarise yourself with the key arguments and concepts. It is considerably less fine to cite them as your only sources.\nArticles. Read the abstract first. Does it look like it’s relevant? If not, don’t waste your time. If it does, skim it to develop a better sense of how it’s organised, what the intro and conclusion say and whether it’s worth your time to read it more closely. Skip all equations/code. Look over the bibliography as above.\nBooks. In an ideal world you should read books. Great books. Like mine of course! :-) More realistically, unless your entire dissertation hinges on a particular argument made in great detail, then for undergraduate and masters’ study do not read whole books. It’s a waste of your time. You won’t remember any of it, it will drain all of your energy, and you only get one reference and viewpoint out of it. Read the intro and conclusion so that you get the gist of their argument. Pick a chapter from the contents page which looks like it’s relevant to your essay. Read that. As above, find relevant references and follow them up.\nThere is one exception to the ‘books rule’: if you are going to present a ‘Foucauldian critique’ or a ‘Beaudrillardian perspective’ as part of a dissertation then you had better read at least the standard university-level primer on this thinker. You cannot rely on one journal article author’s perspective on a ‘great thinker’s’ oeuvre if you are presenting your work as if it were based on the thinker and not the article.\nIf an article is worth reading in detail, then read critically. For the sake of all that is holy, read critically. This is absolutely essential. Don’t just stare at the pages and try to absorb them like a plant absorbs nutrients. Ask yourself questions (why did they do this? do I think that was a good idea? how would I have done this?) and try to make the process active.\n\nSo things to think about while reading articles:\n\nThe central claim the author is making. Usually there is only one, perhaps two. Summarise it in one sentence if you can.\nWhat is the frame of their argument? When in history is it set? Who are the key actors? Are they responding to another author? If so, what is the argument they’re responding to? Try to position their argument in context. This allows you to:\nCritically assess the claims made. This obviously doesn’t just mean ‘say they’re wrong’. They might well be wrong, but you’ll need to find reasons for it. Generate a list of three reasons for each line of attack you want to take. Scrap the weakest two. If you think they’re right, why are they right? Are there other authors who corroborate their claims? Are there logical reasons to prefer their argument?",
     "crumbs": [
-      "How to *Think*"
+      "How to *Read*"
     ]
   },
   {
-    "objectID": "docker/index.html",
-    "href": "docker/index.html",
-    "title": "Using Docker",
+    "objectID": "skills/reading.html#article-summary-template",
+    "href": "skills/reading.html#article-summary-template",
+    "title": "How to Read",
+    "section": "Article Summary Template",
+    "text": "Article Summary Template\nMake sure you take notes on everything you read. Put page numbers in those notes. In fact, write down any potentially useful (and, ideally, flexible) quotes verbatim with the page numbers. Your goal is to read everything once even if you reference it repeatedly.\nHere is a template for summarising an article. It’s probably a little long, but while you develop your critical faculties it should be useful. To give you a sense of how you might fill this out, here’s a completed example of a summary document for Geography and computers: Past, present, and future.",
+    "crumbs": [
+      "How to *Read*"
+    ]
+  },
+  {
+    "objectID": "req/code_camp.html",
+    "href": "req/code_camp.html",
+    "title": "Code Camp",
     "section": "",
-    "text": "You will need to install and run Docker to be able to install the Spatial Data Science (SDS) environment. So after installing the Docker application, please make sure that you launch the application (especially on Windows) at least once before trying to run any Docker commands on the command line. You’ll know that you’ve done this is you see the ‘Docker Desktop’ window which lists downloaded images and running containers."
+    "text": "Prior to (re)joining CASA from the Department of Geography at King’s College London, Dr. Mic Ferretti, Dr. Zara Shabrina, Dr. James Millington, and I developed Code Camp.\nCode Camp provides a gentle introduction to the basics of programming in Python. Across ten sessions you will learn about syntax, variables, ‘simple’ data structures such as lists and dictionaries, and about the fundamentals of writing functions for reusable code. The sessions are entirely self-led: you should follow along at your own pace and remember that ‘it’s a marathon, not a sprint’. Don’t cram it all into the last week of summer holidays!\nStudents from previous years have repeatedly said that completing Code Camp helped them to feel more ready for the Foundations of Spatial Data Science module, enabling them to do better on assessments and on the programme as a whole.\nSo please, complete Code Camp by the start of term and, if possible, go through the materials more than once!\nYou should have received instructions via email for running Code Camp, but here they are again…",
+    "crumbs": [
+      "Code Camp"
+    ]
   },
   {
-    "objectID": "docker/index.html#understanding-docker",
-    "href": "docker/index.html#understanding-docker",
-    "title": "Using Docker",
-    "section": "Understanding Docker",
-    "text": "Understanding Docker\nIn order to make use of Docker (and understand what’s happening when you get errors), it’s helpful to have some sense of what’s going on behind the scenes. You can click on the image below to make it larger, or you can download and print out a PDF version.\n\n\n\nSketch of Docker Usage\n\n\n\n\n\n\n\n\nM1/M2 Macs\n\n\n\nRemember that on an M1 or M2 Mac you need to add -silicon to the docker image name. So jreades/sds:2024 becomes jreades/sds:2024-silicon.\n\n\nSo here’s what’s happening:\n\nStep 1. docker pull\nYou issue the docker pull jreades/sds:2024 command to your computer, which turns around and asks Docker Hub for a copy of this image. Docker Hub responds by transferring a copy of the jreades/sds:2024 image to your computer. You now have a file containing all the instructions to set up and run a virtual machine on your computer.1\n\n\nStep 2, docker run\nYou issue the docker run ... jreades/sds:2024 ... command (which you’ll be running in a minute) from your computer, and this tells Docker to use the jreades/sds:2024 image as a template for creating a container called sds20242. sds2024 will do whatever it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But sds2024 is read-only, although you can make changes to the container while it’s running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image… we can cover this if you ever do it.\nAs part of the docker run command, we also told Docker what resources the container could access. There are two main types of resources for our purposes:\n\nA mount point which is a part of your computer’s hard drive that Docker can use to write things down permanently. We use $(pwd), which is short-hand for print working directory and refers to the ‘place’ on your computer where we issued the docker run command. We tell Docker to connect this to a directory called work (which resides in /home/jovyan/) on the sds2024 container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down Docker.\nOne or more ports which are like channels on a radio where the container can talk to other computers (including yours). In this case, we connect port 8888 on sds2024 to port 8888 on your computer. And that is why you have to tell your browser to go to localhost:8888 to access Jupyter Lab.\n\n\n\nStep 4. Interacting with the Container\nNow when you type things into the browser and tell code to ‘run’, what’s actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.\n\n\nStep 5. Anatomy of docker run\nIn the next section you’ll see the full Docker run command, here we just want to focus on the most important options (each -X is an option) for most users:\n\n-v: this specified the point on your hard drive that the sds2024 can use. By default we use $(pwd) which means ‘use the location where the docker run command was executed. You can also ’hard code’ this to something like /Users/&lt;your username&gt;/Documents/casa/fsds/ if you always want to use the same location.\n-p: this specified the channel (or port) on which the web browser can talk to the sds2024.\njreades/sds:2024: this specified the image we wanted to use\n\n\n\n\n\n\n\nEssential Topic\n\n\n\nThis next section is essential to running the sds2024 environment.\n\n\n\n\n\n\n\n\nCopy Code to Clipboard\n\n\n\nWhenever you see a ‘code block’, you will also see a ‘clipboard’ icon () in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the Terminal or Power Shell. That will save you a lot of time and effort."
+    "objectID": "req/code_camp.html#options",
+    "href": "req/code_camp.html#options",
+    "title": "Code Camp",
+    "section": "Options",
+    "text": "Options\nCode Camp is publicly accessible through a code-sharing web site called GitHub and can be run using either:\n\nGoogle’s ‘Collaboratory’, or\nThe Open Source Binder tool.\n\nIn both cases there is nothing to install on your computer. You could even use a tablet or phone, though we wouldn't really recommend it. There are two main differences: ‘Colab’ notebooks require an account but can be saved into Google Drive; Binder does not require any registration, but you won’t be able to save anything.",
+    "crumbs": [
+      "Code Camp"
+    ]
   },
   {
-    "objectID": "docker/index.html#docker",
-    "href": "docker/index.html#docker",
-    "title": "Using Docker",
-    "section": "Docker",
-    "text": "Docker\n\n\n\n\n\n\nWindows Users\n\n\n\nPlease ensure that you have installed WSL2 before installing Docker!\n\n\nAfter you’ve installed Docker, You must start the Docker app running before any of the commands below will work. You’ll know that you’ve succeeded when you see the ‘Docker Desktop’ window appear listing downloaded images and running containers.\n\nDownloading the jreades/sds:2024 Image\nTo test if Docker is installed correctly, try running this command in either the Terminal (macOS) or the Power Shell (Windows):\n\nIntel Macs and WindowsM-Chip Silicon Macs\n\n\nIf your Apple computer has an Intel chipset (see:  -&gt; About this Mac -&gt; Processor) or is running Windows:\ndocker pull jreades/sds:2024\n\n\nIf your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; About this Mac -&gt; Processor):\ndocker pull jreades/sds:2024-silicon\n\n\n\nYou should see a lot of ‘layers’ being copied down – about 10GB worth – so don’t do this over a cellular connection! If that doesn’t happen then you may need to do more reading about Docker.\n\n\nStarting the sds2024 Container\n\nFor Intel MacsFor M-Chip MacsFor Windows\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2024 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024 start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2024 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024-silicon start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\n\n\n\n\n\n\nWindows\n\n\n\nYou should follow this Microsoft guide to ensure that Use the WSL 2 based engine is checked. This may require restarting Docker.\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Power Shell (note: not into the Command Prompt (cmd)). Note that this is the one-line version for Windows users:\ndocker run --rm -d --name sds2024 -p 8888:8888 -v \"$(pwd):/home/jovyan/work\" jreades/sds:2024 start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\nErrors Starting a Container\nMany applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the $(pwd) part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something like C:\\Users\\a1509\\ in which case just replace the $(pwd) with this and you should be good to go.\n\n\n\n\nIf you have issues at this point, then you’ll need to do more reading. However, most of you should now be able to connect to the virtual machine by pointing your browser at: localhost:8888 where you should see something like this:\n\n\n\nJupyter Lab Success"
+    "objectID": "req/code_camp.html#using-google-colab",
+    "href": "req/code_camp.html#using-google-colab",
+    "title": "Code Camp",
+    "section": "Using Google Colab",
+    "text": "Using Google Colab\n\nHow to get started:\n\nGo to Google’s Colab site and sign in using your Google account details (or create an account if you don’t already have one).\nChoose File then Open and select the GitHub tab from the open options (it’s between Google Drive and Upload).\nEnter the following URL: https://github.com/kingsgeocomp/code-camp (Jon was with King’s when he helped to create this resource)\nYou should now see a list of notebooks to choose from – the first few are fairly quick to complete, but they get harder as you go along – select the first on in the sequence and click Open in Colab.\nYou will need to trust the notebook in order to run it.\n\nNow you can run code in your web browser! When you are done for the day you can save the notebook to your Google Drive – to re-run that notebook you can just load it from Google Drive, rather than going back to GitHub, but remember that you need to re-run all the cells up to the point where you saved the notebook. Being able to save and re-run a notebook is the main difference from Binder.",
+    "crumbs": [
+      "Code Camp"
+    ]
   },
   {
-    "objectID": "docker/index.html#errors-starting-a-container",
-    "href": "docker/index.html#errors-starting-a-container",
-    "title": "Using Docker",
-    "section": "Errors Starting a Container",
-    "text": "Errors Starting a Container\nMany applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the $(pwd) part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something like C:\\Users\\a1509\\ in which case just replace the $(pwd) with this and you should be good to go."
+    "objectID": "req/code_camp.html#using-binder",
+    "href": "req/code_camp.html#using-binder",
+    "title": "Code Camp",
+    "section": "Using Binder",
+    "text": "Using Binder\nAll you need to do to get started is click the image below: \nThat’s it! But in case clicking that image doesn’t work, you can also go to: https://bit.ly/33Rc5QD. When Binder starts, you will be able to run the notebooks! The main difference from Colab is that you have to download a notebook from Binder to your local computer in order to save it. To re-run the same notebook, you’d need to upload the notebook to Binder again. So Binder has no ‘memory’ of your work between interactions.",
+    "crumbs": [
+      "Code Camp"
+    ]
   },
   {
-    "objectID": "docker/index.html#bash-script",
-    "href": "docker/index.html#bash-script",
-    "title": "Using Docker",
-    "section": "Bash Script",
-    "text": "Bash Script\n\n\n\n\n\n\nIntermediate Topic\n\n\n\nThis next section is only if you want to start using multiple images/containers or manipulating the way the jreades/sds:2024 starts up. This is not needed for most students.\nAs well, this script only works if you have a full Unix/Linux-compatible system. So macOS has this by default. On Windows you need to take the next step after install WSL2 and actually install a full Linux distribution (we’d suggest Ubuntu).\n\n\nThere are so many additional options for configuring Docker that we created a Bash script to do most of it for you; however, this needs to be paired with a configuration file that is kept in the same folder as the docker.sh script.\nSo it’s an extra step to getting up and running, but it allows you to easily change the port on which Jupyter Lab is served as well as to turn Quarto and Dask on/off by commenting/editing/uncommenting the port number in the config.sh file. You cannot run this in the Windows Power Shell.\nThis simplifies the process to the point of starting Docker with:\nbash docker.sh start\nAnd you can cleanly shut down the container using:\nbash docker.sh stop"
-  },
-  {
-    "objectID": "docker/index.html#dask-and-quarto",
-    "href": "docker/index.html#dask-and-quarto",
-    "title": "Using Docker",
-    "section": "Dask and Quarto",
-    "text": "Dask and Quarto\n\n\n\n\n\n\nAdvanced Topic\n\n\n\nThis next section is only if you need to run either Dask or Quarto (both of which are provided by jreades/sds:2024). This is not needed by students in Week 1, though you will use Quarto for the group project.\n\n\nTo run Dask and Quarto you need to ‘open up’ other ports on the Docker image:\ndocker run --name sds2024 --rm -d \\\n  -p 8888:8888 -p 4201:4201 -p 8787:8787 \\\n  -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024 jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\nUsing the Terminal built into the sds2024 container, you will then need to ensure that the version of Quarto built into the image runs on the same port that you specified when starting up Docker:\nquarto preview --host 0.0.0.0 --port 4201\nNotice the everything to do with Quarto is on port 4201, but note additionally the --host 0.0.0.0 that is required to allow you to view Quarto’s output if you want to serve a web site, for instance, instead of static content outside of the Docker container.\nThe Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g. using four cores at once where you’ve enabled this is Docker preferences on your Mac or Windows machine)."
-  },
-  {
-    "objectID": "docker/index.html#vscode-integration",
-    "href": "docker/index.html#vscode-integration",
-    "title": "Using Docker",
-    "section": "VSCode Integration",
-    "text": "VSCode Integration\n\n\n\n\n\n\nAdvanced Topic\n\n\n\nThis next section is only if you want to program in VSCode instead of Jupyter Lab. This is not needed for most students.\n\n\nIn principle the below will work. We have it working on Mac OSX and the same process should work on Windows. In practice, this should be considered a ‘beta feature’ in the sense that the documentation is still in development and we’re working out a few kinks. We’ll keep you posted on our progress!\n\nUsing Devcontainer\n\n\n\n\n\n\nCurrently Broken\n\n\n\nWe’re investigating why this approach doesn’t work, but we’re currently unable to get the devcontainer approach to run successfully despite having attempted to update it for 2023. We’ll correct this when we can.\n\n\nThe easier (but less tested) way to connect is to download the contents of test-vscode-project from GitHub. You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g. $HOME/Documents/CASA/fsds/).\nYou then tell VSCode to Open Workspace from File and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it still has to pull the image from Docker Hub. You can break this into steps by running docker pull jreades/sds:2024 before dealing with downloading these files and moving them into position.\n\n\nUsing Attach to Running Container\nTo enable VSCode integration you’ll need to create additional ‘mount points’ (‘locations’ on your computer’s file system) that the Docker image can access. At this point the command becomes very long, which is why there is a script designed to make this a more straightforward process provided below.\n\n\n\n\n\n\nM1/M2 Macs\n\n\n\nRemember to add -silicon to the image name (jreades/sds:2024) if you are suing a M1 or M2 Mac.\n\n\ndocker run --rm -d --name sds2024 \\\n  -p 8888:8888 -p 4201:4201 -p 8787:8787 \\\n  -v \"$(pwd):/home/jovyan/work\" \\\n  -v \"${HOME}/.vscode/containers/sds2024-extensions:/home/jovyan/.vscode-server/extensions\" \\\n  -v \"${HOME}/.vscode/containers/sds2024-insiders:/home/jovyan/.vscode-server-insiders\" \\\n  jreades/sds:2024 jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\nRequired Extensions\nThis then enables you to install the required integration extensions as follows:\n\nThe Dev - Containers extension from Microsoft, which will allow you to use a Docker container as a virtual environment from VSCode.\nThe Docker extension from Microsoft, which allows you to interact with images/containers from within VSCode.\nThe Jupyter exension, which will allow you to execute Jupyter Notebooks directly within VSCode.\nThe Jupyter Renderers extension which adds support for media outputs, especially interactive ones.\nThe Pylance extension which works as a language server (will do code highlighting, syntax checking, etc.) for Python.\nThe Python extension which provides rich support for Python &gt;= 3.7.\nThe Gremlins Tracker extension which highlights non-printing characters that can make code fail to execute properly.\n\n\n\n\n\n\n\nJupyter Keymap Extension\n\n\n\nThe “Jupyter Keymap” exension which provides the same keymaps in VSCode that exist in JupyterLab is globally enabled and does not need to be installed..\n\n\nYou can supplement these with the Markdown linting extension and a range of other tools.\nOnce this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided.\nOnce you’ve gone through this once it should be fairly straightforward on subsequent runs. At that point you can browse to the notebooks (which are usually being mounted from your own machine) and run them as if you were doing all of this within the Docker container. It’s kind of mind-melting but pretty cool.\n\n\nConnect\nUse the Remote Containers icon () to bring up the ‘open’ menu.\n\n\n\nThe Remote Containers Dialogue\n\n\n\n\nAttach\nChoose the Attach to Running Container... option to list active Docker containers.\n\n\n\nAttach to a running container\n\n\nIn this screenshot we’re running one container named fsds that was built from the jreades/sds:2022 image. Your container may have a different name (e.g. sds2024) but the image should be named jreades/sds:2024 or `jreades/sds:2024-silicon:\n\n\n\nThe list of running containers\n\n\n\n\nAttached!\nIf all has gone well, then a new window should open and you’ll notice one small, but significant change:\n\n\n\nAn attached workspace\n\n\nVSCode confirms that this window is now connected to the fsds container3:\n\n\n\nRunning on a Container\n\n\n\n\nOpen Sesame\nNow, if we try to open a file/folder under the open menu (), you’ll notice that we’re not browsing ‘our computer’ any more! Instead, we’re browsing files on the Docker container.\n\n\n\nOpening files on the container\n\n\nSo how do we find the notebooks? Well, when we launched the container we had this line:\n  -v \"$(pwd):/home/jovyan/work\" \\\nThat told Docker to connect the current working directory (where you ran the command) to /home/jovyan/work on the container. So anything under /home/jovyan/work is actually a file that can be found on our computer. Below, you can see that I’ve browsed to the fsds/practicals directory on my computer and am now ready to start running (and editing) my notebooks using an IDE instead of JupyterLab’s web interface:\n\n\n\nNotice the path on the container\n\n\n\n\nExtensions\nYou need to install the same VSCode extensions that you’d use when running Python locally on your computer into the ‘remote’ container. VSCode will do a pretty good job prompting you, but you’ve got the list above and can also seem them (notice I’ve selected CONTAINER) on the left-hand Extensions () menu in the screenshot below:\n\n\n\nExtensions installed in Container\n\n\nOnce the extensions are installed, provided that you use the same startup command each time (and don’t change the name of the container from fsds) those extensions should be ready-to-go and you won’t need to reinstall again.\n\n\nSuccess!\nAnd here we go…\n\n\n\nRunning code in a container"
-  },
-  {
-    "objectID": "docker/index.html#using-the-d-drive",
-    "href": "docker/index.html#using-the-d-drive",
-    "title": "Using Docker",
-    "section": "Using the ‘D’ Drive",
-    "text": "Using the ‘D’ Drive\n\n\n\n\n\n\nLimited Functionality\n\n\n\nWe’ve had a lot of trouble getting this to work on the machine to which we had access. These instructions should work but it seems like if you get any of them wrong you need to uninstall and reinstall Docker completely so it’s very difficult and time-consuming to work out why this isn’t working as it should.\n\n\n\n\n\n\n\n\nTip\n\n\n\nThis is best done before you have downloaded any images, though it should work with images downloaded as well.\n\n\nIf your Windows computer has two drives (C and D) and you want to store your docker images on the D drive, then you will need to carefully follow the instructions here in order to relocate the docker-desktop-data folder:\n\nShut down Docker Desktop completely (the Docker icon will disappear from the Windows ‘tray’ lower-right).\nRun wsl --shutdown in the Power Shell\nRun wsl --export docker-desktop-data docker-desktop-data.tar\nRun wsl --unregister docker-desktop-data\nRun wsl --import docker-desktop-data D:\\docker\\ docker-desktop-data.tar --version 2\nDelete docker-desktop-data.tar\nRestart the computer!\nLogin and restart Docker."
-  },
-  {
-    "objectID": "docker/index.html#deleting-the-image",
-    "href": "docker/index.html#deleting-the-image",
-    "title": "Using Docker",
-    "section": "Deleting the Image",
-    "text": "Deleting the Image\n\n\n\n\n\n\nOptional Topic\n\n\n\nThis next section is only if you want to remove all traces of the Docker images from your computer (e.g. to free up space or diagnose a potential versioning issue).\n\n\nShould you wish to remove the image and container from your system completely at the end of Term 1 then the following approaches are available:\n\nDeleting by Filter\nThis should be used with some care since it will try to delete all matching images and this may not be what you want:\ndocker ps -aqf \"name=sds\" --format=\"{{.Image}} {{.Names}} {{.ID}}\" | grep \"2019\" | cut -d' ' -f3 | xargs docker rm -f\ndocker images --format=\"{{.Repository}} {{.Tag}} {{.ID}}\" | grep \"sds\" | cut -d' ' -f3 | xargs docker rmi\n\n\nDeleting by Image\ndocker ps -aq # Get list of running processes and work out container IDs to remove\ndocker rm -f &lt;list of container IDs&gt;\ndocker images # Get list of available images and work out image IDs to remove\ndocker rmi -f &lt;list of image IDs&gt;"
-  },
-  {
-    "objectID": "docker/index.html#citing",
-    "href": "docker/index.html#citing",
-    "title": "Using Docker",
-    "section": "Citing",
-    "text": "Citing\nThis draws on Dani Arribas-Bel’s work for Liverpool. If you use this, you should also credit him.\n\n\n\nDOI\n\n\n@software{hadoop,\n  author = {{Dani Arribas-Bel}},\n  title = {\\texttt{gds_env}: A containerised platform for Geographic Data Science},\n  url = {https://github.com/darribas/gds_env},\n  version = {3.0},\n  date = {2019-08-06},\n}"
-  },
-  {
-    "objectID": "docker/index.html#footnotes",
-    "href": "docker/index.html#footnotes",
-    "title": "Using Docker",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nA virtual machine is just a computer that runs on your computer. So it ‘borrows’ resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.↩︎\nA container is the name Docker uses to refer to a running virtual machine. The image on its own does nothing until you tell docker to run it, at which point it becomes a container!↩︎\nRemember that your container may be called something else, like sds2024, but that doesn’t matter so long as you are using the right image (e.g. jreades/sds:2024). You can name the container anything at start-up using --name &lt;your_chosen_name&gt; and if you don’t provide one then Docker will make one up.↩︎"
-  },
-  {
-    "objectID": "setup/env.html",
-    "href": "setup/env.html",
-    "title": "Programming Environment",
+    "objectID": "req/base.html",
+    "href": "req/base.html",
+    "title": "Base Utilities",
     "section": "",
-    "text": "Over the years, we have experimented with a range of approaches to setting you up with a programming environment, and we have come to the conclusion that Docker is the most robust way to ensure a consistent experience. This guarantees that all students end up with the same versions of each library, that difficult-to-diagnose hardware/OS issues are minimised, and that running/recovery is the most straightforward.\nSince Docker is very complex, you might want to read the Understanding Docker section on the ‘additional information’ page. We have tried to explain in fairly simple terms how it works, though we can’t take away all of the complexity.\nA very small number of students are unable to run Docker on older machines running Windows 10 Home, in which case Anaconda Python can be used with the configuration that we provide. However, if your machine runs Docker then you must use Docker: this isolates the programming environment from your computer, ensuring that nothing is clobbered by accident, and guaranteeing that you are working with the same version of every Python library as the rest of the class (and the versions for which the practicals are tested).\nAnaconda is only supported as a last resort.",
+    "text": "In order to access the majority of the features that this module uses, you will need to install several ‘base’ utilities:",
     "crumbs": [
-      "Programming Environment"
+      "Base Utilities"
     ]
   },
   {
-    "objectID": "setup/env.html#docker",
-    "href": "setup/env.html#docker",
-    "title": "Programming Environment",
-    "section": "Docker",
-    "text": "Docker\n\n\n\n\n\n\nWindows Users\n\n\n\nPlease ensure that you have installed WSL2 before installing Docker!\n\n\nAfter you’ve installed Docker, You must start the Docker app running before any of the commands below will work. You’ll know that you’ve succeeded when you see the ‘Docker Desktop’ window appear listing downloaded images and running containers.\n\nDownloading the jreades/sds:2024 Image\nTo test if Docker is installed correctly, try running this command in either the Terminal (macOS) or the Power Shell (Windows):\n\nIntel Macs and WindowsM-Chip Silicon Macs\n\n\nIf your Apple computer has an Intel chipset (see:  -&gt; About this Mac -&gt; Processor) or is running Windows:\ndocker pull jreades/sds:2024\n\n\nIf your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; About this Mac -&gt; Processor):\ndocker pull jreades/sds:2024-silicon\n\n\n\nYou should see a lot of ‘layers’ being copied down – about 10GB worth – so don’t do this over a cellular connection! If that doesn’t happen then you may need to do more reading about Docker.\n\n\nStarting the sds2024 Container\n\nFor Intel MacsFor M-Chip MacsFor Windows\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2024 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024 start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Terminal as the bare minimum for getting up and running:\ndocker run --rm -d --name sds2024 -p 8888:8888 \\\n   -v \"$(pwd):/home/jovyan/work\" \\\n  jreades/sds:2024-silicon start.sh jupyter lab \\\n  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\n\n\n\n\n\n\n\nWindows\n\n\n\nYou should follow this Microsoft guide to ensure that Use the WSL 2 based engine is checked. This may require restarting Docker.\n\n\nOnce the pull process completes you’ll need to copy+paste the following into the Power Shell (note: not into the Command Prompt (cmd)). Note that this is the one-line version for Windows users:\ndocker run --rm -d --name sds2024 -p 8888:8888 -v \"$(pwd):/home/jovyan/work\" jreades/sds:2024 start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''\n\nErrors Starting a Container\nMany applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the $(pwd) part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something like C:\\Users\\a1509\\ in which case just replace the $(pwd) with this and you should be good to go.\n\n\n\n\nIf you have issues at this point, then you’ll need to do more reading. However, most of you should now be able to connect to the virtual machine by pointing your browser at: localhost:8888 where you should see something like this:\n\n\n\nJupyter Lab Success",
+    "objectID": "req/base.html#windows-linux-shell",
+    "href": "req/base.html#windows-linux-shell",
+    "title": "Base Utilities",
+    "section": "Windows + Linux + Shell",
+    "text": "Windows + Linux + Shell\n\n\n\n\n\n\nCreating a Linux User\n\n\n\nIf you want to install a full Linux distribution (e.g. because you want to do more than just run Docker) then make sure you set up a new Linux user and do not end up running everything as root.\n\n\nTo make full use of WSL2 and Linux (if you want to do more than just use Docker) you will need to familiarise yourself with how having two operating systems that can talk to each other works. That is covered in the next section. This will actually be useful for understanding how Docker works, as it can be profoundly confusing.\nThe behaviour of the ‘shell’ (command line) is quite confusing because, with WSL2, you effectively end up with two ‘home’ directories: one for your Windows user, and one for your new Ubuntu user. Starting a Linux shell/command line puts you in your Linux home directory (the username may be completely different from your Windows username). Starting a Windows shell/command line puts you in your Windows home directory (again, the username may be completely different from your Linux username).\nSo the first, and perhaps most important, thing is understanding where ‘data’ is being stored:\n\nUnder Linux the user directory is apparently something like: \\\\wsl$\\&lt;DistroName&gt;\\home\\&lt;UserName&gt;\\ but you can usually get it by simply typing cd $HOME and then pwd when starting a new Linux shell.\nUnder Windows the user directory is: C:\\Users\\&lt;UserName&gt;\\ or /mnt/c/Users/&lt;UserName&gt;/, and you can often simply type pwd when opening a new Windows shell.\n\nSo these are different locations on your computer’s hard drive, and you will not see your Linux files in your Windows Home Directory and vice versa. To make it easy to switch between the two, I found this page on Microsoft’s web site that goes through some of the post-WSL2 installation steps, but see especially the additional page on Windows Terminal configuration.\nSlightly confusingly, you can run Linux commands directly from Windows, usually be adding wsl in front of the Linux command (e.g. wsl ls *.csv from Windows, where in Linux the command would be ls *.csv).\nTo make it easy to move from the Linux side of your machine to the Windows machine you can also do this:\n\nWork out where your CASA files are stored on the Windows side (see above: /mnt/c/Users/&lt;UserName&gt;/My\\ Documents/CASA/... where &lt;UserName&gt; is your Windows user name).\ncd to this location and type pwd to output the full path to the CASA directory.\nCopy this.\nNow start a Linux shell and run the following command once (you do not need to do it ever again): echo \"export WIN_HOME=\\\"/mnt/c/Users/.../CASA/\\\"\" &gt;&gt; $HOME/.bashrc. Replace the ... with the rest of the actual path! The \\\" is very important, don’t try to change those!\nNow run source .bashrc and you should see no errors.\n\nOnce you have done this you will have added a single line to your .bashrc file in Linux. This will create a ‘shortcut’ for bash in Linux. From here on out you should be able to type cd $WIN_HOME and move immediately over to the CASA directory on the Windows side. This will save having to remember (and type) the Windows path each time.",
     "crumbs": [
-      "Programming Environment"
+      "Base Utilities"
     ]
   },
   {
-    "objectID": "setup/env.html#errors-starting-a-container",
-    "href": "setup/env.html#errors-starting-a-container",
-    "title": "Programming Environment",
-    "section": "Errors Starting a Container",
-    "text": "Errors Starting a Container\nMany applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the $(pwd) part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something like C:\\Users\\a1509\\ in which case just replace the $(pwd) with this and you should be good to go.",
-    "crumbs": [
-      "Programming Environment"
-    ]
+    "objectID": "skills/How_to_Succeed.html#assigned-readings",
+    "href": "skills/How_to_Succeed.html#assigned-readings",
+    "title": "How to Succeed",
+    "section": "Assigned Readings",
+    "text": "Assigned Readings\n\n\n\nRead widely\nLook at the reading list (readingslists.ucl.ac.uk)\nCheck the library for availability\nThink critically1\n\n\n\n\n\nKnowing where to find the best material is vital to success in your degree\n\nJust because it was published, it doesn’t mean it’s correct!"
   },
   {
-    "objectID": "setup/env.html#vscode",
-    "href": "setup/env.html#vscode",
-    "title": "Programming Environment",
-    "section": "VSCode",
-    "text": "VSCode\nWe have built the jreades/sds:2024 image for a streamlined, effective in-browser experience. However, if you’re more familiar with IDEs then VSCode offers the ability to intergrate with Docker images so that you write your code in VSCode and it’s sent to the Docker image for execution. You can read the instructions on the more detailed Using Docker page.",
-    "crumbs": [
-      "Programming Environment"
-    ]
+    "objectID": "skills/How_to_Succeed.html#ucl-library",
+    "href": "skills/How_to_Succeed.html#ucl-library",
+    "title": "How to Succeed",
+    "section": "UCL Library",
+    "text": "UCL Library\nThe UCL Library Services Website is a very good place to start if you want to find books located in UCL www.ucl.ac.uk/library/.\n\nUCL has lots of libraries – you will probably find most useful items in the UCL Science Library, the Bartlett Library or we have a small CASA library where you can borrow books."
   },
   {
-    "objectID": "setup/env.html#anaconda-python",
-    "href": "setup/env.html#anaconda-python",
-    "title": "Programming Environment",
-    "section": "Anaconda Python",
-    "text": "Anaconda Python\n\n\n\n\n\n\nWarning\n\n\n\nWe only support Anaconda Python as a fallback for students who would otherwise be unable to complete the module because their computer does not support Docker. If you choose to use Anaconda (but could run Docker) then we will not be able to support you.\n\n\nYou are always free to install Anaconda Python and to use our YAML configuration script to install the SDS environment, but you should do this in your own time: in previous years students have encountered difficult-to-diagnose bugs in their code (and lost marks in the Assessments!) because they had installed an older or more recent version of a Python library than the one configured and tested in the SDS environment.\nWe believe that the replication advantages of virtualisation outweigh the disbenefits in terms of performance. It also means that you will spend less time installing libraries and more time running code, which is where your attention should really be when you are familiarising yourself with the foundations of data science.\nEventually you will, of course, want to install and manage your own programming environment (possibly even by building and sharing Docker images!) but this can be left for later when you have developed an appreciation of how and when virtualisation is (or is not) an appropriate solution to your needs.",
-    "crumbs": [
-      "Programming Environment"
-    ]
+    "objectID": "skills/How_to_Succeed.html#google-scholar",
+    "href": "skills/How_to_Succeed.html#google-scholar",
+    "title": "How to Succeed",
+    "section": "Google Scholar",
+    "text": "Google Scholar\nFind academic articles using Google Scholar (scholar.google.com), it’s great! Much better than a standard google search for finding books, journal articles, working papers etc."
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#google-scholar-2",
+    "href": "skills/How_to_Succeed.html#google-scholar-2",
+    "title": "How to Succeed",
+    "section": "Google Scholar (2)",
+    "text": "Google Scholar (2)\nYou can also link Google scholar to the UCL library, so if you find an article you might like to read Google will give you the UCL link to access it!"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#web-of-science",
+    "href": "skills/How_to_Succeed.html#web-of-science",
+    "title": "How to Succeed",
+    "section": "Web of Science",
+    "text": "Web of Science\nWeb of Science is also an excellent search tool for finding academic articles. It will automatically link to items in the UCL catalogue as you need to log in via your institutional credentials."
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#read-widely",
+    "href": "skills/How_to_Succeed.html#read-widely",
+    "title": "How to Succeed",
+    "section": "Read Widely?",
+    "text": "Read Widely?\n\n\n\nSet the Scene Readings\n\n\nUN Sustainable Development Goals\nC40 cities\nGive cities a seat at the top table, Acuto 2016\nScientists must have a say in the future of cities, McPherson 2016\nGlobal science for city policy, Acuto 2018\nLondon Plan\nNew Urban Agenda\n\n\n\nTechnical Readings\n\nThe detail of the method you are using = where, how +why"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#why-it-matters",
+    "href": "skills/How_to_Succeed.html#why-it-matters",
+    "title": "How to Succeed",
+    "section": "Why it Matters",
+    "text": "Why it Matters\nBeing able to write well is absolutely key to success.\nIf you are unable to present your argument well in English, your grades will suffer accordingly.\nPoor quality of written English a contributing factor in failed CASA dissertations in the past.\nThere are a number of factors which could lead to poor written work, but fortunately there are solutions to all of them…"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#esl",
+    "href": "skills/How_to_Succeed.html#esl",
+    "title": "How to Succeed",
+    "section": "ESL",
+    "text": "ESL\nIf English isn’t your first language the UCL Centre For Languages & International Education has taught courses which run during the term (www.ucl.ac.uk/languages-international-education) and there are also mobile apps (www.ucl.ac.uk/english-usage/apps/)\nAlso, the Writing Lab (www.ucl.ac.uk/writing-lab/)!"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#the-writing-lab",
+    "href": "skills/How_to_Succeed.html#the-writing-lab",
+    "title": "How to Succeed",
+    "section": "The Writing Lab",
+    "text": "The Writing Lab"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#academic-english",
+    "href": "skills/How_to_Succeed.html#academic-english",
+    "title": "How to Succeed",
+    "section": "‘Academic’ English",
+    "text": "‘Academic’ English\nDeveloped through the programme and modules.\nOther resources:\n\nUCL Transition Study Skills\nUCL Institute of Education has excellent online guides\n\nMOOCs are available elsewhere:\n\nE.g. EdX!"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#how-to-reference",
+    "href": "skills/How_to_Succeed.html#how-to-reference",
+    "title": "How to Succeed",
+    "section": "How to Reference",
+    "text": "How to Reference\nVariety of academic referencing styles, but we prefer Harvard referencing:\n\nBao (2003) compares this population group with…\nAn earlier study (Bao, 2003) concluded that…\nSmith et al. (2006) conducted a situation analysis…\nAl-Hasani (2003, p27) stated that “this method is more suitable for analysis of complex emergency situations”"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#use-a-reference-manager",
+    "href": "skills/How_to_Succeed.html#use-a-reference-manager",
+    "title": "How to Succeed",
+    "section": "Use a Reference Manager",
+    "text": "Use a Reference Manager\nReference management software is BRILLIANT so use it!\nZotero is FREE and works across multiple platforms."
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#zotero",
+    "href": "skills/How_to_Succeed.html#zotero",
+    "title": "How to Succeed",
+    "section": "Zotero",
+    "text": "Zotero\nAdd citations to your library with ONE CLICK from your (Firefox or Chrome) browser.\nWill automatically detect whether a journal article, book, webpage etc."
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#zotero-2",
+    "href": "skills/How_to_Succeed.html#zotero-2",
+    "title": "How to Succeed",
+    "section": "Zotero (2)",
+    "text": "Zotero (2)\nCitations can be imported straight into Microsoft Word / Google docs / Markdown using a ‘plugin’.\nZotero will then build your alphabetical reference list at the end according to the style you choose!"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#zotero-3",
+    "href": "skills/How_to_Succeed.html#zotero-3",
+    "title": "How to Succeed",
+    "section": "Zotero (3)",
+    "text": "Zotero (3)\nYour personal reference ‘library’ is stored online and locally on your computer (and synced) so you can access from anywhere. Free backups!\nOther reference management software such as EndNote is available (EndNote is good, but quite pricey…)\n** Big hint #1 – DOWNLOAD ZOTERO TODAY AND PRACTICE USING IT – IT WILL MAKE YOUR LIFE ABOUT 300% BETTER**"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#plagiarism",
+    "href": "skills/How_to_Succeed.html#plagiarism",
+    "title": "How to Succeed",
+    "section": "Plagiarism",
+    "text": "Plagiarism\n\nPerhaps the most serious academic offense and one that could lead to you failing your degree!\nPassing off someone else’s work as your own.\nWhether deliberately or accidentally (e.g. forgetting to cite something you copied from a source)\nYou will get credit every time you reference the work of someone you have read – so make sure you cite them correctly!\nWe are all experts at spotting plagiarism (indeed it can be a bit of a sport for lecturers), so DON’T DO IT!!\n\nSee my last point on Zotero to help with this!"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#some-examples",
+    "href": "skills/How_to_Succeed.html#some-examples",
+    "title": "How to Succeed",
+    "section": "Some Examples",
+    "text": "Some Examples\n\nStudents try to change enough words to minimise their Turnitin score, but we’ve been doing this for many years and normally tell.\nStudents submit .zip files in attempt to avoid their work going through Turnitin, but all work goes through Turnitin.\nStudents screenshot figures from web sources, or even published papers, but when we check they can’t show how they produced them.\nAn applicant provided a work sample based on the town of Stowe, Vermont USA. We recognised that they had directly copied an ArcGIS tutorial for the spatial analyst toolbox."
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#test-yourself",
+    "href": "skills/How_to_Succeed.html#test-yourself",
+    "title": "How to Succeed",
+    "section": "Test Yourself",
+    "text": "Test Yourself\nMany cases of plagiarism are accidental, but this is not an excuse.\nYou must all complete the referencing and plagiarism quiz on Moodle. We will log all people who have and haven’t completed and will chase you if you don’t complete it.\nLog onto the CASA page (where these slides will be along with other induction week materials) and complete the short quiz."
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#the-solution",
+    "href": "skills/How_to_Succeed.html#the-solution",
+    "title": "How to Succeed",
+    "section": "The Solution?",
+    "text": "The Solution?\nIf in doubt, ask."
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#cheating",
+    "href": "skills/How_to_Succeed.html#cheating",
+    "title": "How to Succeed",
+    "section": "Cheating",
+    "text": "Cheating\n\nWe Promise You An ‘A’! Promise!"
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#cheating-2",
+    "href": "skills/How_to_Succeed.html#cheating-2",
+    "title": "How to Succeed",
+    "section": "Cheating (2)",
+    "text": "Cheating (2)\n\nIf you are caught using one of these companies the penalties are harsh: they typically include immediate expulsion and the withholding any qualification you might have qualified for!\nYou run the very real risk of being blackmailed throughout your degree and career.\nThe types of assignments we set are difficult for these companies to handle because they don’t have the necessary skills to complete them to a high standard."
+  },
+  {
+    "objectID": "skills/How_to_Succeed.html#get-help",
+    "href": "skills/How_to_Succeed.html#get-help",
+    "title": "How to Succeed",
+    "section": "Get Help!",
+    "text": "Get Help!\nWe recognise that there are many reasons students might plagiarise or cheat, for example:\n\nLeaving the work until the last minute\nFeel overwhelmed and panicking\nHaving to dedicate time to over personal issues (e.g. health or family)\n\nTalk to the staff (your personal tutor, the departmental tutor, the module leader, anyone) if you are facing issues that could be affecting your studies."
   }
 ]
