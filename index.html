@@ -107,11 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="CASA’s Urban Spatial Science Platform – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://jreades.github.io/sds_env/img/CASA_Logo_no_text.png">
+<meta property="og:image" content="img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
-<meta property="og:image:height" content="1299">
-<meta property="og:image:width" content="1298">
 </head>
 
 <body class="nav-fixed">
@@ -410,7 +408,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/jreades\.github\.io\/sds_env\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
