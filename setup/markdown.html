@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Markdown – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/CASA_Logo_no_text.png">
+<meta property="og:image" content="https://jreades.github.io/sds_env/setup/img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
 </head>
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../setup/install_fest.html">
- <span class="dropdown-text">Programming Tools</span></a>
+ <span class="dropdown-text">Installation ‘Fest’</span></a>
   </li>  
     </ul>
   </li>
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Programming Tools</span></a>
+ <span class="menu-text">Installation ‘Fest’</span></a>
   </div>
 </li>
     </ul>
@@ -491,7 +491,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jreades\.github\.io\/sds_env\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

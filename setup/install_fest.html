@@ -9,7 +9,7 @@
 <meta name="author" content="Jon Reades">
 <meta name="dcterms.date" content="2024-09-27">
 
-<title>Programming Tools – CASA Computing Environment</title>
+<title>Installation ‘Fest’ – CASA Computing Environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,9 +106,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Programming Tools – CASA Computing Environment">
+<meta property="og:title" content="Installation ‘Fest’ – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/CASA_Logo_no_text.png">
+<meta property="og:image" content="https://jreades.github.io/sds_env/setup/img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
 </head>
@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../setup/install_fest.html">
- <span class="dropdown-text">Programming Tools</span></a>
+ <span class="dropdown-text">Installation ‘Fest’</span></a>
   </li>  
     </ul>
   </li>
@@ -222,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/install_fest.html">Programming Tools</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/install_fest.html">Installation ‘Fest’</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Programming Tools</span></a>
+ <span class="menu-text">Installation ‘Fest’</span></a>
   </div>
 </li>
     </ul>
@@ -275,7 +275,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#base-utilities" id="toc-base-utilities" class="nav-link active" data-scroll-target="#base-utilities">Base Utilities</a></li>
-  <li><a href="#what-kind-of-computer" id="toc-what-kind-of-computer" class="nav-link" data-scroll-target="#what-kind-of-computer">What Kind of Computer?</a></li>
   <li><a href="#downloading" id="toc-downloading" class="nav-link" data-scroll-target="#downloading">Downloading</a></li>
   <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
   <li><a href="#installing-docker" id="toc-installing-docker" class="nav-link" data-scroll-target="#installing-docker">Installing Docker</a></li>
@@ -293,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Programming Tools</h1>
+<h1 class="title">Installation ‘Fest’</h1>
 </div>
 
 
@@ -381,19 +380,17 @@ If You Need More Help
 </div>
 </div>
 </section>
-<section id="what-kind-of-computer" class="level2">
-<h2 class="anchored" data-anchor-id="what-kind-of-computer">What Kind of Computer?</h2>
-<section id="apple-intel-or-siliconm-chip" class="level3">
-<h3 class="anchored" data-anchor-id="apple-intel-or-siliconm-chip">Apple Intel or Silicon/M-chip?</h3>
-<p>Apple has stopped using Intel computer chips and now uses its own ‘Silicon’ (aka ‘M’) chips instead. Confusingly, these are often <em>also</em> referred to by their technical specification as <code>AMD64</code> (Intel) and <code>ARM64</code> (Apple), respectively. To find out which you have, click on the Apple icon () and select <code>About this Mac</code>. Look at the <code>Processor</code> section and you should see which type of computer you have. If you see the word <code>Intel</code> then you have an Intel computer, if you see <code>M1</code>, <code>M2</code>, <code>M3</code>, etc. then you have an Apple Silicon computer.</p>
-</section>
-<section id="windows-32--or-64-bit" class="level3">
-<h3 class="anchored" data-anchor-id="windows-32--or-64-bit">Windows 32- or 64-bit?</h3>
-<p>It is <em>highly unlikely</em> that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.</p>
-</section>
-</section>
 <section id="downloading" class="level2">
 <h2 class="anchored" data-anchor-id="downloading">Downloading</h2>
+<section id="what-kind-of-computer" class="level3">
+<h3 class="anchored" data-anchor-id="what-kind-of-computer">What Kind of Computer?</h3>
+<section id="apple-intel-or-siliconm-chip" class="level4">
+<h4 class="anchored" data-anchor-id="apple-intel-or-siliconm-chip">Apple Intel or Silicon/M-chip?</h4>
+<p>Apple has stopped using Intel computer chips and now uses its own ‘Silicon’ (aka ‘M’) chips instead. Confusingly, these are often <em>also</em> referred to by their technical specification as <code>AMD64</code> (Intel) and <code>ARM64</code> (Apple), respectively. To find out which you have, click on the Apple icon () and select <code>About this Mac</code>. Look at the <code>Processor</code> section and you should see which type of computer you have. If you see the word <code>Intel</code> then you have an Intel computer, if you see <code>M1</code>, <code>M2</code>, <code>M3</code>, etc. then you have an Apple Silicon computer.</p>
+</section>
+<section id="windows-32--or-64-bit" class="level4">
+<h4 class="anchored" data-anchor-id="windows-32--or-64-bit">Windows 32- or 64-bit?</h4>
+<p>It is <em>highly unlikely</em> that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.</p>
 <p>While you’re waiting for the packages below to finish downloading, you can also have a look at the information about <a href="#get-a-github-account">getting set up on GitHub</a>…</p>
 <p>Please download <em>all</em> of the <em>Essential</em> packages for your type of computer (Apple Intel, Apple Silicon, Windows). The rest are listed for your convenience and you can install them as you see fit.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -464,6 +461,8 @@ If You Need More Help
 </div>
 </div>
 </div>
+</section>
+</section>
 </section>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
@@ -747,7 +746,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jreades\.github\.io\/sds_env\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
