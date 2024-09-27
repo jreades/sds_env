@@ -1,0 +1,5 @@
+## Success!
+
+However, *most* of you should now be able to connect to the virtual machine by pointing your browser at: [localhost:8888](http://localhost:8888/lab/) where you should see something like this:
+
+![Jupyter Lab Success](../img/Jupyter_Lab.png){width=50%}

@@ -1,0 +1,72 @@
+## Dealing with Errors
+
+Before we go any further, there are two types of problems that you're likely to encounter when trying to use Docker:
+
+1. Errors *installing* Docker
+2. Errors *running* Docker
+
+### Errors Installing Docker
+
+Most installation errors arise from *either* your Windows machine not having WSL2 installed *or* not having enough disk space. An additional problem arises if you are using a 'corporate' laptop that has been locked down by your IT department and can't install Docker because you're not an administrator.
+
+#### Problems with WSL2
+
+If you are unable to finish installing Docker because it is asking you to install WSL2, or telling you that WSL2 is not up-to-date but failing to update it for you, then you *may* wish to try using Hyper-V instead. This is not recommended but it is a workaround that has worked for some people.
+
+Microsoft [has instructions here](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) on how to enable Hyper-V on your Windows machine. You will need to restart your computer after enabling Hyper-V. [These instructions](https://techcommunity.microsoft.com/t5/educator-developer-blog/step-by-step-enabling-hyper-v-for-use-on-windows-11/ba-p/3745905) may also help.
+
+#### Problems with Admin Rights
+
+If you are unable to install Docker on your computer (e.g. because you are an apprentice with a corporate laptop), you may wish to try using Podman instead. Podman is runs in 'user space', which means that it does not need admin rights to run. You can find out more about Podman [here](https://podman.io/). Our limited testing suggests that it works well with the SDS environment. 
+
+You will need to:
+
+1. Download and install the Podman CLI and Desktop from [here](https://podman.io/).
+2. Run the following command in the Power Shell or Terminal:<br />
+`podman machine init`<br />`podman machine start`
+3. Download the SDS image> `podman pull jreades/{{< var env.image >}}` (adding `-silicon` for M-chip Macs)
+
+#### Problems with Disk Space
+
+Some Windows PCs have two drives (`C` and `D`) and you may want to store your Docker images on the `D` drive. If you do, then you will need to **carefully** follow [the instructions here](https://stackoverflow.com/a/66314636/1600439) in order to relocate the `docker-desktop-data` folder (reproduced below). That said, we've had a lot of trouble getting this to work on the machine to which we had access. These instructions *should* work but it seems like if you get any of them wrong you need to uninstall and reinstall Docker completely so it's very difficult and time-consuming to work out why this *isn't* working as it should.
+
+If your Windows computer has two drives (`C` and `D`) and you want to store your docker images on the `D` drive, then you will need to **carefully** follow [the instructions here](https://stackoverflow.com/a/66314636/1600439) in order to relocate the `docker-desktop-data` folder:
+
+1. Shut down Docker Desktop completely (the Docker icon will disappear from the Windows 'tray' lower-right).
+2. Run `wsl --shutdown` in the Power Shell
+3. Run `wsl --export docker-desktop-data docker-desktop-data.tar`
+4. Run `wsl --unregister docker-desktop-data`
+5. Run `wsl --import docker-desktop-data D:\docker\ docker-desktop-data.tar --version 2`
+6. Delete `docker-desktop-data.tar`
+7. **Restart the computer**!
+8. Login and restart Docker.
+
+### Errors Running Docker
+
+You may find that, at some point, Docker begins to complain about not having enough disk space. This is because it is storing all of the images and containers that you have downloaded and run. You can see how much space Docker is using by running the following command in the Power Shell or Terminal:
+
+```bash
+docker system df
+```
+
+#### Deleting an Image
+
+If you are short on disk space and wish to remove the image and container from your system completely at the end of Term 1 then the following approaches are available:
+
+##### Deleting by Filter
+
+This should be used with some care since it will try to delete all matching images and this may not be what you want:
+
+```bash
+docker ps -aqf "name=sds" --format="{{.Image}} {{.Names}} {{.ID}}" | grep "2019" | cut -d' ' -f3 | xargs docker rm -f
+docker images --format="{{.Repository}} {{.Tag}} {{.ID}}" | grep "sds" | cut -d' ' -f3 | xargs docker rmi
+```
+
+##### Deleting by Image
+
+```bash
+docker ps -aq # Get list of running processes and work out container IDs to remove
+docker rm -f <list of container IDs>
+docker images # Get list of available images and work out image IDs to remove
+docker rmi -f <list of image IDs>
+```

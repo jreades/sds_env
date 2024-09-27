@@ -1,0 +1,113 @@
+## Testing Docker
+
+To test if Docker is installed correctly, you will need either the `Terminal` (macOS) or the `Power Shell` (Windows).
+
+::: {.callout-tip}
+
+## Copy Code to Clipboard 
+
+Whenever you see a 'code block' below, you will _also_ see a 'clipboard' icon (![Copy to Clipboard Icon](../img/copy-to-clipboard.png){height="18px"}) in the right. Click that, and the code will be copied to your computer's 'clipboard' so that you can then paste it into the `Terminal` or `Power Shell`. That will save you a lot of time and effort.
+
+:::
+
+Docker has provided a simple way to test if your installation is working correctly. You can run the following command in the `Terminal` or `Power Shell`:
+
+```bash
+docker run hello-world
+```
+
+This should output something like:
+
+```plaintext
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+478afc919002: Pull complete
+Digest: sha256:91fb4b041da273d5a3273b6d587d62d518300a6ad268b28628f74997b93171b2
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
+
+If you see this message, then Docker is installed correctly and you can move on to the next step. If you see an error message, then you will need to have a look at the '[dealing with errors](#dealing-with-errors)' section. Notice how there are several things happening:
+
+1. `Unable to find image... locally` -- this is because the `hello-world` image is not (yet) stored on your computer.
+2. `latest: Pulling from library/hello-world` -- this is Docker downloading the `hello-world` image from the internet.
+3. `Pull complete` -- this is Docker telling you that it has finished downloading the image.
+4. `Hello from Docker!` -- this is the `hello-world` image running and telling you that Docker is working correctly.
+
+There's obviously a *lot* more to that message, but that's the basic idea.
+
+## Installing {{< var env.name >}}
+
+We now need to download the {{< var env.name >}} **image** that we use for teaching *Foundations* and *Quantitative Methods*. The image is the 'template' for running virtual machines (i.e. computers) on our 'host' computer and it comes complete with all of the Python libraries and other tools that you'll need to complete the module (and a good deal more besides!). Installing the image will take a while as it's quite large (2-5GB) and so will depend on the speed of your internet connection. 
+
+::: {.panel-tabset}
+
+## Intel Macs and Windows
+
+If your Apple computer has an Intel chipset (see: &#63743; -> `About this Mac` -> `Processor`) or is running Windows:
+
+```bash
+docker pull {{< var env.image >}}
+```
+
+## Silicon/M-Chip Macs
+
+If your Apple computer has an M1 or M2 'Silicon' chipset (see: &#63743; -> `About this Mac` -> `Processor`): 
+
+```bash
+docker pull {{< var env.image >}}-silicon
+```
+
+:::
+
+## Using {{< var env.name >}}
+
+Now that you have the image downloaded, you can start an {{< var env.name >}} **container** by copying the following command into the `Terminal` or `Power Shell` (*this does not work in the Command Prompt*/`cmd`):
+
+:::: {.panel-tabset}
+
+## For Intel Macs
+
+```bash
+docker run --rm -d --name {{< var env.name >}} -p 8888:8888 \
+   -v "$(pwd):/home/jovyan/work" \
+  {{< var env.image >}} start.sh jupyter lab \
+  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+## For M-Chip Macs
+
+```bash
+docker run --rm -d --name {{< var env.name >}} -p 8888:8888 \
+   -v "$(pwd):/home/jovyan/work" \
+  {{< var env.image >}}-silicon start.sh jupyter lab \
+  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+## For Windows
+
+```bash
+docker run --rm -d --name {{< var env.name >}} -p 8888:8888 -v "$(pwd):/home/jovyan/work" {{< var env.image >}} start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+::::

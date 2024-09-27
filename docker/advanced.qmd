@@ -1,0 +1,185 @@
+---
+title: "Advanced Topics"
+author: "Jon Reades"
+date: "9/27/2024"
+---
+
+This page covers more advanced topics related to the use of Docker and VSCode with the {{< var env.image >}} image.
+
+## Bash Script
+
+:::{.callout-warning}
+### Intermediate Topic
+
+This next section is _only_ if you want to start using multiple images/containers or manipulating the way the {{< var env.image >}} starts up. **This is _not_ needed for most students**. 
+
+As well, this script only works if you have a full Unix/Linux-compatible system. So macOS has this by default. On Windows you need to take the next step *after* install WSL2 and actually install a full Linux distribution (we'd suggest Ubuntu).
+
+:::
+
+There are so many additional options for configuring Docker that we [created a Bash script](https://github.com/jreades/sds_env/raw/master/docker/docker.sh) to do most of it for you; however, this needs to be paired with a [configuration file](https://github.com/jreades/sds_env/raw/master/docker/config.sh) that is kept in the same folder as the `docker.sh` script. 
+
+So it's an extra step to getting up and running, but it allows you to easily change the port on which Jupyter Lab is served as well as to turn Quarto and Dask on/off by commenting/editing/uncommenting the port number in the `config.sh` file. **You cannot run this in the Windows `Power Shell`.**
+
+This simplifies the process to the point of starting Docker with: 
+```bash
+bash docker.sh start
+```
+
+And you can cleanly shut down the container using: 
+```bash
+bash docker.sh stop
+```
+
+## Dask and Quarto
+
+:::{.callout-warning}
+### Advanced Topic
+
+This next section is _only_ if you need to run either Dask or Quarto (both of which are provided by {{< var env.image >}}). **This is _not_ needed by students in Week 1, though you will use Quarto for the group project**.
+
+:::
+
+To run Dask and Quarto you need to 'open up' other ports on the Docker image:
+
+```bash
+docker run --name {{< var env.name >}} --rm -d \
+  -p 8888:8888 -p 4201:4201 -p 8787:8787 \
+  -v "$(pwd):/home/jovyan/work" \
+  {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+Using the `Terminal` built into the {{< var env.name >}} container, you will *then* need to ensure that the version of Quarto built into the image runs on *the same port* that you specified when starting up Docker:
+
+```bash
+quarto preview --host 0.0.0.0 --port 4201
+```
+
+Notice the everything to do with Quarto is on port `4201`, but note additionally the `--host 0.0.0.0` that is required to allow you to view Quarto's output if you want to serve a web site, for instance, instead of static content *outside* of the Docker container.
+
+The Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g. using four cores at once where you've enabled this is Docker preferences on your [Mac](https://docs.docker.com/desktop/settings/mac/) or [Windows](https://docs.docker.com/desktop/settings/windows/) machine).
+
+## VSCode Integration
+
+:::{.callout-warning}
+## Advanced Topic
+
+This next section is _only_ if you want to program in VSCode instead of Jupyter Lab. **This is _not_ needed for most students**.
+
+:::
+
+In principle the below will work. We have it working on Mac OSX and the same process *should* work on Windows. In practice, this should be considered a '**beta feature**' in the sense that the documentation is still in development and we're working out a few kinks. We'll keep you posted on our progress!
+
+### Using Devcontainer
+
+::: {.callout-important}
+## Currently Broken
+
+We're investigating why this approach doesn't work, but we're currently unable to get the devcontainer approach to run successfully despite having attempted to update it for 2023. We'll correct this when we can.
+
+:::
+
+The easier (but less tested) way to connect is to download the contents of `test-vscode-project` [from GitHub](https://github.com/jreades/sds_env/tree/master/test-vscode-project). You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g. `$HOME/Documents/CASA/fsds/`). 
+
+You then tell VSCode to `Open Workspace from File` and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it _still_ has to pull the image from Docker Hub. You can break this into steps by running `docker pull {{< var env.image >}}` _before_ dealing with downloading these files and moving them into position.
+
+### Using Attach to Running Container
+
+To enable VSCode integration you'll need to create additional 'mount points' ('locations' on *your computer's* file system) that the Docker image can access. At this point the command becomes *very* long, which is why there is a script designed to make this a more straightforward process provided below.
+
+::: {.callout-tip}
+# M1/M2 Macs
+
+Remember to add `-silicon` to the image name ({{< var env.image >}}) if you are suing a M1 or M2 Mac.
+
+::: 
+
+```bash
+docker run --rm -d --name {{< var env.name >}} \
+  -p 8888:8888 -p 4201:4201 -p 8787:8787 \
+  -v "$(pwd):/home/jovyan/work" \
+  -v "${HOME}/.vscode/containers/{{< var env.name >}}-extensions:/home/jovyan/.vscode-server/extensions" \
+  -v "${HOME}/.vscode/containers/{{< var env.name >}}-insiders:/home/jovyan/.vscode-server-insiders" \
+  {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+#### Required Extensions
+
+This then enables you to install the required integration extensions as follows:
+
+1. The [Dev - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension from Microsoft, which will allow you to use a Docker container as a virtual environment from VSCode.
+2. The [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) extension from Microsoft, which allows you to interact with images/containers from within VSCode.
+3. The [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) exension, which will allow you to execute Jupyter Notebooks directly within VSCode.
+4. The [Jupyter Renderers](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers) extension which adds support for media outputs, especially interactive ones.
+5. The [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) extension which works as a language server (will do code highlighting, syntax checking, etc.) for Python.
+6. The [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension which provides rich support for Python >= 3.7.
+7. The [Gremlins Tracker](https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins) extension which highlights non-printing characters that can make code fail to execute properly.
+8. The [GitHub CoPilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilotvs) which provides AI-assisted code completion and suggestions. To get the most from this you will need to add your UCL email address to your GitHub account and then request access to the academic program.
+
+:::{.callout-tip} 
+## Jupyter Keymap Extension
+
+The "Jupyter Keymap" exension which provides the same keymaps in VSCode that exist in JupyterLab is globally enabled and does not need to be installed..
+:::
+
+You can supplement these with the Markdown linting extension and a range of other tools. 
+
+Once this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided. 
+
+Once you've gone through this _once_ it should be fairly straightforward on subsequent runs. At that point you can browse to the notebooks (which are usually being mounted from your own machine) and run them as if you were doing all of this within the Docker container. It's kind of mind-melting but pretty cool.
+
+#### Connect
+
+Use the Remote Containers icon (![Dev Containers icon](./img/01-icon.png){height="14px" .nolightbox}) to bring up the 'open' menu.
+
+![The Remote Containers Dialogue](./img/01-Connect.png){width="75%" fig-alt="Click the green icon at the bottom-left corner of VSCode" group="vscode"}
+
+#### Attach
+
+Choose the `Attach to Running Container...` option to list active Docker containers.
+
+![Attach to a running container](./img/02-Attach.png){width="75%" fig-alt="Select a running container. Ideally the one you want to use VSCode with!" group="vscode"}
+
+In this screenshot we're running one container named `fsds` that was built from the `jreades/sds:2022` image. Your container may have a different name (e.g. `{{< var env.name >}}`) but the *image* should be named `{{< var env.image >}}` or `{{< var env.image >}}-silicon:
+
+![The list of running containers](./img/02-container.png){.nolightbox}
+
+#### Attached!
+
+If all has gone well, then a new window should open and you'll notice one small, but significant change:
+
+![An attached workspace](./img/03-Attached.png){width="75%" fig-alt="Notice the Remote Container icon has changed at the bottom." group="vscode"}
+
+VSCode confirms that this window is now connected to the `fsds` container^[Remember that your container may be called something else, like `{{< var env.name >}}`, but that doesn't matter so long as you are using the right image (e.g. `{{< var env.image >}}`). You can name the container *anything* at start-up using `--name <your_chosen_name>` and if you don't provide one then Docker will make one up.]:
+
+![Running on a Container](./img/03-running.png){.nolightbox}
+
+#### Open Sesame
+
+Now, if we try to open a file/folder under the open menu (![Open menu](./img/04-menu.png){height="16px" .nolightbox}), you'll notice that we're not browsing 'our computer' any more! Instead, we're browsing files on the Docker container.
+
+![Opening files on the container](./img/04-Open_Folder.png){width="75%" fig-alt="You will almost always find what you need under /home/jovyan/work" group="vscode"}
+
+So how do we find the notebooks? Well, when we launched the container we had this line:
+
+```bash
+  -v "$(pwd):/home/jovyan/work" \
+``` 
+
+That told Docker to connect the _current working directory_ (where you ran the command) to `/home/jovyan/work` on the container. So anything under `/home/jovyan/work` is _actually_ a file that can be found on our computer. Below, you can see that I've browsed to the `fsds/practicals` directory on my computer and am now ready to start running (and editing) my notebooks using an IDE instead of JupyterLab's web interface:
+
+![Notice the path on the container](./img/04-path.png){.nolightbox}
+
+#### Extensions
+
+You need to install the _same_ VSCode extensions that you'd use when running Python locally on your computer into the 'remote' container. VSCode will do a pretty good job prompting you, but you've got the [list above](#required-extensions) and can also seem them (notice I've selected `CONTAINER`) on the left-hand `Extensions` (![Extensions menu](./img/05-menu.png){height="16px" .nolightbox}) menu in the screenshot below:
+
+![Extensions installed in Container](./img/05-Extensions.png){width="75%" fig-alt="All being well you should only need to install these once." group="vscode"}
+
+Once the extensions are installed, provided that you use the *same* startup command each time (and don't change the name of the container from `fsds`) those extensions should be ready-to-go and you won't need to reinstall again.
+
+#### Success!
+
+And here we go...
+
+![Running code in a container](./img/06-Success.png){width="75%" fig-alt="Success! Running code in a remote container via VSCode" group="vscode"}
