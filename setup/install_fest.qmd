@@ -1,5 +1,5 @@
 ---
-title: "Programming Tools"
+title: "Installation 'Fest'"
 author: "Jon Reades"
 date: "9/27/2024"
 ---
@@ -17,67 +17,7 @@ Please make sure that you have installed the [Base Utilities](../req/base.qmd) *
 
 {{< include ../req/wsl.qmd >}}
 
-## What Kind of Computer?
-
-### Apple Intel or Silicon/M-chip?
-
-Apple has stopped using Intel computer chips and now uses its own 'Silicon' (aka 'M') chips instead. Confusingly, these are often *also* referred to by their technical specification as `AMD64` (Intel) and `ARM64` (Apple), respectively. To find out which you have, click on the Apple icon (&#63743;) and select `About this Mac`. Look at the `Processor` section and you should see which type of computer you have. If you see the word `Intel` then you have an Intel computer, if you see `M1`, `M2`, `M3`, etc. then you have an Apple Silicon computer.
-
-### Windows 32- or 64-bit?
-
-It is *highly unlikely* that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.
-
-## Downloading
-
-While you're waiting for the packages below to finish downloading, you can also have a look at the information about [getting set up on GitHub](#get-a-github-account)...
-
-Please download *all* of the *Essential* packages for your type of computer (Apple Intel, Apple Silicon, Windows). The rest are listed for your convenience and you can install them as you see fit.
-
-::: {.panel-tabset}
-
-## Apple Intel
-
-- Essential:
-  - [Docker Desktop for Mac with Intel chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64)
-  - [R-4.4.1 for x86-64/AMD64](https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.4.1-x86_64.pkg)
-  - [R Studio Desktop](https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg)
-- Good to have: 
-  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg)
-  - [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/darwin)
-- Completely optional:
-  - [VS Code (Universal)](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)
-  - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg)
-  - [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip)
-
-## Apple Silicon (M-chips)
-
-- Essential: 
-  - [Docker Desktop for Mac with Apple silicon](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64) 
-  - [R-4.4.1 for ARM64](https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.4.1-arm64.pkg)
-  - [R Studio Desktop](https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg)
-- Good to have:
-  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg) 
-  - [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64)
-- Completely optional:
-  - [VS Code (ARM64)](https://code.visualstudio.com/sha/download?build=stable&os=darwin-arm64) 
-  - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg)
-  - [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip)
-
-## Windows PCs
-
-- Essential:
-  - [Docker Desktop for Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
-  - [R-4.4.1](https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe)
-  - [R Studio Desktop](https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe)
-  - [Git](https://git-scm.com/download/win)
-- Good to have:
-  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/QGIS-OSGeo4W-3.34.10-1.msi)
-  - [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/win32)
-- Completely optional:
-  - [VS Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user)
-  - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-win.msi)
-
-:::
+{{< include _downloading.qmd >}}
 
 ## Next Steps
 
