@@ -1,10 +1,10 @@
 ---
 title: "Install 'Fest'"
 author: "Jon Reades"
-date: "9/18/2024"
+date: "9/27/2024"
 ---
 
-This page is intended for use at our annual 'install fest' during Induction Week. It is intended To support you in getting the final key bits of software set up on your laptop/computer so that you are ready to begin your studies in Week 1. This is the full list of installers require.
+This page is intended for use at our annual 'install fest' during Induction Week. It is intended To support you in getting the key bits of software installed and configured on your laptop/computer so that you are ready to begin your studies in Week 1. 
 
 ::: {.callout-important}
 ## Install the Base Utilities First
@@ -17,27 +17,25 @@ Please make sure that you have installed the [Base Utilities](../req/base.qmd) *
 
 {{< include ../req/wsl.qmd >}}
 
-## Installation
+## What Kind of Computer?
 
-::: {.callout-tip}
-## Intel or Apple M-chip?
+### Apple Intel or Silicon/M-chip?
 
-Apple has migrated away from using Intel computer chips and now designs its own 'Silicon' chipset instead. Confusingly, these are often *also* referred to by their technical specification as `AMD64` (Intel) and `ARM64` (Apple). To find out which you have, click on the Apple icon (&#63743;) and select `About this Mac`. Look at the `Processor` section and you should see which type of computer you have.
+Apple has stopped using Intel computer chips and now uses its own 'Silicon' (aka 'M') chips instead. Confusingly, these are often *also* referred to by their technical specification as `AMD64` (Intel) and `ARM64` (Apple), respectively. To find out which you have, click on the Apple icon (&#63743;) and select `About this Mac`. Look at the `Processor` section and you should see which type of computer you have. If you see the word `Intel` then you have an Intel computer, if you see `M1`, `M2`, `M3`, etc. then you have an Apple Silicon computer.
 
-:::
-
-::: {.callout-tip}
-## Windows 32- or 64-bit?
+### Windows 32- or 64-bit?
 
 It is *highly unlikely* that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.
 
-:::
+## Downloading
+
+While you're waiting for the packages below to finish downloading, you can also have a look at the information about [getting set up on GitHub](#get-a-github-account)...
+
+Please download *all* of the *Essential* packages for your type of computer (Apple Intel, Apple Silicon, Windows). The rest are listed for your convenience and you can install them as you see fit.
 
 ::: {.panel-tabset}
 
 ## Apple Intel
-
-You will need to install the following:
 
 - Essential:
   - [Docker Desktop for Mac with Intel chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64)
@@ -53,8 +51,6 @@ You will need to install the following:
 
 ## Apple Silicon (M-chips)
 
-You will need to install the following:
-
 - Essential: 
   - [Docker Desktop for Mac with Apple silicon](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64) 
   - [R-4.4.1 for ARM64](https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.4.1-arm64.pkg)
@@ -67,7 +63,7 @@ You will need to install the following:
   - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg)
   - [iTerm2](https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip)
 
-## On Windows
+## Windows PCs
 
 - Essential:
   - [Docker Desktop for Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
@@ -80,8 +76,25 @@ You will need to install the following:
 - Completely optional:
   - [VS Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user)
   - [Quarto](https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-win.msi)
-  
+
 :::
 
-{{< include docker.qmd >}}
+## Next Steps
 
+R and R-Studio can be installed fairly easily by double-clicking on the downloaded files and following the instructions. Docker is a bit more complex, so please follow the instructions below.
+
+{{< include ../docker/_installing.qmd >}}
+
+{{< include ../docker/_running.qmd >}}
+
+{{< include ../docker/_success.qmd >}}
+
+::: {.callout-danger}
+
+## Dealing with Errors
+
+If you encounter any problems with the installation, please have a look at the [Dealing with Errors](../docker/index.qmd#dealing-with-errors) section.
+
+:::
+
+{{< include _git.qmd >}}
