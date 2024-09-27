@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jon Reades">
-<meta name="dcterms.date" content="2024-09-18">
+<meta name="dcterms.date" content="2024-09-27">
 
-<title>Install ‘Fest’ – CASA Computing Environment</title>
+<title>Programming Tools – CASA Computing Environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Install ‘Fest’ – CASA Computing Environment">
+<meta property="og:title" content="Programming Tools – CASA Computing Environment">
 <meta property="og:description" content="">
 <meta property="og:image" content="img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../setup/install_fest.html">
- <span class="dropdown-text">Install ‘Fest’</span></a>
+ <span class="dropdown-text">Programming Tools</span></a>
   </li>  
     </ul>
   </li>
@@ -222,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/install_fest.html">Install ‘Fest’</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/install_fest.html">Programming Tools</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Install ‘Fest’</span></a>
+ <span class="menu-text">Programming Tools</span></a>
   </div>
 </li>
     </ul>
@@ -275,8 +275,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#base-utilities" id="toc-base-utilities" class="nav-link active" data-scroll-target="#base-utilities">Base Utilities</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#docker" id="toc-docker" class="nav-link" data-scroll-target="#docker">Docker</a></li>
+  <li><a href="#what-kind-of-computer" id="toc-what-kind-of-computer" class="nav-link" data-scroll-target="#what-kind-of-computer">What Kind of Computer?</a></li>
+  <li><a href="#downloading" id="toc-downloading" class="nav-link" data-scroll-target="#downloading">Downloading</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
+  <li><a href="#installing-docker" id="toc-installing-docker" class="nav-link" data-scroll-target="#installing-docker">Installing Docker</a></li>
+  <li><a href="#testing-docker" id="toc-testing-docker" class="nav-link" data-scroll-target="#testing-docker">Testing Docker</a></li>
+  <li><a href="#installing" id="toc-installing" class="nav-link" data-scroll-target="#installing">Installing sds2024</a></li>
+  <li><a href="#using" id="toc-using" class="nav-link" data-scroll-target="#using">Using sds2024</a></li>
+  <li><a href="#success" id="toc-success" class="nav-link" data-scroll-target="#success">Success!</a></li>
+  <li><a href="#dealing-with-errors" id="toc-dealing-with-errors" class="nav-link" data-scroll-target="#dealing-with-errors">Dealing with Errors</a></li>
   <li><a href="#get-a-github-account" id="toc-get-a-github-account" class="nav-link" data-scroll-target="#get-a-github-account">Get a GitHub Account</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -286,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Install ‘Fest’</h1>
+<h1 class="title">Programming Tools</h1>
 </div>
 
 
@@ -303,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 18, 2024</p>
+      <p class="date">September 27, 2024</p>
     </div>
   </div>
   
@@ -315,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page is intended for use at our annual ‘install fest’ during Induction Week. It is intended To support you in getting the final key bits of software set up on your laptop/computer so that you are ready to begin your studies in Week 1. This is the full list of installers require.</p>
+<p>This page is intended to get you up and running with <em>most</em> of the programming tools that you’ll need for the year during Induction Week. This way, you are ready to begin your studies in Week 1.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -374,25 +381,25 @@ If You Need More Help
 </div>
 </div>
 </section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>While you’re waiting for things to downloiad, you can also have a look at the information about getting set up on GitHub…</p>
+<section id="what-kind-of-computer" class="level2">
+<h2 class="anchored" data-anchor-id="what-kind-of-computer">What Kind of Computer?</h2>
+<section id="apple-intel-or-siliconm-chip" class="level3">
+<h3 class="anchored" data-anchor-id="apple-intel-or-siliconm-chip">Apple Intel or Silicon/M-chip?</h3>
+<p>Apple has stopped using Intel computer chips and now uses its own ‘Silicon’ (aka ‘M’) chips instead. Confusingly, these are often <em>also</em> referred to by their technical specification as <code>AMD64</code> (Intel) and <code>ARM64</code> (Apple), respectively. To find out which you have, click on the Apple icon () and select <code>About this Mac</code>. Look at the <code>Processor</code> section and you should see which type of computer you have. If you see the word <code>Intel</code> then you have an Intel computer, if you see <code>M1</code>, <code>M2</code>, <code>M3</code>, etc. then you have an Apple Silicon computer.</p>
+</section>
+<section id="windows-32--or-64-bit" class="level3">
+<h3 class="anchored" data-anchor-id="windows-32--or-64-bit">Windows 32- or 64-bit?</h3>
+<p>It is <em>highly unlikely</em> that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.</p>
+</section>
+</section>
+<section id="downloading" class="level2">
+<h2 class="anchored" data-anchor-id="downloading">Downloading</h2>
+<p>While you’re waiting for the packages below to finish downloading, you can also have a look at the information about <a href="#get-a-github-account">getting set up on GitHub</a>…</p>
+<p>Please download <em>all</em> of the <em>Essential</em> packages for your type of computer (Apple Intel, Apple Silicon, Windows). The rest are listed for your convenience and you can install them as you see fit.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Apple Intel or Silicon/M-chip?</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Windows 32- or 64-bit?</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Apple Intel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Apple Silicon (M-chips)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Windows PCs</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>Apple has migrated away from using Intel computer chips and now designs its own ‘Silicon’ chipset instead. Confusingly, these are often <em>also</em> referred to by their technical specification as <code>AMD64</code> (Intel) and <code>ARM64</code> (Apple). To find out which you have, click on the Apple icon () and select <code>About this Mac</code>. Look at the <code>Processor</code> section and you should see which type of computer you have.</p>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<p>It is <em>highly unlikely</em> that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.</p>
-</div>
-</div>
-</div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Apple Intel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Apple Silicon (M-chips)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">On Windows</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<p>You will need to install the following:</p>
 <ul>
 <li>Essential:
 <ul>
@@ -413,8 +420,7 @@ If You Need More Help
 </ul></li>
 </ul>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<p>You will need to install the following:</p>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <ul>
 <li>Essential:
 <ul>
@@ -435,7 +441,7 @@ If You Need More Help
 </ul></li>
 </ul>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <ul>
 <li>Essential:
 <ul>
@@ -459,8 +465,27 @@ If You Need More Help
 </div>
 </div>
 </section>
-<section id="docker" class="level2">
-<h2 class="anchored" data-anchor-id="docker">Docker</h2>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<p>R and R-Studio can be installed fairly easily by double-clicking on the downloaded files and following the instructions. Docker is a bit more complex, so please follow the instructions below.</p>
+</section>
+<section id="installing-docker" class="level2">
+<h2 class="anchored" data-anchor-id="installing-docker">Installing Docker</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Essential Topic
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This next section is <em>essential</em> to running the sds2024 environment.</p>
+</div>
+</div>
+<p>Docker is a complex application doing <em>very</em> complex things. It’s not surprising that it can be a bit of a pain to install. But once installed, it’s a very powerful <em>platform</em> for ‘doing (spatial) data science’ that’s widely used in industry and, increasingly, academia.</p>
+<p><em>One</em> way to think of it as a ‘library’ of ready-made <em>virtual</em> computers that you can copy and use free-of-charge. If you’d like to know more about what Docker is and how it works, you can read more in the <a href="../docker/index.html#understanding-docker">Understanding Docker</a> section.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -471,30 +496,33 @@ Windows Users
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Please ensure that you have installed WSL2 <em>before</em> installing Docker!</p>
+<p>Please ensure that you have installed WSL2 <em>before</em> installing Docker! If you cannot install WSL2 then please have a look at the ‘dealing with errors’ section.</p>
 </div>
 </div>
-<p>Docker is ‘virtualisation’ tool that allows you to run ‘virtual machines’ on your computer’s ‘host’ operating system. That’s a lot of new, probably meaningless words. If you’re one of those people who (understandably) likes to understand what’s going on then here’s how some people define it:</p>
-<ol type="1">
-<li>Google on <a href="https://cloud.google.com/learn/what-is-a-virtual-machine#">What is a virtual machine</a>?</li>
-<li>VMWare on <a href="https://www.vmware.com/topics/virtual-machine#">What is a virtual machine</a>?</li>
-<li>Microsoft on <a href="https://azure.microsoft.com/en-gb/resources/cloud-computing-dictionary/what-is-a-virtual-machine">What is a virtual machine (VM)</a>?</li>
-</ol>
-<p>I would suggest reading these <em>while</em> you’re downloading Docker… And then, <em>after</em> you’ve downloaded Docker, you need to:</p>
+<p><em>After</em> you’ve downloaded Docker, you need to:</p>
 <ol type="1">
 <li>Install it – usually this will mean opening the image and either dragging it your Application folder (Mac) or running the installer (Windows)</li>
-<li>Start it running – double-click the Docker icon in your Applications folder to start Docker running.</li>
-<li>Finish setup – once Docker is started, you should see the login screen below. You do <em>not</em> need to create an account (notice <code>Continue with signing in</code>) and then on all the subsequent questions you can <code>Skip</code> (upper-right corner) answering as well.</li>
+<li>Start it up – double-click the Docker icon in your Applications folder to start Docker running.</li>
+<li>Finish setup – once Docker is finished starting up, you should see the login screen below. You do <em>not</em> need to create an account (notice <code>Continue without signing in</code>)</li>
+<li>On all the subsequent questions you can <code>Skip</code> (upper-right corner) answering as well.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../img/Docker_Login.png" class="img-fluid figure-img"></p>
-<figcaption>Docker trying to make you create an account</figcaption>
+<figcaption>Docker trying to trick you into creating an account</figcaption>
 </figure>
 </div>
-<p>You <strong>must start the Docker app running</strong> before any of the commands below will work. You’ll know that you’ve succeeded when you see the ‘Docker Desktop’ window appear listing ‘downloaded images’ and ‘running containers’.</p>
-<section id="downloading-the-image" class="level4">
-<h4 class="anchored" data-anchor-id="downloading-the-image">Downloading the jreades/sds:2024 Image</h4>
+<p>You <strong>must finish setting up</strong> before proceeding to the next step. You’ll know that you’re ready to move on when you see the ‘Docker Desktop’ window appear listing ‘downloaded images’ and ‘running containers’:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/Docker_Desktop.png" class="img-fluid figure-img"></p>
+<figcaption>Docker Desktop</figcaption>
+</figure>
+</div>
+<p>If you <em>didn’t</em> see this then you will need to have a look at the ‘<a href="#dealing-with-errors">dealing with errors</a>’ section.</p>
+</section>
+<section id="testing-docker" class="level2">
+<h2 class="anchored" data-anchor-id="testing-docker">Testing Docker</h2>
 <p>To test if Docker is installed correctly, you will need either the <code>Terminal</code> (macOS) or the <code>Power Shell</code> (Windows).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -509,75 +537,102 @@ Copy Code to Clipboard
 <p>Whenever you see a ‘code block’ below, you will <em>also</em> see a ‘clipboard’ icon (<img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon">) in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the <code>Terminal</code> or <code>Power Shell</code>. That will save you a lot of time and effort.</p>
 </div>
 </div>
+<p>Docker has provided a simple way to test if your installation is working correctly. You can run the following command in the <code>Terminal</code> or <code>Power Shell</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This should output something like:</p>
+<pre class="plaintext"><code>Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+478afc919002: Pull complete
+Digest: sha256:91fb4b041da273d5a3273b6d587d62d518300a6ad268b28628f74997b93171b2
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/</code></pre>
+<p>If you see this message, then Docker is installed correctly and you can move on to the next step. If you see an error message, then you will need to have a look at the ‘<a href="#dealing-with-errors">dealing with errors</a>’ section. Notice how there are several things happening:</p>
+<ol type="1">
+<li><code>Unable to find image... locally</code> – this is because the <code>hello-world</code> image is not (yet) stored on your computer.</li>
+<li><code>latest: Pulling from library/hello-world</code> – this is Docker downloading the <code>hello-world</code> image from the internet.</li>
+<li><code>Pull complete</code> – this is Docker telling you that it has finished downloading the image.</li>
+<li><code>Hello from Docker!</code> – this is the <code>hello-world</code> image running and telling you that Docker is working correctly.</li>
+</ol>
+<p>There’s obviously a <em>lot</em> more to that message, but that’s the basic idea.</p>
+</section>
+<section id="installing" class="level2">
+<h2 class="anchored" data-anchor-id="installing">Installing sds2024</h2>
+<p>We now need to download the sds2024 <strong>image</strong> that we use for teaching <em>Foundations</em> and <em>Quantitative Methods</em>. The image is the ‘template’ for running virtual machines (i.e.&nbsp;computers) on our ‘host’ computer and it comes complete with all of the Python libraries and other tools that you’ll need to complete the module (and a good deal more besides!). Installing the image will take a while as it’s quite large (2-5GB) and so will depend on the speed of your internet connection.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Intel Macs and Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Silicon/M-Chip Macs</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Intel Macs and Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Silicon/M-Chip Macs</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>If your Apple computer has an Intel chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>) or is running Windows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>If your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024-silicon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using" class="level2">
+<h2 class="anchored" data-anchor-id="using">Using sds2024</h2>
+<p>Now that you have the image downloaded, you can start an sds2024 <strong>container</strong> by copying the following command into the <code>Terminal</code> or <code>Power Shell</code> (<em>this does not work in the Command Prompt</em>/<code>cmd</code>):</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">For Intel Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">For M-Chip Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">For Windows</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<p>If your Apple computer has an Intel chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>) or is running Windows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024 start.sh jupyter lab <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<p>If your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024-silicon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-silicon start.sh jupyter lab <span class="dt">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2024 start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<p>You should see a lot of ‘layers’ being copied down – between 2GB and 5GB worth – so don’t do this over a cellular connection! If that <em>doesn’t</em> happen then you may need to do <a href="../docker/index.html">more reading about Docker</a>.</p>
 </section>
-<section id="starting-the-container" class="level4">
-<h4 class="anchored">Starting the sds2024 Container</h4>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">For Intel Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">For M-Chip Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">For Windows</a></li></ul>
-<div class="tab-content">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<p>Once the <code>pull</code> process completes you’ll need to copy+paste the following into the <code>Terminal</code> as the <em>bare minimum</em> for getting up and running:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024 start.sh jupyter lab <span class="dt">\</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<p>Once the <code>pull</code> process completes you’ll need to copy+paste the following into the <code>Terminal</code> as the <em>bare minimum</em> for getting up and running:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-silicon start.sh jupyter lab <span class="dt">\</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Windows
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You should follow <a href="https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-containers#install-docker-desktop">this Microsoft guide</a> to ensure that <code>Use the WSL 2 based engine</code> is checked. This may require restarting Docker.</p>
-</div>
-</div>
-<p>Once the <code>pull</code> process completes you’ll need to copy+paste the following into the <code>Power Shell</code> (<em>note</em>: <strong>not into the Command Prompt (cmd)</strong>). Note that this is the one-line version for Windows users:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2024 start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="errors-starting-a-container" class="level2 callout-danger">
-<h2 class="anchored" data-anchor-id="errors-starting-a-container">Errors Starting a Container</h2>
-<p>Many applications assume that the user’s home directory (where your user stores files) has a name that contains only plain-Latin characters (so no Chinese, or even French sometimes!). This can cause the <code>$(pwd)</code> part of the command above to fail. You will see some kind of error about the docker command failing and something about the path being unreadable. Fret not! You also have a Latin ‘alias’ to that directory which you can usually find using the PowerShell; it will be something <em>like</em> <code>C:\Users\a1509\</code> in which case just replace the <code>$(pwd)</code> with this and you <em>should</em> be good to go.</p>
-</section>
-</div>
-</div>
-</div>
-<p>If you have issues at this point, then you’ll need to do <a href="../docker/index.html">more reading</a>. However, <em>most</em> of you should now be able to connect to the virtual machine by pointing your browser at: <a href="http://localhost:8888/lab/">localhost:8888</a> where you should see something like this:</p>
+<section id="success" class="level2">
+<h2 class="anchored" data-anchor-id="success">Success!</h2>
+<p>However, <em>most</em> of you should now be able to connect to the virtual machine by pointing your browser at: <a href="http://localhost:8888/lab/">localhost:8888</a> where you should see something like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../img/Jupyter_Lab.png" height="350" class="figure-img"></p>
+<p><img src="../img/Jupyter_Lab.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Jupyter Lab Success</figcaption>
 </figure>
 </div>
 </section>
+<section id="dealing-with-errors" class="level2 callout-danger">
+<h2 class="anchored" data-anchor-id="dealing-with-errors">Dealing with Errors</h2>
+<p>If you encounter any problems with the installation, please have a look at the <a href="../docker/index.html#dealing-with-errors">Dealing with Errors</a> section.</p>
 </section>
 <section id="get-a-github-account" class="level2">
 <h2 class="anchored" data-anchor-id="get-a-github-account">Get a GitHub Account</h2>
-<p>You will want to go to <a href="https://github.com/">GitHub.com</a> and then click the <code>Sign up</code> button at the top right. Follow the instructions for creating a new account from there.</p>
+<p>You will need to go to <a href="https://github.com/">GitHub.com</a> and then click the <code>Sign up</code> button at the top right. Follow the instructions for creating a new account from there.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
