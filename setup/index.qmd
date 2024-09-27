@@ -6,7 +6,7 @@ date: "9/7/2023"
 
 ## Installation
 
-Once you've ticked off the Requirements, you can start installing the tools that you will use to write and run both code and documentation. You will need set up [Git and GitHub](./git.qmd) in order to manage, share, and version code. To write documentation and comments on code you will be want a [Markdown](./markdown.qmd) editor and to familiarise yourself with Markdown's syntax. And, finally, you will need to install the [programming environment](./env.qmd).
+Once you've ticked off the Requirements, you can start installing the tools that you will use to write and run both code and documentation. You will need set up [Git and GitHub](./git.qmd) in order to manage, share, and version code. To write documentation and comments on code you will be want a [Markdown](./markdown.qmd) editor and to familiarise yourself with Markdown's syntax. And, finally, you will need to install the [programming tools](./install_fest.qmd).
 
 ## No Install
 

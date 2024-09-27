@@ -1,10 +1,10 @@
 ---
-title: "Install 'Fest'"
+title: "Programming Tools"
 author: "Jon Reades"
 date: "9/27/2024"
 ---
 
-This page is intended for use at our annual 'install fest' during Induction Week. It is intended To support you in getting the key bits of software installed and configured on your laptop/computer so that you are ready to begin your studies in Week 1. 
+This page is intended to get you up and running with *most* of the programming tools that you'll need for the year during Induction Week. This way, you are ready to begin your studies in Week 1. 
 
 ::: {.callout-important}
 ## Install the Base Utilities First
