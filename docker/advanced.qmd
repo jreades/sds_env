@@ -4,7 +4,7 @@ author: "Jon Reades"
 date: "9/27/2024"
 ---
 
-This page covers more advanced topics related to the use of Docker and VSCode with the {{< var env.image >}} image.
+This page covers more advanced topics related to the use of Docker and VSCode with the {{< var env.image >}} image. These are all *entirely* optional steps if you want to get deeper into managing Docker and managing Python code in ways not covered in *[Foundations](https://jreades.github.io/fsds/)*, so you should only explore these if you are comfortable with what we are *already* doing and are reasonably knowledgeable about the development 'stack' (in which case, why are you taking *Foundations*?).
 
 ## Bash Script
 

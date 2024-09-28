@@ -63,6 +63,7 @@ website:
         - setup/env.qmd
         - setup/no_install.qmd
         - setup/install_fest.qmd
+        - docker/advanced.qmd
 
     - id: skills
       title: "Soft Skills"
