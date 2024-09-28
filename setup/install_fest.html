@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../docker/advanced.html" rel="next">
 <link href="../setup/no_install.html" rel="prev">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -108,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Installation ‘Fest’ – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://jreades.github.io/sds_env/setup/img/CASA_Logo_no_text.png">
+<meta property="og:image" content="img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
 </head>
@@ -180,6 +181,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../setup/install_fest.html">
  <span class="dropdown-text">Installation ‘Fest’</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../docker/advanced.html">
+ <span class="dropdown-text">Advanced Topics</span></a>
   </li>  
     </ul>
   </li>
@@ -262,6 +267,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Installation ‘Fest’</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docker/advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Topics</span></a>
   </div>
 </li>
     </ul>
@@ -746,7 +757,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/jreades\.github\.io\/sds_env\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1081,6 +1092,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../docker/advanced.html" class="pagination-link" aria-label="Advanced Topics">
+        <span class="nav-page-text">Advanced Topics</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
