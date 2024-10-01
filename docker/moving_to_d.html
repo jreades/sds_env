@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Dennis Kimani, ChatGPT and Jon Reades">
+<meta name="dcterms.date" content="2024-09-27">
 
-<title>How to Pay Attention – CASA Computing Environment</title>
+<title>Moving Docker’s Storage Location on Windows 10 Pro – CASA Computing Environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +66,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../skills/reading.html" rel="next">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -70,14 +105,14 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="How to Pay Attention – CASA Computing Environment">
+<meta property="og:title" content="Moving Docker’s Storage Location on Windows 10 Pro – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://jreades.github.io/sds_env/skills/img/CASA_Logo_no_text.png">
+<meta property="og:image" content="https://jreades.github.io/sds_env/docker/img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -185,76 +220,39 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../skills/attention.html">How to Pay Attention</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../skills/attention.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">How to Pay Attention</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../skills/reading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How to <em>Read</em></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../skills/thinking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How to <em>Think</em></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../skills/help.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How to Get Help</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#evidence-base" id="toc-evidence-base" class="nav-link active" data-scroll-target="#evidence-base">Evidence Base</a></li>
-  <li><a href="#managing-distraction" id="toc-managing-distraction" class="nav-link" data-scroll-target="#managing-distraction">Managing Distraction</a></li>
-  <li><a href="#the-problem-of-no-breaks" id="toc-the-problem-of-no-breaks" class="nav-link" data-scroll-target="#the-problem-of-no-breaks">The Problem of No Breaks</a></li>
-  </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">How to Pay Attention</h1>
+<h1 class="title">Moving Docker’s Storage Location on Windows 10 Pro</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dennis Kimani, ChatGPT and Jon Reades </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 27, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -264,34 +262,124 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Learning to code is <em>hard work</em> and I’m pretty sure that I’m a lot less exciting than your average YouTube star. So if I have to compete with YouTube (or with your friends on WhatsApp, Snapchat, WeChat, or whatever) for your attention then I’ll probably lose. And your computer and phone are <em>designed</em> to distract you because they are interested in <em>engagement</em>—they don’t care that you should be engaging with your studies, they want you to pick them up and use them. This is why you get so many notifications!</p>
-<section id="evidence-base" class="level2">
-<h2 class="anchored" data-anchor-id="evidence-base">Evidence Base</h2>
-<p>There is plenty of evidence to back this up:</p>
-<ul>
-<li><a href="https://www.cbsnews.com/news/distractions-make-learning-harder/">Distractions make learning harder</a></li>
-<li><a href="https://www.insidehighered.com/digital-learning/article/2019/07/10/survey-shows-nearly-half-students-distracted-technology">Nearly half of students distracted by technology</a></li>
-<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0747563218301912">The effect of cellphones on attention and learning…</a></li>
-<li><a href="https://www.uofmhealth.org/news/archive/201712/distractions-make-retaining-information-harder">Distractions make retaining info harder</a></li>
-<li><a href="https://anatomypubs.onlinelibrary.wiley.com/doi/abs/10.1002/ase.1754">The interrupted learner: how distractions during live and video lectures influence learning outcomes</a></li>
-</ul>
+<p>To change the default location of Docker’s storage drive (which is typically on the <code>C:</code> drive) on Windows 10 Pro, you’ll need to adjust the configuration in Docker Desktop to move the virtual machine’s disk image. Here’s how to do it:</p>
+<p>Steps:</p>
+<ol type="1">
+<li><strong>Stop Docker Desktop</strong>: Right-click the Docker Desktop icon in the system tray and select “Quit Docker Desktop.”</li>
+<li><strong>Move the Disk Image</strong>: Docker stores its data in a virtual hard disk (VHD) file. By default, this is located at <code>C:\Users\&lt;YourUsername&gt;\AppData\Local\Docker</code>.</li>
+<li>You’ll want to move the Docker data to another drive (for example, <code>D:</code>).</li>
+<li><strong>Copy Data to New Drive</strong>: Navigate to <code>C:\Users\&lt;YourUsername&gt;\AppData\Local\Docker</code> and copy the entire Docker folder to your desired location (e.g., <code>D:\Docker</code>).</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not There?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If Docker is not storing its data in <code>C:\Users\&lt;YourUsername&gt;\AppData\Local\Docker</code> on your machine, it may be using a different setup or storage backend.</p>
+</div>
+</div>
+<p>Steps to Change Docker’s Storage Location on Windows 10 Pro:</p>
+<section id="check-dockers-current-storage-path" class="level3">
+<h3 class="anchored" data-anchor-id="check-dockers-current-storage-path">Check Docker’s Current Storage Path:</h3>
+<p>Docker stores container data in a specific location. If you’re using WSL 2 (Windows Subsystem for Linux 2) backend, the data might be stored within WSL’s file system, which differs from traditional Docker setups.</p>
+<p>To check where Docker stores data:</p>
+<p>Open a PowerShell and run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Look for <code>Docker Root Dir:</code> in the output. This shows where Docker is storing its containers and images.</p>
 </section>
-<section id="managing-distraction" class="level2">
-<h2 class="anchored" data-anchor-id="managing-distraction">Managing Distraction</h2>
-<p>So my recommendations for studying (online <em>or</em> offline) are:</p>
-<ul>
-<li><strong>Turn off as many notifications as possible</strong>. On the Mac there is a ‘Do not disturb’ setting that you can enable in the Notifications section of your <code>System Preferences</code>. You can set it to turn on by time, and also add a setting short-cut to your ‘Notification Centre’ (upper-right corner of your desktop).</li>
-<li><strong>Uninstall messaging apps that you cannot turn off</strong>. If quitting the app disables notifications then that’s fine. But if you can’t disable notifications then I’d suggest uninstalling the messaging app entirely. Facebook Messenger, for instance, is a massive memory-hog and usually available on the desktop UI anyway.</li>
-<li><strong>Block access to distracting web sites</strong>. There are a number of tools that you can set up to block access to Facebook and other social media sites at set times of day. My Achilles heel is the news: if I’m struggling I tend to read news articles, so if I really need to make sure I don’t have the browser open to the home page of my favourite news sites.</li>
-<li><strong>Use time-blocking</strong>. This is a well understood approach to managing your time as detailed, for example, <a href="https://www.timeblockplanner.com">here</a> and used by many academics (who get even more email than you!).</li>
-<li><strong>Work out a schedule</strong>. It’s a lot easier to avoid distractions if you have a routine that enables you to say “OK, I will work from 9–11 and <em>then</em> have a look at my email.” It is easier to be in control if you can give yourself rewards <em>later</em>. And if you get into a routine, as a parent probably suggested when you were an undergraduate (certainly mine did and I ignored them), then you’ll find that your ‘productivity’ improves dramatically. My mother was right, dammit.</li>
-</ul>
+<section id="change-dockers-root-directory-daemon-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="change-dockers-root-directory-daemon-configuration">Change Docker’s Root Directory (Daemon Configuration):</h3>
+<p>To change where Docker stores its data, you’ll need to modify the daemon configuration file (<code>daemon.json</code>).</p>
+<p>Here’s how to update Docker’s root directory:</p>
+<ol type="1">
+<li>Create/Edit daemon.json: Navigate to Docker’s configuration folder, usually found here: <code>C:\ProgramData\Docker\config\daemon.json</code> If the file doesn’t exist, create it.</li>
+<li><strong>Add or Modify the data-root Option</strong>: Open <code>daemon.json</code> with a text editor (e.g., Notepad). Add or modify the data-root option to point to your desired location. For example:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"data-root"</span><span class="fu">:</span> <span class="st">"D:</span><span class="ch">\\</span><span class="st">DockerData"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><strong>Restart Docker</strong>: After saving changes to the <code>daemon.json</code> file, restart Docker Desktop for the changes to take effect. You can restart Docker from the Docker Desktop system tray icon or by restarting the Docker service.</li>
+<li><strong>Verify Changes</strong>: After Docker restarts, run docker info again to verify that the new Docker Root Dir: is pointing to your desired location (e.g., <code>D:\DockerData</code>).</li>
+</ol>
+<div class="callout-info">
+<p>If you’re using Docker with WSL 2, note that Docker Desktop integrates closely with WSL, and its containers might be stored in a WSL virtual machine, which may be a different configuration than expected.</p>
+</div>
+<p>You also need to ensure that Docker has permission to write to the new location, and the drive is properly formatted and accessible.</p>
+<p>If Docker’s configuration folder (daemon.json) is not located in <code>C:\ProgramData\Docker\config</code>, it might be in a different location depending on your Docker setup. Docker Desktop on Windows can store its configuration in different places depending on whether you’re using the WSL 2 backend or the Hyper-V backend.</p>
+<p>Here are a few places to check for the <code>daemon.json</code> file:</p>
+<section id="for-docker-using-hyper-v-or-traditional-backend" class="level4">
+<h4 class="anchored" data-anchor-id="for-docker-using-hyper-v-or-traditional-backend">For Docker using Hyper-V or traditional backend:</h4>
+<p>Check for the folder at:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\ProgramData\Docker\config</span><span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If it doesn’t exist, try creating it manually and adding the daemon.json file.</p>
 </section>
-<section id="the-problem-of-no-breaks" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-of-no-breaks">The Problem of No Breaks</h2>
-<p>Frequent distraction is <em>one</em> problem, but (in a sense) getting <em>enough</em> distraction is another. As <a href="https://forge.medium.com/the-2-minute-reset-to-take-before-every-meeting-a8da97857681">this piece</a> suggests, it’s also important that you give yourself downtime between Zoom/Teams/whatever sessions. I will try to remember to bake these into our ‘lectures’, but you should also <em>suggest</em> breaks if you feel yourself flagging! This also applies, however, to your wider degree: Masters degrees are <em>intense</em> and you need to give yourself permission for a timeout… stepping away from the computer and going for a walk, doing some knitting, taking a weekend to visit another city or go on a camping trip, whatever floats your boat!</p>
+<section id="for-docker-using-wsl-2-backend" class="level4">
+<h4 class="anchored" data-anchor-id="for-docker-using-wsl-2-backend">For Docker using WSL 2 backend:</h4>
+<p>You may find Docker’s WSL-specific configuration within the WSL file system. Check:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">\\wsl$\docker-desktop-data\version-pack-data\community\docker</span><span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If it’s not there, then try creating it here:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\&lt;YourUsername</span><span class="op">&gt;</span><span class="dt">\.</span>docker\daemon.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If everything goes wrong, you can reset the Docker Desktop settings through the GUI by going to:</p>
+<p>Settings &gt; Reset &gt; Reset to factory defaults</p>
+<p>This will restore Docker to its default settings, and you can try modifying the configuration again afterward.</p>
+</div>
+</div>
+<p>If you find that there is already a <code>daemon.json</code> file in the correct location <em>and</em> it already has some things specified, below is an example of where to place the <code>data-root</code> <em>parameter</em> so that you have a valid configuration.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"builder"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"gc"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"defaultKeepStorage"</span><span class="fu">:</span> <span class="st">"20GB"</span><span class="fu">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"enabled"</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"experimental"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"data-root"</span><span class="fu">:</span> <span class="st">"D:</span><span class="ch">\\</span><span class="st">DockerData"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After saving your changes, you always need to go through the following steps to check that your new configuration is working:</p>
+<ol type="1">
+<li>Restart Docker Desktop from the system tray, or restart the Docker service to apply the changes.</li>
+<li>After Docker restarts, open the PowerShell and run: <code>docker info</code></li>
+<li>Check the <code>Docker Root Dir</code>: section to confirm that the storage path has changed to the new location you specified.</li>
+</ol>
+<p>If you see this error:</p>
+<p><code>d2b: no such file or directory: unknown.</code></p>
+<p>This is likely due to how Docker handles paths to files on Windows, especially when switching between Windows-native paths and Linux-style paths in WSL or Docker Desktop.</p>
+<p>Solution:</p>
+<ol type="1">
+<li>try setting the data-root to a WSL 2-compatible path or a path that Docker can interpret properly.</li>
+<li>Edit your daemon.json again and change the data-root to a path that is compatible with Docker’s expectations. So instead of using a Windows-style path (e.g., <code>D:\\DockerData</code>), try using a path under <code>/mnt/d/</code> if Docker is running in WSL 2.</li>
+<li>Here’s the change you can make to your daemon.json:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"builder"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"gc"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"defaultKeepStorage"</span><span class="fu">:</span> <span class="st">"20GB"</span><span class="fu">,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"enabled"</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"experimental"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"data-root"</span><span class="fu">:</span> <span class="st">"/mnt/d/DockerData"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This uses the Linux-style <code>/mnt/d/</code> path to your <code>D:</code> drive on Windows. You may need to create DockerData on the <code>D</code> drive if it doesn’t exist.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -715,15 +803,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../skills/reading.html" class="pagination-link" aria-label="How to *Read*">
-        <span class="nav-page-text">How to <em>Read</em></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -732,7 +811,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

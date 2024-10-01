@@ -183,6 +183,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../setup/install_fest.html">
  <span class="dropdown-text">Installation ‘Fest’</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../docker/advanced.html">
+ <span class="dropdown-text">Advanced Topics</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -491,24 +495,13 @@ For more examples and ideas, visit:
 <p>You will need to:</p>
 <ol type="1">
 <li>Download and install the Podman CLI and Desktop from <a href="https://podman.io/">here</a>.</li>
-<li>Run the following command in the Power Shell or Terminal:<br> <code>podman machine init</code><br><code>podman machine start</code></li>
-<li>Download the SDS image&gt; <code>podman pull jreades/jreades/sds:2024</code> (adding <code>-silicon</code> for M-chip Macs)</li>
+<li>Run the following command in the PowerShell or Terminal:<br> <code>podman machine init</code><br><code>podman machine start</code></li>
+<li>And then run this command in PowerShell or Terminal to download the SDS image with <code>podman pull jreades/sds:2024</code> (adding <code>-silicon</code> for M-chip Macs)</li>
 </ol>
 </section>
 <section id="problems-with-disk-space" class="level4">
 <h4 class="anchored" data-anchor-id="problems-with-disk-space">Problems with Disk Space</h4>
-<p>Some Windows PCs have two drives (<code>C</code> and <code>D</code>) and you may want to store your Docker images on the <code>D</code> drive. If you do, then you will need to <strong>carefully</strong> follow <a href="https://stackoverflow.com/a/66314636/1600439">the instructions here</a> in order to relocate the <code>docker-desktop-data</code> folder (reproduced below). That said, we’ve had a lot of trouble getting this to work on the machine to which we had access. These instructions <em>should</em> work but it seems like if you get any of them wrong you need to uninstall and reinstall Docker completely so it’s very difficult and time-consuming to work out why this <em>isn’t</em> working as it should.</p>
-<p>If your Windows computer has two drives (<code>C</code> and <code>D</code>) and you want to store your docker images on the <code>D</code> drive, then you will need to <strong>carefully</strong> follow <a href="https://stackoverflow.com/a/66314636/1600439">the instructions here</a> in order to relocate the <code>docker-desktop-data</code> folder:</p>
-<ol type="1">
-<li>Shut down Docker Desktop completely (the Docker icon will disappear from the Windows ‘tray’ lower-right).</li>
-<li>Run <code>wsl --shutdown</code> in the Power Shell</li>
-<li>Run <code>wsl --export docker-desktop-data docker-desktop-data.tar</code></li>
-<li>Run <code>wsl --unregister docker-desktop-data</code></li>
-<li>Run <code>wsl --import docker-desktop-data D:\docker\ docker-desktop-data.tar --version 2</code></li>
-<li>Delete <code>docker-desktop-data.tar</code></li>
-<li><strong>Restart the computer</strong>!</li>
-<li>Login and restart Docker.</li>
-</ol>
+<p>Some Windows PCs (especially those sold with Windows10) have two drives (<code>C</code> and <code>D</code>) and the <code>C</code> drive may fill up very quickly once you start installing and running software or processing data. In that case you may want to store your Docker images on the <code>D</code> drive. This is a complex process, and there is a <a href="../docker/moving_to_d.html">separate page</a> to try to talk you through the process. You may need assistance with this.</p>
 </section>
 </section>
 <section id="errors-running-docker" class="level3">
@@ -1006,7 +999,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"right","closeEffect":"fade","openEffect":"fade","loop":false});
+<script>var lightboxQuarto = GLightbox({"openEffect":"fade","selector":".lightbox","closeEffect":"fade","loop":false,"descPosition":"right"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
