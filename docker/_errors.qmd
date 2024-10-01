@@ -22,24 +22,13 @@ If you are unable to install Docker on your computer (e.g. because you are an ap
 You will need to:
 
 1. Download and install the Podman CLI and Desktop from [here](https://podman.io/).
-2. Run the following command in the Power Shell or Terminal:<br />
+2. Run the following command in the PowerShell or Terminal:<br />
 `podman machine init`<br />`podman machine start`
-3. Download the SDS image> `podman pull jreades/{{< var env.image >}}` (adding `-silicon` for M-chip Macs)
+1. And then run this command in PowerShell or Terminal to download the SDS image with `podman pull {{< var env.image >}}` (adding `-silicon` for M-chip Macs)
 
 #### Problems with Disk Space
 
-Some Windows PCs have two drives (`C` and `D`) and you may want to store your Docker images on the `D` drive. If you do, then you will need to **carefully** follow [the instructions here](https://stackoverflow.com/a/66314636/1600439) in order to relocate the `docker-desktop-data` folder (reproduced below). That said, we've had a lot of trouble getting this to work on the machine to which we had access. These instructions *should* work but it seems like if you get any of them wrong you need to uninstall and reinstall Docker completely so it's very difficult and time-consuming to work out why this *isn't* working as it should.
-
-If your Windows computer has two drives (`C` and `D`) and you want to store your docker images on the `D` drive, then you will need to **carefully** follow [the instructions here](https://stackoverflow.com/a/66314636/1600439) in order to relocate the `docker-desktop-data` folder:
-
-1. Shut down Docker Desktop completely (the Docker icon will disappear from the Windows 'tray' lower-right).
-2. Run `wsl --shutdown` in the Power Shell
-3. Run `wsl --export docker-desktop-data docker-desktop-data.tar`
-4. Run `wsl --unregister docker-desktop-data`
-5. Run `wsl --import docker-desktop-data D:\docker\ docker-desktop-data.tar --version 2`
-6. Delete `docker-desktop-data.tar`
-7. **Restart the computer**!
-8. Login and restart Docker.
+Some Windows PCs (especially those sold with Windows10) have two drives (`C` and `D`) and the `C` drive may fill up very quickly once you start installing and running software or processing data. In that case you may want to store your Docker images on the `D` drive. This is a complex process, and there is a [separate page](../docker/moving_to_d.qmd) to try to talk you through the process. You may need assistance with this.
 
 ### Errors Running Docker
 
