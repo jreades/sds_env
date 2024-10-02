@@ -9,3 +9,4 @@ env:
   display: "SDS"
   image: "jreades/sds:2024"
   name: "sds2024"
+  year: 2024

@@ -142,3 +142,16 @@ Solution:
 ```
 
 This uses the Linux-style `/mnt/d/` path to your `D:` drive on Windows. You may need to create DockerData on the `D` drive if it doesn't exist.
+
+## Last Steps!
+
+The following should be done as the last migration steps to move Docker Disk Image Location:
+
+- Open Docker Desktop and go to Settings.
+- Navigate to Resources > Advanced.
+- In the Disk Image Location section, click Browse and select the new location, such as D:\DockerData or another folder on the D: drive.
+- After selecting the new location, apply the changes and restart Docker Desktop.
+
+This should relocate Docker's WSL2 disk image from C: to your D: drive. Screenshot is attached below for reference.
+
+![Docker Disk Image Location](img/Docker_D_drive.png)

@@ -31,9 +31,9 @@ R and R-Studio can be installed fairly easily by double-clicking on the download
 
 ::: {.callout-danger}
 
-## Dealing with Errors
+## When Things Go Wrong
 
-If you encounter any problems with the installation, please have a look at the [Dealing with Errors](../docker/index.qmd#dealing-with-errors) section.
+If you encounter any problems with the installation, please have a look at the [Dealing with Docker Problems](../docker/problems.qmd) page.
 
 :::
 
