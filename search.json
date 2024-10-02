@@ -1118,5 +1118,25 @@
     "title": "Using Docker",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nA virtual machine is just a computer that runs on your computer. So it ‘borrows’ resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.↩︎\nA container is the name Docker uses to refer to a running virtual machine. The image on its own does nothing until you tell docker to run it, at which point it becomes a container!↩︎"
+  },
+  {
+    "objectID": "setup/install_fest.html#when-things-go-wrong",
+    "href": "setup/install_fest.html#when-things-go-wrong",
+    "title": "Installation ‘Fest’",
+    "section": "When Things Go Wrong",
+    "text": "When Things Go Wrong\nIf you encounter any problems with the installation, please have a look at the Dealing with Errors section of the Using Docker page.",
+    "crumbs": [
+      "Installation 'Fest'"
+    ]
+  },
+  {
+    "objectID": "setup/env.html#when-things-go-wrong",
+    "href": "setup/env.html#when-things-go-wrong",
+    "title": "Programming Environment",
+    "section": "When Things Go Wrong",
+    "text": "When Things Go Wrong\nIf you encounter any problems with the installation, please have a look at the Dealing with Errors section of the Using Docker page.",
+    "crumbs": [
+      "Programming Environment"
+    ]
   }
 ]
