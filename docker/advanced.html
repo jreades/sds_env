@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Advanced Topics – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/CASA_Logo_no_text.png">
+<meta property="og:image" content="https://jreades.github.io/sds_env/docker/img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
 </head>
@@ -367,9 +367,26 @@ Advanced Topic
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> sds2024 <span class="at">--rm</span> <span class="at">-d</span> <span class="dt">\</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024 jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-intel jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember that on a M-chip Mac the above command changes to:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> sds2024 <span class="at">--rm</span> <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-silicon jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 <p>Using the <code>Terminal</code> built into the sds2024 container, you will <em>then</em> need to ensure that the version of Quarto built into the image runs on <em>the same port</em> that you specified when starting up Docker:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview <span class="at">--host</span> 0.0.0.0 <span class="at">--port</span> 4201</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview <span class="at">--host</span> 0.0.0.0 <span class="at">--port</span> 4201</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Notice the everything to do with Quarto is on port <code>4201</code>, but note additionally the <code>--host 0.0.0.0</code> that is required to allow you to view Quarto’s output if you want to serve a web site, for instance, instead of static content <em>outside</em> of the Docker container.</p>
 <p>The Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g.&nbsp;using four cores at once where you’ve enabled this is Docker preferences on your <a href="https://docs.docker.com/desktop/settings/mac/">Mac</a> or <a href="https://docs.docker.com/desktop/settings/windows/">Windows</a> machine).</p>
 </section>
@@ -405,7 +422,7 @@ Currently Broken
 </div>
 </div>
 <p>The easier (but less tested) way to connect is to download the contents of <code>test-vscode-project</code> <a href="https://github.com/jreades/sds_env/tree/master/test-vscode-project">from GitHub</a>. You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g.&nbsp;<code>$HOME/Documents/CASA/fsds/</code>).</p>
-<p>You then tell VSCode to <code>Open Workspace from File</code> and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it <em>still</em> has to pull the image from Docker Hub. You can break this into steps by running <code>docker pull jreades/sds:2024</code> <em>before</em> dealing with downloading these files and moving them into position.</p>
+<p>You then tell VSCode to <code>Open Workspace from File</code> and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it <em>still</em> has to pull the image from Docker Hub. You can break this into steps by running <code>docker pull jreades/sds:2024-intel</code> (<code>docker pull jreades/sds:2024-silicon</code> on a Silicon Mac) <em>before</em> dealing with downloading these files and moving them into position.</p>
 </section>
 <section id="using-attach-to-running-container" class="level3">
 <h3 class="anchored" data-anchor-id="using-attach-to-running-container">Using Attach to Running Container</h3>
@@ -416,19 +433,19 @@ Currently Broken
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-M1/M2 Macs
+M1…M4 Macs
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Remember to add <code>-silicon</code> to the image name (jreades/sds:2024) if you are suing a M1 or M2 Mac.</p>
+<p>Remember to change the image name to jreades/sds:2024-silicon if you are using a M-type Mac.</p>
 </div>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="dt">\</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${HOME}</span><span class="st">/.vscode/containers/sds2024-extensions:/home/jovyan/.vscode-server/extensions"</span> <span class="dt">\</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${HOME}</span><span class="st">/.vscode/containers/sds2024-insiders:/home/jovyan/.vscode-server-insiders"</span> <span class="dt">\</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024 jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 8888:8888 <span class="at">-p</span> 4201:4201 <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${HOME}</span><span class="st">/.vscode/containers/sds2024-extensions:/home/jovyan/.vscode-server/extensions"</span> <span class="dt">\</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> <span class="st">"</span><span class="va">${HOME}</span><span class="st">/.vscode/containers/sds2024-insiders:/home/jovyan/.vscode-server-insiders"</span> <span class="dt">\</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-intel jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="required-extensions" class="level4">
 <h4 class="anchored" data-anchor-id="required-extensions">Required Extensions</h4>
 <p>This then enables you to install the required integration extensions as follows:</p>
@@ -478,7 +495,7 @@ Jupyter Keymap Extension
 <figcaption>Attach to a running container</figcaption>
 </figure>
 </div>
-<p>In this screenshot we’re running one container named <code>fsds</code> that was built from the <code>jreades/sds:2022</code> image. Your container may have a different name (e.g.&nbsp;<code>sds2024</code>) but the <em>image</em> should be named <code>jreades/sds:2024</code> or `jreades/sds:2024-silicon:</p>
+<p>In this screenshot we’re running one container named <code>fsds</code> that was built from the <code>jreades/sds:2022</code> image. Your container may have a different name (e.g.&nbsp;<code>sds2024</code>) but the <em>image</em> should be named <code>jreades/sds:2024-intel</code> or <code>jreades/sds:2024-silicon</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./img/02-container.png" class="nolightbox img-fluid figure-img"></p>
@@ -513,7 +530,7 @@ Jupyter Keymap Extension
 </figure>
 </div>
 <p>So how do we find the notebooks? Well, when we launched the container we had this line:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>That told Docker to connect the <em>current working directory</em> (where you ran the command) to <code>/home/jovyan/work</code> on the container. So anything under <code>/home/jovyan/work</code> is <em>actually</em> a file that can be found on our computer. Below, you can see that I’ve browsed to the <code>fsds/practicals</code> directory on my computer and am now ready to start running (and editing) my notebooks using an IDE instead of JupyterLab’s web interface:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -647,7 +664,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jreades\.github\.io\/sds_env\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

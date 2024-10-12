@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Using Docker – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/CASA_Logo_no_text.png">
+<meta property="og:image" content="https://jreades.github.io/sds_env/docker/img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
 </head>
@@ -237,9 +237,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#installing-docker" id="toc-installing-docker" class="nav-link" data-scroll-target="#installing-docker">Installing Docker</a></li>
   <li><a href="#testing-docker" id="toc-testing-docker" class="nav-link" data-scroll-target="#testing-docker">Testing Docker</a></li>
   <li><a href="#installing" id="toc-installing" class="nav-link" data-scroll-target="#installing">Installing sds2024</a></li>
-  <li><a href="#using" id="toc-using" class="nav-link" data-scroll-target="#using">Using sds2024</a></li>
-  <li><a href="#dealing-with-errors" id="toc-dealing-with-errors" class="nav-link" data-scroll-target="#dealing-with-errors">Dealing with Errors</a></li>
+  <li><a href="#using" id="toc-using" class="nav-link" data-scroll-target="#using">Using jreades/sds:2024</a></li>
   <li><a href="#success" id="toc-success" class="nav-link" data-scroll-target="#success">Success!</a></li>
+  <li><a href="#dealing-with-problems" id="toc-dealing-with-problems" class="nav-link" data-scroll-target="#dealing-with-problems">Dealing with Problems</a></li>
   <li><a href="#advanced-topics" id="toc-advanced-topics" class="nav-link" data-scroll-target="#advanced-topics">Advanced Topics</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -441,7 +441,7 @@ For more examples and ideas, visit:
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>If your Apple computer has an Intel chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>) or is running Windows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024-intel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>If your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>):</p>
@@ -451,7 +451,7 @@ For more examples and ideas, visit:
 </div>
 </section>
 <section id="using" class="level2">
-<h2 class="anchored" data-anchor-id="using">Using sds2024</h2>
+<h2 class="anchored" data-anchor-id="using">Using jreades/sds:2024</h2>
 <p>Now that you have the image downloaded, you can start an sds2024 <strong>container</strong> by copying the following command into the <code>Terminal</code> or <code>Power Shell</code> (<em>this does not work in the Command Prompt</em>/<code>cmd</code>):</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">For Intel Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">For M-Chip Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">For Windows</a></li></ul>
@@ -459,73 +459,20 @@ For more examples and ideas, visit:
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024 start.sh jupyter lab <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-intel start.sh jupyter lab <span class="dt">\</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-silicon start.sh jupyter lab <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-silicon-silicon start.sh jupyter lab <span class="dt">\</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2024 start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2024-intel start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="dealing-with-errors" class="level2">
-<h2 class="anchored" data-anchor-id="dealing-with-errors">Dealing with Errors</h2>
-<p>Before we go any further, there are two types of problems that you’re likely to encounter when trying to use Docker:</p>
-<ol type="1">
-<li>Errors <em>installing</em> Docker</li>
-<li>Errors <em>running</em> Docker</li>
-</ol>
-<section id="errors-installing-docker" class="level3">
-<h3 class="anchored" data-anchor-id="errors-installing-docker">Errors Installing Docker</h3>
-<p>Most installation errors arise from <em>either</em> your Windows machine not having WSL2 installed <em>or</em> not having enough disk space. An additional problem arises if you are using a ‘corporate’ laptop that has been locked down by your IT department and can’t install Docker because you’re not an administrator.</p>
-<section id="problems-with-wsl2" class="level4">
-<h4 class="anchored" data-anchor-id="problems-with-wsl2">Problems with WSL2</h4>
-<p>If you are unable to finish installing Docker because it is asking you to install WSL2, or telling you that WSL2 is not up-to-date but failing to update it for you, then you <em>may</em> wish to try using Hyper-V instead. This is not recommended but it is a workaround that has worked for some people.</p>
-<p>Microsoft <a href="https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v">has instructions here</a> on how to enable Hyper-V on your Windows machine. You will need to restart your computer after enabling Hyper-V. <a href="https://techcommunity.microsoft.com/t5/educator-developer-blog/step-by-step-enabling-hyper-v-for-use-on-windows-11/ba-p/3745905">These instructions</a> may also help.</p>
-</section>
-<section id="problems-with-admin-rights" class="level4">
-<h4 class="anchored" data-anchor-id="problems-with-admin-rights">Problems with Admin Rights</h4>
-<p>If you are unable to install Docker on your computer (e.g.&nbsp;because you are an apprentice with a corporate laptop), you may wish to try using Podman instead. Podman is runs in ‘user space’, which means that it does not need admin rights to run. You can find out more about Podman <a href="https://podman.io/">here</a>. Our limited testing suggests that it works well with the SDS environment.</p>
-<p>You will need to:</p>
-<ol type="1">
-<li>Download and install the Podman CLI and Desktop from <a href="https://podman.io/">here</a>.</li>
-<li>Run the following command in the PowerShell or Terminal:<br> <code>podman machine init</code><br><code>podman machine start</code></li>
-<li>And then run this command in PowerShell or Terminal to download the SDS image with <code>podman pull jreades/sds:2024</code> (adding <code>-silicon</code> for M-chip Macs)</li>
-</ol>
-</section>
-<section id="problems-with-disk-space" class="level4">
-<h4 class="anchored" data-anchor-id="problems-with-disk-space">Problems with Disk Space</h4>
-<p>Some Windows PCs (especially those sold with Windows10) have two drives (<code>C</code> and <code>D</code>) and the <code>C</code> drive may fill up very quickly once you start installing and running software or processing data. In that case you may want to store your Docker images on the <code>D</code> drive. This is a complex process, and there is a <a href="../docker/moving_to_d.html">separate page</a> to try to talk you through the process. You may need assistance with this.</p>
-</section>
-</section>
-<section id="errors-running-docker" class="level3">
-<h3 class="anchored" data-anchor-id="errors-running-docker">Errors Running Docker</h3>
-<p>You may find that, at some point, Docker begins to complain about not having enough disk space. This is because it is storing all of the images and containers that you have downloaded and run. You can see how much space Docker is using by running the following command in the Power Shell or Terminal:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> system df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="deleting-an-image" class="level4">
-<h4 class="anchored" data-anchor-id="deleting-an-image">Deleting an Image</h4>
-<p>If you are short on disk space and wish to remove the image and container from your system completely at the end of Term 1 then the following approaches are available:</p>
-<section id="deleting-by-filter" class="level5">
-<h5 class="anchored" data-anchor-id="deleting-by-filter">Deleting by Filter</h5>
-<p>This should be used with some care since it will try to delete all matching images and this may not be what you want:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aqf</span> <span class="st">"name=sds"</span> <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Image}} {{.Names}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"2019"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rm <span class="at">-f</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Repository}} {{.Tag}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"sds"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="deleting-by-image" class="level5">
-<h5 class="anchored" data-anchor-id="deleting-by-image">Deleting by Image</h5>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aq</span> <span class="co"># Get list of running processes and work out container IDs to remove</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> <span class="op">&lt;</span>list of container IDs<span class="op">&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="co"># Get list of available images and work out image IDs to remove</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="op">&lt;</span>list of image IDs<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-</section>
 </section>
 <section id="success" class="level2">
 <h2 class="anchored" data-anchor-id="success">Success!</h2>
@@ -536,6 +483,10 @@ For more examples and ideas, visit:
 <figcaption>Jupyter Lab Success</figcaption>
 </figure>
 </div>
+</section>
+<section id="dealing-with-problems" class="level2">
+<h2 class="anchored" data-anchor-id="dealing-with-problems">Dealing with Problems</h2>
+<p>For more help with error messages or other challenges in installing and configuring Docker, see the <a href="../docker/problems.html">Problems</a> page.</p>
 </section>
 <section id="advanced-topics" class="level2">
 <h2 class="anchored" data-anchor-id="advanced-topics">Advanced Topics</h2>
@@ -644,7 +595,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jreades\.github\.io\/sds_env\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -999,7 +950,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"right","selector":".lightbox","closeEffect":"fade","openEffect":"fade"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"fade","loop":false,"descPosition":"right","closeEffect":"fade"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
