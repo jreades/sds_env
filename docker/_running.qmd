@@ -67,7 +67,7 @@ We now need to download the {{< var env.name >}} **image** that we use for teach
 If your Apple computer has an Intel chipset (see: &#63743; -> `About this Mac` -> `Processor`) or is running Windows:
 
 ```bash
-docker pull {{< var env.image >}}
+docker pull {{< var docker.all >}}
 ```
 
 ## Silicon/M-Chip Macs
@@ -75,12 +75,12 @@ docker pull {{< var env.image >}}
 If your Apple computer has an M1 or M2 'Silicon' chipset (see: &#63743; -> `About this Mac` -> `Processor`): 
 
 ```bash
-docker pull {{< var env.image >}}-silicon
+docker pull {{< var docker.mac >}}
 ```
 
 :::
 
-## Using {{< var env.name >}}
+## Using {{< var docker.base >}}
 
 Now that you have the image downloaded, you can start an {{< var env.name >}} **container** by copying the following command into the `Terminal` or `Power Shell` (*this does not work in the Command Prompt*/`cmd`):
 
@@ -91,7 +91,7 @@ Now that you have the image downloaded, you can start an {{< var env.name >}} **
 ```bash
 docker run --rm -d --name {{< var env.name >}} -p 8888:8888 \
    -v "$(pwd):/home/jovyan/work" \
-  {{< var env.image >}} start.sh jupyter lab \
+  {{< var docker.all >}} start.sh jupyter lab \
   --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
@@ -100,14 +100,14 @@ docker run --rm -d --name {{< var env.name >}} -p 8888:8888 \
 ```bash
 docker run --rm -d --name {{< var env.name >}} -p 8888:8888 \
    -v "$(pwd):/home/jovyan/work" \
-  {{< var env.image >}}-silicon start.sh jupyter lab \
+  {{< var docker.mac >}} start.sh jupyter lab \
   --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
 ## For Windows
 
 ```bash
-docker run --rm -d --name {{< var env.name >}} -p 8888:8888 -v "$(pwd):/home/jovyan/work" {{< var env.image >}} start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+docker run --rm -d --name {{< var env.name >}} -p 8888:8888 -v "$(pwd):/home/jovyan/work" {{< var docker.all >}} start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
 ::::
