@@ -81,7 +81,7 @@ dependencies:
     - pykrige # Might not be available for Apple Silicon
     - rfpimp
     - scikit-posthocs
-    #- skimpy
+    #- skimpy # Not compiling on Python >= 3.11
     - sklearn-som
     #- smopy # NOT a typo! Not the same thing as sompy!
     #- text_to_num
