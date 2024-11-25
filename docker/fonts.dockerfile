@@ -31,12 +31,27 @@
 #   font-weight: <weight>;
 #   font-style: normal;
 # }
+# ```{python}
+# from matplotlib import font_manager
+# from IPython.core.display import HTML
+
+# flist = font_manager.findSystemFonts()
+# names = [font_manager.FontProperties(fname=fname).get_name() for fname in flist]
+# print(names)
+
+# def make_html(fontname):
+#     return "<p>{font}: <span style='font-family:{font}; font-size: 24px;'>{font}</p>".format(font=fontname)
+
+# code = "\n".join([make_html(font) for font in sorted(set(names))])
+
+# HTML("<div style='column-count: 2;'>{}</div>".format(code))
+# ```
 
 USER $NB_UID
 ADD /fonts/*.zip /home/${NB_USER}/
 SHELL ["/bin/bash", "-c"]
-RUN mkdir -p ~/.config/fontconfig/conf.d
-COPY ../fonts/1-fonts.conf ~/.config/fontconfig/conf.d/10-custom-fonts.conf
+RUN mkdir -p /home/${NB_USER}/.config/fontconfig/conf.d
+COPY ../fonts/1-fonts.conf /home/${NB_USER}/.config/fontconfig/conf.d/10-custom-fonts.conf
 RUN mkdir -p /home/${NB_USER}/local/share/fonts/ \
     && for i in `ls /home/${NB_USER}/*.zip`; \
         do \
@@ -48,5 +63,5 @@ RUN mkdir -p /home/${NB_USER}/local/share/fonts/ \
             rm "$i"; \
         done \
     && chown -R ${NB_USER} /home/${NB_USER}/local/share/fonts \
-    && fc-cache -f -v \
-    && rm -fr ~/.cache/matplotlib
+    && fc-cache -f -v 
+    #&& rm -fr ~/.cache/matplotlib

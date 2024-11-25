@@ -18,11 +18,11 @@ Here's what's happening:
 
 #### Step 1. `docker pull`
 
-You issue the `docker pull {{< var env.image >}}` command to your computer, which turns around and asks Docker Hub for a copy of this image. Docker Hub responds by transferring a copy of the `{{< var env.image >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.^[A virtual machine is just a computer that runs _on_ your computer. So it 'borrows' resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.]
+You issue the `docker pull {{< var docker.base >}}` command to your computer, which turns around and asks Docker Hub for a copy of this image. Docker Hub responds by transferring a copy of the `{{< var docker.base >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.^[A virtual machine is just a computer that runs _on_ your computer. So it 'borrows' resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.]
 
 #### Step 2, `docker run`
 
-You issue the `docker run ... {{< var env.image >}} ...` command (which you'll be running in a minute) from your computer, and this tells Docker to use the `{{< var env.image >}}` **image** as a template for creating a **container** called `{{< var env.name >}}`^[A container is the name Docker uses to refer to a _running_ virtual machine. The image on its own does nothing until you tell docker to `run` it, at which point it becomes a container!]. `{{< var env.name >}}` will do _whatever_ it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But {{< var env.name >}} is _read-only_, although you can make changes to the container while it's running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image... we can cover this if you ever do it.
+You issue the `docker run ... {{< var docker.base >}} ...` command (which you'll be running in a minute) from your computer, and this tells Docker to use the `{{< var docker.base >}}` **image** as a template for creating a **container** called `{{< var env.name >}}`^[A container is the name Docker uses to refer to a _running_ virtual machine. The image on its own does nothing until you tell docker to `run` it, at which point it becomes a container!]. `{{< var env.name >}}` will do _whatever_ it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But {{< var env.name >}} is _read-only_, although you can make changes to the container while it's running, as soon as you shut it down those changes are lost. So you cannot break a Docker image, only a container. And if you do that, you delete the container and start a new one from the image... we can cover this if you ever do it.
 
 As part of the `docker run` command, we also told Docker what resources the container could access. There are two main types of resources for our purposes:
 
@@ -39,5 +39,5 @@ In the next section you'll see the *full* Docker `run` command, here we just wan
 
 - `-v`: this specified the point on your hard drive that the {{< var env.name >}} can use. By default we use `$(pwd)` which means 'use the location where the `docker run` command was executed. You can also 'hard code' this to something like `/Users/<your username>/Documents/casa/fsds/` if you always want to use the same location.
 - `-p`: this specified the channel (or `port`) on which the web browser can talk to the {{< var env.name >}}.
-- `{{< var env.image >}}`: this specified the image we wanted to use
+- `{{< var docker.base >}}`: this specified the image we wanted to use
 

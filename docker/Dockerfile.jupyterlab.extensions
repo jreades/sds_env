@@ -1,8 +1,0 @@
-
-# Most JupyterLab extensions are now installed as
-# modules earlier in the process. This just ensures
-# a clean build.
-# && jupyter labextension install --no-build @rmotr/jupyterlab-solutions \
-
-RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
-

@@ -15,9 +15,11 @@ lightbox:
 
 {{< include _running.qmd >}}
 
-{{< include _errors.qmd >}}
-
 {{< include _success.qmd >}}
+
+## Dealing with Problems
+
+For more help with error messages or other challenges in installing and configuring Docker, see the [Problems](./problems.qmd) page.
 
 ## Advanced Topics
 

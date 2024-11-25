@@ -4,14 +4,14 @@ author: "Jon Reades"
 date: "9/27/2024"
 ---
 
-This page covers more advanced topics related to the use of Docker and VSCode with the {{< var env.image >}} image. These are all *entirely* optional steps if you want to get deeper into managing Docker and managing Python code in ways not covered in *[Foundations](https://jreades.github.io/fsds/)*, so you should only explore these if you are comfortable with what we are *already* doing and are reasonably knowledgeable about the development 'stack' (in which case, why are you taking *Foundations*?).
+This page covers more advanced topics related to the use of Docker and VSCode with the {{< var docker.base >}} image. These are all *entirely* optional steps if you want to get deeper into managing Docker and managing Python code in ways not covered in *[Foundations](https://jreades.github.io/fsds/)*, so you should only explore these if you are comfortable with what we are *already* doing and are reasonably knowledgeable about the development 'stack' (in which case, why are you taking *Foundations*?).
 
 ## Bash Script
 
 :::{.callout-warning}
 ### Intermediate Topic
 
-This next section is _only_ if you want to start using multiple images/containers or manipulating the way the {{< var env.image >}} starts up. **This is _not_ needed for most students**. 
+This next section is _only_ if you want to start using multiple images/containers or manipulating the way the {{< var docker.base >}} starts up. **This is _not_ needed for most students**. 
 
 As well, this script only works if you have a full Unix/Linux-compatible system. So macOS has this by default. On Windows you need to take the next step *after* install WSL2 and actually install a full Linux distribution (we'd suggest Ubuntu).
 
@@ -36,7 +36,7 @@ bash docker.sh stop
 :::{.callout-warning}
 ### Advanced Topic
 
-This next section is _only_ if you need to run either Dask or Quarto (both of which are provided by {{< var env.image >}}). **This is _not_ needed by students in Week 1, though you will use Quarto for the group project**.
+This next section is _only_ if you need to run either Dask or Quarto (both of which are provided by {{< var docker.base >}}). **This is _not_ needed by students in Week 1, though you will use Quarto for the group project**.
 
 :::
 
@@ -46,8 +46,21 @@ To run Dask and Quarto you need to 'open up' other ports on the Docker image:
 docker run --name {{< var env.name >}} --rm -d \
   -p 8888:8888 -p 4201:4201 -p 8787:8787 \
   -v "$(pwd):/home/jovyan/work" \
-  {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+  {{< var docker.all >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
+
+::: {.callout-tip}
+
+Remember that on a M-chip Mac the above command changes to:
+
+```bash
+docker run --name {{< var env.name >}} --rm -d \
+  -p 8888:8888 -p 4201:4201 -p 8787:8787 \
+  -v "$(pwd):/home/jovyan/work" \
+  {{< var docker.mac >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+:::
 
 Using the `Terminal` built into the {{< var env.name >}} container, you will *then* need to ensure that the version of Quarto built into the image runs on *the same port* that you specified when starting up Docker:
 
@@ -81,16 +94,16 @@ We're investigating why this approach doesn't work, but we're currently unable t
 
 The easier (but less tested) way to connect is to download the contents of `test-vscode-project` [from GitHub](https://github.com/jreades/sds_env/tree/master/test-vscode-project). You should place the three resources in the same directory on your computer where you plan to save your notebooks, data, and other resources (e.g. `$HOME/Documents/CASA/fsds/`). 
 
-You then tell VSCode to `Open Workspace from File` and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it _still_ has to pull the image from Docker Hub. You can break this into steps by running `docker pull {{< var env.image >}}` _before_ dealing with downloading these files and moving them into position.
+You then tell VSCode to `Open Workspace from File` and point it to this directory. It should then ask if you want to run the container associated with the project. The first time you do this it may take some time to get started as it _still_ has to pull the image from Docker Hub. You can break this into steps by running `docker pull {{< var docker.all >}}` (`docker pull {{< var docker.mac >}}` on a Silicon Mac) _before_ dealing with downloading these files and moving them into position.
 
 ### Using Attach to Running Container
 
 To enable VSCode integration you'll need to create additional 'mount points' ('locations' on *your computer's* file system) that the Docker image can access. At this point the command becomes *very* long, which is why there is a script designed to make this a more straightforward process provided below.
 
 ::: {.callout-tip}
-# M1/M2 Macs
+# M1...M4 Macs
 
-Remember to add `-silicon` to the image name ({{< var env.image >}}) if you are suing a M1 or M2 Mac.
+Remember to change the image name to {{< var docker.mac >}} if you are using a M-type Mac.
 
 ::: 
 
@@ -100,7 +113,7 @@ docker run --rm -d --name {{< var env.name >}} \
   -v "$(pwd):/home/jovyan/work" \
   -v "${HOME}/.vscode/containers/{{< var env.name >}}-extensions:/home/jovyan/.vscode-server/extensions" \
   -v "${HOME}/.vscode/containers/{{< var env.name >}}-insiders:/home/jovyan/.vscode-server-insiders" \
-  {{< var env.image >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+  {{< var docker.all >}} jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 ```
 
 #### Required Extensions
@@ -140,7 +153,7 @@ Choose the `Attach to Running Container...` option to list active Docker contain
 
 ![Attach to a running container](./img/02-Attach.png){width="75%" fig-alt="Select a running container. Ideally the one you want to use VSCode with!" group="vscode"}
 
-In this screenshot we're running one container named `fsds` that was built from the `jreades/sds:2022` image. Your container may have a different name (e.g. `{{< var env.name >}}`) but the *image* should be named `{{< var env.image >}}` or `{{< var env.image >}}-silicon:
+In this screenshot we're running one container named `fsds` that was built from the `jreades/sds:2022` image. Your container may have a different name (e.g. `{{< var env.name >}}`) but the *image* should be named `{{< var docker.all >}}` or `{{< var docker.mac >}}`:
 
 ![The list of running containers](./img/02-container.png){.nolightbox}
 
@@ -150,7 +163,7 @@ If all has gone well, then a new window should open and you'll notice one small,
 
 ![An attached workspace](./img/03-Attached.png){width="75%" fig-alt="Notice the Remote Container icon has changed at the bottom." group="vscode"}
 
-VSCode confirms that this window is now connected to the `fsds` container^[Remember that your container may be called something else, like `{{< var env.name >}}`, but that doesn't matter so long as you are using the right image (e.g. `{{< var env.image >}}`). You can name the container *anything* at start-up using `--name <your_chosen_name>` and if you don't provide one then Docker will make one up.]:
+VSCode confirms that this window is now connected to the `fsds` container^[Remember that your container may be called something else, like `{{< var env.name >}}`, but that doesn't matter so long as you are using the right image (e.g. `{{< var docker.base >}}`). You can name the container *anything* at start-up using `--name <your_chosen_name>` and if you don't provide one then Docker will make one up.]:
 
 ![Running on a Container](./img/03-running.png){.nolightbox}
 

@@ -29,6 +29,7 @@ USER root
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         # Seem to need gcc and g++ for ARM builds now b/c of spacy
+        fontconfig \
         gcc \ 
         g++ \ 
         musl-dev \ 
@@ -40,59 +41,13 @@ RUN apt-get update \
 # download.
 
 #--- Install some fonts ---#
-# To use web fonts: https://fonts.google.com/knowledge/using_type/using_web_fonts
-# To load web fonts: https://fonts.google.com/knowledge/using_type/using_web_fonts_from_a_font_delivery_service
-# For the HTML header:
-# <link rel="preconnect" href="https://fonts.googleapis.com">
-# <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-# <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
-# <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
-# <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-# For the Micro-5 font:
-# .micro-5-regular {
-#   font-family: "Micro 5", sans-serif;
-#   font-weight: 400;
-#   font-style: normal;
-# }
-# .sedan-regular {
-#   font-family: "Sedan", serif;
-#   font-weight: 400;
-#   font-style: normal;
-# }
-# .sedan-regular-italic {
-#   font-family: "Sedan", serif;
-#   font-weight: 400;
-#   font-style: italic;
-# }
-# // <uniquifier>: Use a unique and descriptive class name
-# // <weight>: Use a value from 200 to 900
-
-# .source-code-pro-<uniquifier> {
-#   font-family: "Source Code Pro", monospace;
-#   font-optical-sizing: auto;
-#   font-weight: <weight>;
-#   font-style: normal;
-# }
-
-USER $NB_UID
-ADD /fonts/*.zip /home/${NB_USER}/
-RUN mkdir -p /home/${NB_USER}/.local/share/fonts/ \
-    && sh -x \
-        && for i in `ls /home/${NB_USER}/*.zip`; \
-            do \
-                unzip -o "$i"; \
-                mv *.ttf /home/${NB_USER}/.local/share/fonts/; \
-                rm "$i"; \
-            done \
-        \
-    \
-    && chown -R ${NB_USER} /home/${NB_USER}/.local/share/fonts
+INCLUDE+ ./docker/fonts.dockerfile
 
 #--- Quarto ---#
-INCLUDE+ ./docker/Dockerfile.quarto
+INCLUDE+ ./docker/quarto.dockerfile
 
 #--- Python ---#
-INCLUDE+ ./docker/Dockerfile.python.install
+INCLUDE+ ./docker/python.dockerfile
 
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root

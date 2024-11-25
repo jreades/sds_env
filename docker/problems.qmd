@@ -38,7 +38,7 @@ You will need to:
 1. Download and install the Podman CLI and Desktop from [here](https://podman.io/).
 2. Run the following command in the PowerShell or Terminal:<br />
 `podman machine init`<br />`podman machine start`
-1. And then run this command in PowerShell or Terminal to download the SDS image with `podman pull {{< var env.image >}}` (adding `-silicon` for M-chip Macs)
+1. And then run this command in PowerShell or Terminal to download the SDS image with `podman pull {{< var docker.all >}}` (or `{{< var docker.mac >}}` for M-chip Macs)
 
 ## Errors Running Docker
 
