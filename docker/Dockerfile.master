@@ -29,9 +29,9 @@ USER root
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         # Seem to need gcc and g++ for ARM builds now b/c of spacy
-        fontconfig \
         gcc \ 
         g++ \ 
+        fontconfig \
         musl-dev \ 
         # Not in miniconda
         # unzip \ 
