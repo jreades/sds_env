@@ -1,55 +1,28 @@
+#####################
+# Long term we probably want to install our own tinytex:
+#   See: https://yihui.org/tinytex/#installation
+#   And: https://github.com/rstudio/tinytex
+#   And: https://github.com/rstudio/tinytex/issues/426
+#   Since currently quarto install tinytex isn't supported.
+#
+#####################
 # To use web fonts: https://fonts.google.com/knowledge/using_type/using_web_fonts
 # To load web fonts: https://fonts.google.com/knowledge/using_type/using_web_fonts_from_a_font_delivery_service
 #
-# For Fontawesome5 in NB_HOME?
-# mkdir texmf
-# tlmgr init-usertree
-# tlmgr install fontawesome5
-# ... Well that doesn't seem to work...
-# Try:
-# 1. unpacking the OTF and all files in tex folder
-#    into the practicals directory.
-# 2. Adding \usepackage[fixed]{fontawesome5}
+#####################
+# To get FontAwesome5 PDF support:
+# 1. Unpack the fontawesome.tar.gz folder anywhere you need PDFs (e.g the practicals directory).
+#    tar -xvf ./fontsrc/fontawesome.tar.gz -C ./work/practicals/
+# 2. Adding the following to your _metadata.yml file (directory level):
+# format:
+#   pdf:
+#     include-in-header:
+#       text: |
+#         \usepackage[fixed]{fontawesome5}
 #
-# So that:
-#format:
-#  pdf:
-#    include-in-header:
-#      text: |
-#        \addtokomafont{disposition}{\rmfamily}
-#        \usepackage[fixed]{fontawesome5}
+#####################
+# Here's how to see the fonts available:
 #
-# For the HTML header:
-# <link rel="preconnect" href="https://fonts.googleapis.com">
-# <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-# <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
-# <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
-# <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-# For the Micro-5 font:
-# .micro-5-regular {
-#   font-family: "Micro 5", sans-serif;
-#   font-weight: 400;
-#   font-style: normal;
-# }
-# .sedan-regular {
-#   font-family: "Sedan", serif;
-#   font-weight: 400;
-#   font-style: normal;
-# }
-# .sedan-regular-italic {
-#   font-family: "Sedan", serif;
-#   font-weight: 400;
-#   font-style: italic;
-# }
-# // <uniquifier>: Use a unique and descriptive class name
-# // <weight>: Use a value from 200 to 900
-
-# .source-code-pro-<uniquifier> {
-#   font-family: "Source Code Pro", monospace;
-#   font-optical-sizing: auto;
-#   font-weight: <weight>;
-#   font-style: normal;
-# }
 # ```{python}
 # from matplotlib import font_manager
 # from IPython.core.display import HTML
@@ -65,18 +38,19 @@
 
 # HTML("<div style='column-count: 2;'>{}</div>".format(code))
 # ```
-
+#####################
 USER $NB_UID
-ADD ../fonts ./fontsrc
+COPY ../fonts ./fontsrc
 ENV FONTCONF="/home/${NB_USER}/.config/fontconfig/conf.d"
 ENV FONTPATH="/home/${NB_USER}/fonts"
 SHELL ["/bin/bash", "-c"]
-RUN mkdir -p ${FONTCONF} \ 
+RUN tlmgr init-usertree \ 
+    && mkdir -p ${FONTCONF} \ 
     && mkdir -p ${FONTPATH} \
     && cp ./fontsrc/?-fonts.conf ${FONTCONF}/ \
     && for i in `ls ./fontsrc/*.zip`; \
         do \
-            unzip -o -d ${FONTPATH} "$i" -x __MACOSX/*; \
+            unzip -o -d ${FONTPATH} "$i" -x __MACOSX; \
         done \
     && fc-cache -f -v 
     #&& rm -fr ~/.cache/matplotlib

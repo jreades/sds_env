@@ -40,11 +40,11 @@ RUN apt-get update \
 # if we knew where musl-dev is available to 
 # download.
 
-#--- Quarto ---#
-INCLUDE+ ./docker/quarto.dockerfile
-
 #--- Python ---#
 INCLUDE+ ./docker/python.dockerfile
+
+#--- Quarto ---#
+INCLUDE+ ./docker/quarto.dockerfile
 
 #--- Install some fonts ---#
 INCLUDE+ ./docker/fonts.dockerfile
