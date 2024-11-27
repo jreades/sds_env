@@ -1,5 +1,24 @@
 # To use web fonts: https://fonts.google.com/knowledge/using_type/using_web_fonts
 # To load web fonts: https://fonts.google.com/knowledge/using_type/using_web_fonts_from_a_font_delivery_service
+#
+# For Fontawesome5 in NB_HOME?
+# mkdir texmf
+# tlmgr init-usertree
+# tlmgr install fontawesome5
+# ... Well that doesn't seem to work...
+# Try:
+# 1. unpacking the OTF and all files in tex folder
+#    into the practicals directory.
+# 2. Adding \usepackage[fixed]{fontawesome5}
+#
+# So that:
+#format:
+#  pdf:
+#    include-in-header:
+#      text: |
+#        \addtokomafont{disposition}{\rmfamily}
+#        \usepackage[fixed]{fontawesome5}
+#
 # For the HTML header:
 # <link rel="preconnect" href="https://fonts.googleapis.com">
 # <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,20 +67,16 @@
 # ```
 
 USER $NB_UID
-ADD /fonts/*.zip /home/${NB_USER}/
+ADD ../fonts ./fontsrc
+ENV FONTCONF="/home/${NB_USER}/.config/fontconfig/conf.d"
+ENV FONTPATH="/home/${NB_USER}/fonts"
 SHELL ["/bin/bash", "-c"]
-RUN mkdir -p /home/${NB_USER}/.config/fontconfig/conf.d
-COPY ../fonts/1-fonts.conf /home/${NB_USER}/.config/fontconfig/conf.d/10-custom-fonts.conf
-RUN mkdir -p /home/${NB_USER}/local/share/fonts/ \
-    && for i in `ls /home/${NB_USER}/*.zip`; \
+RUN mkdir -p ${FONTCONF} \ 
+    && mkdir -p ${FONTPATH} \
+    && cp ./fontsrc/?-fonts.conf ${FONTCONF}/ \
+    && for i in `ls ./fontsrc/*.zip`; \
         do \
-            unzip -o "$i"; \
-            for j in `find . -name "*.ttf"`; \
-                do \
-                    mv "$j" /home/${NB_USER}/local/share/fonts/; \
-                done; \
-            rm "$i"; \
+            unzip -o -d ${FONTPATH} "$i" -x __MACOSX/*; \
         done \
-    && chown -R ${NB_USER} /home/${NB_USER}/local/share/fonts \
     && fc-cache -f -v 
     #&& rm -fr ~/.cache/matplotlib

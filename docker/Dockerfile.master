@@ -40,14 +40,14 @@ RUN apt-get update \
 # if we knew where musl-dev is available to 
 # download.
 
-#--- Install some fonts ---#
-INCLUDE+ ./docker/fonts.dockerfile
-
 #--- Quarto ---#
 INCLUDE+ ./docker/quarto.dockerfile
 
 #--- Python ---#
 INCLUDE+ ./docker/python.dockerfile
+
+#--- Install some fonts ---#
+INCLUDE+ ./docker/fonts.dockerfile
 
 #--- Configure startup params ---#
 # Switch back to user to avoid accidental container runs as root
