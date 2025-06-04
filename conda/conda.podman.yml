@@ -1,0 +1,91 @@
+# To install/reinstall the environment:
+#   conda-env create -f conda.install.yml
+# To deal with issues reported by missing mamba solver:
+#   https://github.com/ContinuumIO/anaconda-issues/issues/13353#issuecomment-2260475729
+#   OR:
+#   conda install -c conda-forge --solver=classic ...
+#
+channels:
+  - conda-forge
+dependencies: 
+  - black # Supports code formatter labextension
+  - bokeh
+  - clustergram
+  - contextily
+  - cython
+  - descartes
+  - flake8 # Style enforcement
+  - numpy
+  - scipy 
+  - pandas 
+  - pyogrio 
+  - shapely 
+  - pyproj
+  - packaging
+  # - cmake<3.20 # -- Thought this might fix issues, but no
+  - matplotlib
+  - matplotlib-base 
+  - mapclassify
+  - folium
+  - geopy 
+  # - ipyleaflet # Already in jupyter-minimal
+  - ipyparallel
+  # - ipympl # Already in jupyter-minimal
+  - ipywidgets
+  # - jupyter_bokeh # Forces significant downgrade of jupyterlab
+  - jupyterlab_code_formatter # Supports labextension
+  - jupyterlab-geojson
+  - jupyterlab-variableinspector
+  #- jupyter-lsp-python # Already in jupyter-minimal
+  # - jupytext # Already in jupyter-minimal
+  - legendgram 
+  - lxml
+  # - mgwr # -- Some problem here
+  # - momepy # -- Some problem here
+  - openpyxl
+#   #- osmnx
+  - palettable 
+  - pip:
+    - geopandas[all]
+    - datashader # -- Some problem here
+    - pointpats # -- Some problem here
+    - pyarrow # -- Some problem here
+    - geopandas # -- Some problem here
+    # - libgdal-arrow-parquet
+    - pysal # -- Possible problem
+    - duckdb # -- Possible problem
+    - spatialpandas # -- Possible problem
+#     - esda # (alternative to PySAL stuff)
+#     - joypy
+#     - jupyterlab-quarto
+#     #- langdetect
+#     - libpysal
+#     #- lightgbm 
+    - matplotlib-scalebar 
+#     #- mpl_toolkits
+    - rfpimp
+    - wordcloud
+#     #- xgboost
+#   - pointpats
+  - libgdal-arrow-parquet
+  - polars
+  - plotly
+  - pyogrio
+  - qgrid # Interactive grid for pandas DataFrames
+  - rasterio
+  - rasterstats
+  - rio-cogeo
+  - rioxarray
+  - scikit-learn
+  - seaborn
+#   - shap
+#   - statsmodels # Already in jupyter-minimal
+  - tabulate  # For exporting from pandas to markdown
+#   - tzlocal 
+  - xarray
+  # - xarray-spatial # -- Possible problem
+  # - xarray_leaflet # -- Possible problem
+  - xlrd
+  - xlsxwriter
+  - xvec
+  # - ydata-profiling
