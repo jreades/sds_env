@@ -1,5 +1,7 @@
 
-Podman requires you to create a virtual machine with user-specified characteristics *before* you can run an image. You can think of this as specifying the 'hardware' of the computer before you buy it (How much RAM? How big a hard drive? And so on.). In principle, this means that you can have more than one valid configuration at a time which would allow you to tune each virtual machine to your needs (one machine could have a lot of memory, another a lot of storage). You can read a more detailed explanation of [how to configure a virtual machine](./configuring.qmd), but below is the 'quick start' version.
+Podman requires you to create a virtual machine with user-specified characteristics *before* you can run an image. You can think of this as specifying the 'hardware' of the computer before you buy it (How much RAM? How big a hard drive? And so on.). In principle, this means that you can have more than one valid configuration at a time which would allow you to tune each virtual machine to your needs (one machine could have a lot of memory, another a lot of storage). 
+
+Here's the quick-start version:
 
 :::: {.panel-tabset}
 
@@ -27,3 +29,5 @@ In a small number of cases on Windows we've had error messages about permissions
 :::
 
 ::::
+
+If you'd like to read more about fine-tuning your Podman machine we've [got a page for that](./podman_conf.qmd).

@@ -6,8 +6,8 @@ date: "9/7/2023"
 
 ## Installation
 
-Once you've ticked off the Requirements, you can start installing the tools that you will use to write and run both code and documentation. You will need set up [Git and GitHub](./git.qmd) in order to manage, share, and version code. To write documentation and comments on code you will be want a [Markdown](./markdown.qmd) editor and to familiarise yourself with Markdown's syntax. And, finally, you will need to install the [programming tools](./install_fest.qmd).
+Once you've ticked off the Requirements, you can start installing the tools that you will use to write and run both code and documentation. You will need set up [Git and GitHub](../post/git.qmd) in order to manage, share, and version code. To write documentation and comments on code you will be want a [Markdown](../post/markdown.qmd) editor and to familiarise yourself with Markdown's syntax. And, finally, you will need to install the [programming tools](./install_fest.qmd).
 
 ## No Install
 
-If you are unable to get your hands on a machine that meets the basic requirements or on to which you can install the necessary tools, then you should look at the [no install options](./no_install.qmd). These are generally cloud-based options and are necessarily a 'second best' since limitations imposed by the provider mean that you probably won't be able to process the full data set with which we'll be working, but as a stop-gap they are perfectly useable.
+If you are unable to get your hands on a machine that meets the basic requirements or on to which you can install the necessary tools, then you should look at cloud-based options such a Google Colab. These are necessarily a 'second best' since limitations imposed by the provider mean that you probably won't be able to process the full data set with which we'll be working, but as a stop-gap they are perfectly useable.

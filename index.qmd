@@ -12,9 +12,9 @@ You need to start with the basic [health check](./setup/health.qmd) to ensure yo
 
 ## Post-Installation
 
-Installing the computing environment entails thinking not *just* about how you [run code](./setup/env.qmd), but also how you [manage it](./setup/git.qmd) and [document it](./setup/markdown.qmd). In fact, it's possible to run code [without installing anything at all](./setup/no_install.qmd), but by signing up for, installing, or configuring these services *now* you know that you are ready to roll!
+Installing the computing environment entails thinking not *just* about how you run code, but also how you [manage it](./post/git.qmd) and [document it](./post/markdown.qmd). In fact, it's possible to run code without installing anything at all, but by signing up for, installing, or configuring these services *now* you know that you are ready to roll!
 
-We also provide information about [Code Camp](./post/code_camp.qmd) which is a self-paced introduction to the fundamentals of programming in Python.
+We also provide information about [Code Camp](https://jreades.github.com/code-camp/) which is a self-paced introduction to the fundamentals of programming in Python.
 
 ## Soft-Skills
 

@@ -1,7 +1,7 @@
 ---
 title: "Dealing with Problems"
 author: "Jon Reades"
-date: "7/13/2025"
+date: last-modified
 ---
 
 There are two types of problems that you're likely to encounter when trying to use Podman or Docker:
@@ -48,7 +48,7 @@ If you have managed to install Docker (or Podman) and have managed to 'pull' a d
 
 Some Windows PCs (especially those sold with Windows10) have two drives (`C` and `D`). The `C` drive may fill up very quickly once you start installing and running software or processing data. In that case you may want to store your images on the `D` drive. 
 
-This is a complex process, and you may need assistance, so there is a [Moving to the D Drive page](./moving_to_d.qmd) to try to talk you through the process.
+In Docker especially (less so in Podman) this is a complex process, and you may need assistance, so there is a [Moving to the D Drive page](./moving_to_d.qmd) to try to talk you through the process.
 
 ### Other Disk Space Issues
 
