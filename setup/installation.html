@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jon Reades">
-<meta name="dcterms.date" content="2023-09-07">
+<meta name="dcterms.date" content="2025-08-30">
 
-<title>Programming Environment – CASA Computing Environment</title>
+<title>Installation – CASA Computing Environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,18 +66,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../setup/no_install.html" rel="next">
-<link href="../setup/markdown.html" rel="prev">
+<link href="../setup/install_fest.html" rel="next">
+<link href="../setup/base.html" rel="prev">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fb446d74831b8ff67c69632cb314b545.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b89509cbc350dd8f6b056af8256295a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,11 +110,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Programming Environment – CASA Computing Environment">
+<meta property="og:title" content="Installation – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/CASA_Logo_no_text.png">
+<meta property="og:image" content="./img/Podman_Desktop.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image:alt" content="Podman Desktop">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -134,56 +138,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Welcome</span></a>
-  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Requirements</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Installation</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-requirements">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-installation">    
         <li>
-    <a class="dropdown-item" href="../req/health.html">
- <span class="dropdown-text">Health Check</span></a>
+    <a class="dropdown-item" href="../setup/health.html">
+ <span class="dropdown-text">Step 1. Health Check</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../req/base.html">
- <span class="dropdown-text">Base Utilities</span></a>
+    <a class="dropdown-item" href="../setup/base.html">
+ <span class="dropdown-text">Step 2. Base Utilities</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../req/code_camp.html">
- <span class="dropdown-text">Code Camp</span></a>
+    <a class="dropdown-item" href="../setup/installation.html">
+ <span class="dropdown-text">Step 3. Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/install_fest.html">
+ <span class="dropdown-text">All-In-One</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/problems.html">
+ <span class="dropdown-text">Common Problems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/virtualisation.html">
+ <span class="dropdown-text">About Virtualisation</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Setup</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-post-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Post-Installation</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-setup">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-post-installation">    
         <li>
-    <a class="dropdown-item" href="../setup/git.html">
+    <a class="dropdown-item" href="../post/git.html">
  <span class="dropdown-text">Git &amp; GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../setup/markdown.html">
+    <a class="dropdown-item" href="../post/markdown.html">
  <span class="dropdown-text">Markdown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../setup/env.html">
- <span class="dropdown-text">Programming Environment</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../setup/no_install.html">
- <span class="dropdown-text">No Install Options</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../setup/install_fest.html">
- <span class="dropdown-text">Installation ‘Fest’</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../docker/advanced.html">
+    <a class="dropdown-item" href="../post/advanced.html">
  <span class="dropdown-text">Advanced Topics</span></a>
   </li>  
     </ul>
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/env.html">Programming Environment</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/installation.html">Step 3. Installation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -241,38 +241,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git &amp; GitHub</span></a>
+  <a href="../setup/health.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Step 1. Health Check</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/markdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Markdown</span></a>
+  <a href="../setup/base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Step 2. Base Utilities</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/env.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Programming Environment</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/no_install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">No Install Options</span></a>
+  <a href="../setup/installation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Step 3. Installation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installation ‘Fest’</span></a>
+ <span class="menu-text">All-In-One</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docker/advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced Topics</span></a>
+  <a href="../setup/problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Problems</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/virtualisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Virtualisation</span></a>
   </div>
 </li>
     </ul>
@@ -284,24 +284,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul class="collapse">
-  <li><a href="#downloading" id="toc-downloading" class="nav-link active" data-scroll-target="#downloading">Downloading</a></li>
-  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
-  <li><a href="#installing-docker" id="toc-installing-docker" class="nav-link" data-scroll-target="#installing-docker">Installing Docker</a></li>
-  <li><a href="#testing-docker" id="toc-testing-docker" class="nav-link" data-scroll-target="#testing-docker">Testing Docker</a></li>
-  <li><a href="#installing" id="toc-installing" class="nav-link" data-scroll-target="#installing">Installing sds2024</a></li>
-  <li><a href="#using" id="toc-using" class="nav-link" data-scroll-target="#using">Using jreades/sds:2024</a></li>
+  <ul>
+  <li><a href="#what-kind-of-computer" id="toc-what-kind-of-computer" class="nav-link active" data-scroll-target="#what-kind-of-computer">What Kind of Computer?</a></li>
+  <li><a href="#downloading" id="toc-downloading" class="nav-link" data-scroll-target="#downloading">Downloading</a></li>
+  <li><a href="#installing" id="toc-installing" class="nav-link" data-scroll-target="#installing">Installing</a></li>
+  <li><a href="#configuring" id="toc-configuring" class="nav-link" data-scroll-target="#configuring">Configuring</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
+  <li><a href="#running" id="toc-running" class="nav-link" data-scroll-target="#running">Running</a></li>
   <li><a href="#success" id="toc-success" class="nav-link" data-scroll-target="#success">Success!</a></li>
-  <li><a href="#when-things-go-wrong" id="toc-when-things-go-wrong" class="nav-link" data-scroll-target="#when-things-go-wrong">When Things Go Wrong</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Programming Environment</h1>
+<h1 class="title">Installation</h1>
 </div>
 
 
@@ -318,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 7, 2023</p>
+      <p class="date">August 30, 2025</p>
     </div>
   </div>
   
@@ -330,125 +329,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Over the years, we have experimented with a range of approaches to setting you up with a programming environment, and we have come to the conclusion that <strong>Docker</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is the most robust way to ensure a consistent experience. This guarantees that all students end up with the same versions of each library, that difficult-to-diagnose hardware/OS issues are minimised, and that running/recovery is the most straightforward.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<p>Over the years, we have experimented with a range of approaches to setting you up with a programming environment, and we have come to the conclusion that <strong>Podman</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is the most robust way to ensure a consistent experience. This guarantees that all students end up with the same versions of each library, that difficult-to-diagnose hardware/OS issues are minimised, and that running/recovery is the most straightforward.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Base Utilities
+Podman and Docker: How They Work
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Before beginning <em>any</em> of the steps below, make sure you have installed the <a href="../req/base.html">Base Utilities</a> for your Operating System and checked the other hardware and software requirements.</p>
+<p>If you want to know more about the differences between Podman and Docker then you can <a href="../setup/docker_vs_podman.html">start here</a>. However, <em>one</em> way to think of Podman is as a ‘library’ of virtual computers that you can use free-of-charge. If you’d like to know more about what Podman and Docker are, and how they work, then you can read more on the <a href="../setup/virtualisation.html">Understanding Virtualisation</a> page.</p>
 </div>
 </div>
-<section id="downloading" class="level2">
-<h2 class="anchored" data-anchor-id="downloading">Downloading</h2>
-<section id="what-kind-of-computer" class="level3">
-<h3 class="anchored" data-anchor-id="what-kind-of-computer">What Kind of Computer?</h3>
-<section id="apple-intel-or-siliconm-chip" class="level4">
-<h4 class="anchored" data-anchor-id="apple-intel-or-siliconm-chip">Apple Intel or Silicon/M-chip?</h4>
-<p>Apple has stopped using Intel computer chips and now uses its own ‘Silicon’ (aka ‘M’) chips instead. Confusingly, these are often <em>also</em> referred to by their technical specification as <code>AMD64</code> (Intel) and <code>ARM64</code> (Apple), respectively. To find out which you have, click on the Apple icon () and select <code>About this Mac</code>. Look at the <code>Processor</code> section and you should see which type of computer you have. If you see the word <code>Intel</code> then you have an Intel computer, if you see <code>M1</code>, <code>M2</code>, <code>M3</code>, etc. then you have an Apple Silicon computer.</p>
-</section>
-<section id="windows-32--or-64-bit" class="level4">
-<h4 class="anchored" data-anchor-id="windows-32--or-64-bit">Windows 32- or 64-bit?</h4>
-<p>It is <em>highly unlikely</em> that you have a 32-bit machine, so if in doubt download the 64-bit version. It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer.</p>
-<p>While you’re waiting for the packages below to finish downloading, you can also have a look at the information about <a href="#get-a-github-account">getting set up on GitHub</a>…</p>
-<p>Please download <em>all</em> of the <em>Essential</em> packages for your type of computer (Apple Intel, Apple Silicon, Windows). The rest are listed for your convenience and you can install them as you see fit.</p>
+<section id="what-kind-of-computer" class="level2">
+<h2 class="anchored" data-anchor-id="what-kind-of-computer">What Kind of Computer?</h2>
+<p>Many of the steps below require you to know the ‘architecture’ of your computer: are you running an ARM or Intel/AMD chipset? Are you using a 32- or 64-bit instruction sets? So please make a note of your computer’s architecture before going any further.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Apple Intel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Apple Silicon (M-chips)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Windows PCs</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Apple Intel or Silicon/M-chip?</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Windows 32- or 64-bit?</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<ul>
-<li>Essential:
-<ul>
-<li><a href="https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-mac-amd64">Docker Desktop for Mac with Intel chip</a></li>
-<li><a href="https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.4.1-x86_64.pkg">R-4.4.1 for x86-64/AMD64</a></li>
-<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg">R Studio Desktop</a></li>
-</ul></li>
-<li>Good to have:
-<ul>
-<li><a href="https://qgis.org/downloads/macos/qgis-macos-ltr.dmg">QGIS Long-Term Release (LTR)</a></li>
-<li><a href="https://central.github.com/deployments/desktop/desktop/latest/darwin">GitHub Desktop</a></li>
-</ul></li>
-<li>Completely optional:
-<ul>
-<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=darwin-universal">VS Code (Universal)</a></li>
-<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg">Quarto</a></li>
-<li><a href="https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip">iTerm2</a></li>
-</ul></li>
-</ul>
+<p>Apple has stopped using Intel/AMD computer chips and now uses its own ‘Apple Silicon’ (aka ‘M’) chips instead. Confusingly, these are often <em>also</em> referred to by their technical specification as <code>ARM64</code>. To find out which you have, click on the Apple icon () and select <code>About this Mac</code>. Look at the <code>Processor</code> section and you should see which type of computer you have. If you see the word <code>Intel</code> then you have an Intel/AMD chipset (<code>AMD64</code>), if you see <code>M1</code>, <code>M2</code>, <code>M3</code>, etc. then you have an Apple Silicon (<code>ARM64</code>) computer.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>It is highly unlikely that you have a 32-bit machine, but every year we find one or two older machines that use this architecture. <a href="https://support.microsoft.com/en-us/windows/32-bit-and-64-bit-windows-frequently-asked-questions-c6ca9541-8dce-4d48-0415-94a3faa2e13d">Microsoft says</a> that you can check which kind of chip you have by doing the following:</p>
+<blockquote class="blockquote">
+<p>Select ⊞ <code>Start</code> and then select <code>Settings</code> &gt; <code>System</code> &gt; <code>About</code>. Look at the <code>Device specifications</code>.</p>
+</blockquote>
+<p>It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer. But to confirm, in the same <code>Device specification</code> section:</p>
+<blockquote class="blockquote">
+<p>Check the System type line to see if it says “x64-based processor” (for AMD/Intel) or “ARM-based processor” (for ARM).</p>
+</blockquote>
+</div>
+</div>
+</div>
+</section>
+<section id="downloading" class="level2">
+<h2 class="anchored" data-anchor-id="downloading">Downloading</h2>
+<p>Please download all of the <em>Essential</em> software for your computer. Installation is covered in the next section.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Apple Intel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Apple Silicon (M-chips)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Windows PCs</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <ul>
 <li>Essential:
 <ul>
-<li><a href="https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-mac-arm64">Docker Desktop for Mac with Apple silicon</a></li>
-<li><a href="https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.4.1-arm64.pkg">R-4.4.1 for ARM64</a></li>
-<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2024.04.2-764.dmg">R Studio Desktop</a></li>
+<li><a href="https://podman-desktop.io/downloads">Podman Desktop</a></li>
+<li><a href="https://iterm2.com/downloads.html">iTerm2</a></li>
+<li><a href="https://desktop.github.com/download/">GitHub Desktop</a></li>
 </ul></li>
-<li>Good to have:
+<li>Optional:
 <ul>
 <li><a href="https://qgis.org/downloads/macos/qgis-macos-ltr.dmg">QGIS Long-Term Release (LTR)</a></li>
-<li><a href="https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64">GitHub Desktop</a></li>
-</ul></li>
-<li>Completely optional:
-<ul>
-<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=darwin-arm64">VS Code (ARM64)</a></li>
-<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-macos.pkg">Quarto</a></li>
-<li><a href="https://iterm2.com/downloads/stable/iTerm2-3_5_4.zip">iTerm2</a></li>
 </ul></li>
 </ul>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <ul>
 <li>Essential:
 <ul>
-<li><a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">Docker Desktop for Windows</a></li>
-<li><a href="https://cran.r-project.org/bin/windows/base/R-4.4.1-win.exe">R-4.4.1</a></li>
-<li><a href="https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe">R Studio Desktop</a></li>
+<li><a href="https://podman-desktop.io/downloads">Podman Desktop</a></li>
+<li><a href="https://iterm2.com/downloads.html">iTerm2</a></li>
+<li><a href="https://desktop.github.com/download/">GitHub Desktop</a></li>
+</ul></li>
+<li>Optional:
+<ul>
+<li><a href="https://qgis.org/downloads/macos/qgis-macos-ltr.dmg">QGIS Long-Term Release (LTR)</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<ul>
+<li>Essential:
+<ul>
+<li><a href="https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md#prerequisites">Windows Terminal</a> installed via either the Windows Store or the following Power Shell command <code>winget install Microsoft.WindowsTerminal</code>.</li>
+<li><a href="https://podman-desktop.io/downloads">Podman Desktop</a></li>
+<li><a href="https://desktop.github.com/download/">GitHub Desktop</a></li>
 <li><a href="https://git-scm.com/download/win">Git</a></li>
 </ul></li>
-<li>Good to have:
+<li>Optional:
 <ul>
 <li><a href="https://qgis.org/downloads/QGIS-OSGeo4W-3.34.10-1.msi">QGIS Long-Term Release (LTR)</a></li>
-<li><a href="https://central.github.com/deployments/desktop/desktop/latest/win32">GitHub Desktop</a></li>
-</ul></li>
-<li>Completely optional:
-<ul>
-<li><a href="https://code.visualstudio.com/sha/download?build=stable&amp;os=win32-x64-user">VS Code</a></li>
-<li><a href="https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-win.msi">Quarto</a></li>
 </ul></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-</section>
-</section>
-<section id="next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
-<p>R and R-Studio can be installed fairly easily by double-clicking on the downloaded files and following the instructions. Docker is a bit more complex, so please follow the instructions below.</p>
-</section>
-<section id="installing-docker" class="level2">
-<h2 class="anchored" data-anchor-id="installing-docker">Installing Docker</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Essential Topic
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This next section is <em>essential</em> to running the sds2024 environment.</p>
-</div>
-</div>
-<p>Docker is a complex application doing <em>very</em> complex things. It’s not surprising that it can be a bit of a pain to install. But once installed, it’s a very powerful <em>platform</em> for ‘doing (spatial) data science’ that’s widely used in industry and, increasingly, academia.</p>
-<p><em>One</em> way to think of it as a ‘library’ of ready-made <em>virtual</em> computers that you can copy and use free-of-charge. If you’d like to know more about what Docker is and how it works, you can read more in the <a href="../docker/index.html#understanding-docker">Understanding Docker</a> section.</p>
+<section id="installing" class="level2">
+<h2 class="anchored" data-anchor-id="installing">Installing</h2>
+<p>You can install the updated Terminal and Git/GitHub Desktop whenever you like, and you shouldn’t encounter any issues as these are quite straightforward applications. When setting up GitHub Desktop please ensure that you <strong>use your UCL email address</strong> to create the new account with GitHub.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -459,34 +430,71 @@ Windows Users
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Please ensure that you have installed WSL2 <em>before</em> installing Docker! If you cannot install WSL2 then please have a look at the ‘dealing with errors’ section.</p>
+<p>Please ensure that you have <a href="../setup/base.html">updated the Windows Virtualisation Features and installed WSL2</a> <em>before</em> installing this software!</p>
 </div>
 </div>
-<p><em>After</em> you’ve downloaded Docker, you need to:</p>
+<p>Now that you’ve downloaded Podman:</p>
 <ol type="1">
 <li>Install it – usually this will mean opening the image and either dragging it your Application folder (Mac) or running the installer (Windows)</li>
-<li>Start it up – double-click the Docker icon in your Applications folder to start Docker running.</li>
-<li>Finish setup – once Docker is finished starting up, you should see the login screen below. You do <em>not</em> need to create an account (notice <code>Continue without signing in</code>)</li>
-<li>On all the subsequent questions you can <code>Skip</code> (upper-right corner) answering as well.</li>
+<li>Start it up – double-click the Podman icon in your Applications folder (Mac) to start the application running.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../img/Docker_Login.png" class="img-fluid figure-img"></p>
-<figcaption>Docker trying to trick you into creating an account</figcaption>
+<p><a href="./img/Podman_Desktop.png" class="lightbox" data-gallery="desktop" title="Podman Desktop"><img src="./img/Podman_Desktop.png" class="img-fluid figure-img" data-fig-width="50%" alt="Podman Desktop"></a></p>
+<figcaption>Podman Desktop</figcaption>
 </figure>
 </div>
-<p>You <strong>must finish setting up</strong> before proceeding to the next step. You’ll know that you’re ready to move on when you see the ‘Docker Desktop’ window appear listing ‘downloaded images’ and ‘running containers’:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../img/Docker_Desktop.png" class="img-fluid figure-img"></p>
-<figcaption>Docker Desktop</figcaption>
-</figure>
+<p>If you <em>don’t</em> see this window (or see lots of errors) then you may need to have a look at the ‘<a href="../setup/problems.html">dealing with errors</a>’ section.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>If you <em>didn’t</em> see this then you will need to have a look at the ‘<a href="#dealing-with-errors">dealing with errors</a>’ section.</p>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Installation on a Mac should be fairly straightforward (as evidenced by the dearth of documentation), but for Windows there is <a href="https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md">quite a bit more detail</a>.</p>
+</div>
+</div>
 </section>
-<section id="testing-docker" class="level2">
-<h2 class="anchored" data-anchor-id="testing-docker">Testing Docker</h2>
-<p>To test if Docker is installed correctly, you will need either the <code>Terminal</code> (macOS) or the <code>Power Shell</code> (Windows).</p>
+<section id="configuring" class="level2">
+<h2 class="anchored" data-anchor-id="configuring">Configuring</h2>
+<p>Podman requires you to create a virtual machine with user-specified characteristics <em>before</em> you can run an image. You can think of this as specifying the ‘hardware’ of the computer before you buy it (How much RAM? How big a hard drive? And so on.). In principle, this means that you can have more than one valid configuration at a time which would allow you to tune each virtual machine to your needs (one machine could have a lot of memory, another a lot of storage).</p>
+<p>Here’s the quick-start version:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Apple MacOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Windows</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>In iTerm2 you simply type (hitting Enter after each line):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> machine init</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> machine start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>In the Windows Terminal you <em>should</em> be able to simply type (hitting Enter/Return after each line):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> machine init</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> machine start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Unable to Run
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In a small number of cases on Windows we’ve had error messages about permissions and been unable to <code>start</code> the machine that was created using <code>init</code>. In that case, it seems that you just need to create a new, named virtual machine (e.g.&nbsp;<code>podman machine init myvm</code>) and then change the default machine.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>If you’d like to read more about fine-tuning your Podman machine we’ve <a href="../setup/podman_conf.html">got a page for that</a>.</p>
+</section>
+<section id="testing" class="level2">
+<h2 class="anchored" data-anchor-id="testing">Testing</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -497,101 +505,97 @@ Copy Code to Clipboard
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Whenever you see a ‘code block’ below, you will <em>also</em> see a ‘clipboard’ icon (<img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon">) in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the <code>Terminal</code> or <code>Power Shell</code>. That will save you a lot of time and effort.</p>
+<p>Whenever you see a ‘code block’ below, you will <em>also</em> see a ‘clipboard’ icon (<img src="../img/copy-to-clipboard.png" height="18" alt="Copy to Clipboard Icon">) in the right. Click that, and the code will be copied to your computer’s ‘clipboard’ so that you can then paste it into the <code>Terminal</code> or <code>Windows Terminal</code> (see <a href="../setup/base.html#base-utilities">Base Utilities</a>. That will save you a lot of time and effort.</p>
 </div>
 </div>
-<p>Docker has provided a simple way to test if your installation is working correctly. You can run the following command in the <code>Terminal</code> or <code>Power Shell</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This should output something like:</p>
-<pre class="plaintext"><code>Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-478afc919002: Pull complete
-Digest: sha256:91fb4b041da273d5a3273b6d587d62d518300a6ad268b28628f74997b93171b2
-Status: Downloaded newer image for hello-world:latest
+<p>To test if Podman is installed correctly, you will need to start either <code>iTerm</code> (macOS) or the <code>Windows Terminal</code> (Windows). Podman has provided a simple way to test if your installation is working correctly. You can run the following command:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run hello-world</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Running <code>hello-world</code> should output something like:</p>
+<pre class="plaintext"><code>Resolved "hello-world" as an alias (/etc/containers/registries.conf.d/000-shortnames.conf)
+Trying to pull quay.io/podman/hello:latest...
+Getting image source signatures
+Copying blob sha256:1ff9adeff4443b503b304e7aa4c37bb90762947125f4a522b370162a7492ff47
+Copying config sha256:83fc7ce1224f5ed3885f6aaec0bb001c0bbb2a308e3250d7408804a720c72a32
+Writing manifest to image destination
+!... Hello Podman World ...!
 
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
+         .--"--.
+       / -     - \
+      / (O)   (O) \
+   ~~~| -=(,Y,)=- |
+    .---. /`  \   |~~
+ ~/  o  o \~~~~.----. ~~
+  | =(X)= |~  / (O (O) \
+   ~~~~~~~  ~| =(Y_)=-  |
+  ~~~~    ~~~|   U      |~~
 
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    (arm64v8)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/</code></pre>
-<p>If you see this message, then Docker is installed correctly and you can move on to the next step. If you see an error message, then you will need to have a look at the ‘<a href="#dealing-with-errors">dealing with errors</a>’ section. Notice how there are several things happening:</p>
+Project:   https://github.com/containers/podman
+Website:   https://podman.io
+Desktop:   https://podman-desktop.io
+Documents: https://docs.podman.io
+YouTube:   https://youtube.com/@Podman
+X/Twitter: @Podman_io
+Mastodon:  @Podman_io@fosstodon.org</code></pre>
+<p>If you see the above messages, then Podman is installed correctly and you can move on to the next step. If you see an error message, then you will need to have a look at the <a href="../setup/problems.html">problems</a> page.</p>
+<p>Notice how there are several things happening:</p>
 <ol type="1">
-<li><code>Unable to find image... locally</code> – this is because the <code>hello-world</code> image is not (yet) stored on your computer.</li>
-<li><code>latest: Pulling from library/hello-world</code> – this is Docker downloading the <code>hello-world</code> image from the internet.</li>
-<li><code>Pull complete</code> – this is Docker telling you that it has finished downloading the image.</li>
-<li><code>Hello from Docker!</code> – this is the <code>hello-world</code> image running and telling you that Docker is working correctly.</li>
+<li><code>Trying to pull...</code> or <code>Pulling from library/hello-world</code> – this is starting the process of downloading the <code>hello-world</code> image from the internet.</li>
+<li><code>Pull complete</code> or <code>Writing manifest to image destination</code> – this is telling you that it has finished downloading the image.</li>
+<li><code>Hello from Docker!</code> or <code>Hello Podman World</code> – this is the <code>hello-world</code> image running and telling you that the image now running as a container.</li>
 </ol>
 <p>There’s obviously a <em>lot</em> more to that message, but that’s the basic idea.</p>
 </section>
-<section id="installing" class="level2">
-<h2 class="anchored" data-anchor-id="installing">Installing sds2024</h2>
-<p>We now need to download the sds2024 <strong>image</strong> that we use for teaching <em>Foundations</em> and <em>Quantitative Methods</em>. The image is the ‘template’ for running virtual machines (i.e.&nbsp;computers) on our ‘host’ computer and it comes complete with all of the Python libraries and other tools that you’ll need to complete the module (and a good deal more besides!). Installing the image will take a while as it’s quite large (2-5GB) and so will depend on the speed of your internet connection.</p>
+<section id="running" class="level2">
+<h2 class="anchored" data-anchor-id="running">Running</h2>
+<p>We now need to download and run the <code>sds2025</code> <strong>image</strong> that I created over the summer. The image is the ‘template’ for running containers (i.e.&nbsp;virtual computers) on our ‘host’ computer and it comes complete with all of the Python libraries and other tools that you’ll need to complete the module (and a good deal more besides!). Installing the image will take a while as it’s quite large (1-5GB) and so will depend on the speed of your internet connection.</p>
+<p>You can use a single command to download and start the <code>sds2025</code> <strong>container</strong> by copying the following command into the <code>iTerm</code> (which I’ll also call the ‘Terminal’ from here on out) or <code>Windows Terminal</code> (which I’m also going to start calling the ‘Terminal’ from here on out). On Windows, the below commands may work in <code>Power Shell</code>, but they will <em>not</em> work in the Command Prompt/<code>cmd</code>):</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Intel Macs and Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Silicon/M-Chip Macs</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Mac (Intel/AMD64)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Macs (Apple Silicon/ARM64)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Windows (Intel/AMD64)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false">Windows (ARM64)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>If your Apple computer has an Intel chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>) or is running Windows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024-intel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<p>If your Apple computer has an M1 or M2 ‘Silicon’ chipset (see:  -&gt; <code>About this Mac</code> -&gt; <code>Processor</code>):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull jreades/sds:2024-silicon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="using" class="level2">
-<h2 class="anchored" data-anchor-id="using">Using jreades/sds:2024</h2>
-<p>Now that you have the image downloaded, you can start an sds2024 <strong>container</strong> by copying the following command into the <code>Terminal</code> or <code>Power Shell</code> (<em>this does not work in the Command Prompt</em>/<code>cmd</code>):</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">For Intel Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">For M-Chip Macs</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">For Windows</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2025 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-intel start.sh jupyter lab <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2025-amd start.sh jupyter lab <span class="dt">\</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2025 <span class="at">-p</span> 8888:8888 <span class="dt">\</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> <span class="dt">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2024-silicon start.sh jupyter lab <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  jreades/sds:2025-arm start.sh jupyter lab <span class="dt">\</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2024 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2024-intel start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2025 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2025-amd start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">podman</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--name</span> sds2025 <span class="at">-p</span> 8888:8888 <span class="at">-v</span> <span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/home/jovyan/work"</span> jreades/sds:2025-arm start.sh jupyter lab <span class="at">--LabApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--ServerApp.password</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you were using Docker instead of Podman then the command is <em>the same</em> except that you need to replace <code>podman</code> with <code>docker</code>. This is on purpose: open source <code>podman</code> is intended to replace the proprietary <code>docker</code>.</p>
+</div>
+</div>
+<p>If you encounter any problems with the installation, please have a look at the <a href="../setup/problems.html">Dealing with Problems</a> page.</p>
 </section>
 <section id="success" class="level2">
 <h2 class="anchored" data-anchor-id="success">Success!</h2>
-<p>However, <em>most</em> of you should now be able to connect to the virtual machine by pointing your browser at: <a href="http://localhost:8888/lab/">localhost:8888</a> where you should see something like this:</p>
+<p>Most of you should now be able to connect to the virtual machine by pointing your browser at: <a href="http://localhost:8888/lab/">localhost:8888</a> where you should see something like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../img/Jupyter_Lab.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><a href="../img/Jupyter_Lab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Jupyter Lab Success"><img src="../img/Jupyter_Lab.png" class="img-fluid figure-img" style="width:50.0%" alt="Jupyter Lab Success"></a></p>
 <figcaption>Jupyter Lab Success</figcaption>
 </figure>
 </div>
-</section>
-<section id="when-things-go-wrong" class="level2">
-<h2 class="anchored" data-anchor-id="when-things-go-wrong">When Things Go Wrong</h2>
-<p>If you encounter any problems with the installation, please have a look at the <a href="../docker/problems.html">Dealing with Docker Problems</a> page.</p>
 
 
 </section>
@@ -600,7 +604,7 @@ For more examples and ideas, visit:
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>And Podman, which is basically the same thing.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>And Docker, which is basically the same thing.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -685,8 +689,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -797,7 +799,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1025,13 +1026,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../setup/markdown.html" class="pagination-link" aria-label="Markdown">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Markdown</span>
+      <a href="../setup/base.html" class="pagination-link" aria-label="Step 2. Base Utilities">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Step 2. Base Utilities</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../setup/no_install.html" class="pagination-link" aria-label="No Install Options">
-        <span class="nav-page-text">No Install Options</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../setup/install_fest.html" class="pagination-link" aria-label="All-In-One">
+        <span class="nav-page-text">All-In-One</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1039,7 +1040,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2023, Jon Reades</p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2025, Jon Reades</p>
 </div>   
     <div class="nav-footer-center">
 <p><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</p>
@@ -1062,6 +1063,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

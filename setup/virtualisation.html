@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jon Reades">
-<meta name="dcterms.date" content="2023-09-07">
+<meta name="dcterms.date" content="2025-07-11">
 
-<title>No Install Options – CASA Computing Environment</title>
+<title>Understanding Virtualisation – CASA Computing Environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -66,18 +32,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../setup/install_fest.html" rel="next">
-<link href="../setup/env.html" rel="prev">
+<link href="../setup/problems.html" rel="prev">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fb446d74831b8ff67c69632cb314b545.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b89509cbc350dd8f6b056af8256295a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,11 +75,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="No Install Options – CASA Computing Environment">
+<meta property="og:title" content="Understanding Virtualisation – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/CASA_Logo_no_text.png">
+<meta property="og:image" content="../img/Docker.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image:alt" content="Sketch of Podman/Docker Usage">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -134,56 +103,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Welcome</span></a>
-  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Requirements</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Installation</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-requirements">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-installation">    
         <li>
-    <a class="dropdown-item" href="../req/health.html">
- <span class="dropdown-text">Health Check</span></a>
+    <a class="dropdown-item" href="../setup/health.html">
+ <span class="dropdown-text">Step 1. Health Check</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../req/base.html">
- <span class="dropdown-text">Base Utilities</span></a>
+    <a class="dropdown-item" href="../setup/base.html">
+ <span class="dropdown-text">Step 2. Base Utilities</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../req/code_camp.html">
- <span class="dropdown-text">Code Camp</span></a>
+    <a class="dropdown-item" href="../setup/installation.html">
+ <span class="dropdown-text">Step 3. Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/install_fest.html">
+ <span class="dropdown-text">All-In-One</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/problems.html">
+ <span class="dropdown-text">Common Problems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/virtualisation.html">
+ <span class="dropdown-text">About Virtualisation</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Setup</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-post-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Post-Installation</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-setup">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-post-installation">    
         <li>
-    <a class="dropdown-item" href="../setup/git.html">
+    <a class="dropdown-item" href="../post/git.html">
  <span class="dropdown-text">Git &amp; GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../setup/markdown.html">
+    <a class="dropdown-item" href="../post/markdown.html">
  <span class="dropdown-text">Markdown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../setup/env.html">
- <span class="dropdown-text">Programming Environment</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../setup/no_install.html">
- <span class="dropdown-text">No Install Options</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../setup/install_fest.html">
- <span class="dropdown-text">Installation ‘Fest’</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../docker/advanced.html">
+    <a class="dropdown-item" href="../post/advanced.html">
  <span class="dropdown-text">Advanced Topics</span></a>
   </li>  
     </ul>
@@ -227,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/no_install.html">No Install Options</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/virtualisation.html">About Virtualisation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -241,38 +206,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git &amp; GitHub</span></a>
+  <a href="../setup/health.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Step 1. Health Check</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/markdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Markdown</span></a>
+  <a href="../setup/base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Step 2. Base Utilities</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/env.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Programming Environment</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/no_install.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">No Install Options</span></a>
+  <a href="../setup/installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Step 3. Installation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installation ‘Fest’</span></a>
+ <span class="menu-text">All-In-One</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docker/advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced Topics</span></a>
+  <a href="../setup/problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Problems</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/virtualisation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">About Virtualisation</span></a>
   </div>
 </li>
     </ul>
@@ -284,19 +249,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
+  <ul>
+  <li><a href="#what-is-virtualisation" id="toc-what-is-virtualisation" class="nav-link active" data-scroll-target="#what-is-virtualisation">What is Virtualisation?</a></li>
+  <li><a href="#podmandocker-in-a-nutshell" id="toc-podmandocker-in-a-nutshell" class="nav-link" data-scroll-target="#podmandocker-in-a-nutshell">Podman/Docker in a Nutshell</a>
   <ul class="collapse">
-  <li><a href="#ucl-jupyterhub" id="toc-ucl-jupyterhub" class="nav-link active" data-scroll-target="#ucl-jupyterhub">UCL JupyterHub</a></li>
-  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
-  <li><a href="#binder" id="toc-binder" class="nav-link" data-scroll-target="#binder">Binder</a></li>
+  <li><a href="#step-1.-podman-pulldocker-pull" id="toc-step-1.-podman-pulldocker-pull" class="nav-link" data-scroll-target="#step-1.-podman-pulldocker-pull">Step 1. <code>podman pull</code>/<code>docker pull</code></a></li>
+  <li><a href="#step-2-docker-run" id="toc-step-2-docker-run" class="nav-link" data-scroll-target="#step-2-docker-run">Step 2, <code>docker run</code></a></li>
+  <li><a href="#step-3.-interacting-with-the-container" id="toc-step-3.-interacting-with-the-container" class="nav-link" data-scroll-target="#step-3.-interacting-with-the-container">Step 3. Interacting with the Container</a></li>
+  <li><a href="#step-4.-anatomy-of-run" id="toc-step-4.-anatomy-of-run" class="nav-link" data-scroll-target="#step-4.-anatomy-of-run">Step 4. Anatomy of <code>run</code></a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">No Install Options</h1>
+<h1 class="title">Understanding Virtualisation</h1>
 </div>
 
 
@@ -313,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 7, 2023</p>
+      <p class="date">July 11, 2025</p>
     </div>
   </div>
   
@@ -325,55 +295,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The following options provide alternatives for those who are unable to install the full programming environment on their <em>main</em> computer and would otherwise be unable to continue with the module. Each of these has pros and cons but they allow you to run code ‘in the cloud’ and so mean that any internet-connected device can be used to write and run code.</p>
-<section id="ucl-jupyterhub" class="level2">
-<h2 class="anchored" data-anchor-id="ucl-jupyterhub">UCL JupyterHub</h2>
+<section id="what-is-virtualisation" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-virtualisation">What is Virtualisation?</h2>
+<p>Podman and Docker are ‘virtualisation’ tools that allows you to run ‘virtual machines’ on your computer’s ‘host’ operating system. That’s a lot of new, probably meaningless words. If you’re one of those people who (understandably) likes to understand what’s going on then here’s how some people define it:</p>
+<ol type="1">
+<li>Google on <a href="https://cloud.google.com/learn/what-is-a-virtual-machine#">What is a virtual machine</a>?</li>
+<li>VMWare on <a href="https://www.vmware.com/topics/virtual-machine#">What is a virtual machine</a>?</li>
+<li>Microsoft on <a href="https://azure.microsoft.com/en-gb/resources/cloud-computing-dictionary/what-is-a-virtual-machine">What is a virtual machine (VM)</a>?</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Configuration for Staff
+Docker v. Podman
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Please see the <a href="../setup/jupyter_hub.html">JupyterHub page</a> for information about configuring a new environment.</p>
+<p>You can find out more about Podman and Docker <a href="../setup/docker_vs_podman.html">here</a></p>
 </div>
 </div>
-<p>To connect to JupyterHub:</p>
-<ol type="1">
-<li>Start up the UCL VPN.</li>
-<li>Connect to <a href="https://jupyter.data-science.rc.ucl.ac.uk/">JupyterHub</a></li>
-<li>Authenticate using your UCL credentials.</li>
-<li>If you see a URL that ends in <code>tree?</code> please replace this with <code>lab?</code> to get the JupyterLab interface and not the original Jupyter Notebook interface (you can bookmark this page once it opens).</li>
-<li>Create a new terminal: File &gt; New &gt; Terminal</li>
+</section>
+<section id="podmandocker-in-a-nutshell" class="level2">
+<h2 class="anchored" data-anchor-id="podmandocker-in-a-nutshell">Podman/Docker in a Nutshell</h2>
+<p>So in order to make use of Podman/Docker (and understand what’s happening when you get errors), it’s helpful to have <em>some</em> sense of what’s going on behind the scenes. You can click on the image below to make it larger, or you can download and print out <a href="../img/Docker.pdf">a PDF version</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../img/Docker.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Sketch of Podman/Docker Usage"><img src="../img/Docker.png" class="img-fluid figure-img" alt="Sketch of Podman/Docker Usage"></a></p>
+<figcaption>Sketch of Podman/Docker Usage</figcaption>
+</figure>
+</div>
+<p>Here’s what’s happening:</p>
+<section id="step-1.-podman-pulldocker-pull" class="level3">
+<h3 class="anchored" data-anchor-id="step-1.-podman-pulldocker-pull">Step 1. <code>podman pull</code>/<code>docker pull</code></h3>
+<p>You issue the <code>podman pull jreades/sds:2025</code> (or <code>docker pull jreades/sds:2025</code>) command to your computer, which turns around and asks the Hub for a copy of this image. The Hub responds by transferring a copy of the <code>jreades/sds:2025</code> <strong>image</strong> to your computer. You now have a file containing all the instructions to set up and run a <strong>virtual machine</strong> on your computer.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="step-2-docker-run" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-docker-run">Step 2, <code>docker run</code></h3>
+<p>You will issue the <code>podman run ... jreades/sds:2025 ...</code> command (or <code>docker run ...</code>) from the command line (or terminal) of your computer, and this tells Docker/Podman to use the <code>jreades/sds:2025</code> <strong>image</strong> as a template for creating a <strong>container</strong> called <code>sds2025</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. <code>sds2025</code> will do <em>whatever</em> it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But sds2025 is <em>read-only</em>, although you can make changes to the container while it’s running, as soon as you shut it down those changes are lost. So you cannot break an image, only a container. And if you do that, you delete the container and start a new one from the image… we can cover this if you ever do it.</p>
+<p>As part of the <code>run</code> command, we also told Docker/Podman what resources the container could access. There are two main types of resources for our purposes:</p>
+<ul>
+<li>A <strong>mount point</strong> which is a part of your computer’s hard drive that we can use to write things down permanently. We use <code>$(pwd)</code>, which is short-hand for <code>print working directory</code> and refers to the ‘place’ on your computer where we issued the <code>docker run</code> command. We tell the platform to connect this to a directory called <code>work</code> (which resides in <code>/home/jovyan/</code>) on the <code>sds2025</code> container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down.</li>
+<li>One or more <strong>ports</strong> which are like channels on a radio where the container can talk to other computers (including yours). In this case, we connect port 8888 on <code>sds2025</code> to port 8888 on your computer. And <em>that</em> is why you have to tell your browser to go to <a href="http://localhost:8888"><code>localhost:8888</code></a> to access Jupyter Lab.</li>
+</ul>
+</section>
+<section id="step-3.-interacting-with-the-container" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.-interacting-with-the-container">Step 3. Interacting with the Container</h3>
+<p>Now when you type things into the browser and tell code to ‘run’, what’s actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.</p>
+</section>
+<section id="step-4.-anatomy-of-run" class="level3">
+<h3 class="anchored" data-anchor-id="step-4.-anatomy-of-run">Step 4. Anatomy of <code>run</code></h3>
+<p>At the bottom of the Figure above you can see a <em>full</em> <code>run</code> command, here we just want to focus on the most important options (each <code>-X</code> is an option) for most users:</p>
+<ul>
+<li><code>-v</code>: this specified the point on your hard drive that the sds2025 can use. By default we use <code>$(pwd)</code> which means ‘use the location where the <code>docker run</code> command was executed. You can also ’hard code’ this to something like <code>/Users/&lt;your username&gt;/Documents/casa/</code> if you always want to use the same location.</li>
+<li><code>-p</code>: this specified the channel (or <code>port</code>) on which the web browser can talk to the sds2025.</li>
+<li><code>jreades/sds:2025</code>: this specified the image we wanted to use</li>
+</ul>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>A virtual machine is just a computer that runs <em>on</em> your computer. So it ‘borrows’ resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>A container is the name Podman/Docker uses to refer to a <em>running</em> virtual machine. The image on its own does nothing until you tell docker to <code>run</code> it, at which point it becomes a container!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>Note that you need to replace <code>{group_name}</code> with the appropriate group role (this value will be obvious once you’re logged in and can run <code>ls /shared/groups/</code> in the Terminal):</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--append</span> envs_dirs /shared/groups/{group_name}/casa</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> contrib nbextension install <span class="at">--user</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="google-colab" class="level2">
-<h2 class="anchored" data-anchor-id="google-colab">Google Colab</h2>
-<p>Google’s Colaboratory is an easy way to get started without needing to install anything, while still being able to save your work. This approach will work well for the first few weeks, up to the point where we start loading larger data sets that require more memory than Google’s free tier provides. At that point you’ll either need to start sampling from the full data set, or you’re back to Docker!</p>
-<p>Here’s how to get started with Colab:</p>
-<ol type="1">
-<li>Go to Google’s <a href="https://colab.research.google.com/">Colab</a> site and sign in using <em>your</em> Google account details (or create an account if you don’t already have one).</li>
-<li>If you are trying to clone a practical from <em>Foundations</em> then: choose <code>File</code> then <code>Open</code> and select the <code>GitHub</code> tab from the open options (it’s between <code>Google Drive</code> and <code>Upload</code>).</li>
-<li>Enter the following URL: <a href="https://github.com/jreades/fsds">https://github.com/jreades/fsds</a>.</li>
-<li>You should now see a list of notebooks to choose from – select the appropriate one from the sequence and click <code>Open in Colab</code>.</li>
-<li>You will need to <strong>trust</strong> the notebook in order to run it.</li>
-</ol>
-<p>When you are done for the day you can save the notebook to your Google Drive – to re-run that notebook you can just load it from Google Drive, rather than going back to GitHub, but remember that <strong>you need to re-run all the cells up to the point where you saved the notebook</strong>. Being able to save and re-run a notebook is the main difference from Binder.</p>
-</section>
-<section id="binder" class="level2">
-<h2 class="anchored" data-anchor-id="binder">Binder</h2>
-<p>While we support Binder for <a href="../req/code_camp.html">Code Camp</a>, this is not a platform that we are supporting as part of our masters programme since it is impossible to save your work without downloading the notebook each time.</p>
-
-
-</section>
-
-</main> <!-- /main -->
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -456,8 +447,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -568,7 +557,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -796,21 +784,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../setup/env.html" class="pagination-link" aria-label="Programming Environment">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Programming Environment</span>
+      <a href="../setup/problems.html" class="pagination-link" aria-label="Common Problems">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Common Problems</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../setup/install_fest.html" class="pagination-link" aria-label="Installation 'Fest'">
-        <span class="nav-page-text">Installation ‘Fest’</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2023, Jon Reades</p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2025, Jon Reades</p>
 </div>   
     <div class="nav-footer-center">
 <p><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</p>
@@ -833,6 +818,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

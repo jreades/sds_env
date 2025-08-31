@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jon Reades">
-<meta name="dcterms.date" content="2023-09-07">
+<meta name="dcterms.date" content="2025-08-31">
 
-<title>Git &amp; GitHub – CASA Computing Environment</title>
+<title>Additional Configuration – CASA Computing Environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,17 +32,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../setup/markdown.html" rel="next">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fb446d74831b8ff67c69632cb314b545.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b89509cbc350dd8f6b056af8256295a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,14 +74,15 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Git &amp; GitHub – CASA Computing Environment">
+<meta property="og:title" content="Additional Configuration – CASA Computing Environment">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/CASA_Logo_no_text.png">
+<meta property="og:image" content="./img/Podman_Settings.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
+<meta property="og:image:alt" content="Podman Resources">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -99,56 +102,52 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Welcome</span></a>
-  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Requirements</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Installation</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-requirements">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-installation">    
         <li>
-    <a class="dropdown-item" href="../req/health.html">
- <span class="dropdown-text">Health Check</span></a>
+    <a class="dropdown-item" href="../setup/health.html">
+ <span class="dropdown-text">Step 1. Health Check</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../req/base.html">
- <span class="dropdown-text">Base Utilities</span></a>
+    <a class="dropdown-item" href="../setup/base.html">
+ <span class="dropdown-text">Step 2. Base Utilities</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../req/code_camp.html">
- <span class="dropdown-text">Code Camp</span></a>
+    <a class="dropdown-item" href="../setup/installation.html">
+ <span class="dropdown-text">Step 3. Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/install_fest.html">
+ <span class="dropdown-text">All-In-One</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/problems.html">
+ <span class="dropdown-text">Common Problems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/virtualisation.html">
+ <span class="dropdown-text">About Virtualisation</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Setup</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-post-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Post-Installation</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-setup">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-post-installation">    
         <li>
-    <a class="dropdown-item" href="../setup/git.html">
+    <a class="dropdown-item" href="../post/git.html">
  <span class="dropdown-text">Git &amp; GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../setup/markdown.html">
+    <a class="dropdown-item" href="../post/markdown.html">
  <span class="dropdown-text">Markdown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../setup/env.html">
- <span class="dropdown-text">Programming Environment</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../setup/no_install.html">
- <span class="dropdown-text">No Install Options</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../setup/install_fest.html">
- <span class="dropdown-text">Installation ‘Fest’</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../docker/advanced.html">
+    <a class="dropdown-item" href="../post/advanced.html">
  <span class="dropdown-text">Advanced Topics</span></a>
   </li>  
     </ul>
@@ -187,80 +186,27 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/git.html">Git &amp; GitHub</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/git.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Git &amp; GitHub</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/markdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Markdown</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/env.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Programming Environment</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/no_install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">No Install Options</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installation ‘Fest’</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../docker/advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced Topics</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul class="collapse">
-  <li><a href="#get-a-github-account" id="toc-get-a-github-account" class="nav-link active" data-scroll-target="#get-a-github-account">Get a GitHub Account</a></li>
-  <li><a href="#install-git-locally" id="toc-install-git-locally" class="nav-link" data-scroll-target="#install-git-locally">Install Git Locally</a></li>
+  <ul>
+  <li><a href="#considerations" id="toc-considerations" class="nav-link active" data-scroll-target="#considerations">Considerations</a></li>
+  <li><a href="#initialising-a-podman-machine" id="toc-initialising-a-podman-machine" class="nav-link" data-scroll-target="#initialising-a-podman-machine">Initialising a Podman Machine</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Git &amp; GitHub</h1>
+<h1 class="title">Additional Configuration</h1>
 </div>
 
 
@@ -277,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 7, 2023</p>
+      <p class="date">August 31, 2025</p>
     </div>
   </div>
   
@@ -289,32 +235,123 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Git is a ‘version control system’, which is a fancy way of saying that it has the potential to store a complete, line-by-line history of your work… so long as it’s in a plain-text format like <a href="../setup/markdown.html">Markdown</a> or Python/R code files. Git updates all of this history on your computer every time you ‘commit’ the changes you’ve told it about by ‘adding’ a file. With GitHub you can then synchronise these changes so that you have a full backup (code and content are no longer just on your computer), publish a web site (via github.io), or collaborate with other people (via public, shared ‘repositories’).</p>
-<p>While it is not necessary that you learn all about how GitHub works <em>now</em>, it will be really helpful if you can get yourself set up with a GitHub account and install Git locally so that you’re ready to get when we start the term.</p>
-<section id="get-a-github-account" class="level2">
-<h2 class="anchored" data-anchor-id="get-a-github-account">Get a GitHub Account</h2>
-<p>You will need to go to <a href="https://github.com/">GitHub.com</a> and then click the <code>Sign up</code> button at the top right. Follow the instructions for creating a new account from there.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Podman requires you to create a virtual machine with user-specified characteristics <em>before</em> you can run an image. You can think of this as specifying the ‘hardware’ of the computer before you buy it (How much RAM? How big a hard drive? And so on.). In principle, this means that you can have more than one valid configuration at a time which would allow you to tune each virtual machine to your needs (one machine could have a lot of memory, another a lot of storage).</p>
+<section id="considerations" class="level3">
+<h3 class="anchored" data-anchor-id="considerations">Considerations</h3>
+<p>You should create a virtual machine that has <em>enough</em> resources to do the job, but not so much that it affects your ability to do other work on the computer. Since every computer is unique, you need to look at your computer’s configuration and work it out from there but below is some basic guidance. You will find it easiest to configure this using Podman Desktop (next section) and clicking on the <code>Settings</code> and <code>Create Podman machine</code>.</p>
+<div id="tbl-RAM" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-RAM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Memory (RAM)
+</figcaption>
+<div aria-describedby="tbl-RAM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">If your computer has</th>
+<th style="text-align: right;">8GB</th>
+<th style="text-align: right;">16GB</th>
+<th style="text-align: right;">32GB</th>
+<th style="text-align: right;">64GB</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">We’d recommend</td>
+<td style="text-align: right;">1-2GB</td>
+<td style="text-align: right;">2-3GB</td>
+<td style="text-align: right;">4–8GB</td>
+<td style="text-align: right;">Lucky you!</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="callout-title-container flex-fill">
-Use Your Personal Account
+</figure>
 </div>
+<div id="tbl-CPU" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-CPU-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Processing Power (CPUs)
+</figcaption>
+<div aria-describedby="tbl-CPU-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">If your computer has</th>
+<th style="text-align: right;">2CPUs</th>
+<th style="text-align: right;">8CPUs</th>
+<th style="text-align: right;">16CPU</th>
+<th style="text-align: right;">32CPUs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">We’d recommend</td>
+<td style="text-align: right;">1CPU</td>
+<td style="text-align: right;">2-4CPUs</td>
+<td style="text-align: right;">4–8CPUs</td>
+<td style="text-align: right;">Lucky you!</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="callout-body-container callout-body">
-<p>Although you can always change it later (so if you’ve opened your GitHub account using your UCL email don’t panic!), you may find it easier to:</p>
-<ul>
-<li>Open a GitHub account using a personal email address to which you expect to always have access.</li>
-<li>Then associate your UCL email address to this GitHub account so that you gain from any educational benefits offered by GitHub (there are some around private respositories and so on).</li>
-</ul>
+</figure>
 </div>
+<div id="tbl-HD" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-HD-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Free Disk Space (Disk size)
+</figcaption>
+<div aria-describedby="tbl-HD-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">If your computer has</th>
+<th style="text-align: right;">10GB Free</th>
+<th style="text-align: right;">20GB Free</th>
+<th style="text-align: right;">100GB Free</th>
+<th style="text-align: right;">&gt; 150GB Free</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">We’d recommend</td>
+<td style="text-align: right;">Tidying up</td>
+<td style="text-align: right;">10GB</td>
+<td style="text-align: right;">30GB</td>
+<td style="text-align: right;">Lucky you!</td>
+</tr>
+</tbody>
+</table>
 </div>
+</figure>
+</div>
+<p>Note that some Windows machines come configured with <em>two</em> hard drives (usually called <code>C</code> and <code>D</code>); in those cases <code>D</code> is intended for data and often doesn’t have much on on it! In those cases, you can change the <code>Image Path</code> option in Podman desktop to store the image on the <code>D</code> drive and avoid problems with filling up your <code>C</code> drive.</p>
 </section>
-<section id="install-git-locally" class="level2">
-<h2 class="anchored" data-anchor-id="install-git-locally">Install Git Locally</h2>
-<p>You can follow along with GitHub’s <a href="https://github.com/git-guides/install-git">own instructions</a> for installing Git on your own computer. In many cases (especially if you use a Mac) you may find that Git is already installed, you just didn’t know it.</p>
+<section id="initialising-a-podman-machine" class="level3">
+<h3 class="anchored" data-anchor-id="initialising-a-podman-machine">Initialising a Podman Machine</h3>
+<p>The easiest way to configure your Podman machine is to use Podman Desktop. When you launch the Desktop, at the lower-left you’ll see a <code>Settings</code> button. Click this and then (if it’s not already selected) choose the <code>Resources</code> tab.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./img/Podman_Settings.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Podman Resources"><img src="./img/Podman_Settings.png" class="img-fluid figure-img" alt="Podman Resources"></a></p>
+<figcaption>Podman Resources</figcaption>
+</figure>
+</div>
+<p>Select <code>Create new</code> and Podman will pick some sensible defaults for you; however, you might want to fine-tune the settings in line with the options set out above in Tables <a href="#tbl-RAM" class="quarto-xref">Table&nbsp;1</a> and <a href="#tbl-CPU" class="quarto-xref">Table&nbsp;2</a> especially. Here’s one setup for a fairly recent Apple MacBookPro M2.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./img/Podman_Machine_init.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Podman Machine Initalisation"><img src="./img/Podman_Machine_init.png" class="img-fluid figure-img" alt="Podman Machine Initalisation"></a></p>
+<figcaption>Podman Machine Initalisation</figcaption>
+</figure>
+</div>
+<p>Click on <code>Create</code> and you are now ready to run your first container from an image!</p>
 
 
 </section>
@@ -402,8 +439,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -514,7 +549,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -740,20 +774,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../setup/markdown.html" class="pagination-link" aria-label="Markdown">
-        <span class="nav-page-text">Markdown</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2023, Jon Reades</p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2025, Jon Reades</p>
 </div>   
     <div class="nav-footer-center">
 <p><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</p>
@@ -776,6 +801,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

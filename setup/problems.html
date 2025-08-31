@@ -2,12 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jon Reades">
+<meta name="dcterms.date" content="2025-08-31">
 
-<title>wsl – CASA Computing Environment</title>
+<title>Dealing with Problems – CASA Computing Environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,16 +66,18 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../setup/virtualisation.html" rel="next">
+<link href="../setup/install_fest.html" rel="prev">
 <link href="..//img/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fb446d74831b8ff67c69632cb314b545.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b89509cbc350dd8f6b056af8256295a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,13 +107,14 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="CASA Computing Environment">
+<meta property="og:title" content="Dealing with Problems – CASA Computing Environment">
+<meta property="og:description" content="">
 <meta property="og:image" content="img/CASA_Logo_no_text.png">
 <meta property="og:site_name" content="Spatial Data Science Environment">
 <meta property="og:locale" content="en_GB">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,56 +134,52 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Welcome</span></a>
-  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-requirements" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Requirements</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Installation</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-requirements">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-installation">    
         <li>
-    <a class="dropdown-item" href="../req/health.html">
- <span class="dropdown-text">Health Check</span></a>
+    <a class="dropdown-item" href="../setup/health.html">
+ <span class="dropdown-text">Step 1. Health Check</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../req/base.html">
- <span class="dropdown-text">Base Utilities</span></a>
+    <a class="dropdown-item" href="../setup/base.html">
+ <span class="dropdown-text">Step 2. Base Utilities</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../req/code_camp.html">
- <span class="dropdown-text">Code Camp</span></a>
+    <a class="dropdown-item" href="../setup/installation.html">
+ <span class="dropdown-text">Step 3. Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/install_fest.html">
+ <span class="dropdown-text">All-In-One</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/problems.html">
+ <span class="dropdown-text">Common Problems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../setup/virtualisation.html">
+ <span class="dropdown-text">About Virtualisation</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-setup" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Setup</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-post-installation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Post-Installation</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-setup">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-post-installation">    
         <li>
-    <a class="dropdown-item" href="../setup/git.html">
+    <a class="dropdown-item" href="../post/git.html">
  <span class="dropdown-text">Git &amp; GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../setup/markdown.html">
+    <a class="dropdown-item" href="../post/markdown.html">
  <span class="dropdown-text">Markdown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../setup/env.html">
- <span class="dropdown-text">Programming Environment</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../setup/no_install.html">
- <span class="dropdown-text">No Install Options</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../setup/install_fest.html">
- <span class="dropdown-text">Installation ‘Fest’</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../docker/advanced.html">
+    <a class="dropdown-item" href="../post/advanced.html">
  <span class="dropdown-text">Advanced Topics</span></a>
   </li>  
     </ul>
@@ -183,64 +218,189 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../setup/problems.html">Common Problems</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/health.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Step 1. Health Check</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Step 2. Base Utilities</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Step 3. Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/install_fest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All-In-One</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/problems.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Common Problems</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/virtualisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Virtualisation</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#errors-installing" id="toc-errors-installing" class="nav-link active" data-scroll-target="#errors-installing">Errors Installing</a>
+  <ul class="collapse">
+  <li><a href="#unsupported-version" id="toc-unsupported-version" class="nav-link" data-scroll-target="#unsupported-version">Unsupported Version</a></li>
+  <li><a href="#problems-with-wsl2" id="toc-problems-with-wsl2" class="nav-link" data-scroll-target="#problems-with-wsl2">Problems with WSL2</a></li>
+  <li><a href="#problems-with-admin-rights" id="toc-problems-with-admin-rights" class="nav-link" data-scroll-target="#problems-with-admin-rights">Problems with Admin Rights</a></li>
+  </ul></li>
+  <li><a href="#errors-running" id="toc-errors-running" class="nav-link" data-scroll-target="#errors-running">Errors Running</a>
+  <ul class="collapse">
+  <li><a href="#dealing-with-disk-space" id="toc-dealing-with-disk-space" class="nav-link" data-scroll-target="#dealing-with-disk-space">Dealing with Disk Space</a></li>
+  <li><a href="#other-disk-space-issues" id="toc-other-disk-space-issues" class="nav-link" data-scroll-target="#other-disk-space-issues">Other Disk Space Issues</a></li>
+  </ul></li>
+  <li><a href="#the-last-resort" id="toc-the-last-resort" class="nav-link" data-scroll-target="#the-last-resort">The Last Resort</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Dealing with Problems</h1>
+</div>
 
 
 
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">MacOS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Windows</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>You need the <strong>Xcode Command Line Tools</strong> installed on your Mac. In some cases this may have <em>already</em> been installed, but it’s the same process to check as to install:</p>
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jon Reades </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 31, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>There are two types of problems that you’re likely to encounter when trying to use Podman or Docker:</p>
 <ol type="1">
-<li>Open the <code>Terminal</code> application (which can be found under <code>Utilities</code> in your <code>Applications</code> folder).</li>
-<li>Type the following: <code>xcode-select --install</code> and then hit Enter (⏎)</li>
+<li>Errors <em>installing</em> the application</li>
+<li>Errors <em>running</em> the application</li>
 </ol>
-<p>Unless you get an outright <em>error</em> you can proceed to the next step:</p>
-<ol start="3" type="1">
-<li>Although not strictly necessary, you’ll <em>eventually</em> want the Homebrew package manager, which can also be installed <a href="https://phoenixnap.com/kb/install-homebrew-on-mac">directly from the Terminal</a>.</li>
-</ol>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>You will need to install WSL2 but, strangely, you do not actually need to install a full Linux O/S, so as far as we can tell this means you only need to run the following commands in the <code>Windows PowerShell</code>:</p>
+<p>The vast majority of people encountering these issues will be on Windows machines.</p>
+<section id="errors-installing" class="level2">
+<h2 class="anchored" data-anchor-id="errors-installing">Errors Installing</h2>
+<section id="unsupported-version" class="level3">
+<h3 class="anchored" data-anchor-id="unsupported-version">Unsupported Version</h3>
+<p>The only problem that is common to both Windows and macOS machines is the ‘unsupported version’ (or similar wording) error. This happens when you are running an older version of the Operating System that is no longer supported by the most recent installer.</p>
+<p>If you are not able to update your computer’s operating system to a more recent release, then your only option is to use an older version of the application. You can find <a href="https://docs.docker.com/desktop/release-notes/">older versions of [Podman]() and Docker</a> to install, though for very old machines this may <em>still</em> not resolve the ‘unsupported version’ problem.</p>
+</section>
+<section id="problems-with-wsl2" class="level3">
+<h3 class="anchored" data-anchor-id="problems-with-wsl2">Problems with WSL2</h3>
+<p>On Windows, if you have problems that mention WSL/WSL2 (this could be errors installing or updating this system) and you are sure that you’ve installed and updated WSL, then you <em>may</em> need to try using ‘Hyper-V’ instead. This is a ‘second-best’ workaround that has worked for some people.</p>
+<section id="enabling-hyper-v" class="level4">
+<h4 class="anchored" data-anchor-id="enabling-hyper-v">Enabling Hyper-V</h4>
+<p>Microsoft <a href="https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v">has instructions here</a> on how to enable Hyper-V on your Windows machine. You will need to restart your computer after enabling Hyper-V. <a href="https://techcommunity.microsoft.com/t5/educator-developer-blog/step-by-step-enabling-hyper-v-for-use-on-windows-11/ba-p/3745905">These instructions</a> may also help.</p>
+<p>You will then need to look at the Podman or Docker settings and change the <code>Use the WSL2 based engine</code> to <code>Use the Hyper-V based engine</code>.</p>
+</section>
+</section>
+<section id="problems-with-admin-rights" class="level3">
+<h3 class="anchored" data-anchor-id="problems-with-admin-rights">Problems with Admin Rights</h3>
+<p>Issues with administrator rights are the main reason that we are trying to swich from Docker to Podman. Podman does not require you to be an administrator of your machine. So if you are unable to install Docker on your computer (e.g.&nbsp;because you are using a secure corporate laptop), you may wish to try using Podman instead. Podman is runs in ‘user space’, which means that it does not need admin rights to run. You can find out more about Podman <a href="https://podman.io/">here</a>. Our limited testing suggests that it works well with the sds2025 environment.</p>
+<p>You will need to:</p>
 <ol type="1">
-<li><code>wsl --install</code> should quickly install the subsystem that we need.</li>
-<li><code>wsl --update</code> will ensure that the most up-to-date version is available.</li>
+<li>Download and install the Podman CLI and Desktop from <a href="https://podman.io/">here</a>.</li>
+<li>Run the following command in the PowerShell or Terminal:<br> <code>podman machine init</code><br><code>podman machine start</code></li>
+<li>And then run this command in PowerShell or Terminal to download the sds2025 image with <code>podman pull jreades/sds:2025-amd</code> (or <code>jreades/sds:2025-arm</code> for M-chip Macs)</li>
 </ol>
-<p>That <em>should</em> be it: Docker should now run without complaint.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-If You Need More Help
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>There is good guidance <a href="https://learn.microsoft.com/en-us/windows/wsl/install">from Microsoft</a> for Windows 11 and more recent ‘builds’ of Windows 10.</li>
-<li>There are also <a href="https://www.digitalocean.com/community/tutorials/how-to-install-the-windows-subsystem-for-linux-2-on-microsoft-windows-10">older instructions</a> for Windows 10.</li>
-</ol>
-<p>Common installation errors are <a href="https://learn.microsoft.com/en-us/windows/wsl/troubleshooting?source=recommendations">covered here</a>.</p>
-<p>Finally, if you are <em>still</em> being told that you can’t install WSL2 and Linux, then the most likely cause of this issue is a setting in the BIOS of the computer itself. There are a couple of settings that need changing at a very low level to enable Hyper-V virtualisation. I would start by following <a href="https://learn.microsoft.com/en-us/windows/wsl/install-manual">this MS guide</a> and, if there is still a problem, check <a href="https://s1gr1d.medium.com/how-to-set-up-linux-on-windows-with-wsl-2-debe2a64d20d">this blog post</a>.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+<section id="errors-running" class="level2">
+<h2 class="anchored" data-anchor-id="errors-running">Errors Running</h2>
+<p>If you have managed to install Docker (or Podman) and have managed to ‘pull’ a disk image then the <em>last</em> remaining obstacle to running Podman or Docker is, typically, running out of disk space.</p>
+<section id="dealing-with-disk-space" class="level3">
+<h3 class="anchored" data-anchor-id="dealing-with-disk-space">Dealing with Disk Space</h3>
+<p>Some Windows PCs (especially those sold with Windows10) have two drives (<code>C</code> and <code>D</code>). The <code>C</code> drive may fill up very quickly once you start installing and running software or processing data. In that case you may want to store your images on the <code>D</code> drive.</p>
+<p>In Docker especially (less so in Podman) this is a complex process, and you may need assistance, so there is a <a href="../setup/moving_to_d.html">Moving to the D Drive page</a> to try to talk you through the process.</p>
+</section>
+<section id="other-disk-space-issues" class="level3">
+<h3 class="anchored" data-anchor-id="other-disk-space-issues">Other Disk Space Issues</h3>
+<p>If you don’t have separate <code>C</code> and <code>D</code> drives but still have very little space left on your hard drive then it’s worth remembering that all of the images you’ve used and containers that you have run are saved on your computer. You can see how much space Docker (there’s a similar command for Podman) is using by running the following command in the PowerShell or Terminal:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> system df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="deleting-an-image" class="level4">
+<h4 class="anchored" data-anchor-id="deleting-an-image">Deleting an Image</h4>
+<p>The most ‘intuitive’ way is to delete each image by it’s unique ID:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aq</span> <span class="co"># Get list of running processes and work out container IDs to remove</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> <span class="op">&lt;</span>list of container IDs<span class="op">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="co"># Get list of available images and work out image IDs to remove</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="op">&lt;</span>list of image IDs<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deleting-by-filter" class="level4">
+<h4 class="anchored" data-anchor-id="deleting-by-filter">Deleting by Filter</h4>
+<p>A more ‘direct’ approach that should be used with some care is to looking for the name of the image and delete that way:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-aqf</span> <span class="st">"name=sds"</span> <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Image}} {{.Names}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"2025"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rm <span class="at">-f</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images <span class="at">--format</span><span class="op">=</span><span class="st">"{{.Repository}} {{.Tag}} {{.ID}}"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"sds"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">' '</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">xargs</span> docker rmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="the-last-resort" class="level2">
+<h2 class="anchored" data-anchor-id="the-last-resort">The Last Resort</h2>
+<p>A very small number of students are <strong>unable to run Docker or Podman at all</strong> on computers running Windows 10 Home (in 23/24 there were <em>none</em>), in which case <strong>Anaconda Python</strong> can be used with a configuration based on the <a href="../pod/Podman.master">Podman build file</a>. We don’t recommend this as Podman and Docker isolate the programming environment from your computer, ensuring that nothing is clobbered by accident, and guaranteeing that you are working with the same version of every Python library as the rest of the class (and the versions for which the practicals are tested).</p>
+<p><strong>Anaconda is only supported as a last resort</strong>.</p>
+<p>However you are always free to install Anaconda Python and to <a href="https://jreades.github.io/sds-env/">use our YAML configuration script</a> to install the sds2025 environment, but you should do this in your own time: in previous years students have encountered difficult-to-diagnose bugs in their code (and lost marks in the Assessments!) because they had installed an older or more recent version of a Python library than the one configured and tested in the sds2025 environment.</p>
+<p>We believe that the replication advantages of <em>virtualisation</em> outweigh the disbenefits in terms of <em>performance</em>. It also means that you will spend less time installing libraries and more time running code, which is where your attention should really be when you are familiarising yourself with the <em>foundations</em> of data science.</p>
+<p>Eventually you will, of course, want to install and manage your own programming environment (possibly even by building and sharing Podman/Docker images!) but this can be left for later when you have developed an appreciation of how and when virtualisation is (or is not) an appropriate solution to your needs.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -325,8 +485,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -437,7 +595,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -663,15 +820,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../setup/install_fest.html" class="pagination-link" aria-label="All-In-One">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">All-In-One</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../setup/virtualisation.html" class="pagination-link" aria-label="About Virtualisation">
+        <span class="nav-page-text">About Virtualisation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2023, Jon Reades</p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 2022–2025, Jon Reades</p>
 </div>   
     <div class="nav-footer-center">
 <p><img src="../img/favicon-16x16.png" class="height:10px img-fluid"> CASA Computing Environment</p>
-<div class="toc-actions"><ul><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jreades/sds_env/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
