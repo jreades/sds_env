@@ -52,5 +52,6 @@ RUN tlmgr init-usertree \
         do \
             unzip -o -d ${FONTPATH} "$i" -x __MACOSX; \
         done \
-    && fc-cache -f -v 
-    #&& rm -fr ~/.cache/matplotlib
+    && fc-cache -f -v \
+    && rm -f ~/.cache/matplotlib/fontlist*.json || true \
+    && python -c "from matplotlib.font_manager import findfont; findfont('sans', rebuild_if_missing=True)"

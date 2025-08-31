@@ -1,0 +1,49 @@
+
+/*-- scss:defaults --*/
+
+// @import url(https://fonts.googleapis.com/css?family=Joan:300,500,700);
+// @import url(https://fonts.googleapis.com/css?family=JetBrains+Mono:100,400,700);
+// @import url(https://fonts.googleapis.com/css?family=Barlow:100,400,700);
+
+// $font-family-monospace: "JetBrains Mono", "Courier New", monospace !default;
+// $font-family-sans-serif: "Barlow", sans-serif !default;
+// $font-family-serif: "Joan", "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif !default;
+$font-family-sans-serif: Arial,
+  FreeSerif, serif !default;
+$font-family-monospace: "Cousine", monospace !default;
+
+$mainfont: $font-family-sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
+$font-family-code: $font-family-monospace !default;
+$headings-font-family: $font-family-sans-serif !default;
+
+$navbar-bg: #48384a !default;
+$secondary: #769670 !default;
+
+/*-- scss:rules --*/
+
+/*-- scss:mixin --*/
+$fade-casa : #bd8ea6;
+$full-casa : #9e6b88;
+$comp-casa : #6b9e9b;
+
+a{
+  color: $full-casa;
+  text-decoration: none;
+
+  &:visited{
+    color: $full-casa;
+    text-decoration: none;
+    opacity: 0.7;
+  }
+  &:hover{
+    color: $comp-casa;
+    opacity: 0.7;
+    text-decoration: underline;
+  }
+  &:active{
+    color: $full-casa;
+    opacity: 1;
+    text-decoration: none;
+  }
+}

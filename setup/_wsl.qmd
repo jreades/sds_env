@@ -1,5 +1,5 @@
 
-::: {.panel-tabset}
+:::: {.panel-tabset}
 
 ## MacOS
 
@@ -8,24 +8,21 @@ You need the **Xcode Command Line Tools** installed on your Mac. In some cases t
 1. Open the `Terminal` application (which can be found under `Utilities` in your `Applications` folder).
 2. Type the following: `xcode-select --install` and then hit Enter (&#9166;)
 
-Unless you get an outright *error* you can proceed to the next step:
-
-3. Although not strictly necessary, you'll *eventually* want the Homebrew package manager, which can also be installed [directly from the Terminal](https://phoenixnap.com/kb/install-homebrew-on-mac). 
+Unless you get an *error*, you can proceed to the next step.
 
 ## Windows
 
-You will need to install WSL2 but, strangely, you do not actually need to install a full Linux O/S, so as far as we can tell this means you only need to run the following commands in the `Windows PowerShell`:
+You will need to install WSL2 but, strangely, you do not actually need to install a full Linux O/S, so as far as we can tell this means you only need to do the following:
 
-1. `wsl --install` should quickly install the subsystem that we need.
-2. `wsl --update` will ensure that the most up-to-date version is available.
+1. Open the `Windows PowerShell` application (which you can find from the 'search' button)
+2. Type the following: `wsl --install` and then hit Enter (&#9166;)
 
-That *should* be it: Docker should now run without complaint.
+That *should* be it, but please read the output of this command is *not* an error! Unless you get an *error*, you can proceed to the next step. 
 
 ::: {.callout-tip}
 ### If You Need More Help
 
-1. There is good guidance [from Microsoft](https://learn.microsoft.com/en-us/windows/wsl/install) for Windows 11 and more recent 'builds' of Windows 10.
-2. There are also [older instructions](https://www.digitalocean.com/community/tutorials/how-to-install-the-windows-subsystem-for-linux-2-on-microsoft-windows-10) for Windows 10.
+If you cannot install WSL2 then please have a look at the [problems](./problems.qmd) page, but there is also good guidance [from Microsoft](https://learn.microsoft.com/en-us/windows/wsl/install) for Windows 11 and more recent 'builds' of Windows 10^[There are also [older instructions](https://www.digitalocean.com/community/tutorials/how-to-install-the-windows-subsystem-for-linux-2-on-microsoft-windows-10) for Windows 10.].
 
 Common installation errors are [covered here](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting?source=recommendations).
 
@@ -33,5 +30,5 @@ Finally, if you are *still* being told that you can't install WSL2 and Linux, th
 
 :::
 
-:::
+::::
 

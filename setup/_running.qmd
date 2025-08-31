@@ -1,0 +1,44 @@
+
+We now need to download and run the `{{< var env.name >}}` **image** that I created over the summer. The image is the 'template' for running containers (i.e. virtual computers) on our 'host' computer and it comes complete with all of the Python libraries and other tools that you'll need to complete the module (and a good deal more besides!). Installing the image will take a while as it's quite large (1-5GB) and so will depend on the speed of your internet connection. 
+
+You can use a single command to download and start the `{{< var env.name >}}` **container** by copying the following command into the `iTerm` (which I'll also call the 'Terminal' from here on out) or `Windows Terminal` (which I'm also going to start calling the 'Terminal' from here on out). On Windows, the below commands may work in `Power Shell`, but they will *not* work in the Command Prompt/`cmd`):
+
+:::: {.panel-tabset}
+
+## Mac (Intel/AMD64)
+
+```bash
+podman run --rm -d --name {{< var env.name >}} -p 8888:8888 \
+   -v "$(pwd):/home/jovyan/work" \
+  {{< var docker.all >}} start.sh jupyter lab \
+  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+## Macs (Apple Silicon/ARM64)
+
+```bash
+podman run --rm -d --name {{< var env.name >}} -p 8888:8888 \
+   -v "$(pwd):/home/jovyan/work" \
+  {{< var docker.mac >}} start.sh jupyter lab \
+  --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+## Windows (Intel/AMD64)
+
+```bash
+podman run --rm -d --name {{< var env.name >}} -p 8888:8888 -v "$(pwd):/home/jovyan/work" {{< var docker.all >}} start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+## Windows (ARM64)
+
+```bash
+podman run --rm -d --name {{< var env.name >}} -p 8888:8888 -v "$(pwd):/home/jovyan/work" {{< var docker.mac >}} start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+```
+
+::::
+
+::: {.callout-tip}
+
+If you were using Docker instead of Podman then the command is *the same* except that you need to replace `podman` with `docker`. This is on purpose: open source `podman` is intended to replace the proprietary `docker`.
+
+:::

@@ -1,18 +1,20 @@
 ---
 title: "CASA's Urban Spatial Science Platform"
 author: "Jon Reades"
-date: "9/7/2023"
+date: last-modified
 ---
 
 In order to get you started on your spatial and data science 'journey' you will need to follow the guidance provided on the pages we've linked to below. These are divided into three sections: 
 
-## Requirements
+## Installation
 
-Before trying to do anything else you should review the 'requirements'. As part of that, you'll need to complete the basic [health check](./req/health.qmd), which also includes our *recommendations* if you are considering buying a new computer when you start your studies. Once you know that your machine and operating system are up-to-date, you should install the [basic utilities](./req/base.qmd) that will enable you to complete installation of the programming environment. We also provide information about [Code Camp](./req/code_camp.qmd) which is a self-paced introduction to the fundamentals of programming in Python.
+You need to start with the basic [health check](./setup/health.qmd) to ensure you'll be able to install the software. Once you know that your machine and operating system are up-to-date, you should install the [basic utilities](./setup/base.qmd) that will enable you to complete installation of the programming environment. And then, finally, you can start [installing](./setup/installation.qmd) the software!
 
-## Setup
+## Post-Installation
 
 Installing the computing environment entails thinking not *just* about how you [run code](./setup/env.qmd), but also how you [manage it](./setup/git.qmd) and [document it](./setup/markdown.qmd). In fact, it's possible to run code [without installing anything at all](./setup/no_install.qmd), but by signing up for, installing, or configuring these services *now* you know that you are ready to roll!
+
+We also provide information about [Code Camp](./post/code_camp.qmd) which is a self-paced introduction to the fundamentals of programming in Python.
 
 ## Soft-Skills
 

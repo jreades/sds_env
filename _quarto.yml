@@ -23,7 +23,7 @@ website:
   page-navigation: true
   reader-mode: true
   page-footer: 
-    left: "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 2022–2023, Jon Reades"
+    left: "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 2022–2025, Jon Reades"
     center: "![](/img/favicon-16x16.png){.height:10px} CASA Computing Environment"
     right: 
       - icon: github
@@ -38,32 +38,36 @@ website:
     collapse: true
     collapse-below: md
     left:
-      - text: "Welcome"
-        href: index.qmd
-      - sidebar:requirements
-      - sidebar:software
+      - sidebar:setup
+      - sidebar:postinstall
       - sidebar:skills
 
   sidebar:
-    - id: requirements
-      title: "Requirements"
+    - id: setup
+      title: "Installation"
       style: "docked"
       collapse-level: 2
       background: light
       contents:
-        - req/health.qmd
-        - req/base.qmd
-        - req/code_camp.qmd
+        - text: "Step 1. Health Check"
+          href: setup/health.qmd
+        - text: "Step 2. Base Utilities"
+          href: setup/base.qmd
+        - text: "Step 3. Installation"
+          href: setup/installation.qmd
+        - text: "All-In-One"
+          href: setup/install_fest.qmd
+        - text: "Common Problems"
+          href: setup/problems.qmd
+        - text: "About Virtualisation"
+          href: setup/virtualisation.qmd
 
-    - id: software
-      title: "Setup"
+    - id: postinstall
+      title: "Post-Installation"
       contents:
-        - setup/git.qmd
-        - setup/markdown.qmd
-        - setup/env.qmd
-        - setup/no_install.qmd
-        - setup/install_fest.qmd
-        - docker/advanced.qmd
+        - post/git.qmd
+        - post/markdown.qmd
+        - post/advanced.qmd
 
     - id: skills
       title: "Soft Skills"
@@ -79,13 +83,14 @@ format:
   html:
     theme: 
       - minty
-      - css/web.scss
+      - css/casa-report.scss
+      - css/casa-web.scss
     code-copy: true
     code-link: true
     #cover-image: cover.png
     toc: true
     toc-title: "On this page"
-    toc-depth: 2
+    toc-depth: 3
     toc_float: 
       collapsed: false
       smooth_scroll: true

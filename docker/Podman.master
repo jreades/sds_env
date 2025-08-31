@@ -3,7 +3,11 @@
 #  export IMG_NM=sds:2024-intel && docker build --platform linux/amd64 -t jreades/$IMG_NM --compress  -f ./docker/Dockerfile.master .
 #--- Under Podman ---#
 # podman build --arch arm64 --file ./docker/Podman.master --format docker -t jreades/sds:pod .
-# 
+# podman push jreades/sds:pod docker://docker.io/jreades/sds:pod
+# podman run --rm -d --name pod -p 8888:8888 \
+#   -v "$(pwd):/home/jovyan/work" \
+#   jreades/sds:pod start.sh jupyter lab \
+#   --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
 # podman run -it --rm -v "$(pwd):/docker" quay.io/containers/buildah:latest bash
 # buildah build --file ./docker/Podman.master --format docker -t jreades/sds:podman-test .
 FROM quay.io/jupyter/minimal-notebook:notebook-7.4.1
@@ -64,40 +68,36 @@ ENV env_path '/opt/conda/'
 
 ADD ../conda/$yaml_nm ./
 
-RUN mamba env update -n base --file $yaml_nm 
-
-# RUN if [ "$env_nm" = "base" ]; \
-    #    then conda env update -n $env_nm --quiet --file $yaml_nm --solver=libmamba; \
-    #    else conda env create -n $env_nm --quiet --file $yaml_nm --solver=libmamba; \
-    # fi \ 
-    # && rm $yaml_nm \
-    # && conda clean --all --yes --force-pkgs-dirs \
-    # && find /opt/conda/ -follow -type f -name '*.a' -delete \
-    # && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
-    # && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
-    # #&& find "${env_path}/lib/python*/site-packages/bokeh/server/static" \
-    # #   -follow -type f -name '*.js' ! -name '*.min.js' -delete \
-    # && pip cache purge 
+RUN mamba env update -n base --file $yaml_nm \
+    && mamba clean --all --yes --force-pkgs-dirs \ 
+    && rm $yaml_nm \
+    && conda clean --all --yes --force-pkgs-dirs \
+    && find /opt/conda/ -follow -type f -name '*.a' -delete \
+    && find /opt/conda/ -follow -type f -name '*.pyc' -delete \
+    && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
+    #&& find "${env_path}/lib/python*/site-packages/bokeh/server/static" \
+    #   -follow -type f -name '*.js' ! -name '*.min.js' -delete \
+    && pip cache purge 
 
 #--- Preload the NLTK/Spacy libs and code formatter ---#
 
-USER $NB_UID
+# USER $NB_UID
 
-ENV PROJ_LIB=$env_path/share/proj/
-ENV GENSIM_DATA_DIR=/home/$NB_USER/work/gensim-data
-ENV SPACY_DATA_DIR=/home/$NB_USER/work/spacy-data
-ENV XDG_CACHE_HOME=/home/$NB_USER/.cache/
+# ENV PROJ_LIB=$env_path/share/proj/
+# ENV GENSIM_DATA_DIR=/home/$NB_USER/work/gensim-data
+# ENV SPACY_DATA_DIR=/home/$NB_USER/work/spacy-data
+# ENV XDG_CACHE_HOME=/home/$NB_USER/.cache/
 
 # This bloats the Docker image but not massively
 # Should rebuild the font manager and allow us to access
 # the fonts we've just added in Matplotlib... *should*
-# RUN source activate ${env_nm} \
-#     && mkdir -p "/home/$NB_USER/.cache/black/$(black --version | head -n 1 | cut -d ' ' -f 2)" \
-#     && black --code "print ( 'hello, world' )" \
-#     && MPLBACKEND=Agg python -c "import matplotlib.pyplot" \
-#     && python -c "import matplotlib.font_manager;" \
-#     && python -c "import logging; logging.basicConfig(level='INFO'); import black" \
-#     && conda deactivate
+RUN source activate ${env_nm} \
+    && mkdir -p "/home/$NB_USER/.cache/black/$(black --version | head -n 1 | cut -d ' ' -f 2)" \
+    && black --code "print ( 'hello, world' )" \
+    && MPLBACKEND=Agg python -c "import matplotlib.pyplot" \
+    && python -c "import matplotlib.font_manager;" \
+    && python -c "import logging; logging.basicConfig(level='INFO'); import black" \
+    && conda deactivate
 
 #--- Tidy and fix permissions ---#
 USER root
@@ -139,11 +139,11 @@ USER $NB_UID
 #--- Make Proj4 Easy to Find ---#
 # Change depending on whether using base environment
 
-RUN echo "export PATH=$env_path/bin/:$PATH" >> ~/.bashrc 
-RUN echo "export PROJ_LIB=$PROJ_LIB" >> ~/.bashrc
-RUN echo "export GENSIM_DATA_DIR=$GENSIM_DATA_DIR # python -m gensim.downloader --download <dataname>" >> ~/.bashrc 
-RUN echo "export SPACY_DATA_DIR=$SPACY_DATA_DIR # spacy.load('/path/to/en_core_web_sm')" >> ~/.bashrc 
-RUN echo "export XDG_CACHE_HOME=$XDG_CACHE_HOME" >> ~/.bashrc
+# RUN echo "export PATH=$env_path/bin/:$PATH" >> ~/.bashrc 
+# RUN echo "export PROJ_LIB=$PROJ_LIB" >> ~/.bashrc
+# RUN echo "export GENSIM_DATA_DIR=$GENSIM_DATA_DIR # python -m gensim.downloader --download <dataname>" >> ~/.bashrc 
+# RUN echo "export SPACY_DATA_DIR=$SPACY_DATA_DIR # spacy.load('/path/to/en_core_web_sm')" >> ~/.bashrc 
+# RUN echo "export XDG_CACHE_HOME=$XDG_CACHE_HOME" >> ~/.bashrc
 
 
 #--- Install some fonts ---#
@@ -192,7 +192,7 @@ USER $NB_UID
 COPY ../fonts ./fontsrc
 ENV FONTCONF="/home/${NB_USER}/.config/fontconfig/conf.d"
 ENV FONTPATH="/home/${NB_USER}/fonts"
-SHELL ["/bin/bash", "-c"]
+# SHELL ["/bin/bash", "-c"]
 RUN tlmgr init-usertree \ 
     && mkdir -p ${FONTCONF} \ 
     && mkdir -p ${FONTPATH} \

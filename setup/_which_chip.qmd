@@ -1,0 +1,19 @@
+
+
+::: {.panel-tabset}
+
+### Apple Intel or Silicon/M-chip?
+
+Apple has stopped using Intel/AMD computer chips and now uses its own 'Apple Silicon' (aka 'M') chips instead. Confusingly, these are often *also* referred to by their technical specification as `ARM64`. To find out which you have, click on the Apple icon (&#63743;) and select `About this Mac`. Look at the `Processor` section and you should see which type of computer you have. If you see the word `Intel` then you have an Intel/AMD chipset (`AMD64`), if you see `M1`, `M2`, `M3`, etc. then you have an Apple Silicon (`ARM64`) computer.
+
+### Windows 32- or 64-bit?
+
+It is highly unlikely that you have a 32-bit machine, but every year we find one or two older machines that use this architecture. [Microsoft says](https://support.microsoft.com/en-us/windows/32-bit-and-64-bit-windows-frequently-asked-questions-c6ca9541-8dce-4d48-0415-94a3faa2e13d) that you can check which kind of chip you have by doing the following:
+
+> Select &#8862; `Start` and then select `Settings` > `System` > `About`. Look at the `Device specifications`.
+
+It is also unlikely that you have an ARM device if you have an off-the-shelf Windows computer. But to confirm, in the same `Device specification` section:
+
+> Check the System type line to see if it says "x64-based processor" (for AMD/Intel) or "ARM-based processor" (for ARM).
+
+:::

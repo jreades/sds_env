@@ -1,0 +1,53 @@
+---
+title: Understanding Virtualisation
+author: Jon Reades
+date: 7/11/25
+---
+
+## What is Virtualisation?
+
+Podman and Docker are 'virtualisation' tools that allows you to run 'virtual machines' on your computer's 'host' operating system. That's a lot of new, probably meaningless words. If you're one of those people who (understandably) likes to understand what's going on then here's how some people define it:
+
+1. Google on [What is a virtual machine](https://cloud.google.com/learn/what-is-a-virtual-machine#)?
+2. VMWare on [What is a virtual machine](https://www.vmware.com/topics/virtual-machine#)?
+3. Microsoft on [What is a virtual machine (VM)](https://azure.microsoft.com/en-gb/resources/cloud-computing-dictionary/what-is-a-virtual-machine)?
+
+::: {.callout-tip}
+### Docker v. Podman
+
+You can find out more about Podman and Docker [here](./docker_vs_podman.qmd)
+:::
+
+## Podman/Docker in a Nutshell
+
+So in order to make use of Podman/Docker (and understand what's happening when you get errors), it's helpful to have _some_ sense of what's going on behind the scenes. You can click on the image below to make it larger, or you can download and print out [a PDF version](../img/Docker.pdf).
+
+![Sketch of Podman/Docker Usage](../img/Docker.png){.lightbox}
+
+Here's what's happening:
+
+### Step 1. `podman pull`/`docker pull`
+
+You issue the `podman pull {{< var docker.base >}}` (or `docker pull {{< var docker.base >}}`) command to your computer, which turns around and asks the Hub for a copy of this image. The Hub responds by transferring a copy of the `{{< var docker.base >}}` **image** to your computer. You now have a file containing all the instructions to set up and run a **virtual machine** on your computer.^[A virtual machine is just a computer that runs _on_ your computer. So it 'borrows' resources like hard drive space, memory, and processor in order to behave like an independent computer that you can interact with in various ways.]
+
+### Step 2, `docker run`
+
+You will issue the `podman run ... {{< var docker.base >}} ...` command (or `docker run ...`) from the command line (or terminal) of your computer, and this tells Docker/Podman to use the `{{< var docker.base >}}` **image** as a template for creating a **container** called `{{< var env.name >}}`^[A container is the name Podman/Docker uses to refer to a _running_ virtual machine. The image on its own does nothing until you tell docker to `run` it, at which point it becomes a container!]. `{{< var env.name >}}` will do _whatever_ it was told to do by its creator. This could be wait to run Python code, start up a database, serve web pages, the list is practically endless. But {{< var env.name >}} is _read-only_, although you can make changes to the container while it's running, as soon as you shut it down those changes are lost. So you cannot break an image, only a container. And if you do that, you delete the container and start a new one from the image... we can cover this if you ever do it.
+
+As part of the `run` command, we also told Docker/Podman what resources the container could access. There are two main types of resources for our purposes:
+
+- A **mount point** which is a part of your computer's hard drive that we can use to write things down permanently. We use `$(pwd)`, which is short-hand for `print working directory` and refers to the 'place' on your computer where we issued the `docker run` command. We tell the platform to connect this to a directory called `work` (which resides in `/home/jovyan/`) on the `{{< var env.name >}}` container. This allows you to share data between the container and your computer, and for changes to be saved when you shut down.
+- One or more **ports** which are like channels on a radio where the container can talk to other computers (including yours). In this case, we connect port 8888 on `{{< var env.name >}}` to port 8888 on your computer. And _that_ is why you have to tell your browser to go to [`localhost:8888`](http://localhost:8888) to access Jupyter Lab.
+
+### Step 3. Interacting with the Container
+
+Now when you type things into the browser and tell code to 'run', what's actually happening is that your computer is forwarding the request to the container, which does its thing, updates the web page, and this change is then forwarded back to you via the browser.
+
+### Step 4. Anatomy of `run`
+
+At the bottom of the Figure above you can see a *full* `run` command, here we just want to focus on the most important options (each `-X` is an option) for most users:
+
+- `-v`: this specified the point on your hard drive that the {{< var env.name >}} can use. By default we use `$(pwd)` which means 'use the location where the `docker run` command was executed. You can also 'hard code' this to something like `/Users/<your username>/Documents/casa/` if you always want to use the same location.
+- `-p`: this specified the channel (or `port`) on which the web browser can talk to the {{< var env.name >}}.
+- `{{< var docker.base >}}`: this specified the image we wanted to use
+

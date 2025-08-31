@@ -1,0 +1,33 @@
+Please download all of the *Essential* software for your computer. Installation is covered in the next section.
+
+::: {.panel-tabset}
+
+### Apple Intel
+
+- Essential:
+  - [Podman Desktop](https://podman-desktop.io/downloads)
+  - [iTerm2](https://iterm2.com/downloads.html)
+  - [GitHub Desktop](https://desktop.github.com/download/)
+- Optional:
+  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg) 
+
+### Apple Silicon (M-chips)
+
+- Essential: 
+  - [Podman Desktop](https://podman-desktop.io/downloads)
+  - [iTerm2](https://iterm2.com/downloads.html)
+  - [GitHub Desktop](https://desktop.github.com/download/)
+- Optional:
+  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/macos/qgis-macos-ltr.dmg) 
+
+### Windows PCs
+
+- Essential:
+  - [Windows Terminal](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md#prerequisites) installed via either the Windows Store or the following Power Shell command `winget install Microsoft.WindowsTerminal`.
+  - [Podman Desktop](https://podman-desktop.io/downloads)
+  - [GitHub Desktop](https://desktop.github.com/download/)
+  - [Git](https://git-scm.com/download/win)
+- Optional:
+  - [QGIS Long-Term Release (LTR)](https://qgis.org/downloads/QGIS-OSGeo4W-3.34.10-1.msi)
+
+:::

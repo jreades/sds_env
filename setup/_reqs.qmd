@@ -1,0 +1,44 @@
+
+::: {.callout-tip}
+### TL;DR
+
+If your computer is less than 4 years old, has *at least* {{< meta ram-min >}} of RAM and *more* than {{< meta hd-min >}} of free disk space then you're *probably* fine. The only other common pitfall is having Windows 10 *Home* installed.
+
+::: 
+
+If your computer doesn't meet the base requirements, have a look at our [recommendations](#recommendations) below.
+
+We try to support as many different configurations as possible, but there is *no* programming environment that installs and runs seamlessly on *all* computers so if you run into issues please come back to this guide.
+
+## Hardware Requirements
+
+In our experience the students **most likely to encounter problems** share one or more of the following:
+
+1. Your computer has less than {{< meta ram-min >}} of RAM.
+2. Your computer has less than {{< meta hd-min >}} of free disk space remaining.
+
+Read on below to check what specification you have...
+
+::: {.panel-tabset}
+
+## MacOS
+
+You will need to look up:
+
+- How much RAM does _your computer_ have? [Help for Mac](https://www.macworld.co.uk/how-to/mac/much-ram-need-more-3793418/).
+- How much free disk space does _your computer_ have? [Help for Mac](https://www.macworld.com/article/2972775/how-to-check-a-mac-free-hard-drive-space.html).
+
+## Windows
+
+You will need to look up:
+
+- How much RAM does _your computer_ have? [Help for Windows](https://www.howtogeek.com/435644how-to-see-how-much-ram-is-in-your-pc-and-its-speed/).
+- How much free disk space does _your computer_ have? [Help for Windows](https://www.lifewire.com/how-to-check-free-hard-drive-space-in-windows-2619187).
+
+## Linux
+
+We're going to assume that you know what you're doing. If you want a recommendation, we'd probably go with the latest Ubuntu desktop release.
+
+:::
+
+If your computer has {{< meta ram-min >}} or less of RAM *and/or* less than {{< meta hd-min >}} of free disk space you are very likely to have issues with [virtualisation](virtualisation.qmd) and (on Windows) WSL2. Your options are: 1) add more RAM (possible on most Windows computers); 2) back up and remove unnecessary files (Movies, Photos, and Applications are particularly big 'hogs').

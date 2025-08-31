@@ -1,0 +1,73 @@
+---
+title: "Health Check"
+author: "Jon Reades"
+date: last-modified
+date-format: long
+ram-min: "16GB"
+hd-min: "30GB"
+---
+
+This guide will help you to perform a basic 'health check' on your computer to see if you're likely to run into problems running the programming environment. When answering the questions below, 'your computer' is the machine on which you plan to do the programming.
+
+{{< include _reqs.qmd >}}
+
+## Software Requirements
+
+In our experience the students **most likely to encounter problems** share one or more of the following:
+
+1. Your computer runs Windows 10 Home or older, or 
+2. Your computer runs MacOS 10.13 (High Sierra) or older.
+
+As long as your computer is running one of the last two major releases of the Operating System you should encounter few issues.
+
+::: {.panel-tabset}
+
+### MacOS
+
+You will need to look up:
+
+- What Operating System and Version is _your computer_ running? [Help for Mac](https://support.apple.com/en-gb/HT201260).
+
+### Windows
+
+You will need to look up:
+
+- What Operating System and Version is _your computer_ running? [Help for Windows](https://support.microsoft.com/en-gb/help/13443/windows-which-version-am-i-running).
+
+:::
+
+### Update the Operating System
+
+If you are using a Mac then your system should have the option to update to the latest version of the MacOS at no charge. If you are unable to update then it is likely that you have an older machine that is not fully supported by the most recent Operating System and, in all probability, you will also encounter issues running the programming environment.
+
+If you are using a Windows PC then try to update to either Windows 11 or to Windows 10 Pro as this will 'unlock' additional features that are useful for supporting the programming environment. As a student you are likely to qualify for significantly cheaper/free updates, so make sure you do this when you have access to a discount.
+
+::: {.callout-warning}
+## Automatic Updates
+
+Once you have installed the programming environment we *strongly* recommend that you **turn off automatic updates** for your computer until the end of the academic year. This is not to say that you should *not* install security and other updates over the course of the year, but to emphasise that it should be **at a time of your choosing**. In previous years, students' computers have automatically updated to a whole new operating system version two nights before an assessment deadline, breaking existing code and causing lots of needless stress.
+
+:::
+
+### Recommendations
+
+If you are looking for a recommendation as to what to buy:
+
+1. Don't worry about getting the fastest chip, get as much RAM as you can. You should aim for at least 32GB of RAM, but get more if you can afford it.
+2. Don't worry about getting the biggest hard drive, get the fastest one you can. You should always get a SSD (Solid State Drive), but get a M2 type SSD if you can afford it and it's available for your system.
+3. Only after you've sorted this out should you look for the fastest chipset that's still within your budget.
+
+#### Should you buy a Windows, Linux, or Apple machine? 
+
+You should probably stick with whatever you're familiar with since learning your way around a new Operating System while *also* learning to code is just raising the bar unnecessarily. Around CASA we use a mix of all three, and you can probably find as many opinions as there are staff members.
+
+::: {.callout-tip}
+
+## Saving Money
+
+Two easy things to do to save money on a new machine are:
+
+1. Don't buy the latest and fastest machine, buy a model from earlier in the year/the previous year instead and upgrade the RAM and hard drive instead.
+2. Only buy the machine when you have access to a student discount. The discount for Apple computers is relatively modest (ca. 10%) compared to 'back to school' offers for Windows machines, but as the Brits would say: even 10% is better than a kick in the teeth! 
+
+:::

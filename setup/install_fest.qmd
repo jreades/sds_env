@@ -1,40 +1,61 @@
 ---
-title: "Installation 'Fest'"
+title: "Install 'Fest'"
 author: "Jon Reades"
-date: "9/27/2024"
+date: last-modified
+lightbox: true
+ram-min: "16GB"
+hd-min: "30GB"
 ---
 
-This page is intended to get you up and running with *most* of the programming tools that you'll need for the year during Induction Week. This way, you are ready to begin your studies in Week 1. 
+This page is intended for use with our 'install fest' where students install and configure the key tools for our modules in one session. Please do *not* try to skip to the next section before completing the required or essential steps of the previous one.
 
-::: {.callout-important}
-## Install the Base Utilities First
+## Basic Requirements
 
-Please make sure that you have installed the [Base Utilities](../req/base.qmd) *first* before installing the applications below. You can continue to download these in the background though!
+{{< include ./_reqs.qmd >}}
 
-:::
+## Which Chipset?
+
+{{< include ./_which_chip.qmd >}}
+
+## System Updates
+
+Before going any further, please ensure that your computer is fully up-to-date with all Operating System and application updates before following any of the *other* steps in this brief guide to getting started.
+
+## Windows-Only (Essential)
+
+{{< include _windows_features.qmd >}}
 
 ## Base Utilities
 
-{{< include ../req/wsl.qmd >}}
+In order to access the majority of the features that this module uses, you will need to install several 'base' utilities:
 
-{{< include _downloading.qmd >}}
+{{< include _wsl.qmd >}}
 
-## Next Steps
+## Downloading
 
-R and R-Studio can be installed fairly easily by double-clicking on the downloaded files and following the instructions. Docker is a bit more complex, so please follow the instructions below.
+{{< include ./_software.qmd >}}
 
-{{< include ../docker/_installing.qmd >}}
+## Installing
 
-{{< include ../docker/_running.qmd >}}
+{{< include ./_installing.qmd >}}
 
-{{< include ../docker/_success.qmd >}}
+## Configuring
 
-::: {.callout-danger}
+{{< include ./_configuring.qmd >}}
 
-## When Things Go Wrong
+## Testing
 
-If you encounter any problems with the installation, please have a look at the [Dealing with Docker Problems](../docker/problems.qmd) page.
+{{< include ./_testing.qmd >}}
 
-:::
+## Running
 
-{{< include _git.qmd >}}
+{{< include ./_running.qmd >}}
+
+### If Things Go Wrong
+
+If you encounter any problems with the installation, please have a look at the [Dealing with Problems](./problems.qmd) page.
+
+## Success
+
+{{< include ./_success.qmd >}}
+

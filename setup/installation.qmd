@@ -1,0 +1,48 @@
+---
+title: "Installation"
+author: "Jon Reades"
+date: last-modified
+lightbox: true
+---
+
+Over the years, we have experimented with a range of approaches to setting you up with a programming environment, and we have come to the conclusion that **Podman**^[And Docker, which is basically the same thing.] is the most robust way to ensure a consistent experience. This guarantees that all students end up with the same versions of each library, that difficult-to-diagnose hardware/OS issues are minimised, and that running/recovery is the most straightforward.
+
+:::{.callout-tip}
+### Podman and Docker: How They Work
+
+If you want to know more about the differences between Podman and Docker then you can [start here](./docker_vs_podman.qmd). However, *one* way to think of Podman is as a 'library' of virtual computers that you can use free-of-charge. If you'd like to know more about what Podman and Docker are, and how they work, then you can read more on the [Understanding Virtualisation](virtualisation.qmd) page.
+
+:::
+
+## What Kind of Computer?
+
+Many of the steps below require you to know the 'architecture' of your computer: are you running an ARM or Intel/AMD chipset? Are you using a 32- or 64-bit instruction sets? So please make a note of your computer's architecture before going any further.
+
+{{< include ./_which_chip.qmd >}}
+
+## Downloading
+
+{{< include ./_software.qmd >}}
+
+## Installing
+
+{{< include ./_installing.qmd >}}
+
+## Configuring
+
+{{< include ./_configuring.qmd >}}
+
+## Testing
+
+{{< include ./_testing.qmd >}}
+
+## Running
+
+{{< include ./_running.qmd >}}
+
+If you encounter any problems with the installation, please have a look at the [Dealing with Problems](./problems.qmd) page.
+
+## Success!
+
+{{< include ./_success.qmd >}}
+

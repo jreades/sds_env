@@ -1,10 +1,10 @@
 ---
 title: "Advanced Topics"
 author: "Jon Reades"
-date: "9/27/2024"
+date: last-modified
 ---
 
-This page covers more advanced topics related to the use of Docker and VSCode with the {{< var docker.base >}} image. These are all *entirely* optional steps if you want to get deeper into managing Docker and managing Python code in ways not covered in *[Foundations](https://jreades.github.io/fsds/)*, so you should only explore these if you are comfortable with what we are *already* doing and are reasonably knowledgeable about the development 'stack' (in which case, why are you taking *Foundations*?).
+This page covers more advanced topics related to the use of virtualisation and VSCode with the {{< var env.name >}} environment. These are all *entirely* optional steps if you want to get deeper into managing code in ways that are not covered in *[Foundations](https://jreades.github.io/fsds/)*. So you should only explore these if you are comfortable with what we are *already* doing and are reasonably knowledgeable about the development 'stack' (in which case, why are you taking *Foundations*?).
 
 ## Bash Script
 
@@ -13,20 +13,22 @@ This page covers more advanced topics related to the use of Docker and VSCode wi
 
 This next section is _only_ if you want to start using multiple images/containers or manipulating the way the {{< var docker.base >}} starts up. **This is _not_ needed for most students**. 
 
-As well, this script only works if you have a full Unix/Linux-compatible system. So macOS has this by default. On Windows you need to take the next step *after* install WSL2 and actually install a full Linux distribution (we'd suggest Ubuntu).
+As well, this script only works if you have a full Unix/Linux-compatible system. The macOS has this by default. On Windows you need to take the next step *after* installing WSL2 and actually install a full Linux distribution (we'd suggest Ubuntu).
 
 :::
 
-There are so many additional options for configuring Docker that we [created a Bash script](https://github.com/jreades/sds_env/raw/master/docker/docker.sh) to do most of it for you; however, this needs to be paired with a [configuration file](https://github.com/jreades/sds_env/raw/master/docker/config.sh) that is kept in the same folder as the `docker.sh` script. 
+There are so many additional options for configuring Podman and Docker that we [created a Bash script](https://github.com/jreades/sds_env/raw/master/docker/docker.sh) to do most of it for you; however, this needs to be paired with a [configuration file](https://github.com/jreades/sds_env/raw/master/docker/config.sh) that is kept in the same folder as the `docker.sh` script. 
 
-So it's an extra step to getting up and running, but it allows you to easily change the port on which Jupyter Lab is served as well as to turn Quarto and Dask on/off by commenting/editing/uncommenting the port number in the `config.sh` file. **You cannot run this in the Windows `Power Shell`.**
+So it's an extra step to getting up and running, but it allows you to easily turn various options on/off by commenting/editing/uncommenting the port number in the `config.sh` file. **You cannot run this in the Windows `Power Shell`.**
 
 This simplifies the process to the point of starting Docker with: 
+
 ```bash
 bash docker.sh start
 ```
 
 And you can cleanly shut down the container using: 
+
 ```bash
 bash docker.sh stop
 ```
@@ -36,7 +38,7 @@ bash docker.sh stop
 :::{.callout-warning}
 ### Advanced Topic
 
-This next section is _only_ if you need to run either Dask or Quarto (both of which are provided by {{< var docker.base >}}). **This is _not_ needed by students in Week 1, though you will use Quarto for the group project**.
+This next section is _only_ if you need to run either Dask or Quarto (both of which are provided by {{< var docker.base >}}). **This is _not_ needed by students on Foundations, though you will use Quarto for the group project**.
 
 :::
 
@@ -68,9 +70,9 @@ Using the `Terminal` built into the {{< var env.name >}} container, you will *th
 quarto preview --host 0.0.0.0 --port 4201
 ```
 
-Notice the everything to do with Quarto is on port `4201`, but note additionally the `--host 0.0.0.0` that is required to allow you to view Quarto's output if you want to serve a web site, for instance, instead of static content *outside* of the Docker container.
+Notice the everything to do with Quarto is on port `4201`, but note additionally the `--host 0.0.0.0` that is required to allow you to view Quarto's output if you want to serve a web site instead of static content *beyond* the running container.
 
-The Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the Docker container (e.g. using four cores at once where you've enabled this is Docker preferences on your [Mac](https://docs.docker.com/desktop/settings/mac/) or [Windows](https://docs.docker.com/desktop/settings/windows/) machine).
+The Dask port is where the Dask task manager will be visible when you are making full use of its multiprocessing features within the container.
 
 ## VSCode Integration
 
@@ -81,14 +83,14 @@ This next section is _only_ if you want to program in VSCode instead of Jupyter 
 
 :::
 
-In principle the below will work. We have it working on Mac OSX and the same process *should* work on Windows. In practice, this should be considered a '**beta feature**' in the sense that the documentation is still in development and we're working out a few kinks. We'll keep you posted on our progress!
+In principle the below will work. We have it working on the macOS and the same process *should* work on Windows. In practice, this should be considered a '**beta feature**' in the sense that the documentation is still in development and we're working out a few kinks. We'll keep you posted on our progress!
 
 ### Using Devcontainer
 
 ::: {.callout-important}
 ## Currently Broken
 
-We're investigating why this approach doesn't work, but we're currently unable to get the devcontainer approach to run successfully despite having attempted to update it for 2023. We'll correct this when we can.
+We're investigating why this approach doesn't work, but we're currently unable to get the devcontainer approach to run successfully despite having a version that worked a couple of years ago. We'll correct this when we can.
 
 :::
 
@@ -129,13 +131,13 @@ This then enables you to install the required integration extensions as follows:
 7. The [Gremlins Tracker](https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins) extension which highlights non-printing characters that can make code fail to execute properly.
 8. The [GitHub CoPilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilotvs) which provides AI-assisted code completion and suggestions. To get the most from this you will need to add your UCL email address to your GitHub account and then request access to the academic program.
 
+You can supplement these with the Markdown linting extension and a range of other tools. 
+
 :::{.callout-tip} 
 ## Jupyter Keymap Extension
 
 The "Jupyter Keymap" exension which provides the same keymaps in VSCode that exist in JupyterLab is globally enabled and does not need to be installed..
 :::
-
-You can supplement these with the Markdown linting extension and a range of other tools. 
 
 Once this is all installed, you start up your Docker container (as above) and then tell VSCode to connect to that container using the instructions provided. 
 

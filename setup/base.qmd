@@ -1,0 +1,37 @@
+---
+title: "Base Utilities"
+author: "Jon Reades"
+date: last-modified
+---
+
+In order to get the machine ready to do virtualisation you need to install a few updates to the Operating System as well as some tools that help to interact with the programming platform. Things are a lot more complicated for Windows users here than for Mac (or Linux) users.
+
+## Windows Only (Essential)
+
+{{< include _windows_features.qmd >}}
+
+## Base Utilities
+
+In order to access the majority of the features that this module uses, you will need to install several 'base' utilities:
+
+{{< include _wsl.qmd >}}
+
+## Mac Only (Optional)
+
+::: {.callout-tip}
+### Completely Optional
+
+This next part is *completely optional* for those who want to go further with installing Open Source software 'from source' on the Mac.
+:::
+
+*If* you go further than the material taught in the class, you'll *eventually* want to install the Homebrew package manager, which can be installed [directly from the Terminal](https://phoenixnap.com/kb/install-homebrew-on-mac). 
+
+## Windows Only (Optional)
+
+::: {.callout-tip}
+### Completely Optional}
+
+This next part is *completely optional* for those who want to go further with Linux and WSL.
+:::
+
+{{< include _wsl_user.qmd >}}

@@ -9,7 +9,7 @@ channels:
   - conda-forge
 dependencies: 
   - black # Supports code formatter labextension
-  - bokeh
+  # - bokeh
   - clustergram
   - contextily
   - cython
@@ -36,7 +36,7 @@ dependencies:
   - jupyterlab_code_formatter # Supports labextension
   - jupyterlab-geojson
   - jupyterlab-variableinspector
-  #- jupyter-lsp-python # Already in jupyter-minimal
+  # - jupyter-lsp-python # Already in jupyter-minimal
   # - jupytext # Already in jupyter-minimal
   - legendgram 
   - lxml
@@ -45,29 +45,20 @@ dependencies:
   - openpyxl
 #   #- osmnx
   - palettable 
-  - pip:
+  - pip: # Adds about 500MB
     - geopandas[all]
     - datashader # -- Some problem here
     - pointpats # -- Some problem here
     - pyarrow # -- Some problem here
-    - geopandas # -- Some problem here
     # - libgdal-arrow-parquet
     - pysal # -- Possible problem
     - duckdb # -- Possible problem
     - spatialpandas # -- Possible problem
-#     - esda # (alternative to PySAL stuff)
-#     - joypy
-#     - jupyterlab-quarto
-#     #- langdetect
-#     - libpysal
-#     #- lightgbm 
+    # - esda # (alternative to PySAL stuff)
+    # - joypy
     - matplotlib-scalebar 
-#     #- mpl_toolkits
-    - rfpimp
-    - wordcloud
-#     #- xgboost
-#   - pointpats
-  - libgdal-arrow-parquet
+  # - pointpats
+  # - libgdal-arrow-parquet # -- Possible problem
   - polars
   - plotly
   - pyogrio
@@ -78,14 +69,13 @@ dependencies:
   - rioxarray
   - scikit-learn
   - seaborn
-#   - shap
 #   - statsmodels # Already in jupyter-minimal
   - tabulate  # For exporting from pandas to markdown
 #   - tzlocal 
-  - xarray
+  #- xarray
+  #- xvec
   # - xarray-spatial # -- Possible problem
   # - xarray_leaflet # -- Possible problem
   - xlrd
   - xlsxwriter
-  - xvec
   # - ydata-profiling

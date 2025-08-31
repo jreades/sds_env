@@ -1,16 +1,16 @@
 ---
 title: "Markdown"
 author: "Jon Reades"
-date: "9/7/2023"
+date: last-modified
 ---
 
 Markdown is a 'markup language' for documents that is compatible with a lot of different tools (including GitHub and Jupyter) that we use day-in and day-out for doing our research and teaching. Many of us have now largely stopped using Word (and even LaTeX) except for the final polishing of a document. Why? Because Markdown is faster, simpler, and just gets out of the way when we're writing. So rather than fiddling about with Word's styles (or, worse, discovering that you *should* have been using styles all along) or with LaTeX's painful table layout, you can just get on with writing in Markdown and *then* export to Word or LaTeX for the final steps. Best of both worlds!
 
-In fact, Markdown is so handy that it's become the default for writing content for the web. This web site was actually written in Markdown and then 'rendered' (i.e. turned into a functional web page) using Quarto. We've included Quarto on the SDS2022 Docker image that we've recommended you use.
+In fact, Markdown is so handy that it's become the default for writing content for the web. This web site was actually written in Markdown and then 'rendered' (i.e. turned into a functional web page) using Quarto. We've included Quarto on the {{< var env.name >}} image that we've recommended you use.
 
 ## Markdown Editors
 
-Over time you will undoubtedly learn how to write markdwon without need to think much (if at all) about how to type the formatting 'codes', but a simple markdown editor can make your life much, much easier. Even when you're highly experienced! 
+Over time you will undoubtedly learn how to write markdown without need to think much (if at all) about how to type the formatting 'codes', but a simple markdown editor can make your life much, much easier. Even when you're highly experienced! 
 
 ::: {.panel-tabset}
 
@@ -22,7 +22,9 @@ There's a [good overview](https://www.fossmint.com/best-markdown-editors-for-mac
 2. [Haroopad](http://pad.haroopress.com/user.html) -- this looks like a more powerful, but less immediatley user-friendly editor.
 3. [Atom](https://atom.io/) -- I've used Atom for editing Python code but believe it's largely plugin-based so it clearly supports markdown too.
 
-[Typora](https://www.typora.io/) *was* free while in beta, but I thought it was worth the modest amount of money asked for something that was *super-fast* and gave me a tool with which to write up my research, not just my code and teaching content. [iA Writer](https://ia.net/writer) is another good (paid for) option because it runs on iPad and iPhone as well! Together with the [Working Copy](https://workingcopyapp.com) Git client for iOS I've used iA Writer to draft articles, make notes directly in my codebase, and correct errors found at the last minute in my teaching materials. Like Typora, iA Writer is probably intended *more* for writing text, not writing complex Reveal.js presentations or non-standard markdown.
+[Typora](https://www.typora.io/) *was* free while in beta, but I thought it was worth the modest amount of money asked for something that was *super-fast* and gave me a tool with which to write up my research, not just my code and teaching content. [iA Writer](https://ia.net/writer) is another good (paid for) option because it runs on iPad and iPhone as well! 
+
+Together with the [Working Copy](https://workingcopyapp.com) Git client for iOS I've used iA Writer to draft articles, make notes directly in my codebase, and correct errors found at the last minute in my teaching materials *from my phone*. Like Typora, iA Writer is probably intended *more* for writing text, not writing complex Reveal.js presentations or non-standard markdown.
 
 [^index-1]: Not all of these are *still* free.
 
@@ -40,19 +42,20 @@ If you use Linux already do you really need a recommendation? How about `vim` or
 
 For Markdown to be *useful* as more than just a lightweight way to write notes, we want to be able to *render* it into new output formats/contexts. Here are three... 
 
-## Markdown & GitHub
+### Markdown & GitHub
 
 Markdown is the 'default' language of GitHub, which means it's worth your while to familiarise yourself with how it works. *However*, there are different 'flavours' of markdown, which *also* means that just because something works on GitHub it will work everywhere else in the same way. This is particularly common when dealing with optional parameters that try to give the 'renderer' (the thing that converts markdown to HTML, or LaTeX, or any other format) hints about how the content should look.
 
-## Markdown & Notebooks
+### Markdown & Notebooks
 
 Markdown is also the language of plain-text cells in Jupyter notebooks, which makes it doubly worth your while to familiarise yourself with how it works. 
 
-## Quarto
+### Quarto
 
-[Quarto](https://quarto.org) builds on RMarkdown to make the power of Markdown+Code available to other languages than R. In our [Foundations of Spatial Data Science](https://jreades.github.io/fsds/) module we use Quarto to do submissions but that's largely because it demonstrates how we can Quarto to write whole articles or dissertation!
+[Quarto](https://quarto.org) builds on RMarkdown to make the power of Markdown+Code available to other languages than R. In [Foundations of Spatial Data Science](https://jreades.github.io/fsds/) we use Quarto to do submissions but that's largely because it demonstrates how we can Quarto to write whole articles or dissertation!
 
-In many cases, it is as straightforward as installing Quarto and then running `quarto render ...`, but there are some tricks. In particular, to 'render' Markdown files to PDF, you will need to have some flabour to TeX installed. The default suggested by Quarto is TinyTex, and this can be installed using:
+In many cases, to run Quarto directly on your computer (instead of in the {{< var env.name >}} environtment where we've pre-installed it) it is as straightforward as installing the software and then running `quarto render ...`, but there are some tricks. In particular, to 'render' Markdown files to PDF, you will need to have some flavour to TeX installed. The default suggested by Quarto is TinyTex, and this can be installed using:
+
 ```bash
 quarto install tool tinytex
 ```

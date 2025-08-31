@@ -1,0 +1,17 @@
+
+
+:::{.callout-important}
+### Enabling Virtualisation
+
+If you are on a Windows machine you *must* check that virtualisation has been enabled in the registry first. You can skip this section if you are using a Mac.
+
+:::
+
+Many Windows computers are shipped without virtualisation enabled be default. You will need to check that this 'feature' is active on your computer before trying to install WSL2 and run Podman. To check if the feature is enabled or enable it (same process) please do the following:
+
+1. Click on the &#8862; Windows button and search for `Windows Features`
+2. In the Windows Features popup you need to find and turn on:
+   - `Virtual Machine Platform` (should be set to 'on')
+   - `Windows Hypervisor Platform` (should be set to 'on')
+3. Now restart your computer before moving on to the next section.
+ 

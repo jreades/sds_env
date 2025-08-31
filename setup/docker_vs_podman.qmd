@@ -1,0 +1,22 @@
+---
+title: "Podman or Docker"
+author: "Jon Reades"
+date: "7/11/2025"
+lightbox: true
+---
+
+You'll see that we talk about *both* Podman and Docker interchangeably. You may have heard of one, but not the other. Is there a difference? In terms of what they *do* there is no difference that *you* need to care about at the moment: both allow you to build images of virtual machines, share them with other users, and run any image you find as a container. All of these words are explained below. The point being, they aim to do the *same thing*.
+
+However, *how* they do this is quite different. Docker is/was the market leader in this kind of image/container sharing system and is very stable and well-supported; however, to be installed and run Docker requires administrator access (also known as `root`).
+
+Podman is a more recent, open source tool: it is *slightly* less stable and widely supported than Docker, and to make the most of it you need to change quite a few things. However, the biggest *benefit* is that you can run it as a user: this makes installation and execution much easier.
+
+We are trying to move over to Podman because it will make everyone's life easier, but sometimes we run into issues that cause us to fall back to using Docker instead. Hope that makes sense!
+
+::: {.callout-tip}
+### TL;DR
+
+Choose Podman unless you have a specific reason to choose Docker instead or you have been unable to successfully install and run Podman.
+
+:::
+

@@ -1,0 +1,27 @@
+---
+lightbox: true
+---
+
+You can install the updated Terminal and Git/GitHub Desktop whenever you like, and you shouldn't encounter any issues as these are quite straightforward applications. When setting up GitHub Desktop please ensure that you **use your UCL email address** to create the new account with GitHub.
+
+::: {.callout-important}
+### Windows Users
+
+Please ensure that you have [updated the Windows Virtualisation Features and installed WSL2](./base.qmd) *before* installing this software!
+
+:::
+
+Now that you've downloaded Podman:
+
+1. Install it -- usually this will mean opening the image and either dragging it your Application folder (Mac) or running the installer (Windows)
+2. Start it up -- double-click the Podman icon in your Applications folder (Mac) to start the application running.
+
+![Podman Desktop](./img/Podman_Desktop.png){fig-width=50% group="desktop"}
+
+If you *don't* see this window (or see lots of errors) then you may need to have a look at the '[dealing with errors](./problems.qmd)' section.
+
+::: {.callout-important}
+
+Installation on a Mac should be fairly straightforward (as evidenced by the dearth of documentation), but for Windows there is [quite a bit more detail](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md).
+
+:::

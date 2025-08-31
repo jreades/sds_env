@@ -1,0 +1,54 @@
+
+::: {.callout-tip}
+
+## Copy Code to Clipboard 
+
+Whenever you see a 'code block' below, you will _also_ see a 'clipboard' icon (![Copy to Clipboard Icon](../img/copy-to-clipboard.png){height="18px"}) in the right. Click that, and the code will be copied to your computer's 'clipboard' so that you can then paste it into the `Terminal` or `Windows Terminal` (see [Base Utilities](./base.qmd#base-utilities). That will save you a lot of time and effort.
+
+:::
+
+To test if Podman is installed correctly, you will need to start either `iTerm` (macOS) or the `Windows Terminal` (Windows). Podman has provided a simple way to test if your installation is working correctly. You can run the following command:
+
+```bash
+podman run hello-world
+```
+
+Running `hello-world` should output something like:
+
+```plaintext
+Resolved "hello-world" as an alias (/etc/containers/registries.conf.d/000-shortnames.conf)
+Trying to pull quay.io/podman/hello:latest...
+Getting image source signatures
+Copying blob sha256:1ff9adeff4443b503b304e7aa4c37bb90762947125f4a522b370162a7492ff47
+Copying config sha256:83fc7ce1224f5ed3885f6aaec0bb001c0bbb2a308e3250d7408804a720c72a32
+Writing manifest to image destination
+!... Hello Podman World ...!
+
+         .--"--.
+       / -     - \
+      / (O)   (O) \
+   ~~~| -=(,Y,)=- |
+    .---. /`  \   |~~
+ ~/  o  o \~~~~.----. ~~
+  | =(X)= |~  / (O (O) \
+   ~~~~~~~  ~| =(Y_)=-  |
+  ~~~~    ~~~|   U      |~~
+
+Project:   https://github.com/containers/podman
+Website:   https://podman.io
+Desktop:   https://podman-desktop.io
+Documents: https://docs.podman.io
+YouTube:   https://youtube.com/@Podman
+X/Twitter: @Podman_io
+Mastodon:  @Podman_io@fosstodon.org
+```
+
+If you see the above messages, then Podman is installed correctly and you can move on to the next step. If you see an error message, then you will need to have a look at the [problems](./problems.qmd) page. 
+
+Notice how there are several things happening:
+
+1. `Trying to pull...` or `Pulling from library/hello-world` -- this is starting the process of downloading the `hello-world` image from the internet.
+2. `Pull complete` or `Writing manifest to image destination` -- this is telling you that it has finished downloading the image.
+3. `Hello from Docker!` or `Hello Podman World` -- this is the `hello-world` image running and telling you that the image now running as a container.
+
+There's obviously a *lot* more to that message, but that's the basic idea.

@@ -1,24 +1,13 @@
----
-title: "Base Utilities"
-author: "Jon Reades"
-date: "9/7/2023"
----
 
-In order to access the majority of the features that this module uses, you will need to install several 'base' utilities:
+To make *full* use of WSL2 and Linux you will need to familiarise yourself with how having two operating systems that can talk to each other works. That is covered in the next section. This can actually be *useful* for understanding how virtualisation works, as it can be profoundly confusing. 
 
-{{< include wsl.qmd >}}
-
-## Windows + Linux + Shell
+The behaviour of the 'shell' (command line) is quite confusing because, with WSL2, you effectively end up with two 'home' directories: one for your Windows user, and one for your new Ubuntu user. Starting a Linux shell/command line puts you in your Linux home directory (the username may be completely different from your Windows username). Starting a Windows shell/command line puts you in your Windows home directory (again, the username may be completely different from your Linux username).
 
 ::: {.callout-tip}
 ## Creating a Linux User
 
-If you want to install a full Linux distribution (e.g. because you want to do *more* than just run Docker) then make sure you set up a *new `Linux` user* and do not end up running everything as `root`.
+If you want to install a full Linux distribution (e.g. because you want to do *more* than just run Podman or Docker) then make sure you set up a *new `Linux` user* and do not end up running everything as `root`.
 :::
-
-To make full use of WSL2 and Linux (if you want to do more than just use Docker) you will need to familiarise yourself with how having two operating systems that can talk to each other works. That is covered in the next section. This will actually be *useful* for understanding how Docker works, as it can be profoundly confusing. 
-
-The behaviour of the 'shell' (command line) is quite confusing because, with WSL2, you effectively end up with two 'home' directories: one for your Windows user, and one for your new Ubuntu user. Starting a Linux shell/command line puts you in your Linux home directory (the username may be completely different from your Windows username). Starting a Windows shell/command line puts you in your Windows home directory (again, the username may be completely different from your Linux username).
 
 So the first, and perhaps most important, thing is [understanding where 'data' is being stored](https://learn.microsoft.com/en-us/windows/wsl/filesystems?source=recommendations):
 
@@ -38,4 +27,3 @@ To make it easy to move from the Linux side of your machine to the Windows machi
 5. Now run `source .bashrc` and you should see no errors.
 
 Once you have done this you will have added a single line to your `.bashrc` file in Linux. This will create a 'shortcut' for bash in Linux. From here on out you *should* be able to type `cd $WIN_HOME` and move immediately over to the `CASA` directory on the Windows side. This will save having to remember (and type) the Windows path each time.
-
