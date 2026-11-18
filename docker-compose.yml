@@ -1,0 +1,18 @@
+# To use this docker-compose.yml, run `docker compose up`. If you want to make
+# it run in the background, you instead run `docker compose up -d`. 
+name: sds_env # compose project name
+services:
+  sds_2024:
+    # Using platform condition to handle different architectures
+    # for m chips, run `DOCKER_IMAGE=jreades/sds:2024-silicon docker compose up -d` 
+    # for other platforms, no DOCKER_IMAGE need to be set, run `docker compose up -d`
+    image: ${DOCKER_IMAGE:-jreades/sds:2024-intel}
+    container_name: sds2024
+    ports:
+      - 8888:8888
+    volumes:
+      - .:/home/jovyan/work
+    command: >
+      start.sh jupyter lab --LabApp.password='' --ServerApp.password='' --NotebookApp.token=''
+    # Remove container when stopped
+    restart: "no"
